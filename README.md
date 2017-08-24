@@ -1,3 +1,4 @@
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "Get Started" at https://bookdown.org/ for how to compile this example.
+# R-intro
 
-You can find the preview of this example at https://bookdown.org/yihui/bookdown-demo/
+These are the materials for my R Intro workhsop at 
+https://cengel.github.io/R-intro/

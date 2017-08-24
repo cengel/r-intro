@@ -1,0 +1,698 @@
+```{r, echo=FALSE, purl=FALSE, message = FALSE}
+knitr::opts_chunk$set(results='hide', comment = "#>", purl = FALSE)
+```
+
+# Working with tabular data in R{#data}
+
+> Learning Objectives
+>
+> * Load external data from a .csv file into a data frame in R with `read.csv()`
+> * Find basic properties of a data frames including size, class or type of the columns, names of rows and columns by using `str()`, `nrow()`, `ncol()`, `dim()`, `length()` , `colnames()`, `rownames()`
+> * Use `head()` and `tail()` to inspect rows of a data frame.
+> * Generate summary statistics for a data frame
+> * Use indexing to select rows and columns
+> * Use logical conditions to select rows and columns 
+> * Add columns and rows to a data frame
+> * Manipulate categorical data with `factors`, `levels()` and `as.character()`
+> * Change how character strings are handled in a data frame.
+> * Format dates in R and calculate time differences
+> - Use `df$new_col <- new_col` to add a new column to a data frame.
+> - Use `cbind()` to add a new column to a data frame.
+> - Use `rbind()` to add a new row to a data frame.
+> - Use `na.omit()` to remove rows from a data frame with `NA` values.
+
+------------
+
+## Loading tabular data
+
+```{r, echo=FALSE, purl=TRUE}
+### Loading tabular data
+```
+
+
+One the most common ways of getting data into R is to read in a table. And -- you guessed it -- we read it into a data frame! We will take a simple CSV file as example. [What is a CSV file?](https://support.bigcommerce.com/articles/Public/What-is-a-CSV-file-and-how-do-I-save-my-spreadsheet-as-one)
+
+You may know about [the Stanford Open Policing Project](https://openpolicing.stanford.edu) and we will be working a sample dataset from their repository (https://openpolicing.stanford.edu/data/). It contains information about traffic stops for blacks and whites in the state of Mississippi during January 2013 to mid-July of 2016. 
+
+We are going to use the R function `download.file()` to download the CSV file
+that contains the traffic stop data, and we will use `read.csv()` to
+load into memory the content of the CSV file as an object of class `data.frame`.
+
+Download the traffic stop data from here: .....
+
+
+To download the data into the `data/` subdirectory, run the following:
+
+```{r, eval=FALSE, purl=TRUE}
+download.file("...",
+              "data/MS_trafficstops_bw.csv")
+```
+
+You are now ready to load the data:
+
+```{r, eval=TRUE,  purl=FALSE}
+trafficstops <- read.csv('data/MS_trafficstops_bw.csv')
+```
+
+This statement doesn't produce any output because, as you might recall,
+assignments don't display anything. If we want to check that our data has been
+loaded, we can print the variable's value: `trafficstops`.
+
+Wow... that was a lot of output. At least it means the data loaded
+properly. Let's check the top (the first 6 lines) of this data frame using the
+function `head()`:
+
+```{r, results='show', purl=FALSE}
+head(trafficstops)
+```
+
+
+## Inspecting `data.frame` Objects
+
+```{r, echo=FALSE, purl=TRUE}
+### Inspecting `data.frame` Objects
+```
+
+As you may recall, a data frame in R is a special case of a list, and a representation of data where the columns are vectors that all have the same length. Because the columns are vectors, they all contain the same type of data (e.g., characters, integers, factors, etc.).
+
+We can see this when inspecting the <b>str</b>ucture of a data frame
+with the function `str()`:
+
+```{r, results='show', purl=FALSE}
+str(trafficstops)
+```
+
+
+We already saw how the functions `head()` and `str()` can be useful to check the
+content and the structure of a data frame. Here is a non-exhaustive list of
+functions to get a sense of the content/structure of the data. Let's try them out!
+
+* Size:
+    * `dim(trafficstops)` - returns a vector with the number of rows in the first element,
+          and the number of columns as the second element (the **dim**ensions of
+          the object)
+    * `nrow(trafficstops)` - returns the number of rows
+    * `ncol(trafficstops)` - returns the number of columns
+    * `length(trafficstops)` - returns number of columns
+
+* Content:
+    * `head(trafficstops)` - shows the first 6 rows
+    * `tail(trafficstops)` - shows the last 6 rows
+
+* Names:
+    * `names(trafficstops)` - returns the column names (synonym of `colnames()` for `data.frame`
+	   objects)
+    * `rownames(trafficstops)` - returns the row names
+
+* Summary:
+    * `str(trafficstops)` - structure of the object and information about the class, length and
+	   content of  each column
+    * `summary(trafficstops)` - summary statistics for each column
+
+Note: most of these functions are "generic", they can be used on other types of
+objects besides `data.frame`.
+
+
+> <h3>Challenge</h3>
+>
+> Based on the output of `str(trafficstops)`, can you answer the following questions?
+>
+> * What is the class of the object `trafficstops`?
+> * How many rows and how many columns are in this object?
+> * How many counties have been recorded in this dataset?
+
+```{r, echo=FALSE, purl=TRUE}
+
+## Challenge
+## Based on the output of `str(trafficstops)`, can you answer the following questions?
+## * What is the class of the object `trafficstops`?
+## * How many rows and how many columns are in this object?
+## * How many counties have been recorded in this dataset?
+##
+```
+
+<!---
+```{r, echo=FALSE, purl=FALSE}
+## Answers
+## * class: data frame
+## * how many rows: 211211,  how many columns: 11
+## * how many counties: 82
+```
+--->
+
+
+## Indexing and subsetting data frames
+
+```{r, echo=FALSE, purl=TRUE}
+
+## Indexing and subsetting data frames
+```
+
+
+Our gapminder data frame has rows and columns (it has 2 dimensions), if we want to
+extract some specific data from it, we need to specify the "coordinates" we
+want from it. Row numbers come first, followed by column numbers. However, note
+that different ways of specifying these coordinates lead to results with
+different classes.
+
+```{r, eval=FALSE, purl=FALSE}
+trafficstops[1, 1]   # first element in the first column of the data frame (as a vector)
+trafficstops[1, 6]   # first element in the 6th column (as a vector)
+trafficstops[, 1]    # first column in the data frame (as a vector)
+trafficstops[1]      # first column in the data frame (as a data.frame)
+trafficstops[1:3, 7] # first three elements in the 7th column (as a vector)
+trafficstops[3, ]    # the 3rd element for all columns (as a data.frame)
+head_trafficstops <- trafficstops[1:6, ] # equivalent to head(gapminder)
+```
+
+`:` is a special function that creates numeric vectors of integers in increasing
+or decreasing order, test `1:10` and `10:1` for instance.
+
+You can also exclude certain parts of a data frame using the "`-`" sign:
+
+```{r, eval=FALSE, purl=FALSE}
+trafficstops[,-1]          # The whole data frame, except the first column
+trafficstops[-c(7:211211),] # Equivalent to head(trafficstops)
+```
+
+As well as using numeric values to subset a `data.frame` (or `matrix`), columns
+can be called by name, using one of the four following notations:
+
+```{r, eval = FALSE, purl=FALSE}
+trafficstops["violation_raw"]       # Result is a data.frame
+trafficstops[, "violation_raw"]     # Result is a vector
+trafficstops[["violation_raw"]]     # Result is a vector
+trafficstops$violation_raw          # Result is a vector
+```
+
+For our purposes, the last three notations are equivalent. RStudio knows about
+the columns in your data frame, so you can take advantage of the autocompletion
+feature to get the full and correct column name.
+
+> <h3>Challenge</h3>
+>
+> 1. Create a `data.frame` (`trafficstops_200`) containing only the observations from
+>    row 200 of the `trafficstops` dataset.
+>
+> 2. Notice how `nrow()` gave you the number of rows in a `data.frame`?
+>
+>      * Use that number to pull out just that last row in the data frame.
+>      * Compare that with what you see as the last row using `tail()` to make
+>        sure it's meeting expectations.
+>      * Pull out that last row using `nrow()` instead of the row number.
+>      * Create a new data frame object (`trafficstops_last`) from that last row.
+>
+> 3. Use `nrow()` to extract the row that is in the middle of the data
+>    frame. Store the content of this row in an object named `trafficstops_middle`.
+>
+> 4. Combine `nrow()` with the `-` notation above to reproduce the behavior of
+>    `head(trafficstops)` keeping just the first through 6th rows of the trafficstops
+>    dataset.
+
+
+```{r, echo=FALSE, purl=TRUE}
+### Challenges:
+###
+### 1. Create a `data.frame` (`trafficstops_200`) containing only the
+###    observations from row 200 of the `trafficstops` dataset.
+###
+### 2. Notice how `nrow()` gave you the number of rows in a `data.frame`?
+###
+###      * Use that number to pull out just that last row in the data frame
+###      * Compare that with what you see as the last row using `tail()` to make
+###        sure it's meeting expectations.
+###      * Pull out that last row using `nrow()` instead of the row number
+###      * Create a new data frame object (`trafficstops_last`) from that last row
+###
+### 3. Use `nrow()` to extract the row that is in the middle of the
+###    data frame. Store the content of this row in an object named
+###    `trafficstops_middle`.
+###
+### 4. Combine `nrow()` with the `-` notation above to reproduce the behavior of
+###    `head(trafficstops)` keeping just the first through 6th rows of the trafficstops
+###    dataset.
+
+```
+
+<!---
+```{r, purl=FALSE}
+## Answers
+trafficstops_200 <- trafficstops[200, ]
+trafficstops_last <- trafficstops[nrow(trafficstops), ]
+trafficstops_middle <- trafficstops[nrow(trafficstops)/2, ]
+trafficstops_head <- trafficstops[-c(7:nrow(trafficstops)),]
+```
+--->
+
+## Conditional subsetting 
+
+```{r, echo=FALSE, purl=TRUE}
+
+## Conditional subsetting
+```
+
+Often times we need to extract a subset of a data frame based on certain conditions. For example, if we wanted to look at traffic stops in Tallahatchie County only we could say:
+
+```{r eval=FALSE}
+# the condition:
+trafficstops$county_name == "Tallahatchie County" # returns a logical vector of the length of the column
+# use this vector to extract rows and all columns
+trafficstops[trafficstops$county_name == "Tallahatchie County", ] # note the comma: we want all columns
+# assign it to a new data frame
+Tallahatchie_trafficstops <- trafficstops[trafficstops$county_name == "Tallahatchie County", ]
+```
+
+This is also a possibility:
+
+```{r results='show'}
+Tallahatchie_trafficstops <- subset(trafficstops, county_name == "Tallahatchie County")
+nrow(Tallahatchie_trafficstops) # 393 stops in Tallahatchie County!
+```
+
+These commands are from the R base package. In the R Data Wrangling workshop we will discuss a different way of subsetting using functions from the `tidyverse` package.
+
+> <h3>Challenge</h3>
+> * Use subsetting to extract trafficstops in Hancock, Harrison, and Jackson Counties into a separate data frame `coastal_counties`. 
+> * Using `coastal_counties`, count the number of Black and White drivers in the three counties.
+> * Bonus: How does the ratio of Black to White stops in the three coastal counties compare to the same ratio for stops in the entire state of Mississippi?
+> 
+
+```{r, echo=FALSE, purl=TRUE}
+## Challenge
+## * Use subsetting to extract traffic stops in Hancock, Harrison, and Jackson Counties into a separate data frame `coastal_counties`.
+## * Using `coastal_counties`, count the number of Black and White drivers in the three counties.
+## * Bonus: How does the ratio of Black to White the three coastal counties compare to the same ratio for the entire state of Mississippi?
+```
+
+<!---
+```{r, purl=FALSE}
+## Answers
+coastal_counties <- trafficstops[trafficstops$county_name %in% c("Hancock County", "Harrison County", "Jackson County"), ]
+# or
+coastal_counties <- subset(trafficstops, county_name %in% c("Hancock County", "Harrison County", "Jackson County"))
+
+# counts 
+sum(coastal_counties$driver_race == "Black")
+sum(coastal_counties$driver_race == "White")
+
+# ratios
+sum(coastal_counties$driver_race == "Black")/sum(coastal_counties$driver_race == "White")
+
+sum(trafficstops$driver_race == "Black")/sum(trafficstops$driver_race == "White")
+```
+--->
+
+
+## Adding and removing rows and columns
+
+```{r, echo=FALSE, purl=TRUE}
+
+## Adding and removing rows and columns
+```
+
+To add a new column to the data frame we can use the `cbind()` function.
+
+```{r, results='show'}
+new_col <- row.names(trafficstops)
+trafficstops_withnewcol <- cbind(trafficstops, new_col)
+head(trafficstops_withnewcol)
+```
+
+Alternatively, we can also add a new column adding the new column name after the `$` sign then assigning the value, like below. Note that this will change the original data frame, which you may not always want to do.
+
+```{r, eval=FALSE}
+trafficstops$row_numbers <- c(1:nrow(trafficstops))
+trafficstops$all_false <- FALSE  # what do you think will happen here?
+```
+
+
+There is an equivalent function, `rbind()` to add a new row to a data frame. I use this far less frequently than the column equivalent. The one thing to keep in mind is that the row to be added to the data frame needs to match the order and type of columns in the data frame. Remember that R's way to store multiple different data types in one object is a `list`. So if we wanted to add a new row to `trafficstops` we would say:
+
+```{r, results='show'}
+new_row <- data.frame(id="MS-2017-12345", state="MS", stop_date="2017-08-24",
+                county_name="Tallahatchie County", county_fips=12345,
+                police_department="MSHP", driver_gender="F", driver_birthdate="1999-06-14",
+                driver_race="Hispanic", violation_raw="Speeding", officer_id="ABCD")
+
+trafficstops_withnewrow <- rbind(trafficstops, new_row)
+tail(trafficstops_withnewrow)
+```
+
+
+A convenient function to know about is `na.omit()`. It will remove all rows from a data frame that have at least one column with `NA` values. 
+
+> <h3>Challenge</h3>
+> * Given the following data frame:
+>
+> ```{r}
+dfr <- data.frame(col_1 = c(1:3), 
+                  col_2 = c(NA, NA, "b"), 
+                  col_3 = c(TRUE, NA, FALSE))
+> ```
+> 
+> What would you expect the following commands to return?
+>
+> ```{r}
+nrow(dfr)
+nrow(na.omit(dfr))
+> ```
+
+```{r, echo=FALSE, purl=TRUE}
+## Challenge
+## * Given the following data frame:
+## dfr <- data.frame(col_1 = c(1:3), 
+##                  col_2 = c(NA, NA, "b"), 
+##                  col_3 = c(TRUE, NA, FALSE))
+
+## What number would you expect the following commands to return?
+## nrow(dfr)
+## nrow(na.omit(dfr))
+```
+
+<!---
+```{r, purl=FALSE}
+## Answers
+nrow(dfr) # 3
+nrow(na.omit(dfr)) # 1
+```
+--->
+
+## Categorical data: factors
+
+```{r, echo=FALSE, purl=TRUE}
+### Factors
+```
+
+When we did `str(trafficstops)` we saw that only one of the columns are numeric (`county_fips`), all the others are of a special class called a `factor`. Factors are very useful and are actually
+something that make R particularly well suited to working with data, so we're
+going to spend a little time introducing them.
+
+Factors are used to represent categorical data. Factors can be ordered or
+unordered, and understanding them is necessary for statistical analysis and for
+plotting.
+
+Factors are stored as integers, and have labels (text) associated with these
+unique integers. While factors look (and often behave) like character vectors,
+they are actually integers under the hood, and you need to be careful when
+treating them like strings.
+
+Once created, factors can only contain a pre-defined set of values, known as
+*levels*. By default, R always sorts *levels* in alphabetical order. For
+instance, if you have a factor with 2 levels:
+
+```{r, purl=TRUE}
+party <- factor(c("republican", "democrat", "democrat", "republican"))
+```
+
+R will assign `1` to the level `"democrat"` and `2` to the level `"republican"` (because
+`d` comes before `r`, even though the first element in this vector is
+`"republican"`). You can check this by using the function `levels()`, and check the
+number of levels using `nlevels()`:
+
+```{r, purl=FALSE}
+levels(party)
+nlevels(party)
+```
+
+Sometimes, the order of the factors does not matter, other times you might want
+to specify the order because it is meaningful (e.g., "low", "medium", "high"),
+it improves your visualization, or it is required by a particular type of
+analysis. Here, one way to reorder our levels in the `party` vector would be:
+
+```{r, results=TRUE, purl=FALSE}
+party # current order
+party <- factor(party, levels = c("republican", "democrat"))
+party # after re-ordering
+```
+
+In R's memory, these factors are represented by integers (1, 2, 3), but are more
+informative than integers because factors are self describing: `"democrat"`,
+`"republican"` is more descriptive than `1`, `2`. Which one is "republican"?  You wouldn't
+be able to tell just from the integer data. Factors, on the other hand, have
+this information built in. It is particularly helpful when there are many levels
+(like the country names in our example dataset).
+
+### Converting factors
+
+If you need to convert a factor to a character vector, you use
+`as.character(x)`.
+
+```{r, purl=FALSE}
+as.character(party)
+```
+
+Converting factors where the levels appear as numbers (such as concentration
+levels, or years) to a numeric vector is a little trickier.  One method is to
+convert factors to characters and then numbers.  Another method is to use the
+`levels()` function. Compare:
+
+```{r, purl=TRUE}
+f <- factor(c(1990, 1983, 1977, 1998, 1990))
+as.numeric(f)               # wrong! and there is no warning...
+as.numeric(as.character(f)) # works...
+as.numeric(levels(f))[f]    # The recommended way.
+```
+
+Notice that in the `levels()` approach, three important steps occur:
+
+* We obtain all the factor levels using `levels(f)`
+* We convert these levels to numeric values using `as.numeric(levels(f))`
+* We then access these numeric values using the underlying integers of the
+  vector `f` inside the square brackets
+
+### Renaming factors
+
+When your data is stored as a factor, you can use the `plot()` function to get a
+quick glance at the number of observations represented by each factor
+level. Let's look at the number of blacks and whites in the dataset:
+
+```{r driver-race-barplot, purl=TRUE}
+## bar plot of the number of black and white drivers stopped:
+plot(trafficstops$driver_race)
+```
+
+There seem to be a number of individuals for which the race information hasn't been recorded.
+
+Additionally, for these individuals, there is no label to indicate that the information is missing. Let’s rename this label to something more meaningful. Before doing that, we’re going to pull out the data on race and work with that data, so we’re not modifying the working copy of the data frame:
+
+```{r, results=TRUE, purl=FALSE}
+race <- trafficstops$driver_race
+head(race)
+levels(race)
+levels(race)[1] <- "Missing"
+levels(race)
+head(race)
+```
+
+> <h3>Challenge</h3>
+>
+> * Rename "Black" to "African American".
+> * Now that we have renamed the factor level to "Missing", can you recreate the
+>  barplot such that "Missing" is last (to the right)?
+
+
+```{r wrong-order, results='show', echo=FALSE, purl=TRUE}
+## Challenges
+##
+## * Rename "Black" to "African American".
+## * Now that we have renamed the factor level to "Missing", can you recreate the
+##   barplot such that "Missing" is last (to the right)?
+```
+
+
+<!---
+```{r correct-order, purl=FALSE}
+## Answers
+levels(race)[2] <- c("African American")
+race <- factor(race, levels = c("African American", "White", "Missing"))
+plot(race)
+```
+--->
+
+
+
+### Using `stringsAsFactors=FALSE`
+
+By default, when building or importing a data frame with `read.csv()`, the columns that contain
+characters (i.e., text) are coerced (=converted) into the `factor` data
+type. Depending on what you want to do with the data, you may want to keep these
+columns as `character`. To do so, `read.csv()` and `read.table()` have an
+argument called `stringsAsFactors` which can be set to `FALSE`.
+
+In most cases, it's preferable to set `stringsAsFactors = FALSE` when importing
+your data, and converting as a factor only the columns that require this data
+type.
+
+Compare the output of `str(trafficstops)` when setting `stringsAsFactors = TRUE`
+(default) and `stringsAsFactors = FALSE`:
+
+
+```{r, eval=FALSE, purl=FALSE}
+## Compare the difference between when the data are being read as
+## `factor`, and when they are being read as `character`.
+trafficstops <- read.csv("data/MS_policing_bw.csv", stringsAsFactors = TRUE)
+str(trafficstops)
+trafficstops <- read.csv("data/MS_policing_bw.csv", stringsAsFactors = FALSE)
+str(trafficstops)
+## Convert the column "driver_race" into a factor
+trafficstops$driver_race <- factor(trafficstops$driver_race)
+```
+
+
+> <h3>Challenge</h3>
+>
+> Can you predict the class for each of the columns in the following example?
+>    Check your guesses using `str(country_climate)`:
+>      * Are they what you expected?  Why? Why not?
+>      * What would have been different if we had added `stringsAsFactors = FALSE` to this call?
+>      * What would you need to change to ensure that each column had the accurate data type?
+>
+>     ```{r, eval=FALSE, purl=FALSE}
+>     country_climate <- data.frame(
+>            country=c("Canada", "Panama", "South Africa", "Australia"),
+>            climate=c("cold", "hot", "temperate", "hot/temperate"),
+>            temperature=c(10, 30, 18, "15"),
+>            northern_hemisphere=c(TRUE, TRUE, FALSE, "FALSE"),
+>            has_kangaroo=c(FALSE, FALSE, FALSE, 1)
+>            )
+>     ```
+
+
+```{r predict-class, eval=FALSE, results='show', echo=FALSE, purl=TRUE}
+## Challenge:
+##   Can you predict the class for each of the columns in the following
+##   example?
+##   Check your guesses using `str(country_climate)`:
+##   * Are they what you expected? Why? why not?
+##   * What would have been different if we had added `stringsAsFactors = FALSE`
+##     to this call?
+##   * What would you need to change to ensure that each column had the
+##     accurate data type?
+country_climate <- data.frame(country=c("Canada", "Panama", "South Africa", "Australia"),
+                                   climate=c("cold", "hot", "temperate", "hot/temperate"),
+                                 temperature=c(10, 30, 18, "15"),
+                                  northern_hemisphere=c(TRUE, TRUE, FALSE, "FALSE"),
+                                 has_kangaroo=c(FALSE, FALSE, FALSE, 1))
+```
+
+<!--- Answers
+
+```{r, eval=FALSE, echo=FALSE, purl=FALSE}
+## Answers
+## * missing quotations around the names of the animals
+## * missing one entry in the "feel" column (probably for one of the furry animals)
+## * missing one comma in the weight column
+
+## Answers
+## * `country`, `climate`, `temperature`, and `northern_hemisphere` are
+##    factors; `has_kangaroo` is numeric.
+## * using `stringsAsFactors=FALSE` would have made them character instead of
+##   factors
+## * removing the quotes in temperature, northern_hemisphere, and replacing 1
+##   by TRUE in the `has_kangaroo` column would probably what was originally
+##   intended.
+```
+
+-->
+
+
+The automatic conversion of data type is sometimes a blessing, sometimes an
+annoyance. Be aware that it exists, learn the rules, and double check that data
+you import in R are of the correct type within your data frame. If not, use it
+to your advantage to detect mistakes that might have been introduced during data
+entry (a letter in a column that should only contain numbers for instance).
+
+
+## Dates
+
+```{r, echo=FALSE, purl=TRUE}
+### Dates
+```
+One of the most common issues that new (and experienced!) R users have is converting
+date and time information into a variable that is appropriate and usable during
+analyses. If you have control over your data the best practice for dealing
+with date data is to ensure that each component of your date is stored as a separate
+variable, i.e a separate column for day, month, and year. However, often we do not have control and the date is stored in one single column and with varying order and separating characters between its components.
+
+Using `str()`, we can see that both dates in our data frame `stop_date` and `driver_birthdate` are each stored in one column.
+
+```{r, eval=FALSE, purl=FALSE}
+str(trafficstops)
+```
+
+As an example for how to work with dates let us see if there are seasonal differences in the number of traffic stops.
+
+We're going to be using the `ymd()` function from the package **`lubridate`**. This
+function is designed to take a vector representing year, month, and day and convert
+that information to a POSIXct vector. POSIXct is a class of data recognized by R as
+being a date or date and time. The argument that the function requires is relatively
+flexible, but, as a best practice, is a character vector formatted as "YYYY-MM-DD".
+
+Start by loading the required package:
+
+```{r load-package, message=FALSE, purl=FALSE}
+library(lubridate)
+```
+
+
+```{r, purl=FALSE}
+stop_date <- ymd(trafficstops$stop_date)
+str(stop_date) # notice the 'date' class
+```
+
+The `ymd` function also has nicely taken care of the fact that the original format of the date column is a factor!
+
+We can now easily extract year, month, and date using the respective functions: `year()`, `month()`, and `day()` like so:
+
+```{r yearly-stops, purl=FALSE}
+plot(factor(year(stop_date))) #convert year to factor to plot
+```
+
+> <h3>Challenge</h3>
+>
+> * Are there more stops in certain months of the year or certain days of the month?
+
+```{r seasonal-stops, results='show', echo=FALSE, purl=TRUE}
+## Challenge
+##
+## * Are there more stops in certain months of the year or certain days of the month?
+```
+
+
+<!---
+```{r plot-seasonal-stops, purl=FALSE}
+## Answers
+plot(factor(month(stop_date)))
+plot(factor(day(stop_date)))
+```
+--->
+
+> <h3>Challenge</h3>
+>
+> * Determine the age of the driver in years (approximate) at the time of the stop:
+> * Extract `driver_birthdate` into a vector `birth_date` 
+> * Create a new vector `age` with the driver's age at the time of the stop in years
+> * Coerce `age` to a factor and use the `plot` function to check your results. What do you find?
+
+```{r calculate-age, results='show', echo=FALSE, purl=TRUE}
+## Challenge
+##
+## * Determine the (approximate) age of the driver in years at the time of the stop:
+## * Extract `driver_birthdate` into a vector `birth_date` 
+## * Create a new vector `age` with the driver's age at the time of the stop in years
+## * Coerce `age` to a factor and use the `plot` function to check your results. What do you find?
+```
+
+
+<!---
+```{r calculate-age-answer, purl=FALSE}
+## Answers
+birth_date <- ymd(trafficstops$driver_birthdate)
+age <- stop_date - birth_date
+# or
+age <- year(stop_date) - year(birth_date)
+plot(factor(age)) # Negative age!
+#or
+hist(age)
+```
+--->

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introduction to R</title>
+  <meta name="description" content="Workshop materials for Intro to R">
+  <meta name="generator" content="bookdown 0.4.2 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introduction to R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Workshop materials for Intro to R" />
+  <meta name="github-repo" content="cengel/R-intro" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to R" />
+  
+  <meta name="twitter:description" content="Workshop materials for Intro to R" />
+  
+
+<meta name="author" content="Claudia A Engel">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="backgroud.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#setup-instructions"><i class="fa fa-check"></i>Setup Instructions</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#macos"><i class="fa fa-check"></i>macOS</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#windows"><i class="fa fa-check"></i>Windows</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#linux"><i class="fa fa-check"></i>Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="backgroud.html"><a href="backgroud.html"><i class="fa fa-check"></i><b>1</b> R and Rstudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="backgroud.html"><a href="backgroud.html#what-is-r-what-is-rstudio"><i class="fa fa-check"></i><b>1.1</b> What is R? What is RStudio?</a></li>
+<li class="chapter" data-level="1.2" data-path="backgroud.html"><a href="backgroud.html#why-learn-r"><i class="fa fa-check"></i><b>1.2</b> Why learn R?</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="backgroud.html"><a href="backgroud.html#r-does-not-involve-lots-of-pointing-and-clicking-and-thats-a-good-thing"><i class="fa fa-check"></i><b>1.2.1</b> R does not involve lots of pointing and clicking, and that’s a good thing</a></li>
+<li class="chapter" data-level="1.2.2" data-path="backgroud.html"><a href="backgroud.html#r-code-is-great-for-reproducibility"><i class="fa fa-check"></i><b>1.2.2</b> R code is great for reproducibility</a></li>
+<li class="chapter" data-level="1.2.3" data-path="backgroud.html"><a href="backgroud.html#r-is-interdisciplinary-and-extensible"><i class="fa fa-check"></i><b>1.2.3</b> R is interdisciplinary and extensible</a></li>
+<li class="chapter" data-level="1.2.4" data-path="backgroud.html"><a href="backgroud.html#r-works-on-data-of-all-shapes-and-sizes"><i class="fa fa-check"></i><b>1.2.4</b> R works on data of all shapes and sizes</a></li>
+<li class="chapter" data-level="1.2.5" data-path="backgroud.html"><a href="backgroud.html#r-produces-high-quality-graphics"><i class="fa fa-check"></i><b>1.2.5</b> R produces high-quality graphics</a></li>
+<li class="chapter" data-level="1.2.6" data-path="backgroud.html"><a href="backgroud.html#r-has-a-large-community"><i class="fa fa-check"></i><b>1.2.6</b> R has a large community</a></li>
+<li class="chapter" data-level="1.2.7" data-path="backgroud.html"><a href="backgroud.html#not-only-is-r-free-but-it-is-also-open-source-and-cross-platform"><i class="fa fa-check"></i><b>1.2.7</b> Not only is R free, but it is also open-source and cross-platform</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="backgroud.html"><a href="backgroud.html#knowing-your-way-around-rstudio"><i class="fa fa-check"></i><b>1.3</b> Knowing your way around RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="backgroud.html"><a href="backgroud.html#how-to-start-an-r-project"><i class="fa fa-check"></i><b>1.4</b> How to start an R project</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="backgroud.html"><a href="backgroud.html#organizing-your-working-directory"><i class="fa fa-check"></i><b>1.4.1</b> Organizing your working directory</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="backgroud.html"><a href="backgroud.html#interacting-with-r"><i class="fa fa-check"></i><b>1.5</b> Interacting with R</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="backgroud.html"><a href="backgroud.html#rstudio-console"><i class="fa fa-check"></i><b>1.5.1</b> RStudio Console</a></li>
+<li class="chapter" data-level="1.5.2" data-path="backgroud.html"><a href="backgroud.html#rstudio-script-editor"><i class="fa fa-check"></i><b>1.5.2</b> RStudio Script Editor</a></li>
+<li class="chapter" data-level="1.5.3" data-path="backgroud.html"><a href="backgroud.html#the-r-command-prompt"><i class="fa fa-check"></i><b>1.5.3</b> The R command prompt</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>2</b> Getting Started with R</a><ul>
+<li class="chapter" data-level="2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-objects-in-r"><i class="fa fa-check"></i><b>2.1</b> Creating objects in R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="gettingstarted.html"><a href="gettingstarted.html#comments"><i class="fa fa-check"></i><b>2.1.1</b> Comments</a></li>
+<li class="chapter" data-level="2.1.2" data-path="gettingstarted.html"><a href="gettingstarted.html#functions-and-their-arguments"><i class="fa fa-check"></i><b>2.1.2</b> Functions and their arguments</a></li>
+<li class="chapter" data-level="2.1.3" data-path="gettingstarted.html"><a href="gettingstarted.html#objects-vs.variables"><i class="fa fa-check"></i><b>2.1.3</b> Objects vs. variables</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#vectors-and-data-types"><i class="fa fa-check"></i><b>2.2</b> Vectors and data types</a></li>
+<li class="chapter" data-level="2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#subsetting-vectors"><i class="fa fa-check"></i><b>2.3</b> Subsetting vectors</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#conditional-subsetting"><i class="fa fa-check"></i><b>2.3.1</b> Conditional subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#missing-data"><i class="fa fa-check"></i><b>2.4</b> Missing data</a></li>
+<li class="chapter" data-level="2.5" data-path="gettingstarted.html"><a href="gettingstarted.html#common-r-data-structures"><i class="fa fa-check"></i><b>2.5</b> Common R Data Structures</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="gettingstarted.html"><a href="gettingstarted.html#matrix"><i class="fa fa-check"></i><b>2.5.1</b> Matrix</a></li>
+<li class="chapter" data-level="2.5.2" data-path="gettingstarted.html"><a href="gettingstarted.html#list"><i class="fa fa-check"></i><b>2.5.2</b> List</a></li>
+<li class="chapter" data-level="2.5.3" data-path="gettingstarted.html"><a href="gettingstarted.html#data-frame"><i class="fa fa-check"></i><b>2.5.3</b> Data frame</a></li>
+<li class="chapter" data-level="2.5.4" data-path="gettingstarted.html"><a href="gettingstarted.html#make-use-of-the-installed-packages"><i class="fa fa-check"></i><b>2.5.4</b> Make use of the installed packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="gettingstarted.html"><a href="gettingstarted.html#seeking-help"><i class="fa fa-check"></i><b>2.6</b> Seeking help</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="gettingstarted.html"><a href="gettingstarted.html#use-the-built-in-rstudio-help-interface"><i class="fa fa-check"></i><b>2.6.1</b> Use the built-in RStudio help interface</a></li>
+<li class="chapter" data-level="2.6.2" data-path="gettingstarted.html"><a href="gettingstarted.html#i-know-the-name-of-the-function-but-im-not-sure-how-to-use-it"><i class="fa fa-check"></i><b>2.6.2</b> I know the name of the function, but I’m not sure how to use it</a></li>
+<li class="chapter" data-level="2.6.3" data-path="gettingstarted.html"><a href="gettingstarted.html#there-must-be-a-function-to-do-x-but-i-dont-know-which-one"><i class="fa fa-check"></i><b>2.6.3</b> There must be a function to do X but I don’t know which one…</a></li>
+<li class="chapter" data-level="2.6.4" data-path="gettingstarted.html"><a href="gettingstarted.html#i-am-stuck-i-get-an-error-message-that-i-dont-understand"><i class="fa fa-check"></i><b>2.6.4</b> I am stuck… I get an error message that I don’t understand</a></li>
+<li class="chapter" data-level="2.6.5" data-path="gettingstarted.html"><a href="gettingstarted.html#how-to-ask-for-help"><i class="fa fa-check"></i><b>2.6.5</b> How to ask for help</a></li>
+<li class="chapter" data-level="2.6.6" data-path="gettingstarted.html"><a href="gettingstarted.html#where-to-ask-for-help"><i class="fa fa-check"></i><b>2.6.6</b> Where to ask for help?</a></li>
+<li class="chapter" data-level="2.6.7" data-path="gettingstarted.html"><a href="gettingstarted.html#resources-on-getting-help"><i class="fa fa-check"></i><b>2.6.7</b> Resources on getting help</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Working with tabular data in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#loading-tabular-data"><i class="fa fa-check"></i><b>3.1</b> Loading tabular data</a></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#inspecting-data.frame-objects"><i class="fa fa-check"></i><b>3.2</b> Inspecting <code>data.frame</code> Objects</a></li>
+<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#indexing-and-subsetting-data-frames"><i class="fa fa-check"></i><b>3.3</b> Indexing and subsetting data frames</a></li>
+<li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#conditional-subsetting-1"><i class="fa fa-check"></i><b>3.4</b> Conditional subsetting</a></li>
+<li class="chapter" data-level="3.5" data-path="data.html"><a href="data.html#adding-and-removing-rows-and-columns"><i class="fa fa-check"></i><b>3.5</b> Adding and removing rows and columns</a></li>
+<li class="chapter" data-level="3.6" data-path="data.html"><a href="data.html#categorical-data-factors"><i class="fa fa-check"></i><b>3.6</b> Categorical data: factors</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="data.html"><a href="data.html#converting-factors"><i class="fa fa-check"></i><b>3.6.1</b> Converting factors</a></li>
+<li class="chapter" data-level="3.6.2" data-path="data.html"><a href="data.html#renaming-factors"><i class="fa fa-check"></i><b>3.6.2</b> Renaming factors</a></li>
+<li class="chapter" data-level="3.6.3" data-path="data.html"><a href="data.html#using-stringsasfactorsfalse"><i class="fa fa-check"></i><b>3.6.3</b> Using <code>stringsAsFactors=FALSE</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="data.html"><a href="data.html#dates"><i class="fa fa-check"></i><b>3.7</b> Dates</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Introduction to R</h1>
+<h4 class="author"><em>Claudia A Engel</em></h4>
+<h4 class="date"><em>Last updated: August 24, 2017</em></h4>
+</div>
+<div id="prerequisites" class="section level1 unnumbered">
+<h1>Prerequisites</h1>
+<ul>
+<li>Geared specifically towards users who are <strong>new</strong> to R.<br />
+</li>
+<li>Have <a href="https://cran.r-project.org/">R</a> and <a href="https://www.rstudio.com/">RStudio</a> installed (see setup instructions below).</li>
+</ul>
+<p><strong>Next workshop:<br />
+Thu, October 19, 2017, 1:30-4pm,<br />
+Room 433A in CESTA (Building 160 - Wallenberg 4th floor)</strong></p>
+<div id="setup-instructions" class="section level2 unnumbered">
+<h2>Setup Instructions</h2>
+<p><a href="https://cran.r-project.org/"><strong>R</strong></a> and <a href="https://www.rstudio.com/"><strong>RStudio</strong></a> are separate downloads and installations. R is the underlying statistical computing environment, but using R alone is no fun. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You need to install R before you install RStudio.</p>
+<div id="macos" class="section level3 unnumbered">
+<h3>macOS</h3>
+<div id="if-you-already-have-r-and-rstudio-installed" class="section level4 unnumbered">
+<h4>If you already have R and RStudio installed</h4>
+<ul>
+<li>Open RStudio, and click on “Help” &gt; “Check for updates”. If a new version is available, quit RStudio, and download the latest version for RStudio.</li>
+<li>To check the version of R you are using, start RStudio and the first thing that appears on the terminal indicates the version of R you are running. Alternatively, you can type <code>sessionInfo()</code>, which will also display which version of R you are running. Go on the <a href="https://cran.r-project.org/bin/macosx/">CRAN website</a> and check whether a more recent version is available. If so, please download and install it.</li>
+</ul>
+</div>
+<div id="if-you-dont-have-r-and-rstudio-installed" class="section level4 unnumbered">
+<h4>If you don’t have R and RStudio installed</h4>
+<ul>
+<li>Download R from the <a href="http://cran.r-project.org/bin/macosx">CRAN website</a>.</li>
+<li>Select the <code>.pkg</code> file for the latest R version</li>
+<li>Double click on the downloaded file to install R</li>
+<li>Go to the <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio download page</a></li>
+<li>Under <em>Installers</em> select <strong>RStudio x.yy.zzz - Mac OS X 10.6+ (64-bit)</strong> (where x, y, and z represent version numbers)</li>
+<li>Double click the file to install RStudio</li>
+<li>Once it’s installed, open RStudio to make sure it works and you don’t get any error messages.</li>
+</ul>
+</div>
+</div>
+<div id="windows" class="section level3 unnumbered">
+<h3>Windows</h3>
+<div id="if-you-already-have-r-and-rstudio-installed-1" class="section level4 unnumbered">
+<h4>If you already have R and RStudio installed</h4>
+<ul>
+<li>Open RStudio, and click on “Help” &gt; “Check for updates”. If a new version is available, quit RStudio, and download the latest version for RStudio.</li>
+<li>To check which version of R you are using, start RStudio and the first thing that appears in the console indicates the version of R you are running. Alternatively, you can type <code>sessionInfo()</code>, which will also display which version of R you are running. Go on the <a href="https://cran.r-project.org/bin/windows/base/">CRAN website</a> and check whether a more recent version is available. If so, please download and install it. You can <a href="https://cran.r-project.org/bin/windows/base/rw-FAQ.html#How-do-I-UNinstall-R_003f">check here</a> for more information on how to remove old versions from your system if you wish to do so.</li>
+</ul>
+</div>
+<div id="if-you-dont-have-r-and-rstudio-installed-1" class="section level4 unnumbered">
+<h4>If you don’t have R and RStudio installed</h4>
+<ul>
+<li>Download R from the <a href="http://cran.r-project.org/bin/windows/base/release.htm">CRAN website</a>.</li>
+<li>Run the <code>.exe</code> file that was just downloaded</li>
+<li>Go to the <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio download page</a></li>
+<li>Under <em>Installers</em> select <strong>RStudio x.yy.zzz - Windows XP/Vista/7/8</strong> (where x, y, and z represent version numbers)</li>
+<li>Double click the file to install it</li>
+<li>Once it’s installed, open RStudio to make sure it works and you don’t get any error messages.</li>
+</ul>
+</div>
+</div>
+<div id="linux" class="section level3 unnumbered">
+<h3>Linux</h3>
+<ul>
+<li>Follow the instructions for your distribution from <a href="https://cloud.r-project.org/bin/linux">CRAN</a>, they provide information to get the most recent version of R for common distributions. For most distributions, you could use your package manager (e.g., for Debian/Ubuntu run <code>sudo apt-get install r-base</code>, and for Fedora <code>sudo yum install R</code>), but we don’t recommend this approach as the versions provided by this are usually out of date. In any case, make sure you have at least R 3.3.1.</li>
+<li>Go to the <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio download page</a></li>
+<li>Under <em>Installers</em> select the version that matches your distribution, and install it with your preferred method (e.g., with Debian/Ubuntu <code>sudo dpkg -i   rstudio-x.yy.zzz-amd64.deb</code> at the terminal).</li>
+<li>Once it’s installed, open RStudio to make sure it works and you don’t get any error messages.</li>
+</ul>
+</div>
+</div>
+<div id="acknowledgements" class="section level2 unnumbered">
+<h2>Acknowledgements</h2>
+<p>Part of the materials for this tutorial are adapted from <a href="http://datacarpentry.org" class="uri">http://datacarpentry.org</a> and <a href="http://softwarecarpentry.org" class="uri">http://softwarecarpentry.org</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="backgroud.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/cengel/R-intro/edit/master/index.Rmd",
+"text": "Edit"
+},
+"download": ["R-intro.pdf", "R-intro.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
