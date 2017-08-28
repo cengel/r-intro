@@ -38,13 +38,13 @@ We are going to use the R function `download.file()` to download the CSV file
 that contains the traffic stop data, and we will use `read.csv()` to
 load into memory the content of the CSV file as an object of class `data.frame`.
 
-Download the traffic stop data from here: .....
+Download the traffic stop data from here: https://github.com/cengel/R-intro/raw/master/data/MS_trafficstops_bw.csv
 
 
-To download the data into the `data/` subdirectory, run the following:
+To download the data into your local `data/` subdirectory, run the following:
 
 ```{r, eval=FALSE, purl=TRUE}
-download.file("...",
+download.file("https://github.com/cengel/R-intro/raw/master/data/MS_trafficstops_bw.csv",
               "data/MS_trafficstops_bw.csv")
 ```
 
