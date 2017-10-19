@@ -29,7 +29,6 @@ knitr::opts_chunk$set(results='hide', comment = "#>", purl = FALSE)
 ### Loading tabular data
 ```
 
-
 One the most common ways of getting data into R is to read in a table. And -- you guessed it -- we read it into a data frame! We will take a simple CSV file as example. [What is a CSV file?](https://support.bigcommerce.com/articles/Public/What-is-a-CSV-file-and-how-do-I-save-my-spreadsheet-as-one)
 
 You may know about [the Stanford Open Policing Project](https://openpolicing.stanford.edu) and we will be working a sample dataset from their repository (https://openpolicing.stanford.edu/data/). It contains information about traffic stops for blacks and whites in the state of Mississippi during January 2013 to mid-July of 2016. 
@@ -37,9 +36,6 @@ You may know about [the Stanford Open Policing Project](https://openpolicing.sta
 We are going to use the R function `download.file()` to download the CSV file
 that contains the traffic stop data, and we will use `read.csv()` to
 load into memory the content of the CSV file as an object of class `data.frame`.
-
-Download the traffic stop data from here: https://github.com/cengel/R-intro/raw/master/data/MS_trafficstops_bw.csv
-
 
 To download the data into your local `data/` subdirectory, run the following:
 
@@ -149,7 +145,7 @@ objects besides `data.frame`.
 ```
 
 
-Our gapminder data frame has rows and columns (it has 2 dimensions), if we want to
+Our trafficstops data frame has rows and columns (it has 2 dimensions), if we want to
 extract some specific data from it, we need to specify the "coordinates" we
 want from it. Row numbers come first, followed by column numbers. However, note
 that different ways of specifying these coordinates lead to results with
@@ -162,7 +158,7 @@ trafficstops[, 1]    # first column in the data frame (as a vector)
 trafficstops[1]      # first column in the data frame (as a data.frame)
 trafficstops[1:3, 7] # first three elements in the 7th column (as a vector)
 trafficstops[3, ]    # the 3rd element for all columns (as a data.frame)
-head_trafficstops <- trafficstops[1:6, ] # equivalent to head(gapminder)
+head_trafficstops <- trafficstops[1:6, ] # equivalent to head(trafficstops)
 ```
 
 `:` is a special function that creates numeric vectors of integers in increasing
@@ -262,7 +258,7 @@ trafficstops[trafficstops$county_name == "Tallahatchie County", ] # note the com
 Tallahatchie_trafficstops <- trafficstops[trafficstops$county_name == "Tallahatchie County", ]
 ```
 
-This is also a possibility:
+This is also a possibility (but slower):
 
 ```{r results='show'}
 Tallahatchie_trafficstops <- subset(trafficstops, county_name == "Tallahatchie County")
@@ -291,7 +287,7 @@ coastal_counties <- trafficstops[trafficstops$county_name %in% c("Hancock County
 # or
 coastal_counties <- subset(trafficstops, county_name %in% c("Hancock County", "Harrison County", "Jackson County"))
 
-# counts 
+# counts (the sum over the logical vector) 
 sum(coastal_counties$driver_race == "Black")
 sum(coastal_counties$driver_race == "White")
 
@@ -430,7 +426,7 @@ informative than integers because factors are self describing: `"democrat"`,
 `"republican"` is more descriptive than `1`, `2`. Which one is "republican"?  You wouldn't
 be able to tell just from the integer data. Factors, on the other hand, have
 this information built in. It is particularly helpful when there are many levels
-(like the country names in our example dataset).
+(like the county names in our example dataset).
 
 ### Converting factors
 
@@ -457,8 +453,7 @@ Notice that in the `levels()` approach, three important steps occur:
 
 * We obtain all the factor levels using `levels(f)`
 * We convert these levels to numeric values using `as.numeric(levels(f))`
-* We then access these numeric values using the underlying integers of the
-  vector `f` inside the square brackets
+* We then access these numeric values using the underlying integers of the vector `f`  as indices inside the square brackets
 
 ### Renaming factors
 
@@ -491,7 +486,7 @@ head(race)
 >  barplot such that "Missing" is last (to the right)?
 
 
-```{r wrong-order, results='show', echo=FALSE, purl=TRUE}
+```{r wrong-order, echo=FALSE, purl=TRUE}
 ## Challenges
 ##
 ## * Rename "Black" to "African American".
@@ -499,11 +494,10 @@ head(race)
 ##   barplot such that "Missing" is last (to the right)?
 ```
 
-
 <!---
 ```{r correct-order, purl=FALSE}
 ## Answers
-levels(race)[2] <- c("African American")
+levels(race)[2] <- c("African American") # also works without c function
 race <- factor(race, levels = c("African American", "White", "Missing"))
 plot(race)
 ```
@@ -610,8 +604,7 @@ entry (a letter in a column that should only contain numbers for instance).
 ```
 One of the most common issues that new (and experienced!) R users have is converting
 date and time information into a variable that is appropriate and usable during
-analyses. If you have control over your data the best practice for dealing
-with date data is to ensure that each component of your date is stored as a separate
+analyses. If you have control over your data it might be useful to ensure that each component of your date is stored as a separate
 variable, i.e a separate column for day, month, and year. However, often we do not have control and the date is stored in one single column and with varying order and separating characters between its components.
 
 Using `str()`, we can see that both dates in our data frame `stop_date` and `driver_birthdate` are each stored in one column.
@@ -659,7 +652,7 @@ plot(factor(year(stop_date))) #convert year to factor to plot
 ```
 
 
-<!---
+<!--- Answers
 ```{r plot-seasonal-stops, purl=FALSE}
 ## Answers
 plot(factor(month(stop_date)))
@@ -674,7 +667,7 @@ plot(factor(day(stop_date)))
 > * Create a new vector `age` with the driver's age at the time of the stop in years
 > * Coerce `age` to a factor and use the `plot` function to check your results. What do you find?
 
-```{r calculate-age, results='show', echo=FALSE, purl=TRUE}
+```{r calculate-age, echo=FALSE, purl=TRUE}
 ## Challenge
 ##
 ## * Determine the (approximate) age of the driver in years at the time of the stop:
