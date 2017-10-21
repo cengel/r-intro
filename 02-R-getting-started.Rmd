@@ -257,31 +257,19 @@ https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects
 A vector is the most common and basic data type in R, and is pretty much
 the workhorse of R. A vector is composed by a series of values, which can be
 either numbers or characters. We can assign a series of values to a vector using
-the `c()` function. For example we can create a vector of animal weights and assign
+the `c()` function. For example we can create a vector of weights and assign
 it to a new object `weight_g`:
 
 ```{r, purl=FALSE}
-weight_g <- c(50, 60, 65, 82)
+weight_g <- c(21, 34, 39, 54, 55)
 weight_g
 ```
-
-A vector can also contain characters:
-
-```{r, purl=FALSE}
-animals <- c("mouse", "rat", "dog")
-animals
-```
-
-The quotes around "mouse", "rat", etc. are essential here. Without the quotes R
-will assume there are objects called `mouse`, `rat` and `dog`. As these objects
-don't exist in R's memory, there will be an error message.
 
 There are many functions that allow you to inspect the content of a
 vector. `length()` tells you how many elements are in a particular vector:
 
 ```{r, purl=FALSE}
 length(weight_g)
-length(animals)
 ```
 
 An important feature of a vector, is that all of the elements are the same type of data.
@@ -289,7 +277,6 @@ The function `class()` indicates the class (the type of element) of an object:
 
 ```{r, purl=FALSE}
 class(weight_g)
-class(animals)
 ```
 
 The function `str()` provides an overview of the structure of an object and its
@@ -298,7 +285,6 @@ objects:
 
 ```{r, purl=FALSE}
 str(weight_g)
-str(animals)
 ```
 
 You can use the `c()` function to add other elements to your vector:
@@ -317,11 +303,27 @@ We can do this over and over again to grow a vector, or assemble a dataset.
 As we program, this may be useful to add results that we are collecting or
 calculating.
 
-We just saw 2 of the 6 main **atomic vector** types (or **data types**) that R
-uses: `"character"` and `"numeric"`. These are the basic building blocks that
-all R objects are built from. The other 4 are:
+A vector can also contain characters:
 
-* `"logical"` for `TRUE` and `FALSE` (the boolean data type)
+```{r, purl=FALSE}
+animals <- c("mouse", "rat", "dog", "bear")
+class(animals)
+```
+
+The quotes around "mouse", "rat", etc. are essential here. Without the quotes R
+will assume there are objects called `mouse`, `rat` and `dog`. As these objects
+don't exist in R's memory, there will be an error message.
+
+Lastly, we will introduce a vector with logical values (the boolean data type).
+
+```{r, purl=FALSE}
+has_tail <- c(TRUE, TRUE, TRUE, FALSE)
+has_tail 
+```
+
+We just saw 3 of the 6 main **atomic vector** types (or **data types**) that R
+uses: `"character"`,  `"numeric"` and `"logical"`. These are the basic building blocks that all R objects are built from. The other 3 are:
+
 * `"integer"` for integer numbers (e.g., `2L`, the `L` indicates to R that it's an integer)
 * `"complex"` to represent complex numbers with real and imaginary parts (e.g.,
   `1 + 4i`) and that's all we're going to say about them
@@ -391,9 +393,21 @@ If we want to extract one or several values from a vector, we must provide one
 or several indices in square brackets. For instance:
 
 ```{r, results='show', purl=FALSE}
-animals <- c("mouse", "rat", "dog", "cat")
 animals[2]
 animals[c(3, 2)]
+```
+
+`:` is a special function that creates numeric vectors of integers in increasing
+or decreasing order, test `1:10` and `10:1` for instance. We can use this to select a sequence, like this: 
+
+```{r, results='show', purl=FALSE}
+animals[2:4]
+```
+
+You can exclude elements of a vector using the "`-`" sign:
+```{r, results='show', purl=FALSE}
+animals[-2]
+animals[-c(1:3)]
 ```
 
 We can also repeat the indices to create an object with more elements than the
@@ -412,16 +426,29 @@ simpler for computers to do.
 ### Conditional subsetting
 
 Another common way of subsetting is by using a logical vector. `TRUE` will
-select the element with the same index, while `FALSE` will not:
+select the element with the same index, while `FALSE` will not.
 
 ```{r, results='show', purl=FALSE}
-weight_g <- c(21, 34, 39, 54, 55)
-weight_g[c(TRUE, FALSE, TRUE, TRUE, FALSE)]
+has_tail
+animals[has_tail]
 ```
 
-Typically, these logical vectors are not typed by hand, but are the output of
-other functions or logical tests. For instance, if you wanted to select only the
-values above 50:
+Typically, these logical vectors are not typed out by hand, but are the output of
+other functions or logical tests. 
+
+A typical example is to search for certain strings in a vector.  One could use the
+"or" operator `|` to test for equality to multiple values, but this can quickly
+become tedious. The function `%in%` allows you to test if any of the elements of
+a search vector are found:
+
+```{r, results='show', purl=FALSE}
+animals[animals == "bear" | animals == "rat"] # returns both rat and cat
+animals %in% c("rat", "cat", "dog", "duck", "goat")
+animals[animals %in% c("rat", "cat", "dog", "duck", "goat")]
+```
+
+
+Equivalently, if you wanted to select only the weights above 50:
 
 ```{r, results='show', purl=FALSE}
 weight_g > 50    # will return logicals with TRUE for the indices that meet the condition
@@ -443,17 +470,6 @@ numerical equality between the left and right hand sides, and should not be
 confused with the single `=` sign, which performs variable assignment (similar
 to `<-`).
 
-A common task is to search for certain strings in a vector.  One could use the
-"or" operator `|` to test for equality to multiple values, but this can quickly
-become tedious. The function `%in%` allows you to test if any of the elements of
-a search vector are found:
-
-```{r, results='show', purl=FALSE}
-animals <- c("mouse", "rat", "dog", "cat")
-animals[animals == "cat" | animals == "rat"] # returns both rat and cat
-animals %in% c("rat", "cat", "dog", "duck", "goat")
-animals[animals %in% c("rat", "cat", "dog", "duck", "goat")]
-```
 
 > <h3>Challenge</h3>
 >
@@ -488,10 +504,9 @@ the missing values.
 
 ```{r, results='show', purl=FALSE}
 heights <- c(2, 4, 4, NA, 6)
-mean(heights)
 max(heights)
 sum(heights)
-mean(heights, na.rm = TRUE)
+max(heights, na.rm = TRUE)
 sum(heights, na.rm = TRUE)
 ```
 
@@ -501,13 +516,13 @@ examples.
 
 
 ```{r, results='show', purl=FALSE}
-# Extract those elements which are not missing values.
+# Extract elements which are not missing values.
 heights[!is.na(heights)]
 
 # Returns the object with incomplete cases removed. The returned object is atomic.
 na.omit(heights)
 
-# Extract those elements which are complete cases.
+# Extract elements which are complete cases.
 heights[complete.cases(heights)]
 ```
 

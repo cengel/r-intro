@@ -126,9 +126,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.4.1" data-path="backgroud.html"><a href="backgroud.html#organizing-your-working-directory"><i class="fa fa-check"></i><b>1.4.1</b> Organizing your working directory</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="backgroud.html"><a href="backgroud.html#interacting-with-r"><i class="fa fa-check"></i><b>1.5</b> Interacting with R</a><ul>
-<li class="chapter" data-level="1.5.1" data-path="backgroud.html"><a href="backgroud.html#rstudio-console"><i class="fa fa-check"></i><b>1.5.1</b> RStudio Console</a></li>
+<li class="chapter" data-level="1.5.1" data-path="backgroud.html"><a href="backgroud.html#rstudio-console-and-command-prompt"><i class="fa fa-check"></i><b>1.5.1</b> RStudio Console and Command Prompt</a></li>
 <li class="chapter" data-level="1.5.2" data-path="backgroud.html"><a href="backgroud.html#rstudio-script-editor"><i class="fa fa-check"></i><b>1.5.2</b> RStudio Script Editor</a></li>
-<li class="chapter" data-level="1.5.3" data-path="backgroud.html"><a href="backgroud.html#the-r-command-prompt"><i class="fa fa-check"></i><b>1.5.3</b> The R command prompt</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>2</b> Getting Started with R</a><ul>
@@ -318,11 +317,9 @@ trafficstops[, <span class="dv">1</span>]    <span class="co"># first column in 
 trafficstops[<span class="dv">1</span>]      <span class="co"># first column in the data frame (as a data.frame)</span>
 trafficstops[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">7</span>] <span class="co"># first three elements in the 7th column (as a vector)</span>
 trafficstops[<span class="dv">3</span>, ]    <span class="co"># the 3rd element for all columns (as a data.frame)</span>
-head_trafficstops &lt;-<span class="st"> </span>trafficstops[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, ] <span class="co"># equivalent to head(trafficstops)</span></code></pre></div>
-<p><code>:</code> is a special function that creates numeric vectors of integers in increasing or decreasing order, test <code>1:10</code> and <code>10:1</code> for instance.</p>
-<p>You can also exclude certain parts of a data frame using the “<code>-</code>” sign:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">trafficstops[,<span class="op">-</span><span class="dv">1</span>]          <span class="co"># The whole data frame, except the first column</span>
-trafficstops[<span class="op">-</span><span class="kw">c</span>(<span class="dv">7</span><span class="op">:</span><span class="dv">211211</span>),] <span class="co"># Equivalent to head(trafficstops)</span></code></pre></div>
+trafficstops[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, ]  <span class="co"># equivalent to head(trafficstops)</span>
+trafficstops[,<span class="op">-</span><span class="dv">1</span>]           <span class="co"># the whole data frame, excluding the first column</span>
+trafficstops[<span class="op">-</span><span class="kw">c</span>(<span class="dv">7</span><span class="op">:</span><span class="dv">211211</span>),] <span class="co"># equivalent to head(trafficstops)</span></code></pre></div>
 <p>As well as using numeric values to subset a <code>data.frame</code> (or <code>matrix</code>), columns can be called by name, using one of the four following notations:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">trafficstops[<span class="st">&quot;violation_raw&quot;</span>]       <span class="co"># Result is a data.frame</span>
 trafficstops[, <span class="st">&quot;violation_raw&quot;</span>]     <span class="co"># Result is a vector</span>
@@ -542,7 +539,7 @@ party <span class="co"># after re-ordering</span></code></pre></div>
 <div id="renaming-factors" class="section level3">
 <h3><span class="header-section-number">3.6.2</span> Renaming factors</h3>
 <p>When your data is stored as a factor, you can use the <code>plot()</code> function to get a quick glance at the number of observations represented by each factor level. Let’s look at the number of blacks and whites in the dataset:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## bar plot of the number of black and white drivers stopped:
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># bar plot of the number of black and white drivers stopped:</span>
 <span class="kw">plot</span>(trafficstops<span class="op">$</span>driver_race)</code></pre></div>
 <p><img src="R-intro_files/figure-html/driver-race-barplot-1.png" width="672" /></p>
 <p>There seem to be a number of individuals for which the race information hasn’t been recorded.</p>
@@ -585,20 +582,20 @@ plot(race)
 <p>By default, when building or importing a data frame with <code>read.csv()</code>, the columns that contain characters (i.e., text) are coerced (=converted) into the <code>factor</code> data type. Depending on what you want to do with the data, you may want to keep these columns as <code>character</code>. To do so, <code>read.csv()</code> and <code>read.table()</code> have an argument called <code>stringsAsFactors</code> which can be set to <code>FALSE</code>.</p>
 <p>In most cases, it’s preferable to set <code>stringsAsFactors = FALSE</code> when importing your data, and converting as a factor only the columns that require this data type.</p>
 <p>Compare the output of <code>str(trafficstops)</code> when setting <code>stringsAsFactors = TRUE</code> (default) and <code>stringsAsFactors = FALSE</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Compare the difference between when the data are being read as
-## `factor`, and when they are being read as `character`.
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Compare the difference between when the data are being read as</span>
+<span class="co"># `factor`, and when they are being read as `character`.</span>
 trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_policing_bw.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)
 <span class="kw">str</span>(trafficstops)
 trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_policing_bw.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
 <span class="kw">str</span>(trafficstops)
-## Convert the column &quot;driver_race&quot; into a factor
+<span class="co"># Convert the column &quot;driver_race&quot; into a factor</span>
 trafficstops<span class="op">$</span>driver_race &lt;-<span class="st"> </span><span class="kw">factor</span>(trafficstops<span class="op">$</span>driver_race)</code></pre></div>
 <blockquote>
 <h3>
 Challenge
 </h3>
 <p>Can you predict the class for each of the columns in the following example? Check your guesses using <code>str(country_climate)</code>: * Are they what you expected? Why? Why not? * What would have been different if we had added <code>stringsAsFactors = FALSE</code> to this call? * What would you need to change to ensure that each column had the accurate data type?</p>
-<pre><code>```r
+<pre><code>```
 country_climate &lt;- data.frame(
        country=c(&quot;Canada&quot;, &quot;Panama&quot;, &quot;South Africa&quot;, &quot;Australia&quot;),
        climate=c(&quot;cold&quot;, &quot;hot&quot;, &quot;temperate&quot;, &quot;hot/temperate&quot;),

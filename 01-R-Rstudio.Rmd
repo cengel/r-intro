@@ -119,15 +119,18 @@ knitr::include_graphics('img/rstudio-screenshot.png')
 ```
 
 
-RStudio is divided into 4 "Panes": the **Source** for your scripts and documents
-(top-left, in the default layout), the R **Console** (bottom-left), your
-**Environment/History** (top-right), and your
-**Files/Plots/Packages/Help/Viewer** (bottom-right). The placement of these
-panes and their content can be customized (see menu, Tools -> Global Options ->
+RStudio is divided into 4 "Panes": 
+
+- the **Source** for your scripts and documents
+(top-left, in the default layout), 
+- the R **Console** (bottom-left), 
+- your **Environment/History** (top-right), and 
+- your **Files/Plots/Packages/Help/Viewer** (bottom-right). 
+
+The placement of these
+panes and their content can be customized (see main Menu, Tools -> Global Options ->
 Pane Layout). One of the advantages of using RStudio is that all the information
-you need to write code is available in a single window. Additionally, with many
-shortcuts, autocompletion, and highlighting for the major file types you use
-while developing in R, RStudio will make typing easier and less error-prone.
+you need to write code is available in a single window. 
 
 ## How to start an R project
 
@@ -222,43 +225,13 @@ There are two main ways of interacting with R: by using the **console** or by us
 **script files** (plain text files that contain your code). 
 
 
-### RStudio Console
+### RStudio Console and Command Prompt
 
 The console pane in RStudio is the place where commands written in the R
 language can be typed and executed immediately by the computer. It is also where
 the results will be shown for commands that have been executed. You can type
 commands directly into the console and press <kbd>`Enter`</kbd> to execute those commands,
 but they will be forgotten when you close the session.
-
-> <h3>Challenge</h3>
->
-> - Use R to determine what your working directory is.
-> - Use R to change your working directory to some other place. What do you notice in the RStudio Files window?
-> - Use RStudio to change back to your previous working directory (r-intro) What do you notice in the RStudio Console?
-
-
-### RStudio Script Editor
-
-Because we want our code and workflow to be reproducible, it is better to type
-the commands we want in the script editor, and save the script. This way, there
-is a complete record of what we did, and anyone (including our future selves!)
-can easily replicate the results on their computer.
-
-RStudio allows you to execute commands directly from the script editor by using
-the <kbd>`Ctrl`</kbd> + <kbd>`Enter`</kbd> shortcut (on Macs, <kbd>`Cmd`</kbd> +
-<kbd>`Enter`</kbd> will work, too). The command on the current line in the
-script (indicated by the cursor) or all of the commands in the currently
-selected text will be sent to the console and executed when you press
-<kbd>`Ctrl`</kbd> + <kbd>`Enter`</kbd>. You can find other keyboard shortcuts under `Tools` > `Keyboard Shortcuts Help` (or <kbd>`Alt`</kbd> + <kbd>`Shift`</kbd> + <kbd>`K`</kbd>)
-
-At some point in your analysis you may want to check the content of a variable
-or the structure of an object, without necessarily keeping a record of it in
-your script. You can type these commands and execute them directly in the
-console.  RStudio provides the <kbd>`Ctrl`</kbd> + <kbd>`1`</kbd> and
-<kbd>`Ctrl`</kbd> + <kbd>`2`</kbd> shortcuts allow you to jump between the
-script and the console panes.
-
-### The R command prompt
 
 If R is ready to accept commands, the R console by default shows a `>` prompt. If it
 receives a command (by typing, copy-pasting or sent from the script editor using
@@ -275,3 +248,38 @@ When this happens, and you thought you finished typing your command, click
 inside the console window and press <kbd>`Esc`</kbd>; this will cancel the incomplete
 command and return you to the `>` prompt.
 
+
+> <h3>Challenge</h3>
+>
+> - Use R to determine what your working directory is.
+> - Use R to change your working directory to some other place. What do you notice in the RStudio Files window?
+> - Use RStudio to change back to your previous working directory (r-intro) What do you notice in the RStudio Console?
+
+
+### RStudio Script Editor
+
+Because we want to keep our code and workflow, it is better to type
+the commands we want in the script editor, and save the script. This way, there
+is a complete record of what we did, and anyone (including our future selves!)
+can easily replicate the results on their computer.
+
+One of the first things you will notice is that your code is colored (syntax coloring)
+which enhances readibility.
+
+Secondly, RStudio allows you to execute commands directly from the script editor by using
+the <kbd>`Ctrl`</kbd> + <kbd>`Enter`</kbd> shortcut (on Macs, <kbd>`Cmd`</kbd> +
+<kbd>`Enter`</kbd> will work, too). The command on the current line in the
+script (indicated by the cursor) or all of the commands in the currently
+selected text will be sent to the console and executed when you press
+<kbd>`Ctrl`</kbd> + <kbd>`Enter`</kbd>. You can find other keyboard shortcuts under `Tools` > `Keyboard Shortcuts Help` (or <kbd>`Alt`</kbd> + <kbd>`Shift`</kbd> + <kbd>`K`</kbd>)
+
+At some point in your analysis you may want to check the content of a variable
+or the structure of an object, without necessarily keeping a record of it in
+your script. You can type these commands and execute them directly in the
+console.  RStudio provides the <kbd>`Ctrl`</kbd> + <kbd>`1`</kbd> and
+<kbd>`Ctrl`</kbd> + <kbd>`2`</kbd> shortcuts allow you to jump between the
+script and the console panes.
+
+In addition to shortcuts RStudio also provides autocompletion. If you begin typing a command or the name of a variable and hit the <kbd>`Tab`</kbd> key, it will make suggestions. More on code completion in RStudio is here: https://support.rstudio.com/hc/en-us/articles/205273297-Code-Completion 
+
+All in all, RStudio will make typing easier and less error-prone.

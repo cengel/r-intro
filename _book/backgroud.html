@@ -126,9 +126,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.4.1" data-path="backgroud.html"><a href="backgroud.html#organizing-your-working-directory"><i class="fa fa-check"></i><b>1.4.1</b> Organizing your working directory</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="backgroud.html"><a href="backgroud.html#interacting-with-r"><i class="fa fa-check"></i><b>1.5</b> Interacting with R</a><ul>
-<li class="chapter" data-level="1.5.1" data-path="backgroud.html"><a href="backgroud.html#rstudio-console"><i class="fa fa-check"></i><b>1.5.1</b> RStudio Console</a></li>
+<li class="chapter" data-level="1.5.1" data-path="backgroud.html"><a href="backgroud.html#rstudio-console-and-command-prompt"><i class="fa fa-check"></i><b>1.5.1</b> RStudio Console and Command Prompt</a></li>
 <li class="chapter" data-level="1.5.2" data-path="backgroud.html"><a href="backgroud.html#rstudio-script-editor"><i class="fa fa-check"></i><b>1.5.2</b> RStudio Script Editor</a></li>
-<li class="chapter" data-level="1.5.3" data-path="backgroud.html"><a href="backgroud.html#the-r-command-prompt"><i class="fa fa-check"></i><b>1.5.3</b> The R command prompt</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>2</b> Getting Started with R</a><ul>
@@ -261,7 +260,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 Figure 1.1: The RStudio Interface
 </p>
 </div>
-<p>RStudio is divided into 4 “Panes”: the <strong>Source</strong> for your scripts and documents (top-left, in the default layout), the R <strong>Console</strong> (bottom-left), your <strong>Environment/History</strong> (top-right), and your <strong>Files/Plots/Packages/Help/Viewer</strong> (bottom-right). The placement of these panes and their content can be customized (see menu, Tools -&gt; Global Options -&gt; Pane Layout). One of the advantages of using RStudio is that all the information you need to write code is available in a single window. Additionally, with many shortcuts, autocompletion, and highlighting for the major file types you use while developing in R, RStudio will make typing easier and less error-prone.</p>
+<p>RStudio is divided into 4 “Panes”:</p>
+<ul>
+<li>the <strong>Source</strong> for your scripts and documents (top-left, in the default layout),</li>
+<li>the R <strong>Console</strong> (bottom-left),</li>
+<li>your <strong>Environment/History</strong> (top-right), and</li>
+<li>your <strong>Files/Plots/Packages/Help/Viewer</strong> (bottom-right).</li>
+</ul>
+<p>The placement of these panes and their content can be customized (see main Menu, Tools -&gt; Global Options -&gt; Pane Layout). One of the advantages of using RStudio is that all the information you need to write code is available in a single window.</p>
 </div>
 <div id="how-to-start-an-r-project" class="section level2">
 <h2><span class="header-section-number">1.4</span> How to start an R project</h2>
@@ -310,9 +316,11 @@ Figure 1.3: How to set a working directory with the RStudio interface
 <h2><span class="header-section-number">1.5</span> Interacting with R</h2>
 <p>The basis of programming is that we write down instructions for the computer to follow, and then we tell the computer to follow those instructions. We write, or <em>code</em>, instructions in R because it is a common language that both the computer and we can understand. We call the instructions <em>commands</em> and we tell the computer to follow the instructions by <em>executing</em> (also called <em>running</em>) those commands.</p>
 <p>There are two main ways of interacting with R: by using the <strong>console</strong> or by using <strong>script files</strong> (plain text files that contain your code).</p>
-<div id="rstudio-console" class="section level3">
-<h3><span class="header-section-number">1.5.1</span> RStudio Console</h3>
+<div id="rstudio-console-and-command-prompt" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> RStudio Console and Command Prompt</h3>
 <p>The console pane in RStudio is the place where commands written in the R language can be typed and executed immediately by the computer. It is also where the results will be shown for commands that have been executed. You can type commands directly into the console and press <kbd><code>Enter</code></kbd> to execute those commands, but they will be forgotten when you close the session.</p>
+<p>If R is ready to accept commands, the R console by default shows a <code>&gt;</code> prompt. If it receives a command (by typing, copy-pasting or sent from the script editor using <kbd><code>Ctrl</code></kbd> + <kbd><code>Enter</code></kbd>), R will try to execute it, and when ready, will show the results and come back with a new <code>&gt;</code> prompt to wait for new commands.</p>
+<p>If R is still waiting for you to enter more data because it isn’t complete yet, the console will show a <code>+</code> prompt. It means that you haven’t finished entering a complete command. This is because you have not ‘closed’ a parenthesis or quotation, i.e. you don’t have the same number of left-parentheses as right-parentheses, or the same number of opening and closing quotation marks. When this happens, and you thought you finished typing your command, click inside the console window and press <kbd><code>Esc</code></kbd>; this will cancel the incomplete command and return you to the <code>&gt;</code> prompt.</p>
 <blockquote>
 <h3>
 Challenge
@@ -326,14 +334,12 @@ Challenge
 </div>
 <div id="rstudio-script-editor" class="section level3">
 <h3><span class="header-section-number">1.5.2</span> RStudio Script Editor</h3>
-<p>Because we want our code and workflow to be reproducible, it is better to type the commands we want in the script editor, and save the script. This way, there is a complete record of what we did, and anyone (including our future selves!) can easily replicate the results on their computer.</p>
-<p>RStudio allows you to execute commands directly from the script editor by using the <kbd><code>Ctrl</code></kbd> + <kbd><code>Enter</code></kbd> shortcut (on Macs, <kbd><code>Cmd</code></kbd> + <kbd><code>Enter</code></kbd> will work, too). The command on the current line in the script (indicated by the cursor) or all of the commands in the currently selected text will be sent to the console and executed when you press <kbd><code>Ctrl</code></kbd> + <kbd><code>Enter</code></kbd>. You can find other keyboard shortcuts under <code>Tools</code> &gt; <code>Keyboard Shortcuts Help</code> (or <kbd><code>Alt</code></kbd> + <kbd><code>Shift</code></kbd> + <kbd><code>K</code></kbd>)</p>
+<p>Because we want to keep our code and workflow, it is better to type the commands we want in the script editor, and save the script. This way, there is a complete record of what we did, and anyone (including our future selves!) can easily replicate the results on their computer.</p>
+<p>One of the first things you will notice is that your code is colored (syntax coloring) which enhances readibility.</p>
+<p>Secondly, RStudio allows you to execute commands directly from the script editor by using the <kbd><code>Ctrl</code></kbd> + <kbd><code>Enter</code></kbd> shortcut (on Macs, <kbd><code>Cmd</code></kbd> + <kbd><code>Enter</code></kbd> will work, too). The command on the current line in the script (indicated by the cursor) or all of the commands in the currently selected text will be sent to the console and executed when you press <kbd><code>Ctrl</code></kbd> + <kbd><code>Enter</code></kbd>. You can find other keyboard shortcuts under <code>Tools</code> &gt; <code>Keyboard Shortcuts Help</code> (or <kbd><code>Alt</code></kbd> + <kbd><code>Shift</code></kbd> + <kbd><code>K</code></kbd>)</p>
 <p>At some point in your analysis you may want to check the content of a variable or the structure of an object, without necessarily keeping a record of it in your script. You can type these commands and execute them directly in the console. RStudio provides the <kbd><code>Ctrl</code></kbd> + <kbd><code>1</code></kbd> and <kbd><code>Ctrl</code></kbd> + <kbd><code>2</code></kbd> shortcuts allow you to jump between the script and the console panes.</p>
-</div>
-<div id="the-r-command-prompt" class="section level3">
-<h3><span class="header-section-number">1.5.3</span> The R command prompt</h3>
-<p>If R is ready to accept commands, the R console by default shows a <code>&gt;</code> prompt. If it receives a command (by typing, copy-pasting or sent from the script editor using <kbd><code>Ctrl</code></kbd> + <kbd><code>Enter</code></kbd>), R will try to execute it, and when ready, will show the results and come back with a new <code>&gt;</code> prompt to wait for new commands.</p>
-<p>If R is still waiting for you to enter more data because it isn’t complete yet, the console will show a <code>+</code> prompt. It means that you haven’t finished entering a complete command. This is because you have not ‘closed’ a parenthesis or quotation, i.e. you don’t have the same number of left-parentheses as right-parentheses, or the same number of opening and closing quotation marks. When this happens, and you thought you finished typing your command, click inside the console window and press <kbd><code>Esc</code></kbd>; this will cancel the incomplete command and return you to the <code>&gt;</code> prompt.</p>
+<p>In addition to shortcuts RStudio also provides autocompletion. If you begin typing a command or the name of a variable and hit the <kbd><code>Tab</code></kbd> key, it will make suggestions. More on code completion in RStudio is here: <a href="https://support.rstudio.com/hc/en-us/articles/205273297-Code-Completion" class="uri">https://support.rstudio.com/hc/en-us/articles/205273297-Code-Completion</a></p>
+<p>All in all, RStudio will make typing easier and less error-prone.</p>
 
 </div>
 </div>

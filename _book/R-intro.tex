@@ -124,7 +124,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{Last updated: October 19, 2017}
+  \date{Last updated: October 20, 2017}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -460,17 +460,25 @@ will not cover during the workshop.
 \includegraphics[width=1\linewidth]{img/rstudio-screenshot} \caption{The RStudio Interface}\label{fig:RStudio-GUI}
 \end{figure}
 
-RStudio is divided into 4 ``Panes'': the \textbf{Source} for your
-scripts and documents (top-left, in the default layout), the R
-\textbf{Console} (bottom-left), your \textbf{Environment/History}
-(top-right), and your \textbf{Files/Plots/Packages/Help/Viewer}
-(bottom-right). The placement of these panes and their content can be
-customized (see menu, Tools -\textgreater{} Global Options
--\textgreater{} Pane Layout). One of the advantages of using RStudio is
-that all the information you need to write code is available in a single
-window. Additionally, with many shortcuts, autocompletion, and
-highlighting for the major file types you use while developing in R,
-RStudio will make typing easier and less error-prone.
+RStudio is divided into 4 ``Panes'':
+
+\begin{itemize}
+\tightlist
+\item
+  the \textbf{Source} for your scripts and documents (top-left, in the
+  default layout),
+\item
+  the R \textbf{Console} (bottom-left),
+\item
+  your \textbf{Environment/History} (top-right), and
+\item
+  your \textbf{Files/Plots/Packages/Help/Viewer} (bottom-right).
+\end{itemize}
+
+The placement of these panes and their content can be customized (see
+main Menu, Tools -\textgreater{} Global Options -\textgreater{} Pane
+Layout). One of the advantages of using RStudio is that all the
+information you need to write code is available in a single window.
 
 \section{How to start an R project}\label{how-to-start-an-r-project}
 
@@ -606,7 +614,8 @@ There are two main ways of interacting with R: by using the
 \textbf{console} or by using \textbf{script files} (plain text files
 that contain your code).
 
-\subsection{RStudio Console}\label{rstudio-console}
+\subsection{RStudio Console and Command
+Prompt}\label{rstudio-console-and-command-prompt}
 
 The console pane in RStudio is the place where commands written in the R
 language can be typed and executed immediately by the computer. It is
@@ -614,6 +623,23 @@ also where the results will be shown for commands that have been
 executed. You can type commands directly into the console and press
 \texttt{Enter} to execute those commands, but they will be forgotten
 when you close the session.
+
+If R is ready to accept commands, the R console by default shows a
+\texttt{\textgreater{}} prompt. If it receives a command (by typing,
+copy-pasting or sent from the script editor using \texttt{Ctrl} +
+\texttt{Enter}), R will try to execute it, and when ready, will show the
+results and come back with a new \texttt{\textgreater{}} prompt to wait
+for new commands.
+
+If R is still waiting for you to enter more data because it isn't
+complete yet, the console will show a \texttt{+} prompt. It means that
+you haven't finished entering a complete command. This is because you
+have not `closed' a parenthesis or quotation, i.e.~you don't have the
+same number of left-parentheses as right-parentheses, or the same number
+of opening and closing quotation marks. When this happens, and you
+thought you finished typing your command, click inside the console
+window and press \texttt{Esc}; this will cancel the incomplete command
+and return you to the \texttt{\textgreater{}} prompt.
 
 \begin{quote}
 Challenge
@@ -633,15 +659,17 @@ Challenge
 
 \subsection{RStudio Script Editor}\label{rstudio-script-editor}
 
-Because we want our code and workflow to be reproducible, it is better
-to type the commands we want in the script editor, and save the script.
-This way, there is a complete record of what we did, and anyone
-(including our future selves!) can easily replicate the results on their
-computer.
+Because we want to keep our code and workflow, it is better to type the
+commands we want in the script editor, and save the script. This way,
+there is a complete record of what we did, and anyone (including our
+future selves!) can easily replicate the results on their computer.
 
-RStudio allows you to execute commands directly from the script editor
-by using the \texttt{Ctrl} + \texttt{Enter} shortcut (on Macs,
-\texttt{Cmd} + \texttt{Enter} will work, too). The command on the
+One of the first things you will notice is that your code is colored
+(syntax coloring) which enhances readibility.
+
+Secondly, RStudio allows you to execute commands directly from the
+script editor by using the \texttt{Ctrl} + \texttt{Enter} shortcut (on
+Macs, \texttt{Cmd} + \texttt{Enter} will work, too). The command on the
 current line in the script (indicated by the cursor) or all of the
 commands in the currently selected text will be sent to the console and
 executed when you press \texttt{Ctrl} + \texttt{Enter}. You can find
@@ -656,24 +684,13 @@ them directly in the console. RStudio provides the \texttt{Ctrl} +
 \texttt{1} and \texttt{Ctrl} + \texttt{2} shortcuts allow you to jump
 between the script and the console panes.
 
-\subsection{The R command prompt}\label{the-r-command-prompt}
+In addition to shortcuts RStudio also provides autocompletion. If you
+begin typing a command or the name of a variable and hit the
+\texttt{Tab} key, it will make suggestions. More on code completion in
+RStudio is here:
+\url{https://support.rstudio.com/hc/en-us/articles/205273297-Code-Completion}
 
-If R is ready to accept commands, the R console by default shows a
-\texttt{\textgreater{}} prompt. If it receives a command (by typing,
-copy-pasting or sent from the script editor using \texttt{Ctrl} +
-\texttt{Enter}), R will try to execute it, and when ready, will show the
-results and come back with a new \texttt{\textgreater{}} prompt to wait
-for new commands.
-
-If R is still waiting for you to enter more data because it isn't
-complete yet, the console will show a \texttt{+} prompt. It means that
-you haven't finished entering a complete command. This is because you
-have not `closed' a parenthesis or quotation, i.e.~you don't have the
-same number of left-parentheses as right-parentheses, or the same number
-of opening and closing quotation marks. When this happens, and you
-thought you finished typing your command, click inside the console
-window and press \texttt{Esc}; this will cancel the incomplete command
-and return you to the \texttt{\textgreater{}} prompt.
+All in all, RStudio will make typing easier and less error-prone.
 
 \chapter{Getting Started with R}\label{gettingstarted}
 
@@ -1029,29 +1046,14 @@ A vector is the most common and basic data type in R, and is pretty much
 the workhorse of R. A vector is composed by a series of values, which
 can be either numbers or characters. We can assign a series of values to
 a vector using the \texttt{c()} function. For example we can create a
-vector of animal weights and assign it to a new object
-\texttt{weight\_g}:
+vector of weights and assign it to a new object \texttt{weight\_g}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_g <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{65}\NormalTok{, }\DecValTok{82}\NormalTok{)}
+\NormalTok{weight_g <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{21}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{39}\NormalTok{, }\DecValTok{54}\NormalTok{, }\DecValTok{55}\NormalTok{)}
 \NormalTok{weight_g}
 \end{Highlighting}
 \end{Shaded}
-
-A vector can also contain characters:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{animals <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"mouse"}\NormalTok{, }\StringTok{"rat"}\NormalTok{, }\StringTok{"dog"}\NormalTok{)}
-\NormalTok{animals}
-\end{Highlighting}
-\end{Shaded}
-
-The quotes around ``mouse'', ``rat'', etc. are essential here. Without
-the quotes R will assume there are objects called \texttt{mouse},
-\texttt{rat} and \texttt{dog}. As these objects don't exist in R's
-memory, there will be an error message.
 
 There are many functions that allow you to inspect the content of a
 vector. \texttt{length()} tells you how many elements are in a
@@ -1060,7 +1062,6 @@ particular vector:
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{length}\NormalTok{(weight_g)}
-\KeywordTok{length}\NormalTok{(animals)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1071,7 +1072,6 @@ same type of data. The function \texttt{class()} indicates the class
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{class}\NormalTok{(weight_g)}
-\KeywordTok{class}\NormalTok{(animals)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1082,7 +1082,6 @@ and complex objects:
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{str}\NormalTok{(weight_g)}
-\KeywordTok{str}\NormalTok{(animals)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1106,16 +1105,37 @@ We can do this over and over again to grow a vector, or assemble a
 dataset. As we program, this may be useful to add results that we are
 collecting or calculating.
 
-We just saw 2 of the 6 main \textbf{atomic vector} types (or
-\textbf{data types}) that R uses: \texttt{"character"} and
-\texttt{"numeric"}. These are the basic building blocks that all R
-objects are built from. The other 4 are:
+A vector can also contain characters:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{animals <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"mouse"}\NormalTok{, }\StringTok{"rat"}\NormalTok{, }\StringTok{"dog"}\NormalTok{, }\StringTok{"bear"}\NormalTok{)}
+\KeywordTok{class}\NormalTok{(animals)}
+\end{Highlighting}
+\end{Shaded}
+
+The quotes around ``mouse'', ``rat'', etc. are essential here. Without
+the quotes R will assume there are objects called \texttt{mouse},
+\texttt{rat} and \texttt{dog}. As these objects don't exist in R's
+memory, there will be an error message.
+
+Lastly, we will introduce a vector with logical values (the boolean data
+type).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{has_tail <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{)}
+\NormalTok{has_tail }
+\end{Highlighting}
+\end{Shaded}
+
+We just saw 3 of the 6 main \textbf{atomic vector} types (or
+\textbf{data types}) that R uses: \texttt{"character"},
+\texttt{"numeric"} and \texttt{"logical"}. These are the basic building
+blocks that all R objects are built from. The other 3 are:
 
 \begin{itemize}
 \tightlist
-\item
-  \texttt{"logical"} for \texttt{TRUE} and \texttt{FALSE} (the boolean
-  data type)
 \item
   \texttt{"integer"} for integer numbers (e.g., \texttt{2L}, the
   \texttt{L} indicates to R that it's an integer)
@@ -1166,7 +1186,6 @@ provide one or several indices in square brackets. For instance:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{animals <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"mouse"}\NormalTok{, }\StringTok{"rat"}\NormalTok{, }\StringTok{"dog"}\NormalTok{, }\StringTok{"cat"}\NormalTok{)}
 \NormalTok{animals[}\DecValTok{2}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
@@ -1185,6 +1204,43 @@ provide one or several indices in square brackets. For instance:
 #> [1] "dog" "rat"
 \end{verbatim}
 
+\texttt{:} is a special function that creates numeric vectors of
+integers in increasing or decreasing order, test \texttt{1:10} and
+\texttt{10:1} for instance. We can use this to select a sequence, like
+this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{animals[}\DecValTok{2}\OperatorTok{:}\DecValTok{4}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1] "rat"  "dog"  "bear"
+\end{verbatim}
+
+You can exclude elements of a vector using the ``\texttt{-}'' sign:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{animals[}\OperatorTok{-}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1] "mouse" "dog"   "bear"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{animals[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1] "bear"
+\end{verbatim}
+
 We can also repeat the indices to create an object with more elements
 than the original one:
 
@@ -1196,7 +1252,7 @@ than the original one:
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] "mouse" "rat"   "dog"   "rat"   "mouse" "cat"
+#> [1] "mouse" "rat"   "dog"   "rat"   "mouse" "bear"
 \end{verbatim}
 
 R indices start at 1. Programming languages like Fortran, MATLAB, Julia,
@@ -1208,22 +1264,68 @@ count from 0 because that's simpler for computers to do.
 
 Another common way of subsetting is by using a logical vector.
 \texttt{TRUE} will select the element with the same index, while
-\texttt{FALSE} will not:
+\texttt{FALSE} will not.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_g <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{21}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{39}\NormalTok{, }\DecValTok{54}\NormalTok{, }\DecValTok{55}\NormalTok{)}
-\NormalTok{weight_g[}\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{)]}
+\NormalTok{has_tail}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] 21 39 54
+#> [1]  TRUE  TRUE  TRUE FALSE
 \end{verbatim}
 
-Typically, these logical vectors are not typed by hand, but are the
-output of other functions or logical tests. For instance, if you wanted
-to select only the values above 50:
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{animals[has_tail]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1] "mouse" "rat"   "dog"
+\end{verbatim}
+
+Typically, these logical vectors are not typed out by hand, but are the
+output of other functions or logical tests.
+
+A typical example is to search for certain strings in a vector. One
+could use the ``or'' operator \texttt{\textbar{}} to test for equality
+to multiple values, but this can quickly become tedious. The function
+\texttt{\%in\%} allows you to test if any of the elements of a search
+vector are found:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{animals[animals }\OperatorTok{==}\StringTok{ "bear"} \OperatorTok{|}\StringTok{ }\NormalTok{animals }\OperatorTok{==}\StringTok{ "rat"}\NormalTok{] }\CommentTok{# returns both rat and cat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1] "rat"  "bear"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{animals }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"rat"}\NormalTok{, }\StringTok{"cat"}\NormalTok{, }\StringTok{"dog"}\NormalTok{, }\StringTok{"duck"}\NormalTok{, }\StringTok{"goat"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1] FALSE  TRUE  TRUE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{animals[animals }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"rat"}\NormalTok{, }\StringTok{"cat"}\NormalTok{, }\StringTok{"dog"}\NormalTok{, }\StringTok{"duck"}\NormalTok{, }\StringTok{"goat"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1] "rat" "dog"
+\end{verbatim}
+
+Equivalently, if you wanted to select only the weights above 50:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1232,7 +1334,7 @@ to select only the values above 50:
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] FALSE FALSE FALSE  TRUE  TRUE
+#> [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE
 \end{verbatim}
 
 \begin{Shaded}
@@ -1243,7 +1345,7 @@ to select only the values above 50:
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] 54 55
+#> [1] 54 55 90
 \end{verbatim}
 
 You can combine multiple tests using \texttt{\&} (both conditions are
@@ -1257,7 +1359,7 @@ true, OR):
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] 21 54 55
+#> [1] 21 54 55 90
 \end{verbatim}
 
 \begin{Shaded}
@@ -1277,43 +1379,6 @@ double equal sign \texttt{==} is a test for numerical equality between
 the left and right hand sides, and should not be confused with the
 single \texttt{=} sign, which performs variable assignment (similar to
 \texttt{\textless{}-}).
-
-A common task is to search for certain strings in a vector. One could
-use the ``or'' operator \texttt{\textbar{}} to test for equality to
-multiple values, but this can quickly become tedious. The function
-\texttt{\%in\%} allows you to test if any of the elements of a search
-vector are found:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{animals <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"mouse"}\NormalTok{, }\StringTok{"rat"}\NormalTok{, }\StringTok{"dog"}\NormalTok{, }\StringTok{"cat"}\NormalTok{)}
-\NormalTok{animals[animals }\OperatorTok{==}\StringTok{ "cat"} \OperatorTok{|}\StringTok{ }\NormalTok{animals }\OperatorTok{==}\StringTok{ "rat"}\NormalTok{] }\CommentTok{# returns both rat and cat}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-#> [1] "rat" "cat"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{animals }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"rat"}\NormalTok{, }\StringTok{"cat"}\NormalTok{, }\StringTok{"dog"}\NormalTok{, }\StringTok{"duck"}\NormalTok{, }\StringTok{"goat"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-#> [1] FALSE  TRUE  TRUE  TRUE
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{animals[animals }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"rat"}\NormalTok{, }\StringTok{"cat"}\NormalTok{, }\StringTok{"dog"}\NormalTok{, }\StringTok{"duck"}\NormalTok{, }\StringTok{"goat"}\NormalTok{)]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-#> [1] "rat" "dog" "cat"
-\end{verbatim}
 
 \begin{quote}
 Challenge
@@ -1341,16 +1406,6 @@ result while ignoring the missing values.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{heights <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OtherTok{NA}\NormalTok{, }\DecValTok{6}\NormalTok{)}
-\KeywordTok{mean}\NormalTok{(heights)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-#> [1] NA
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{max}\NormalTok{(heights)}
 \end{Highlighting}
 \end{Shaded}
@@ -1371,12 +1426,12 @@ result while ignoring the missing values.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{mean}\NormalTok{(heights, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{max}\NormalTok{(heights, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] 4
+#> [1] 6
 \end{verbatim}
 
 \begin{Shaded}
@@ -1395,7 +1450,7 @@ with the functions \texttt{is.na()}, \texttt{na.omit()}, and
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Extract those elements which are not missing values.}
+\CommentTok{# Extract elements which are not missing values.}
 \NormalTok{heights[}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(heights)]}
 \end{Highlighting}
 \end{Shaded}
@@ -1421,7 +1476,7 @@ with the functions \texttt{is.na()}, \texttt{na.omit()}, and
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Extract those elements which are complete cases.}
+\CommentTok{# Extract elements which are complete cases.}
 \NormalTok{heights[}\KeywordTok{complete.cases}\NormalTok{(heights)]}
 \end{Highlighting}
 \end{Shaded}
@@ -2140,21 +2195,9 @@ coordinates lead to results with different classes.
 \NormalTok{trafficstops[}\DecValTok{1}\NormalTok{]      }\CommentTok{# first column in the data frame (as a data.frame)}
 \NormalTok{trafficstops[}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{7}\NormalTok{] }\CommentTok{# first three elements in the 7th column (as a vector)}
 \NormalTok{trafficstops[}\DecValTok{3}\NormalTok{, ]    }\CommentTok{# the 3rd element for all columns (as a data.frame)}
-\NormalTok{head_trafficstops <-}\StringTok{ }\NormalTok{trafficstops[}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{, ] }\CommentTok{# equivalent to head(trafficstops)}
-\end{Highlighting}
-\end{Shaded}
-
-\texttt{:} is a special function that creates numeric vectors of
-integers in increasing or decreasing order, test \texttt{1:10} and
-\texttt{10:1} for instance.
-
-You can also exclude certain parts of a data frame using the
-``\texttt{-}'' sign:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{trafficstops[,}\OperatorTok{-}\DecValTok{1}\NormalTok{]          }\CommentTok{# The whole data frame, except the first column}
-\NormalTok{trafficstops[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{7}\OperatorTok{:}\DecValTok{211211}\NormalTok{),] }\CommentTok{# Equivalent to head(trafficstops)}
+\NormalTok{trafficstops[}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{, ]  }\CommentTok{# equivalent to head(trafficstops)}
+\NormalTok{trafficstops[,}\OperatorTok{-}\DecValTok{1}\NormalTok{]           }\CommentTok{# the whole data frame, excluding the first column}
+\NormalTok{trafficstops[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{7}\OperatorTok{:}\DecValTok{211211}\NormalTok{),] }\CommentTok{# equivalent to head(trafficstops)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2540,7 +2583,7 @@ the dataset:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{## bar plot of the number of black and white drivers stopped:}
+\CommentTok{# bar plot of the number of black and white drivers stopped:}
 \KeywordTok{plot}\NormalTok{(trafficstops}\OperatorTok{$}\NormalTok{driver_race)}
 \end{Highlighting}
 \end{Shaded}
@@ -2636,13 +2679,13 @@ Compare the output of \texttt{str(trafficstops)} when setting
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{## Compare the difference between when the data are being read as}
-\NormalTok{## `factor`, and when they are being read as `character`.}
+\CommentTok{# Compare the difference between when the data are being read as}
+\CommentTok{# `factor`, and when they are being read as `character`.}
 \NormalTok{trafficstops <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/MS_policing_bw.csv"}\NormalTok{, }\DataTypeTok{stringsAsFactors =} \OtherTok{TRUE}\NormalTok{)}
 \KeywordTok{str}\NormalTok{(trafficstops)}
 \NormalTok{trafficstops <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/MS_policing_bw.csv"}\NormalTok{, }\DataTypeTok{stringsAsFactors =} \OtherTok{FALSE}\NormalTok{)}
 \KeywordTok{str}\NormalTok{(trafficstops)}
-\NormalTok{## Convert the column "driver_race" into a factor}
+\CommentTok{# Convert the column "driver_race" into a factor}
 \NormalTok{trafficstops}\OperatorTok{$}\NormalTok{driver_race <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(trafficstops}\OperatorTok{$}\NormalTok{driver_race)}
 \end{Highlighting}
 \end{Shaded}
@@ -2658,7 +2701,7 @@ would you need to change to ensure that each column had the accurate
 data type?
 
 \begin{verbatim}
-```r
+```
 country_climate <- data.frame(
        country=c("Canada", "Panama", "South Africa", "Australia"),
        climate=c("cold", "hot", "temperate", "hot/temperate"),
