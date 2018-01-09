@@ -18,9 +18,6 @@ description: "Workshop materials for Intro to R"
 - Geared specifically towards users who are __new__ to R.  
 - Have [R](https://cran.r-project.org/) and [RStudio](https://www.rstudio.com/) installed (see setup instructions below).
 
-__Next workshop:   
-Thu, October 19, 2017, 2-4pm (if you would like help setting up please arrive at 1:30)
-Room 433A in CESTA (Building 160 - Wallenberg 4th floor)__
 
 
 ## Setup Instructions {-}
