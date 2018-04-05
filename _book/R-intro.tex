@@ -124,7 +124,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{Last updated: October 20, 2017}
+  \date{Last updated: April 05, 2018}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -144,8 +144,11 @@
 \newtheorem{proposition}{Proposition}[chapter]
 \theoremstyle{definition}
 \newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
 \begin{document}
 \maketitle
 
@@ -165,11 +168,6 @@
   \href{https://www.rstudio.com/}{RStudio} installed (see setup
   instructions below).
 \end{itemize}
-
-\textbf{Next workshop:\\
-Thu, October 19, 2017, 2-4pm (if you would like help setting up please
-arrive at 1:30) Room 433A in CESTA (Building 160 - Wallenberg 4th
-floor)}
 
 \section*{Setup Instructions}\label{setup-instructions}
 \addcontentsline{toc}{section}{Setup Instructions}
@@ -1857,9 +1855,9 @@ other information that can be very helpful to understand your problem.
 \end{Shaded}
 
 \begin{verbatim}
-#> R version 3.4.2 (2017-09-28)
+#> R version 3.4.4 (2018-03-15)
 #> Platform: x86_64-apple-darwin15.6.0 (64-bit)
-#> Running under: macOS Sierra 10.12.6
+#> Running under: macOS High Sierra 10.13.3
 #> 
 #> Matrix products: default
 #> BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
@@ -1871,11 +1869,15 @@ other information that can be very helpful to understand your problem.
 #> attached base packages:
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
+#> other attached packages:
+#> [1] lubridate_1.7.1
+#> 
 #> loaded via a namespace (and not attached):
-#>  [1] compiler_3.4.2  backports_1.0.5 bookdown_0.4.2  magrittr_1.5   
-#>  [5] rprojroot_1.2   tools_3.4.2     htmltools_0.3.6 rstudioapi_0.6 
-#>  [9] yaml_2.1.14     Rcpp_0.12.12    stringi_1.1.5   rmarkdown_1.6  
-#> [13] knitr_1.17      stringr_1.2.0   digest_0.6.12   evaluate_0.10.1
+#>  [1] Rcpp_0.12.15    bookdown_0.6    digest_0.6.14   rprojroot_1.3-2
+#>  [5] backports_1.1.2 magrittr_1.5    evaluate_0.10.1 highr_0.6      
+#>  [9] stringi_1.1.6   rstudioapi_0.7  rmarkdown_1.8   tools_3.4.4    
+#> [13] stringr_1.2.0   xfun_0.1        yaml_2.1.16     compiler_3.4.4 
+#> [17] htmltools_0.3.6 knitr_1.18
 \end{verbatim}
 
 \subsection{Where to ask for help?}\label{where-to-ask-for-help}
@@ -2831,7 +2833,7 @@ Challenge
 \includegraphics{R-intro_files/figure-latex/calculate-age-answer-2.pdf}
 ---\textgreater{}
 
-\bibliography{packages.bib,book.bib}
+\bibliography{book.bib,packages.bib}
 
 
 \end{document}
