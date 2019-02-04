@@ -116,15 +116,16 @@
 }
 
 \setlength{\droptitle}{-2em}
+
   \title{Introduction to R}
-  \pretitle{\vspace{\droptitle}\centering\huge}
+    \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-  \author{Claudia A Engel}
-  \preauthor{\centering\large\emph}
+    \author{Claudia A Engel}
+    \preauthor{\centering\large\emph}
   \postauthor{\par}
-  \predate{\centering\large\emph}
+      \predate{\centering\large\emph}
   \postdate{\par}
-  \date{Last updated: April 05, 2018}
+    \date{Last updated: February 04, 2019}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -135,20 +136,6 @@
 }
 \makeatother
 
-\usepackage{amsthm}
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem{lemma}{Lemma}[chapter]
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[chapter]
-\newtheorem{corollary}{Corollary}[chapter]
-\newtheorem{proposition}{Proposition}[chapter]
-\theoremstyle{definition}
-\newtheorem{example}{Example}[chapter]
-\theoremstyle{definition}
-\newtheorem{exercise}{Exercise}[chapter]
-\theoremstyle{remark}
-\newtheorem*{remark}{Remark}
-\newtheorem*{solution}{Solution}
 \begin{document}
 \maketitle
 
@@ -662,8 +649,21 @@ commands we want in the script editor, and save the script. This way,
 there is a complete record of what we did, and anyone (including our
 future selves!) can easily replicate the results on their computer.
 
-One of the first things you will notice is that your code is colored
-(syntax coloring) which enhances readibility.
+Perhaps one of the most important aspects of making your code
+comprehensible for others and your future self is adding comments about
+why you did something. You can write comments directly in your script,
+and tell R not no execute those words simply by putting a hashtag
+(\texttt{\#}) before you start typing the comment.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# this is a comment on its on line}
+\KeywordTok{getwd}\NormalTok{() }\CommentTok{# comments can also go here}
+\end{Highlighting}
+\end{Shaded}
+
+One of the first things you will notice is in the R script editor that
+your code is colored (syntax coloring) which enhances readibility.
 
 Secondly, RStudio allows you to execute commands directly from the
 script editor by using the \texttt{Ctrl} + \texttt{Enter} shortcut (on
@@ -683,12 +683,14 @@ them directly in the console. RStudio provides the \texttt{Ctrl} +
 between the script and the console panes.
 
 In addition to shortcuts RStudio also provides autocompletion. If you
-begin typing a command or the name of a variable and hit the
-\texttt{Tab} key, it will make suggestions. More on code completion in
-RStudio is here:
+begin typing a command or the name of a variable or (under certain
+conditions) even filenames you have on your latop and thenb hit the
+\texttt{Tab} key, it will make suggestions and relieve you from typing.
+More on code completion in RStudio is here:
 \url{https://support.rstudio.com/hc/en-us/articles/205273297-Code-Completion}
 
-All in all, RStudio will make typing easier and less error-prone.
+All in all, RStudio is designed to make your coding easier and less
+error-prone.
 
 \chapter{Getting Started with R}\label{gettingstarted}
 
@@ -742,8 +744,8 @@ the value we want to give it:
 the right to objects on the left. So, after executing
 \texttt{weight\_kg\ \textless{}-\ 55}, the value of \texttt{weight\_kg}
 is \texttt{55}. The arrow can be read as \texttt{55} \textbf{goes into}
-\texttt{weight\_kg}. For historical reasons, you can also use \texttt{=}
-for assignments, but not in every context. Because of the
+\texttt{weight\_kg}. You can also use \texttt{=} for assignments, but
+not in every context. Because of the
 \href{http://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html}{slight}
 \href{https://web.archive.org/web/20130610005305/https://stat.ethz.ch/pipermail/r-help/2009-March/191462.html}{differences}
 in syntax, it is good practice to always use \texttt{\textless{}-} for
@@ -825,7 +827,7 @@ We can also change a variable's value by assigning it a new one:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_kg <-}\StringTok{ }\FloatTok{57.5}
+\NormalTok{weight_kg <-}\StringTok{ }\DecValTok{100}
 \FloatTok{2.2} \OperatorTok{*}\StringTok{ }\NormalTok{weight_kg}
 \end{Highlighting}
 \end{Shaded}
@@ -840,11 +842,11 @@ in a new variable, \texttt{weight\_lb}:
 \end{Highlighting}
 \end{Shaded}
 
-and then change \texttt{weight\_kg} to 100.
+and then change \texttt{weight\_kg} to 50.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_kg <-}\StringTok{ }\DecValTok{100}
+\NormalTok{weight_kg <-}\StringTok{ }\DecValTok{50}
 \end{Highlighting}
 \end{Shaded}
 
@@ -852,7 +854,7 @@ and then change \texttt{weight\_kg} to 100.
 Challenge
 
 What do you think is the current content of the object
-\texttt{weight\_lb}? 126.5 or 220?
+\texttt{weight\_lb}? 110 or 220?
 \end{quote}
 
 \subsection{Comments}\label{comments}
@@ -1053,6 +1055,10 @@ vector of weights and assign it to a new object \texttt{weight\_g}:
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+#> [1] 21 34 39 54 55
+\end{verbatim}
+
 There are many functions that allow you to inspect the content of a
 vector. \texttt{length()} tells you how many elements are in a
 particular vector:
@@ -1062,6 +1068,10 @@ particular vector:
 \KeywordTok{length}\NormalTok{(weight_g)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+#> [1] 5
+\end{verbatim}
 
 An important feature of a vector, is that all of the elements are the
 same type of data. The function \texttt{class()} indicates the class
@@ -1073,6 +1083,10 @@ same type of data. The function \texttt{class()} indicates the class
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+#> [1] "numeric"
+\end{verbatim}
+
 The function \texttt{str()} provides an overview of the structure of an
 object and its elements. It is a useful function when working with large
 and complex objects:
@@ -1082,6 +1096,10 @@ and complex objects:
 \KeywordTok{str}\NormalTok{(weight_g)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+#>  num [1:5] 21 34 39 54 55
+\end{verbatim}
 
 You can use the \texttt{c()} function to add other elements to your
 vector:
@@ -1093,6 +1111,10 @@ vector:
 \NormalTok{weight_g}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+#> [1] 30 21 34 39 54 55 90
+\end{verbatim}
 
 In the first line, we take the original vector \texttt{weight\_g}, add
 the value \texttt{90} to the end of it, and save the result back into
@@ -1295,7 +1317,7 @@ vector are found:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{animals[animals }\OperatorTok{==}\StringTok{ "bear"} \OperatorTok{|}\StringTok{ }\NormalTok{animals }\OperatorTok{==}\StringTok{ "rat"}\NormalTok{] }\CommentTok{# returns both rat and cat}
+\NormalTok{animals[animals }\OperatorTok{==}\StringTok{ "bear"} \OperatorTok{|}\StringTok{ }\NormalTok{animals }\OperatorTok{==}\StringTok{ "rat"}\NormalTok{] }\CommentTok{# returns both rat and bear}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1362,12 +1384,12 @@ true, OR):
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_g[weight_g }\OperatorTok{>=}\StringTok{ }\DecValTok{30} \OperatorTok{&}\StringTok{ }\NormalTok{weight_g }\OperatorTok{==}\StringTok{ }\DecValTok{21}\NormalTok{]}
+\NormalTok{weight_g[weight_g }\OperatorTok{>=}\StringTok{ }\DecValTok{30} \OperatorTok{&}\StringTok{ }\NormalTok{weight_g }\OperatorTok{<=}\StringTok{ }\DecValTok{90}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> numeric(0)
+#> [1] 30 34 39 54 55 90
 \end{verbatim}
 
 Here, \texttt{\textless{}} stands for ``less than'',
@@ -1814,8 +1836,7 @@ to recreate the exact same object as the one in memory:
 #>     Sepal.Width = c(3.5, 3, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 
 #>     1.4, 1.3, 1.5, 1.4, 1.7), Petal.Width = c(0.2, 0.2, 0.2, 
 #>     0.2, 0.2, 0.4), Species = structure(c(1L, 1L, 1L, 1L, 1L, 
-#>     1L), .Label = c("setosa", "versicolor", "virginica"), class = "factor")), .Names = c("Sepal.Length", 
-#> "Sepal.Width", "Petal.Length", "Petal.Width", "Species"), row.names = c(NA, 
+#>     1L), .Label = c("setosa", "versicolor", "virginica"), class = "factor")), row.names = c(NA, 
 #> 6L), class = "data.frame")
 \end{verbatim}
 
@@ -1855,13 +1876,13 @@ other information that can be very helpful to understand your problem.
 \end{Shaded}
 
 \begin{verbatim}
-#> R version 3.4.4 (2018-03-15)
+#> R version 3.5.2 (2018-12-20)
 #> Platform: x86_64-apple-darwin15.6.0 (64-bit)
-#> Running under: macOS High Sierra 10.13.3
+#> Running under: macOS Mojave 10.14.2
 #> 
 #> Matrix products: default
-#> BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
-#> LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
+#> BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib
+#> LAPACK: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRlapack.dylib
 #> 
 #> locale:
 #> [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -1870,14 +1891,13 @@ other information that can be very helpful to understand your problem.
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] lubridate_1.7.1
+#> [1] lubridate_1.7.4
 #> 
 #> loaded via a namespace (and not attached):
-#>  [1] Rcpp_0.12.15    bookdown_0.6    digest_0.6.14   rprojroot_1.3-2
-#>  [5] backports_1.1.2 magrittr_1.5    evaluate_0.10.1 highr_0.6      
-#>  [9] stringi_1.1.6   rstudioapi_0.7  rmarkdown_1.8   tools_3.4.4    
-#> [13] stringr_1.2.0   xfun_0.1        yaml_2.1.16     compiler_3.4.4 
-#> [17] htmltools_0.3.6 knitr_1.18
+#>  [1] compiler_3.5.2   magrittr_1.5     bookdown_0.9     tools_3.5.2     
+#>  [5] htmltools_0.3.6  rstudioapi_0.9.0 yaml_2.2.0       Rcpp_1.0.0      
+#>  [9] stringi_1.2.4    rmarkdown_1.11   highr_0.7        knitr_1.21      
+#> [13] stringr_1.3.1    xfun_0.4         digest_0.6.18    evaluate_0.12
 \end{verbatim}
 
 \subsection{Where to ask for help?}\label{where-to-ask-for-help}
@@ -2004,10 +2024,11 @@ simple CSV file as example.
 is a CSV file?}
 
 You may know about \href{https://openpolicing.stanford.edu}{the Stanford
-Open Policing Project} and we will be working a sample dataset from
-their repository (\url{https://openpolicing.stanford.edu/data/}). It
-contains information about traffic stops for blacks and whites in the
-state of Mississippi during January 2013 to mid-July of 2016.
+Open Policing Project} and we will be working with a sample dataset from
+their repository (\url{https://openpolicing.stanford.edu/data/}). The
+sample I extracted contains information about traffic stops for black
+and white drivers in the state of Mississippi during January 2013 to
+mid-July of 2016.
 
 We are going to use the R function \texttt{download.file()} to download
 the CSV file that contains the traffic stop data, and we will use
@@ -2019,8 +2040,7 @@ the following:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{download.file}\NormalTok{(}\StringTok{"https://github.com/cengel/R-intro/raw/master/data/MS_trafficstops_bw.csv"}\NormalTok{,}
-              \StringTok{"data/MS_trafficstops_bw.csv"}\NormalTok{)}
+\KeywordTok{download.file}\NormalTok{(}\StringTok{"http://bit.ly/MS_trafficstops_bw"}\NormalTok{, }\StringTok{"data/MS_trafficstops_bw.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2028,7 +2048,7 @@ You are now ready to load the data:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{trafficstops <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'data/MS_trafficstops_bw.csv'}\NormalTok{)}
+\NormalTok{trafficstops <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/MS_trafficstops_bw.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2196,10 +2216,10 @@ coordinates lead to results with different classes.
 \NormalTok{trafficstops[, }\DecValTok{1}\NormalTok{]    }\CommentTok{# first column in the data frame (as a vector)}
 \NormalTok{trafficstops[}\DecValTok{1}\NormalTok{]      }\CommentTok{# first column in the data frame (as a data.frame)}
 \NormalTok{trafficstops[}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{7}\NormalTok{] }\CommentTok{# first three elements in the 7th column (as a vector)}
-\NormalTok{trafficstops[}\DecValTok{3}\NormalTok{, ]    }\CommentTok{# the 3rd element for all columns (as a data.frame)}
-\NormalTok{trafficstops[}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{, ]  }\CommentTok{# equivalent to head(trafficstops)}
-\NormalTok{trafficstops[,}\OperatorTok{-}\DecValTok{1}\NormalTok{]           }\CommentTok{# the whole data frame, excluding the first column}
-\NormalTok{trafficstops[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{7}\OperatorTok{:}\DecValTok{211211}\NormalTok{),] }\CommentTok{# equivalent to head(trafficstops)}
+\NormalTok{trafficstops[}\DecValTok{3}\NormalTok{, ]    }\CommentTok{# the 3rd row (as a data.frame)}
+\NormalTok{trafficstops[}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{, ]  }\CommentTok{# the 1st to 6th rows, equivalent to head(trafficstops)}
+\NormalTok{trafficstops[, }\OperatorTok{-}\DecValTok{1}\NormalTok{]           }\CommentTok{# the whole data frame, excluding the first column}
+\NormalTok{trafficstops[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{7}\OperatorTok{:}\DecValTok{211211}\NormalTok{),]  }\CommentTok{# equivalent to head(trafficstops)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2262,16 +2282,20 @@ Challenge
 
 Often times we need to extract a subset of a data frame based on certain
 conditions. For example, if we wanted to look at traffic stops in
-Tallahatchie County only we could say:
+Webster County only we could say:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# the condition:}
-\NormalTok{trafficstops}\OperatorTok{$}\NormalTok{county_name }\OperatorTok{==}\StringTok{ "Tallahatchie County"} \CommentTok{# returns a logical vector of the length of the column}
+\CommentTok{# returns a logical vector of the length of the column}
+\NormalTok{trafficstops}\OperatorTok{$}\NormalTok{county_name }\OperatorTok{==}\StringTok{ "Webster County"} 
+
 \CommentTok{# use this vector to extract rows and all columns}
-\NormalTok{trafficstops[trafficstops}\OperatorTok{$}\NormalTok{county_name }\OperatorTok{==}\StringTok{ "Tallahatchie County"}\NormalTok{, ] }\CommentTok{# note the comma: we want all columns}
-\CommentTok{# assign it to a new data frame}
-\NormalTok{Tallahatchie_trafficstops <-}\StringTok{ }\NormalTok{trafficstops[trafficstops}\OperatorTok{$}\NormalTok{county_name }\OperatorTok{==}\StringTok{ "Tallahatchie County"}\NormalTok{, ]}
+\CommentTok{# note the comma: we want *all* columns}
+\NormalTok{trafficstops[trafficstops}\OperatorTok{$}\NormalTok{county_name }\OperatorTok{==}\StringTok{ "Webster County"}\NormalTok{, ] }
+
+\CommentTok{# assign extract to a new data frame}
+\NormalTok{Webster_trafficstops <-}\StringTok{ }\NormalTok{trafficstops[trafficstops}\OperatorTok{$}\NormalTok{county_name }\OperatorTok{==}\StringTok{ "Webster County"}\NormalTok{, ]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2279,13 +2303,26 @@ This is also a possibility (but slower):
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{Tallahatchie_trafficstops <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(trafficstops, county_name }\OperatorTok{==}\StringTok{ "Tallahatchie County"}\NormalTok{)}
-\KeywordTok{nrow}\NormalTok{(Tallahatchie_trafficstops) }\CommentTok{# 393 stops in Tallahatchie County!}
+\NormalTok{Webster_trafficstops <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(trafficstops, county_name }\OperatorTok{==}\StringTok{ "Webster County"}\NormalTok{)}
+\KeywordTok{nrow}\NormalTok{(Webster_trafficstops) }\CommentTok{# 393 stops in Webster County!}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] 393
+#> [1] 156
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# and if we wanted to see the breakdown by race:}
+\KeywordTok{table}\NormalTok{(Webster_trafficstops}\OperatorTok{$}\NormalTok{driver_race)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> 
+#>       Black White 
+#>     0    59    97
 \end{verbatim}
 
 These commands are from the R base package. In the R Data Wrangling
@@ -2825,7 +2862,7 @@ Challenge
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{#or}
+\CommentTok{# or}
 \KeywordTok{hist}\NormalTok{(age)}
 \end{Highlighting}
 \end{Shaded}

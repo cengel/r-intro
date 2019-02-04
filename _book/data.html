@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Introduction to R</title>
+  <title>Chapter 3 Working with tabular data in R | Introduction to R</title>
   <meta name="description" content="Workshop materials for Intro to R">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Introduction to R" />
+  <meta property="og:title" content="Chapter 3 Working with tabular data in R | Introduction to R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="cengel/R-intro" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction to R" />
+  <meta name="twitter:title" content="Chapter 3 Working with tabular data in R | Introduction to R" />
   
   <meta name="twitter:description" content="Workshop materials for Intro to R" />
   
@@ -35,6 +35,7 @@
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -218,13 +219,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="loading-tabular-data" class="section level2">
 <h2><span class="header-section-number">3.1</span> Loading tabular data</h2>
 <p>One the most common ways of getting data into R is to read in a table. And – you guessed it – we read it into a data frame! We will take a simple CSV file as example. <a href="https://support.bigcommerce.com/articles/Public/What-is-a-CSV-file-and-how-do-I-save-my-spreadsheet-as-one">What is a CSV file?</a></p>
-<p>You may know about <a href="https://openpolicing.stanford.edu">the Stanford Open Policing Project</a> and we will be working a sample dataset from their repository (<a href="https://openpolicing.stanford.edu/data/" class="uri">https://openpolicing.stanford.edu/data/</a>). It contains information about traffic stops for blacks and whites in the state of Mississippi during January 2013 to mid-July of 2016.</p>
+<p>You may know about <a href="https://openpolicing.stanford.edu">the Stanford Open Policing Project</a> and we will be working with a sample dataset from their repository (<a href="https://openpolicing.stanford.edu/data/" class="uri">https://openpolicing.stanford.edu/data/</a>). The sample I extracted contains information about traffic stops for black and white drivers in the state of Mississippi during January 2013 to mid-July of 2016.</p>
 <p>We are going to use the R function <code>download.file()</code> to download the CSV file that contains the traffic stop data, and we will use <code>read.csv()</code> to load into memory the content of the CSV file as an object of class <code>data.frame</code>.</p>
 <p>To download the data into your local <code>data/</code> subdirectory, run the following:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="st">&quot;https://github.com/cengel/R-intro/raw/master/data/MS_trafficstops_bw.csv&quot;</span>,
-              <span class="st">&quot;data/MS_trafficstops_bw.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="st">&quot;http://bit.ly/MS_trafficstops_bw&quot;</span>, <span class="st">&quot;data/MS_trafficstops_bw.csv&quot;</span>)</code></pre></div>
 <p>You are now ready to load the data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;data/MS_trafficstops_bw.csv&#39;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_trafficstops_bw.csv&quot;</span>)</code></pre></div>
 <p>This statement doesn’t produce any output because, as you might recall, assignments don’t display anything. If we want to check that our data has been loaded, we can print the variable’s value: <code>trafficstops</code>.</p>
 <p>Wow… that was a lot of output. At least it means the data loaded properly. Let’s check the top (the first 6 lines) of this data frame using the function <code>head()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(trafficstops)</code></pre></div>
@@ -316,10 +316,10 @@ trafficstops[<span class="dv">1</span>, <span class="dv">6</span>]   <span class
 trafficstops[, <span class="dv">1</span>]    <span class="co"># first column in the data frame (as a vector)</span>
 trafficstops[<span class="dv">1</span>]      <span class="co"># first column in the data frame (as a data.frame)</span>
 trafficstops[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">7</span>] <span class="co"># first three elements in the 7th column (as a vector)</span>
-trafficstops[<span class="dv">3</span>, ]    <span class="co"># the 3rd element for all columns (as a data.frame)</span>
-trafficstops[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, ]  <span class="co"># equivalent to head(trafficstops)</span>
-trafficstops[,<span class="op">-</span><span class="dv">1</span>]           <span class="co"># the whole data frame, excluding the first column</span>
-trafficstops[<span class="op">-</span><span class="kw">c</span>(<span class="dv">7</span><span class="op">:</span><span class="dv">211211</span>),] <span class="co"># equivalent to head(trafficstops)</span></code></pre></div>
+trafficstops[<span class="dv">3</span>, ]    <span class="co"># the 3rd row (as a data.frame)</span>
+trafficstops[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, ]  <span class="co"># the 1st to 6th rows, equivalent to head(trafficstops)</span>
+trafficstops[, <span class="op">-</span><span class="dv">1</span>]           <span class="co"># the whole data frame, excluding the first column</span>
+trafficstops[<span class="op">-</span><span class="kw">c</span>(<span class="dv">7</span><span class="op">:</span><span class="dv">211211</span>),]  <span class="co"># equivalent to head(trafficstops)</span></code></pre></div>
 <p>As well as using numeric values to subset a <code>data.frame</code> (or <code>matrix</code>), columns can be called by name, using one of the four following notations:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">trafficstops[<span class="st">&quot;violation_raw&quot;</span>]       <span class="co"># Result is a data.frame</span>
 trafficstops[, <span class="st">&quot;violation_raw&quot;</span>]     <span class="co"># Result is a vector</span>
@@ -356,17 +356,26 @@ trafficstops_head <- trafficstops[-c(7:nrow(trafficstops)),]
 </div>
 <div id="conditional-subsetting-1" class="section level2">
 <h2><span class="header-section-number">3.4</span> Conditional subsetting</h2>
-<p>Often times we need to extract a subset of a data frame based on certain conditions. For example, if we wanted to look at traffic stops in Tallahatchie County only we could say:</p>
+<p>Often times we need to extract a subset of a data frame based on certain conditions. For example, if we wanted to look at traffic stops in Webster County only we could say:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># the condition:</span>
-trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Tallahatchie County&quot;</span> <span class="co"># returns a logical vector of the length of the column</span>
+<span class="co"># returns a logical vector of the length of the column</span>
+trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span> 
+
 <span class="co"># use this vector to extract rows and all columns</span>
-trafficstops[trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Tallahatchie County&quot;</span>, ] <span class="co"># note the comma: we want all columns</span>
-<span class="co"># assign it to a new data frame</span>
-Tallahatchie_trafficstops &lt;-<span class="st"> </span>trafficstops[trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Tallahatchie County&quot;</span>, ]</code></pre></div>
+<span class="co"># note the comma: we want *all* columns</span>
+trafficstops[trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>, ] 
+
+<span class="co"># assign extract to a new data frame</span>
+Webster_trafficstops &lt;-<span class="st"> </span>trafficstops[trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>, ]</code></pre></div>
 <p>This is also a possibility (but slower):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Tallahatchie_trafficstops &lt;-<span class="st"> </span><span class="kw">subset</span>(trafficstops, county_name <span class="op">==</span><span class="st"> &quot;Tallahatchie County&quot;</span>)
-<span class="kw">nrow</span>(Tallahatchie_trafficstops) <span class="co"># 393 stops in Tallahatchie County!</span></code></pre></div>
-<pre><code>#&gt; [1] 393</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Webster_trafficstops &lt;-<span class="st"> </span><span class="kw">subset</span>(trafficstops, county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>)
+<span class="kw">nrow</span>(Webster_trafficstops) <span class="co"># 393 stops in Webster County!</span></code></pre></div>
+<pre><code>#&gt; [1] 156</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># and if we wanted to see the breakdown by race:</span>
+<span class="kw">table</span>(Webster_trafficstops<span class="op">$</span>driver_race)</code></pre></div>
+<pre><code>#&gt; 
+#&gt;       Black White 
+#&gt;     0    59    97</code></pre>
 <p>These commands are from the R base package. In the R Data Wrangling workshop we will discuss a different way of subsetting using functions from the <code>tidyverse</code> package.</p>
 <blockquote>
 <h3>
@@ -609,7 +618,7 @@ country_climate &lt;- data.frame(
 
 
 
--->
+--->
 <p>The automatic conversion of data type is sometimes a blessing, sometimes an annoyance. Be aware that it exists, learn the rules, and double check that data you import in R are of the correct type within your data frame. If not, use it to your advantage to detect mistakes that might have been introduced during data entry (a letter in a column that should only contain numbers for instance).</p>
 </div>
 </div>
@@ -662,21 +671,20 @@ Challenge
 <li>Coerce <code>age</code> to a factor and use the <code>plot</code> function to check your results. What do you find?</li>
 </ul>
 </blockquote>
-<!---
+<!--- Answers
 
 ```r
-## Answers
 birth_date <- ymd(trafficstops$driver_birthdate)
 age <- stop_date - birth_date
 # or
 age <- year(stop_date) - year(birth_date)
-plot(factor(age)) # Negative age!
+plot(factor(age)) # negative age
 ```
 
 <img src="R-intro_files/figure-html/calculate-age-answer-1.png" width="672" />
 
 ```r
-#or
+# or
 hist(age)
 ```
 
@@ -709,10 +717,11 @@ gitbook.start({
 "facebook": false,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -722,6 +731,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/cengel/R-intro/edit/master/03-working-with-data.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["R-intro.pdf", "R-intro.epub"],
 "toc": {

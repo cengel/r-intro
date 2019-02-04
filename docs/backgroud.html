@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Introduction to R</title>
+  <title>Chapter 1 R and Rstudio | Introduction to R</title>
   <meta name="description" content="Workshop materials for Intro to R">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Introduction to R" />
+  <meta property="og:title" content="Chapter 1 R and Rstudio | Introduction to R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="cengel/R-intro" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction to R" />
+  <meta name="twitter:title" content="Chapter 1 R and Rstudio | Introduction to R" />
   
   <meta name="twitter:description" content="Workshop materials for Intro to R" />
   
@@ -35,6 +35,7 @@
 <link rel="next" href="gettingstarted.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -335,11 +336,14 @@ Challenge
 <div id="rstudio-script-editor" class="section level3">
 <h3><span class="header-section-number">1.5.2</span> RStudio Script Editor</h3>
 <p>Because we want to keep our code and workflow, it is better to type the commands we want in the script editor, and save the script. This way, there is a complete record of what we did, and anyone (including our future selves!) can easily replicate the results on their computer.</p>
-<p>One of the first things you will notice is that your code is colored (syntax coloring) which enhances readibility.</p>
+<p>Perhaps one of the most important aspects of making your code comprehensible for others and your future self is adding comments about why you did something. You can write comments directly in your script, and tell R not no execute those words simply by putting a hashtag (<code>#</code>) before you start typing the comment.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># this is a comment on its on line</span>
+<span class="kw">getwd</span>() <span class="co"># comments can also go here</span></code></pre></div>
+<p>One of the first things you will notice is in the R script editor that your code is colored (syntax coloring) which enhances readibility.</p>
 <p>Secondly, RStudio allows you to execute commands directly from the script editor by using the <kbd><code>Ctrl</code></kbd> + <kbd><code>Enter</code></kbd> shortcut (on Macs, <kbd><code>Cmd</code></kbd> + <kbd><code>Enter</code></kbd> will work, too). The command on the current line in the script (indicated by the cursor) or all of the commands in the currently selected text will be sent to the console and executed when you press <kbd><code>Ctrl</code></kbd> + <kbd><code>Enter</code></kbd>. You can find other keyboard shortcuts under <code>Tools</code> &gt; <code>Keyboard Shortcuts Help</code> (or <kbd><code>Alt</code></kbd> + <kbd><code>Shift</code></kbd> + <kbd><code>K</code></kbd>)</p>
 <p>At some point in your analysis you may want to check the content of a variable or the structure of an object, without necessarily keeping a record of it in your script. You can type these commands and execute them directly in the console. RStudio provides the <kbd><code>Ctrl</code></kbd> + <kbd><code>1</code></kbd> and <kbd><code>Ctrl</code></kbd> + <kbd><code>2</code></kbd> shortcuts allow you to jump between the script and the console panes.</p>
-<p>In addition to shortcuts RStudio also provides autocompletion. If you begin typing a command or the name of a variable and hit the <kbd><code>Tab</code></kbd> key, it will make suggestions. More on code completion in RStudio is here: <a href="https://support.rstudio.com/hc/en-us/articles/205273297-Code-Completion" class="uri">https://support.rstudio.com/hc/en-us/articles/205273297-Code-Completion</a></p>
-<p>All in all, RStudio will make typing easier and less error-prone.</p>
+<p>In addition to shortcuts RStudio also provides autocompletion. If you begin typing a command or the name of a variable or (under certain conditions) even filenames you have on your latop and thenb hit the <kbd><code>Tab</code></kbd> key, it will make suggestions and relieve you from typing. More on code completion in RStudio is here: <a href="https://support.rstudio.com/hc/en-us/articles/205273297-Code-Completion" class="uri">https://support.rstudio.com/hc/en-us/articles/205273297-Code-Completion</a></p>
+<p>All in all, RStudio is designed to make your coding easier and less error-prone.</p>
 
 </div>
 </div>
@@ -368,10 +372,11 @@ gitbook.start({
 "facebook": false,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -381,6 +386,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/cengel/R-intro/edit/master/01-R-Rstudio.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["R-intro.pdf", "R-intro.epub"],
 "toc": {

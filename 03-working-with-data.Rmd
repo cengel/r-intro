@@ -31,7 +31,7 @@ knitr::opts_chunk$set(results='hide', comment = "#>", purl = FALSE)
 
 One the most common ways of getting data into R is to read in a table. And -- you guessed it -- we read it into a data frame! We will take a simple CSV file as example. [What is a CSV file?](https://support.bigcommerce.com/articles/Public/What-is-a-CSV-file-and-how-do-I-save-my-spreadsheet-as-one)
 
-You may know about [the Stanford Open Policing Project](https://openpolicing.stanford.edu) and we will be working a sample dataset from their repository (https://openpolicing.stanford.edu/data/). It contains information about traffic stops for blacks and whites in the state of Mississippi during January 2013 to mid-July of 2016. 
+You may know about [the Stanford Open Policing Project](https://openpolicing.stanford.edu) and we will be working with a sample dataset from their repository (https://openpolicing.stanford.edu/data/). The sample I extracted contains information about traffic stops for black and white drivers in the state of Mississippi during January 2013 to mid-July of 2016. 
 
 We are going to use the R function `download.file()` to download the CSV file
 that contains the traffic stop data, and we will use `read.csv()` to
@@ -40,14 +40,13 @@ load into memory the content of the CSV file as an object of class `data.frame`.
 To download the data into your local `data/` subdirectory, run the following:
 
 ```{r, eval=FALSE, purl=TRUE}
-download.file("https://github.com/cengel/R-intro/raw/master/data/MS_trafficstops_bw.csv",
-              "data/MS_trafficstops_bw.csv")
+download.file("http://bit.ly/MS_trafficstops_bw", "data/MS_trafficstops_bw.csv")
 ```
 
 You are now ready to load the data:
 
 ```{r, eval=TRUE,  purl=FALSE}
-trafficstops <- read.csv('data/MS_trafficstops_bw.csv')
+trafficstops <- read.csv("data/MS_trafficstops_bw.csv")
 ```
 
 This statement doesn't produce any output because, as you might recall,
@@ -157,10 +156,10 @@ trafficstops[1, 6]   # first element in the 6th column (as a vector)
 trafficstops[, 1]    # first column in the data frame (as a vector)
 trafficstops[1]      # first column in the data frame (as a data.frame)
 trafficstops[1:3, 7] # first three elements in the 7th column (as a vector)
-trafficstops[3, ]    # the 3rd element for all columns (as a data.frame)
-trafficstops[1:6, ]  # equivalent to head(trafficstops)
-trafficstops[,-1]           # the whole data frame, excluding the first column
-trafficstops[-c(7:211211),] # equivalent to head(trafficstops)
+trafficstops[3, ]    # the 3rd row (as a data.frame)
+trafficstops[1:6, ]  # the 1st to 6th rows, equivalent to head(trafficstops)
+trafficstops[, -1]           # the whole data frame, excluding the first column
+trafficstops[-c(7:211211),]  # equivalent to head(trafficstops)
 ```
 
 As well as using numeric values to subset a `data.frame` (or `matrix`), columns
@@ -239,22 +238,29 @@ trafficstops_head <- trafficstops[-c(7:nrow(trafficstops)),]
 ## Conditional subsetting
 ```
 
-Often times we need to extract a subset of a data frame based on certain conditions. For example, if we wanted to look at traffic stops in Tallahatchie County only we could say:
+Often times we need to extract a subset of a data frame based on certain conditions. For example, if we wanted to look at traffic stops in Webster County only we could say:
 
 ```{r eval=FALSE}
 # the condition:
-trafficstops$county_name == "Tallahatchie County" # returns a logical vector of the length of the column
+# returns a logical vector of the length of the column
+trafficstops$county_name == "Webster County" 
+
 # use this vector to extract rows and all columns
-trafficstops[trafficstops$county_name == "Tallahatchie County", ] # note the comma: we want all columns
-# assign it to a new data frame
-Tallahatchie_trafficstops <- trafficstops[trafficstops$county_name == "Tallahatchie County", ]
+# note the comma: we want *all* columns
+trafficstops[trafficstops$county_name == "Webster County", ] 
+
+# assign extract to a new data frame
+Webster_trafficstops <- trafficstops[trafficstops$county_name == "Webster County", ]
 ```
 
 This is also a possibility (but slower):
 
 ```{r results='show'}
-Tallahatchie_trafficstops <- subset(trafficstops, county_name == "Tallahatchie County")
-nrow(Tallahatchie_trafficstops) # 393 stops in Tallahatchie County!
+Webster_trafficstops <- subset(trafficstops, county_name == "Webster County")
+nrow(Webster_trafficstops) # 393 stops in Webster County!
+
+# and if we wanted to see the breakdown by race:
+table(Webster_trafficstops$driver_race)
 ```
 
 These commands are from the R base package. In the R Data Wrangling workshop we will discuss a different way of subsetting using functions from the `tidyverse` package.
@@ -579,7 +585,7 @@ country_climate <- data.frame(country=c("Canada", "Panama", "South Africa", "Aus
 ##   intended.
 ```
 
--->
+--->
 
 
 The automatic conversion of data type is sometimes a blessing, sometimes an
@@ -669,15 +675,14 @@ plot(factor(day(stop_date)))
 ```
 
 
-<!---
+<!--- Answers
 ```{r calculate-age-answer, purl=FALSE}
-## Answers
 birth_date <- ymd(trafficstops$driver_birthdate)
 age <- stop_date - birth_date
 # or
 age <- year(stop_date) - year(birth_date)
-plot(factor(age)) # Negative age!
-#or
+plot(factor(age)) # negative age
+# or
 hist(age)
 ```
 --->

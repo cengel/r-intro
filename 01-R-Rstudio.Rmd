@@ -230,8 +230,7 @@ There are two main ways of interacting with R: by using the **console** or by us
 The console pane in RStudio is the place where commands written in the R
 language can be typed and executed immediately by the computer. It is also where
 the results will be shown for commands that have been executed. You can type
-commands directly into the console and press <kbd>`Enter`</kbd> to execute those commands,
-but they will be forgotten when you close the session.
+commands directly into the console and press <kbd>`Enter`</kbd> to execute those commands, but they will be forgotten when you close the session.
 
 If R is ready to accept commands, the R console by default shows a `>` prompt. If it
 receives a command (by typing, copy-pasting or sent from the script editor using
@@ -263,8 +262,14 @@ the commands we want in the script editor, and save the script. This way, there
 is a complete record of what we did, and anyone (including our future selves!)
 can easily replicate the results on their computer.
 
-One of the first things you will notice is that your code is colored (syntax coloring)
-which enhances readibility.
+Perhaps one of the most important aspects of making your code comprehensible for others and your future self is adding comments about why you did something. You can write comments directly in your script, and tell R not no execute those words simply by putting a hashtag (`#`) before you start typing the comment.
+
+```{r eval=FALSE}
+# this is a comment on its on line
+getwd() # comments can also go here
+```
+
+One of the first things you will notice is in the R script editor that your code is colored (syntax coloring) which enhances readibility.
 
 Secondly, RStudio allows you to execute commands directly from the script editor by using
 the <kbd>`Ctrl`</kbd> + <kbd>`Enter`</kbd> shortcut (on Macs, <kbd>`Cmd`</kbd> +
@@ -280,6 +285,6 @@ console.  RStudio provides the <kbd>`Ctrl`</kbd> + <kbd>`1`</kbd> and
 <kbd>`Ctrl`</kbd> + <kbd>`2`</kbd> shortcuts allow you to jump between the
 script and the console panes.
 
-In addition to shortcuts RStudio also provides autocompletion. If you begin typing a command or the name of a variable and hit the <kbd>`Tab`</kbd> key, it will make suggestions. More on code completion in RStudio is here: https://support.rstudio.com/hc/en-us/articles/205273297-Code-Completion 
+In addition to shortcuts RStudio also provides autocompletion. If you begin typing a command or the name of a variable or (under certain conditions) even filenames you have on your latop and thenb hit the <kbd>`Tab`</kbd> key, it will make suggestions and relieve you from typing. More on code completion in RStudio is here: https://support.rstudio.com/hc/en-us/articles/205273297-Code-Completion 
 
-All in all, RStudio will make typing easier and less error-prone.
+All in all, RStudio is designed to make your coding easier and less error-prone.

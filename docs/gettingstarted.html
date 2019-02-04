@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Introduction to R</title>
+  <title>Chapter 2 Getting Started with R | Introduction to R</title>
   <meta name="description" content="Workshop materials for Intro to R">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Introduction to R" />
+  <meta property="og:title" content="Chapter 2 Getting Started with R | Introduction to R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="cengel/R-intro" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction to R" />
+  <meta name="twitter:title" content="Chapter 2 Getting Started with R | Introduction to R" />
   
   <meta name="twitter:description" content="Workshop materials for Intro to R" />
   
@@ -35,6 +35,7 @@
 <link rel="next" href="data.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -216,7 +217,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">2.1</span> Creating objects in R</h2>
 <p>To do useful and interesting things in R, we need to assign <em>values</em> to <em>objects</em>. To create an object, we need to give it a name followed by the assignment operator <code>&lt;-</code>, and the value we want to give it:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="dv">55</span></code></pre></div>
-<p><code>&lt;-</code> is the assignment operator. It assigns values on the right to objects on the left. So, after executing <code>weight_kg &lt;- 55</code>, the value of <code>weight_kg</code> is <code>55</code>. The arrow can be read as <code>55</code> <strong>goes into</strong> <code>weight_kg</code>. For historical reasons, you can also use <code>=</code> for assignments, but not in every context. Because of the <a href="http://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html">slight</a> <a href="https://web.archive.org/web/20130610005305/https://stat.ethz.ch/pipermail/r-help/2009-March/191462.html">differences</a> in syntax, it is good practice to always use <code>&lt;-</code> for assignments.</p>
+<p><code>&lt;-</code> is the assignment operator. It assigns values on the right to objects on the left. So, after executing <code>weight_kg &lt;- 55</code>, the value of <code>weight_kg</code> is <code>55</code>. The arrow can be read as <code>55</code> <strong>goes into</strong> <code>weight_kg</code>. You can also use <code>=</code> for assignments, but not in every context. Because of the <a href="http://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html">slight</a> <a href="https://web.archive.org/web/20130610005305/https://stat.ethz.ch/pipermail/r-help/2009-March/191462.html">differences</a> in syntax, it is good practice to always use <code>&lt;-</code> for assignments.</p>
 <p>In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the same time as the <kbd>-</kbd> key) will write <code>&lt;-</code> in a single keystroke.</p>
 <p>Here are a few rules as of how to name objects in R.</p>
 <ul>
@@ -237,17 +238,17 @@ weight_kg          <span class="co"># and so does typing the name of the object<
 <p>Now that R has <code>weight_kg</code> in memory, we can do arithmetic with it. For instance, we may want to convert this weight into pounds (weight in pounds is 2.2 times the weight in kg):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">2.2</span> <span class="op">*</span><span class="st"> </span>weight_kg</code></pre></div>
 <p>We can also change a variable’s value by assigning it a new one:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="fl">57.5</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="dv">100</span>
 <span class="fl">2.2</span> <span class="op">*</span><span class="st"> </span>weight_kg</code></pre></div>
 <p>This means that assigning a value to one variable does not change the values of other variables. For example, let’s store the weight in pounds in a new variable, <code>weight_lb</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_lb &lt;-<span class="st"> </span><span class="fl">2.2</span> <span class="op">*</span><span class="st"> </span>weight_kg</code></pre></div>
-<p>and then change <code>weight_kg</code> to 100.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="dv">100</span></code></pre></div>
+<p>and then change <code>weight_kg</code> to 50.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="dv">50</span></code></pre></div>
 <blockquote>
 <h3>
 Challenge
 </h3>
-<p>What do you think is the current content of the object <code>weight_lb</code>? 126.5 or 220?</p>
+<p>What do you think is the current content of the object <code>weight_lb</code>? 110 or 220?</p>
 </blockquote>
 <div id="comments" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Comments</h3>
@@ -310,16 +311,21 @@ b &lt;-<span class="st"> </span><span class="kw">sqrt</span>(a)</code></pre></di
 <p>A vector is the most common and basic data type in R, and is pretty much the workhorse of R. A vector is composed by a series of values, which can be either numbers or characters. We can assign a series of values to a vector using the <code>c()</code> function. For example we can create a vector of weights and assign it to a new object <code>weight_g</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_g &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">21</span>, <span class="dv">34</span>, <span class="dv">39</span>, <span class="dv">54</span>, <span class="dv">55</span>)
 weight_g</code></pre></div>
+<pre><code>#&gt; [1] 21 34 39 54 55</code></pre>
 <p>There are many functions that allow you to inspect the content of a vector. <code>length()</code> tells you how many elements are in a particular vector:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(weight_g)</code></pre></div>
+<pre><code>#&gt; [1] 5</code></pre>
 <p>An important feature of a vector, is that all of the elements are the same type of data. The function <code>class()</code> indicates the class (the type of element) of an object:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(weight_g)</code></pre></div>
+<pre><code>#&gt; [1] &quot;numeric&quot;</code></pre>
 <p>The function <code>str()</code> provides an overview of the structure of an object and its elements. It is a useful function when working with large and complex objects:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(weight_g)</code></pre></div>
+<pre><code>#&gt;  num [1:5] 21 34 39 54 55</code></pre>
 <p>You can use the <code>c()</code> function to add other elements to your vector:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_g &lt;-<span class="st"> </span><span class="kw">c</span>(weight_g, <span class="dv">90</span>) <span class="co"># add to the end of the vector</span>
 weight_g &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">30</span>, weight_g) <span class="co"># add to the beginning of the vector</span>
 weight_g</code></pre></div>
+<pre><code>#&gt; [1] 30 21 34 39 54 55 90</code></pre>
 <p>In the first line, we take the original vector <code>weight_g</code>, add the value <code>90</code> to the end of it, and save the result back into <code>weight_g</code>. Then we add the value <code>30</code> to the beginning, again saving the result back into <code>weight_g</code>.</p>
 <p>We can do this over and over again to grow a vector, or assemble a dataset. As we program, this may be useful to add results that we are collecting or calculating.</p>
 <p>A vector can also contain characters:</p>
@@ -381,7 +387,7 @@ more_animals</code></pre></div>
 <pre><code>#&gt; [1] &quot;mouse&quot; &quot;rat&quot;   &quot;dog&quot;</code></pre>
 <p>Typically, these logical vectors are not typed out by hand, but are the output of other functions or logical tests.</p>
 <p>A typical example is to search for certain strings in a vector. One could use the “or” operator <code>|</code> to test for equality to multiple values, but this can quickly become tedious. The function <code>%in%</code> allows you to test if any of the elements of a search vector are found:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">animals[animals <span class="op">==</span><span class="st"> &quot;bear&quot;</span> <span class="op">|</span><span class="st"> </span>animals <span class="op">==</span><span class="st"> &quot;rat&quot;</span>] <span class="co"># returns both rat and cat</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">animals[animals <span class="op">==</span><span class="st"> &quot;bear&quot;</span> <span class="op">|</span><span class="st"> </span>animals <span class="op">==</span><span class="st"> &quot;rat&quot;</span>] <span class="co"># returns both rat and bear</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;rat&quot;  &quot;bear&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">animals <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;rat&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;duck&quot;</span>, <span class="st">&quot;goat&quot;</span>)</code></pre></div>
 <pre><code>#&gt; [1] FALSE  TRUE  TRUE FALSE</code></pre>
@@ -396,8 +402,8 @@ weight_g[weight_g <span class="op">&gt;</span><span class="st"> </span><span cla
 <p>You can combine multiple tests using <code>&amp;</code> (both conditions are true, AND) or <code>|</code> (at least one of the conditions is true, OR):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_g[weight_g <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span> <span class="op">|</span><span class="st"> </span>weight_g <span class="op">&gt;</span><span class="st"> </span><span class="dv">50</span>]</code></pre></div>
 <pre><code>#&gt; [1] 21 54 55 90</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_g[weight_g <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>weight_g <span class="op">==</span><span class="st"> </span><span class="dv">21</span>]</code></pre></div>
-<pre><code>#&gt; numeric(0)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_g[weight_g <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>weight_g <span class="op">&lt;=</span><span class="st"> </span><span class="dv">90</span>]</code></pre></div>
+<pre><code>#&gt; [1] 30 34 39 54 55 90</code></pre>
 <p>Here, <code>&lt;</code> stands for “less than”, <code>&gt;</code> for “greater than”, <code>&gt;=</code> for “greater than or equal to”, and <code>==</code> for “equal to”. The double equal sign <code>==</code> is a test for numerical equality between the left and right hand sides, and should not be confused with the single <code>=</code> sign, which performs variable assignment (similar to <code>&lt;-</code>).</p>
 <blockquote>
 <h3>
@@ -594,8 +600,7 @@ Figure 2.2: The RStudio help interface
 #&gt;     Sepal.Width = c(3.5, 3, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 
 #&gt;     1.4, 1.3, 1.5, 1.4, 1.7), Petal.Width = c(0.2, 0.2, 0.2, 
 #&gt;     0.2, 0.2, 0.4), Species = structure(c(1L, 1L, 1L, 1L, 1L, 
-#&gt;     1L), .Label = c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&quot;), class = &quot;factor&quot;)), .Names = c(&quot;Sepal.Length&quot;, 
-#&gt; &quot;Sepal.Width&quot;, &quot;Petal.Length&quot;, &quot;Petal.Width&quot;, &quot;Species&quot;), row.names = c(NA, 
+#&gt;     1L), .Label = c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&quot;), class = &quot;factor&quot;)), row.names = c(NA, 
 #&gt; 6L), class = &quot;data.frame&quot;)</code></pre>
 <p>If the object is larger, provide either the raw file (i.e., your CSV file) with your script up to the point of the error (and after removing everything that is not relevant to your issue). Alternatively, in particular if your question is not related to a data frame, you can save any R object to a file:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">saveRDS</span>(iris, <span class="dt">file=</span><span class="st">&quot;/tmp/iris.rds&quot;</span>)</code></pre></div>
@@ -603,13 +608,13 @@ Figure 2.2: The RStudio help interface
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">some_data &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="dt">file=</span><span class="st">&quot;~/Downloads/iris.rds&quot;</span>)</code></pre></div>
 <p>Last, but certainly not least, <strong>always include the output of <code>sessionInfo()</code></strong> as it provides critical information about your platform, the versions of R and the packages that you are using, and other information that can be very helpful to understand your problem.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
-<pre><code>#&gt; R version 3.4.4 (2018-03-15)
+<pre><code>#&gt; R version 3.5.2 (2018-12-20)
 #&gt; Platform: x86_64-apple-darwin15.6.0 (64-bit)
-#&gt; Running under: macOS High Sierra 10.13.3
+#&gt; Running under: macOS Mojave 10.14.2
 #&gt; 
 #&gt; Matrix products: default
-#&gt; BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
-#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
+#&gt; BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib
+#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRlapack.dylib
 #&gt; 
 #&gt; locale:
 #&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -618,11 +623,10 @@ Figure 2.2: The RStudio help interface
 #&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     
 #&gt; 
 #&gt; loaded via a namespace (and not attached):
-#&gt;  [1] Rcpp_0.12.15    bookdown_0.6    digest_0.6.14   rprojroot_1.3-2
-#&gt;  [5] backports_1.1.2 magrittr_1.5    evaluate_0.10.1 highr_0.6      
-#&gt;  [9] stringi_1.1.6   rstudioapi_0.7  rmarkdown_1.8   tools_3.4.4    
-#&gt; [13] stringr_1.2.0   xfun_0.1        yaml_2.1.16     compiler_3.4.4 
-#&gt; [17] htmltools_0.3.6 knitr_1.18</code></pre>
+#&gt;  [1] compiler_3.5.2   magrittr_1.5     bookdown_0.9     tools_3.5.2     
+#&gt;  [5] htmltools_0.3.6  rstudioapi_0.9.0 yaml_2.2.0       Rcpp_1.0.0      
+#&gt;  [9] stringi_1.2.4    rmarkdown_1.11   highr_0.7        knitr_1.21      
+#&gt; [13] stringr_1.3.1    xfun_0.4         digest_0.6.18    evaluate_0.12</code></pre>
 </div>
 <div id="where-to-ask-for-help" class="section level3">
 <h3><span class="header-section-number">2.7.6</span> Where to ask for help?</h3>
@@ -671,10 +675,11 @@ gitbook.start({
 "facebook": false,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -684,6 +689,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/cengel/R-intro/edit/master/02-R-getting-started.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["R-intro.pdf", "R-intro.epub"],
 "toc": {

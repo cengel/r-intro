@@ -33,7 +33,7 @@ weight_kg <- 55
 
 `<-` is the assignment operator. It assigns values on the right to objects on
 the left. So, after executing `weight_kg <- 55`, the value of `weight_kg` is `55`. The arrow can
-be read as `55` **goes into** `weight_kg`.  For historical reasons, you can also use `=`
+be read as `55` **goes into** `weight_kg`.  You can also use `=`
 for assignments, but not in every context. Because of
 the
 [slight](http://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html) [differences](https://web.archive.org/web/20130610005305/https://stat.ethz.ch/pipermail/r-help/2009-March/191462.html) in
@@ -89,7 +89,7 @@ instance, we may want to convert this weight into pounds (weight in pounds is 2.
 We can also change a variable's value by assigning it a new one:
 
 ```{r, purl=FALSE}
-weight_kg <- 57.5
+weight_kg <- 100
 2.2 * weight_kg
 ```
 
@@ -101,15 +101,15 @@ variable, `weight_lb`:
 weight_lb <- 2.2 * weight_kg
 ```
 
-and then change `weight_kg` to 100.
+and then change `weight_kg` to 50.
 
 ```{r, purl=FALSE}
-weight_kg <- 100
+weight_kg <- 50
 ```
 
 > <h3>Challenge</h3>
 > 
-> What do you think is the current content of the object `weight_lb`? 126.5 or 220?
+> What do you think is the current content of the object `weight_lb`? 110 or 220?
 
 ### Comments
 
@@ -260,7 +260,7 @@ either numbers or characters. We can assign a series of values to a vector using
 the `c()` function. For example we can create a vector of weights and assign
 it to a new object `weight_g`:
 
-```{r, purl=FALSE}
+```{r, results='show', purl=FALSE}
 weight_g <- c(21, 34, 39, 54, 55)
 weight_g
 ```
@@ -268,14 +268,14 @@ weight_g
 There are many functions that allow you to inspect the content of a
 vector. `length()` tells you how many elements are in a particular vector:
 
-```{r, purl=FALSE}
+```{r, results='show', purl=FALSE}
 length(weight_g)
 ```
 
 An important feature of a vector, is that all of the elements are the same type of data.
 The function `class()` indicates the class (the type of element) of an object:
 
-```{r, purl=FALSE}
+```{r, results='show', purl=FALSE}
 class(weight_g)
 ```
 
@@ -283,12 +283,12 @@ The function `str()` provides an overview of the structure of an object and its
 elements. It is a useful function when working with large and complex
 objects:
 
-```{r, purl=FALSE}
+```{r, results='show', purl=FALSE}
 str(weight_g)
 ```
 
 You can use the `c()` function to add other elements to your vector:
-```{r, purl=FALSE}
+```{r, results='show', purl=FALSE}
 weight_g <- c(weight_g, 90) # add to the end of the vector
 weight_g <- c(30, weight_g) # add to the beginning of the vector
 weight_g
@@ -442,7 +442,7 @@ become tedious. The function `%in%` allows you to test if any of the elements of
 a search vector are found:
 
 ```{r, results='show', purl=FALSE}
-animals[animals == "bear" | animals == "rat"] # returns both rat and cat
+animals[animals == "bear" | animals == "rat"] # returns both rat and bear
 animals %in% c("rat", "cat", "dog", "duck", "goat")
 animals[animals %in% c("rat", "cat", "dog", "duck", "goat")]
 ```
@@ -461,7 +461,7 @@ You can combine multiple tests using `&` (both conditions are true, AND) or `|`
 
 ```{r, results='show', purl=FALSE}
 weight_g[weight_g < 30 | weight_g > 50]
-weight_g[weight_g >= 30 & weight_g == 21]
+weight_g[weight_g >= 30 & weight_g <= 90]
 ```
 
 Here, `<` stands for "less than", `>` for "greater than", `>=` for "greater than
