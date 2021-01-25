@@ -6,7 +6,7 @@ knitr::opts_chunk$set(results='hide', comment = "#>", purl = FALSE)
 
 > Learning Objectives
 >
-> * Load external data from a .csv file into a data frame in R with `read.csv()`
+  > * Load external data from a .csv file into a data frame in R with `read.csv()`
 > * Find basic properties of a data frames including size, class or type of the columns, names of rows and columns by using `str()`, `nrow()`, `ncol()`, `dim()`, `length()` , `colnames()`, `rownames()`
 > * Use `head()` and `tail()` to inspect rows of a data frame.
 > * Generate summary statistics for a data frame
@@ -22,10 +22,10 @@ knitr::opts_chunk$set(results='hide', comment = "#>", purl = FALSE)
 > - Use `na.omit()` to remove rows from a data frame with `NA` values.
 
 ------------
-
-## Loading tabular data
-
-```{r, echo=FALSE, purl=TRUE}
+  
+  ## Loading tabular data
+  
+  ```{r, echo=FALSE, purl=TRUE}
 ### Loading tabular data
 ```
 
@@ -38,14 +38,14 @@ that contains the traffic stop data, and we will use `read.csv()` to
 load into memory the content of the CSV file as an object of class `data.frame`.
 
 To download the data into your local `data/` subdirectory, run the following:
-
-```{r, eval=FALSE, purl=TRUE}
+  
+  ```{r, eval=FALSE, purl=TRUE}
 download.file("http://bit.ly/MS_trafficstops_bw", "data/MS_trafficstops_bw.csv")
 ```
 
 You are now ready to load the data:
-
-```{r, eval=TRUE,  purl=FALSE}
+  
+  ```{r, eval=TRUE,  purl=FALSE}
 trafficstops <- read.csv("data/MS_trafficstops_bw.csv")
 ```
 
@@ -56,8 +56,8 @@ loaded, we can print the variable's value: `trafficstops`.
 Wow... that was a lot of output. At least it means the data loaded
 properly. Let's check the top (the first 6 lines) of this data frame using the
 function `head()`:
-
-```{r, results='show', purl=FALSE}
+  
+  ```{r, results='show', purl=FALSE}
 head(trafficstops)
 ```
 
@@ -72,8 +72,8 @@ As you may recall, a data frame in R is a special case of a list, and a represen
 
 We can see this when inspecting the <b>str</b>ucture of a data frame
 with the function `str()`:
-
-```{r, results='show', purl=FALSE}
+  
+  ```{r, results='show', purl=FALSE}
 str(trafficstops)
 ```
 
@@ -93,7 +93,7 @@ functions to get a sense of the content/structure of the data. Let's try them ou
 * Content:
     * `head(trafficstops)` - shows the first 6 rows
     * `tail(trafficstops)` - shows the last 6 rows
-
+    
 * Names:
     * `names(trafficstops)` - returns the column names (synonym of `colnames()` for `data.frame`
 	   objects)
@@ -189,10 +189,10 @@ feature to get the full and correct column name.
 >      * Pull out that last row using `nrow()` instead of the row number.
 >      * Create a new data frame object (`trafficstops_last`) from that last row.
 >
-> 3. Use `nrow()` to extract the row that is in the middle of the data
+  > 3. Use `nrow()` to extract the row that is in the middle of the data
 >    frame. Store the content of this row in an object named `trafficstops_middle`.
 >
-> 4. Combine `nrow()` with the `-` notation above to reproduce the behavior of
+  > 4. Combine `nrow()` with the `-` notation above to reproduce the behavior of
 >    `head(trafficstops)` keeping just the first through 6th rows of the trafficstops
 >    dataset.
 
@@ -222,7 +222,7 @@ feature to get the full and correct column name.
 ```
 
 <!---
-```{r, purl=FALSE}
+  ```{r, purl=FALSE}
 ## Answers
 trafficstops_200 <- trafficstops[200, ]
 trafficstops_last <- trafficstops[nrow(trafficstops), ]
@@ -230,17 +230,17 @@ trafficstops_middle <- trafficstops[nrow(trafficstops)/2, ]
 trafficstops_head <- trafficstops[-c(7:nrow(trafficstops)),]
 ```
 --->
-
-## Conditional subsetting 
-
-```{r, echo=FALSE, purl=TRUE}
+  
+  ## Conditional subsetting 
+  
+  ```{r, echo=FALSE, purl=TRUE}
 
 ## Conditional subsetting
 ```
 
 Often times we need to extract a subset of a data frame based on certain conditions. For example, if we wanted to look at traffic stops in Webster County only we could say:
-
-```{r eval=FALSE}
+  
+  ```{r eval=FALSE}
 # the condition:
 # returns a logical vector of the length of the column
 trafficstops$county_name == "Webster County" 
@@ -254,8 +254,8 @@ Webster_trafficstops <- trafficstops[trafficstops$county_name == "Webster County
 ```
 
 This is also a possibility (but slower):
-
-```{r results='show'}
+  
+  ```{r results='show'}
 Webster_trafficstops <- subset(trafficstops, county_name == "Webster County")
 nrow(Webster_trafficstops) # 393 stops in Webster County!
 
@@ -266,12 +266,12 @@ table(Webster_trafficstops$driver_race)
 These commands are from the R base package. In the R Data Wrangling workshop we will discuss a different way of subsetting using functions from the `tidyverse` package.
 
 > <h3>Challenge</h3>
-> * Use subsetting to extract trafficstops in Hancock, Harrison, and Jackson Counties into a separate data frame `coastal_counties`. 
+  > * Use subsetting to extract trafficstops in Hancock, Harrison, and Jackson Counties into a separate data frame `coastal_counties`. 
 > * Using `coastal_counties`, count the number of Black and White drivers in the three counties.
 > * Bonus: How does the ratio of Black to White stops in the three coastal counties compare to the same ratio for stops in the entire state of Mississippi?
-> 
-
-```{r, echo=FALSE, purl=TRUE}
+  > 
+  
+  ```{r, echo=FALSE, purl=TRUE}
 ## Challenge
 ## * Use subsetting to extract traffic stops in Hancock, Harrison, and Jackson Counties into a separate data frame `coastal_counties`.
 ## * Using `coastal_counties`, count the number of Black and White drivers in the three counties.
@@ -279,7 +279,7 @@ These commands are from the R base package. In the R Data Wrangling workshop we 
 ```
 
 <!---
-```{r, purl=FALSE}
+  ```{r, purl=FALSE}
 ## Answers
 coastal_counties <- trafficstops[trafficstops$county_name %in% c("Hancock County", "Harrison County", "Jackson County"), ]
 # or
@@ -295,11 +295,11 @@ sum(coastal_counties$driver_race == "Black")/sum(coastal_counties$driver_race ==
 sum(trafficstops$driver_race == "Black")/sum(trafficstops$driver_race == "White")
 ```
 --->
-
-
-## Adding and removing rows and columns
-
-```{r, echo=FALSE, purl=TRUE}
+  
+  
+  ## Adding and removing rows and columns
+  
+  ```{r, echo=FALSE, purl=TRUE}
 
 ## Adding and removing rows and columns
 ```
@@ -377,7 +377,7 @@ nrow(na.omit(dfr)) # 1
 ### Factors
 ```
 
-When we did `str(trafficstops)` we saw that only one of the columns are numeric (`county_fips`), all the others are of a special class called a `factor`. Factors are very useful and are actually
+Factors are very useful and are actually
 something that make R particularly well suited to working with data, so we're
 going to spend a little time introducing them.
 
@@ -393,17 +393,17 @@ treating them like strings.
 Once created, factors can only contain a pre-defined set of values, known as
 *levels*. By default, R always sorts *levels* in alphabetical order. For
 instance, if you have a factor with 2 levels:
-
-```{r, purl=TRUE}
+  
+  ```{r, purl=TRUE}
 party <- factor(c("republican", "democrat", "democrat", "republican"))
 ```
 
 R will assign `1` to the level `"democrat"` and `2` to the level `"republican"` (because
-`d` comes before `r`, even though the first element in this vector is
-`"republican"`). You can check this by using the function `levels()`, and check the
+                                                                                 `d` comes before `r`, even though the first element in this vector is
+                                                                                 `"republican"`). You can check this by using the function `levels()`, and check the
 number of levels using `nlevels()`:
-
-```{r, purl=FALSE}
+  
+  ```{r, purl=FALSE}
 levels(party)
 nlevels(party)
 ```
@@ -412,8 +412,8 @@ Sometimes, the order of the factors does not matter, other times you might want
 to specify the order because it is meaningful (e.g., "low", "medium", "high"),
 it improves your visualization, or it is required by a particular type of
 analysis. Here, one way to reorder our levels in the `party` vector would be:
-
-```{r, results=TRUE, purl=FALSE}
+  
+  ```{r, results=TRUE, purl=FALSE}
 party # current order
 party <- factor(party, levels = c("republican", "democrat"))
 party # after re-ordering
@@ -433,14 +433,15 @@ If you need to convert a factor to a character vector, you use
 
 ```{r, purl=FALSE}
 as.character(party)
+as.factor(party)
 ```
 
 Converting factors where the levels appear as numbers (such as concentration
-levels, or years) to a numeric vector is a little trickier.  One method is to
+                                                       levels, or years) to a numeric vector is a little trickier.  One method is to
 convert factors to characters and then numbers.  Another method is to use the
 `levels()` function. Compare:
-
-```{r, purl=TRUE}
+  
+  ```{r, purl=TRUE}
 f <- factor(c(1990, 1983, 1977, 1998, 1990))
 as.numeric(f)               # wrong! and there is no warning...
 as.numeric(as.character(f)) # works...
@@ -448,8 +449,8 @@ as.numeric(levels(f))[f]    # The recommended way.
 ```
 
 Notice that in the `levels()` approach, three important steps occur:
-
-* We obtain all the factor levels using `levels(f)`
+  
+  * We obtain all the factor levels using `levels(f)`
 * We convert these levels to numeric values using `as.numeric(levels(f))`
 * We then access these numeric values using the underlying integers of the vector `f`  as indices inside the square brackets
 
@@ -463,14 +464,15 @@ level. Let's look at the number of blacks and whites in the dataset:
 # Coerce the column "driver_race" into a factor
 trafficstops$driver_race <- factor(trafficstops$driver_race)
 # bar plot of the number of black and white drivers stopped:
+trafficstops$driver_race <- as.factor(trafficstops$driver_race)
 plot(trafficstops$driver_race)
 ```
 
 There seem to be a number of individuals for which the race information hasn't been recorded.
 
 Additionally, for these individuals, there is no label to indicate that the information is missing. Let’s rename this label to something more meaningful. Before doing that, we’re going to pull out the data on race and work with that data, so we’re not modifying the working copy of the data frame:
-
-```{r, results=TRUE, purl=FALSE}
+  
+  ```{r, results=TRUE, purl=FALSE}
 race <- trafficstops$driver_race
 head(race)
 levels(race)
@@ -480,13 +482,13 @@ head(race)
 ```
 
 > <h3>Challenge</h3>
->
-> * Rename "Black" to "African American".
+  >
+  > * Rename "Black" to "African American".
 > * Now that we have renamed the factor level to "Missing", can you recreate the
 >  barplot such that "Missing" is last (to the right)?
-
-
-```{r wrong-order, echo=FALSE, purl=TRUE}
+  
+  
+  ```{r wrong-order, echo=FALSE, purl=TRUE}
 ## Challenges
 ##
 ## * Rename "Black" to "African American".
@@ -495,16 +497,23 @@ head(race)
 ```
 
 <!---
-```{r correct-order, purl=FALSE}
+  ```{r correct-order, purl=FALSE}
 ## Answers
 levels(race)[2] <- c("African American") # also works without c function
 race <- factor(race, levels = c("African American", "White", "Missing"))
 plot(race)
 ```
 --->
+  
+  
+### Using `stringsAsFactors`
+  
+  As of R version 4.0.0, the stringsAsfactors argument defaults to FALSE when using `read.csv()`. 
+
+Depending on what you want to do with the data, you may want to keep these columns as `character` or set `stringsAsFactors = TRUE` to coerce strings to factors when importing csv files. Alternatively, the `read_csv()` function from the dplyr library also does not covert strings to factors (more on this another day). 
 
 
-
+<<<<<<< HEAD
 ### Using `stringsAsFactors=TRUE`
 
 By default, when building or importing a data frame with `read.csv()`, the columns that contain characters (i.e., text) are read as such. Depending on what you intend to do with the data, you may want to keep these
@@ -516,6 +525,13 @@ Compare the output of `str(trafficstops)` when setting `stringsAsFactors = TRUE`
 
 
 ```{r, eval=FALSE, purl=FALSE}
+=======
+Compare the output of `str(trafficstops)` when setting `stringsAsFactors = TRUE`
+(default) and `stringsAsFactors = FALSE`:
+  
+  
+  ```{r, eval=FALSE, purl=FALSE}
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 # Compare the difference between when the data are being read as
 # `factor`, and when they are being read as `character`.
 trafficstops <- read.csv("data/MS_policing_bw.csv", stringsAsFactors = TRUE)
@@ -526,21 +542,21 @@ str(trafficstops) # this is now the default.
 
 
 > <h3>Challenge</h3>
->
-> Can you predict the class for each of the columns in the following example?
->    Check your guesses using `str(country_climate)`:
->      * Are they what you expected?  Why? Why not?
->      * What would have been different if we had added `stringsAsFactors = FALSE` to this call?
->      * What would you need to change to ensure that each column had the accurate data type?
->
->     ```
+  >
+  > Can you predict the class for each of the columns in the following example?
+  >    Check your guesses using `str(country_climate)`:
+  >      * Are they what you expected?  Why? Why not?
+  >      * What would have been different if we had added `stringsAsFactors = FALSE` to this call?
+  >      * What would you need to change to ensure that each column had the accurate data type?
+  >
+  >     ```
 >     country_climate <- data.frame(
->            country=c("Canada", "Panama", "South Africa", "Australia"),
->            climate=c("cold", "hot", "temperate", "hot/temperate"),
->            temperature=c(10, 30, 18, "15"),
->            northern_hemisphere=c(TRUE, TRUE, FALSE, "FALSE"),
->            has_kangaroo=c(FALSE, FALSE, FALSE, 1)
->            )
+  >            country=c("Canada", "Panama", "South Africa", "Australia"),
+  >            climate=c("cold", "hot", "temperate", "hot/temperate"),
+  >            temperature=c(10, 30, 18, "15"),
+  >            northern_hemisphere=c(TRUE, TRUE, FALSE, "FALSE"),
+  >            has_kangaroo=c(FALSE, FALSE, FALSE, 1)
+  >            )
 >     ```
 
 
@@ -555,10 +571,10 @@ str(trafficstops) # this is now the default.
 ##   * What would you need to change to ensure that each column had the
 ##     accurate data type?
 country_climate <- data.frame(country=c("Canada", "Panama", "South Africa", "Australia"),
-                                   climate=c("cold", "hot", "temperate", "hot/temperate"),
-                                 temperature=c(10, 30, 18, "15"),
-                                  northern_hemisphere=c(TRUE, TRUE, FALSE, "FALSE"),
-                                 has_kangaroo=c(FALSE, FALSE, FALSE, 1))
+                              climate=c("cold", "hot", "temperate", "hot/temperate"),
+                              temperature=c(10, 30, 18, "15"),
+                              northern_hemisphere=c(TRUE, TRUE, FALSE, "FALSE"),
+                              has_kangaroo=c(FALSE, FALSE, FALSE, 1))
 ```
 
 <!--- Answers
@@ -580,9 +596,9 @@ country_climate <- data.frame(country=c("Canada", "Panama", "South Africa", "Aus
 ```
 
 --->
-
-
-The automatic conversion of data type is sometimes a blessing, sometimes an
+  
+  
+  The automatic conversion of data type is sometimes a blessing, sometimes an
 annoyance. Be aware that it exists, learn the rules, and double check that data
 you import in R are of the correct type within your data frame. If not, use it
 to your advantage to detect mistakes that might have been introduced during data
@@ -658,8 +674,8 @@ plot(factor(day(stop_date)))
 > * Extract `driver_birthdate` into a vector `birth_date` 
 > * Create a new vector `age` with the driver's age at the time of the stop in years
 > * Coerce `age` to a factor and use the `plot` function to check your results. What do you find?
-
-```{r calculate-age, echo=FALSE, purl=TRUE}
+  
+  ```{r calculate-age, echo=FALSE, purl=TRUE}
 ## Challenge
 ##
 ## * Determine the (approximate) age of the driver in years at the time of the stop:
@@ -680,3 +696,4 @@ plot(factor(age)) # negative age
 hist(age)
 ```
 --->
+  
