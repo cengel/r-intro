@@ -651,25 +651,15 @@ barplot such that “Missing” is last (to the right)?</li>
 </div>
 <div id="using-stringsasfactors" class="section level3">
 <h3><span class="header-section-number">3.3.3</span> Using <code>stringsAsFactors</code></h3>
-<p>As of R version 4.0.0, the stringsAsfactors argument defaults to FALSE when using <code>read.csv()</code>.</p>
-<p>Depending on what you want to do with the data, you may want to keep these columns as <code>character</code> or set <code>stringsAsFactors = TRUE</code> to coerce strings to factors when importing csv files. Alternatively, the <code>read_csv()</code> function from the dplyr library also does not covert strings to factors (more on this another day).</p>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-### Using <code>stringsAsFactors=TRUE</code></p>
-<p>By default, when building or importing a data frame with <code>read.csv()</code>, the columns that contain characters (i.e., text) are read as such. Depending on what you intend to do with the data, you may want to keep these
+<p>By default, when building or importing a data frame with <code>read.csv()</code>, the columns that contain characters (i.e., text) are read as such. (This was introduced in R Version 4.) Depending on what you intend to do with the data, you may want to keep these
 columns as <code>character</code> or convert to <code>factor</code>. To do so, <code>read.csv()</code> and <code>read.table()</code> have an
 argument called <code>stringsAsFactors</code> which can be set to <code>TRUE</code>.</p>
-<p>Compare the output of <code>str(trafficstops)</code> when setting <code>stringsAsFactors = TRUE</code>
-and <code>stringsAsFactors = FALSE</code> (default):</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="op">==</span><span class="er">=====</span></a>
-<a class="sourceLine" id="cb135-2" title="2">Compare the output of <span class="st">`</span><span class="dt">str(trafficstops)</span><span class="st">`</span> when setting <span class="st">`</span><span class="dt">stringsAsFactors = TRUE</span><span class="st">`</span></a>
-<a class="sourceLine" id="cb135-3" title="3">(default) and <span class="st">`</span><span class="dt">stringsAsFactors = FALSE</span><span class="st">`</span><span class="op">:</span></a></code></pre></div>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="op">&gt;</span><span class="er">&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="st"> </span>d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614</a>
-<a class="sourceLine" id="cb136-2" title="2"><span class="co"># Compare the difference between when the data are being read as</span></a>
-<a class="sourceLine" id="cb136-3" title="3"><span class="co"># `factor`, and when they are being read as `character`.</span></a>
-<a class="sourceLine" id="cb136-4" title="4">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_policing_bw.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb136-5" title="5"><span class="kw">str</span>(trafficstops)</a>
-<a class="sourceLine" id="cb136-6" title="6">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_policing_bw.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb136-7" title="7"><span class="kw">str</span>(trafficstops) <span class="co"># this is now the default.</span></a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="co"># Compare the difference between when the data are being read as</span></a>
+<a class="sourceLine" id="cb135-2" title="2"><span class="co"># `factor`, and when they are being read as `character`.</span></a>
+<a class="sourceLine" id="cb135-3" title="3">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_policing_bw.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb135-4" title="4"><span class="kw">str</span>(trafficstops)</a>
+<a class="sourceLine" id="cb135-5" title="5">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_policing_bw.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>) <span class="co"># this is now the default.</span></a>
+<a class="sourceLine" id="cb135-6" title="6"><span class="kw">str</span>(trafficstops) </a></code></pre></div>
 <blockquote>
 <h3>
 Challenge
@@ -708,7 +698,7 @@ date and time information into a variable that is appropriate and usable during
 analyses. If you have control over your data it might be useful to ensure that each component of your date is stored as a separate
 variable, i.e a separate column for day, month, and year. However, often we do not have control and the date is stored in one single column and with varying order and separating characters between its components.</p>
 <p>Using <code>str()</code>, we can see that both dates in our data frame <code>stop_date</code> and <code>driver_birthdate</code> are each stored in one column.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="kw">str</span>(trafficstops)</a></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1"><span class="kw">str</span>(trafficstops)</a></code></pre></div>
 <p>As an example for how to work with dates let us see if there are seasonal differences in the number of traffic stops.</p>
 <p>We’re going to be using the <code>ymd()</code> function from the package <strong><code>lubridate</code></strong>. This
 function is designed to take a vector representing year, month, and day and convert
@@ -716,12 +706,12 @@ that information to a POSIXct vector. POSIXct is a class of data recognized by R
 being a date or date and time. The argument that the function requires is relatively
 flexible, but, as a best practice, is a character vector formatted as “YYYY-MM-DD”.</p>
 <p>Start by loading the required package:</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1">stop_date &lt;-<span class="st"> </span><span class="kw">ymd</span>(trafficstops<span class="op">$</span>stop_date)</a>
-<a class="sourceLine" id="cb140-2" title="2"><span class="kw">str</span>(stop_date) <span class="co"># notice the &#39;date&#39; class</span></a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1">stop_date &lt;-<span class="st"> </span><span class="kw">ymd</span>(trafficstops<span class="op">$</span>stop_date)</a>
+<a class="sourceLine" id="cb139-2" title="2"><span class="kw">str</span>(stop_date) <span class="co"># notice the &#39;date&#39; class</span></a></code></pre></div>
 <p>The <code>ymd</code> function also has nicely taken care of the fact that the original format of the date column is a factor!</p>
 <p>We can now easily extract year, month, and date using the respective functions: <code>year()</code>, <code>month()</code>, and <code>day()</code> like so:</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1"><span class="kw">plot</span>(<span class="kw">factor</span>(<span class="kw">year</span>(stop_date))) <span class="co">#convert year to factor to plot</span></a></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="kw">plot</span>(<span class="kw">factor</span>(<span class="kw">year</span>(stop_date))) <span class="co">#convert year to factor to plot</span></a></code></pre></div>
 <p><img src="R-intro_files/figure-html/yearly-stops-1.png" width="672" /></p>
 <blockquote>
 <h3>

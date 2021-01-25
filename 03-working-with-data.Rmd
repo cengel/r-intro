@@ -505,39 +505,19 @@ plot(race)
 ```
 --->
   
-  
 ### Using `stringsAsFactors`
-  
-  As of R version 4.0.0, the stringsAsfactors argument defaults to FALSE when using `read.csv()`. 
 
-Depending on what you want to do with the data, you may want to keep these columns as `character` or set `stringsAsFactors = TRUE` to coerce strings to factors when importing csv files. Alternatively, the `read_csv()` function from the dplyr library also does not covert strings to factors (more on this another day). 
-
-
-<<<<<<< HEAD
-### Using `stringsAsFactors=TRUE`
-
-By default, when building or importing a data frame with `read.csv()`, the columns that contain characters (i.e., text) are read as such. Depending on what you intend to do with the data, you may want to keep these
+By default, when building or importing a data frame with `read.csv()`, the columns that contain characters (i.e., text) are read as such. (This was introduced in R Version 4.) Depending on what you intend to do with the data, you may want to keep these
 columns as `character` or convert to `factor`. To do so, `read.csv()` and `read.table()` have an
 argument called `stringsAsFactors` which can be set to `TRUE`.
 
-Compare the output of `str(trafficstops)` when setting `stringsAsFactors = TRUE`
- and `stringsAsFactors = FALSE` (default):
-
-
 ```{r, eval=FALSE, purl=FALSE}
-=======
-Compare the output of `str(trafficstops)` when setting `stringsAsFactors = TRUE`
-(default) and `stringsAsFactors = FALSE`:
-  
-  
-  ```{r, eval=FALSE, purl=FALSE}
->>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 # Compare the difference between when the data are being read as
 # `factor`, and when they are being read as `character`.
 trafficstops <- read.csv("data/MS_policing_bw.csv", stringsAsFactors = TRUE)
 str(trafficstops)
-trafficstops <- read.csv("data/MS_policing_bw.csv", stringsAsFactors = FALSE)
-str(trafficstops) # this is now the default.
+trafficstops <- read.csv("data/MS_policing_bw.csv", stringsAsFactors = FALSE) # this is now the default.
+str(trafficstops) 
 ```
 
 
