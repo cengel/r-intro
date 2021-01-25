@@ -460,6 +460,8 @@ quick glance at the number of observations represented by each factor
 level. Let's look at the number of blacks and whites in the dataset:
 
 ```{r driver-race-barplot, purl=TRUE}
+# Coerce the column "driver_race" into a factor
+trafficstops$driver_race <- factor(trafficstops$driver_race)
 # bar plot of the number of black and white drivers stopped:
 plot(trafficstops$driver_race)
 ```
@@ -503,20 +505,14 @@ plot(race)
 
 
 
-### Using `stringsAsFactors=FALSE`
+### Using `stringsAsFactors=TRUE`
 
-By default, when building or importing a data frame with `read.csv()`, the columns that contain
-characters (i.e., text) are coerced (=converted) into the `factor` data
-type. Depending on what you want to do with the data, you may want to keep these
-columns as `character`. To do so, `read.csv()` and `read.table()` have an
-argument called `stringsAsFactors` which can be set to `FALSE`.
-
-In most cases, it's preferable to set `stringsAsFactors = FALSE` when importing
-your data, and converting as a factor only the columns that require this data
-type.
+By default, when building or importing a data frame with `read.csv()`, the columns that contain characters (i.e., text) are read as such. Depending on what you intend to do with the data, you may want to keep these
+columns as `character` or convert to `factor`. To do so, `read.csv()` and `read.table()` have an
+argument called `stringsAsFactors` which can be set to `TRUE`.
 
 Compare the output of `str(trafficstops)` when setting `stringsAsFactors = TRUE`
-(default) and `stringsAsFactors = FALSE`:
+ and `stringsAsFactors = FALSE` (default):
 
 
 ```{r, eval=FALSE, purl=FALSE}
@@ -525,9 +521,7 @@ Compare the output of `str(trafficstops)` when setting `stringsAsFactors = TRUE`
 trafficstops <- read.csv("data/MS_policing_bw.csv", stringsAsFactors = TRUE)
 str(trafficstops)
 trafficstops <- read.csv("data/MS_policing_bw.csv", stringsAsFactors = FALSE)
-str(trafficstops)
-# Convert the column "driver_race" into a factor
-trafficstops$driver_race <- factor(trafficstops$driver_race)
+str(trafficstops) # this is now the default.
 ```
 
 

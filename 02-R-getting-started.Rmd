@@ -306,7 +306,7 @@ calculating.
 A vector can also contain characters:
 
 ```{r, purl=FALSE}
-animals <- c("mouse", "rat", "dog", "bear")
+animals <- c("mouse", "rat", "dog", "frog")
 class(animals)
 ```
 
@@ -442,7 +442,7 @@ become tedious. The function `%in%` allows you to test if any of the elements of
 a search vector are found:
 
 ```{r, results='show', purl=FALSE}
-animals[animals == "bear" | animals == "rat"] # returns both rat and bear
+animals[animals == "frog" | animals == "rat"] # returns both rat and frog
 animals %in% c("rat", "cat", "dog", "duck", "goat")
 animals[animals %in% c("rat", "cat", "dog", "duck", "goat")]
 ```
