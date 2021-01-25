@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Introduction to R</title>
+  <meta name="description" content="Workshop materials for Intro to R" />
+<<<<<<< HEAD
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+=======
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+
+  <meta property="og:title" content="Introduction to R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Workshop materials for Intro to R" />
+  <meta name="github-repo" content="cengel/R-intro" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to R" />
+  
+  <meta name="twitter:description" content="Workshop materials for Intro to R" />
+  
+
+<meta name="author" content="Claudia A Engel" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="backgroud.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<<<<<<< HEAD
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+=======
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#setup-instructions"><i class="fa fa-check"></i>Setup Instructions</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#macos"><i class="fa fa-check"></i>macOS</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#windows"><i class="fa fa-check"></i>Windows</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#linux"><i class="fa fa-check"></i>Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="backgroud.html"><a href="backgroud.html"><i class="fa fa-check"></i><b>1</b> R and Rstudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="backgroud.html"><a href="backgroud.html#what-is-r-what-is-rstudio"><i class="fa fa-check"></i><b>1.1</b> What is R? What is RStudio?</a></li>
+<li class="chapter" data-level="1.2" data-path="backgroud.html"><a href="backgroud.html#why-learn-r"><i class="fa fa-check"></i><b>1.2</b> Why learn R?</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="backgroud.html"><a href="backgroud.html#r-does-not-involve-lots-of-pointing-and-clicking-and-thats-a-good-thing"><i class="fa fa-check"></i><b>1.2.1</b> R does not involve lots of pointing and clicking, and that’s a good thing</a></li>
+<li class="chapter" data-level="1.2.2" data-path="backgroud.html"><a href="backgroud.html#r-code-is-great-for-reproducibility"><i class="fa fa-check"></i><b>1.2.2</b> R code is great for reproducibility</a></li>
+<li class="chapter" data-level="1.2.3" data-path="backgroud.html"><a href="backgroud.html#r-is-interdisciplinary-and-extensible"><i class="fa fa-check"></i><b>1.2.3</b> R is interdisciplinary and extensible</a></li>
+<li class="chapter" data-level="1.2.4" data-path="backgroud.html"><a href="backgroud.html#r-works-on-data-of-all-shapes-and-sizes"><i class="fa fa-check"></i><b>1.2.4</b> R works on data of all shapes and sizes</a></li>
+<li class="chapter" data-level="1.2.5" data-path="backgroud.html"><a href="backgroud.html#r-produces-high-quality-graphics"><i class="fa fa-check"></i><b>1.2.5</b> R produces high-quality graphics</a></li>
+<li class="chapter" data-level="1.2.6" data-path="backgroud.html"><a href="backgroud.html#r-has-a-large-community"><i class="fa fa-check"></i><b>1.2.6</b> R has a large community</a></li>
+<li class="chapter" data-level="1.2.7" data-path="backgroud.html"><a href="backgroud.html#not-only-is-r-free-but-it-is-also-open-source-and-cross-platform"><i class="fa fa-check"></i><b>1.2.7</b> Not only is R free, but it is also open-source and cross-platform</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="backgroud.html"><a href="backgroud.html#knowing-your-way-around-rstudio"><i class="fa fa-check"></i><b>1.3</b> Knowing your way around RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="backgroud.html"><a href="backgroud.html#how-to-start-an-r-project"><i class="fa fa-check"></i><b>1.4</b> How to start an R project</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="backgroud.html"><a href="backgroud.html#organizing-your-working-directory"><i class="fa fa-check"></i><b>1.4.1</b> Organizing your working directory</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="backgroud.html"><a href="backgroud.html#interacting-with-r"><i class="fa fa-check"></i><b>1.5</b> Interacting with R</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="backgroud.html"><a href="backgroud.html#rstudio-console-and-command-prompt"><i class="fa fa-check"></i><b>1.5.1</b> RStudio Console and Command Prompt</a></li>
+<li class="chapter" data-level="1.5.2" data-path="backgroud.html"><a href="backgroud.html#rstudio-script-editor"><i class="fa fa-check"></i><b>1.5.2</b> RStudio Script Editor</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>2</b> Getting Started with R</a><ul>
+<li class="chapter" data-level="2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-objects-in-r"><i class="fa fa-check"></i><b>2.1</b> Creating objects in R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="gettingstarted.html"><a href="gettingstarted.html#comments"><i class="fa fa-check"></i><b>2.1.1</b> Comments</a></li>
+<li class="chapter" data-level="2.1.2" data-path="gettingstarted.html"><a href="gettingstarted.html#functions-and-their-arguments"><i class="fa fa-check"></i><b>2.1.2</b> Functions and their arguments</a></li>
+<li class="chapter" data-level="2.1.3" data-path="gettingstarted.html"><a href="gettingstarted.html#objects-vs.-variables"><i class="fa fa-check"></i><b>2.1.3</b> Objects vs. variables</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#vectors-and-data-types"><i class="fa fa-check"></i><b>2.2</b> Vectors and data types</a></li>
+<li class="chapter" data-level="2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#subsetting-vectors"><i class="fa fa-check"></i><b>2.3</b> Subsetting vectors</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#conditional-subsetting"><i class="fa fa-check"></i><b>2.3.1</b> Conditional subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#missing-data"><i class="fa fa-check"></i><b>2.4</b> Missing data</a></li>
+<li class="chapter" data-level="2.5" data-path="gettingstarted.html"><a href="gettingstarted.html#common-r-data-structures"><i class="fa fa-check"></i><b>2.5</b> Common R Data Structures</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="gettingstarted.html"><a href="gettingstarted.html#matrix"><i class="fa fa-check"></i><b>2.5.1</b> Matrix</a></li>
+<li class="chapter" data-level="2.5.2" data-path="gettingstarted.html"><a href="gettingstarted.html#list"><i class="fa fa-check"></i><b>2.5.2</b> List</a></li>
+<li class="chapter" data-level="2.5.3" data-path="gettingstarted.html"><a href="gettingstarted.html#data-frame"><i class="fa fa-check"></i><b>2.5.3</b> Data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="gettingstarted.html"><a href="gettingstarted.html#extending-r-base-functionality"><i class="fa fa-check"></i><b>2.6</b> Extending R base functionality</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="gettingstarted.html"><a href="gettingstarted.html#installing-additional-packages"><i class="fa fa-check"></i><b>2.6.1</b> Installing additional packages</a></li>
+<li class="chapter" data-level="2.6.2" data-path="gettingstarted.html"><a href="gettingstarted.html#make-use-of-the-installed-packages"><i class="fa fa-check"></i><b>2.6.2</b> Make use of the installed packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="gettingstarted.html"><a href="gettingstarted.html#seeking-help"><i class="fa fa-check"></i><b>2.7</b> Seeking help</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="gettingstarted.html"><a href="gettingstarted.html#use-the-built-in-rstudio-help-interface"><i class="fa fa-check"></i><b>2.7.1</b> Use the built-in RStudio help interface</a></li>
+<li class="chapter" data-level="2.7.2" data-path="gettingstarted.html"><a href="gettingstarted.html#i-know-the-name-of-the-function-but-im-not-sure-how-to-use-it"><i class="fa fa-check"></i><b>2.7.2</b> I know the name of the function, but I’m not sure how to use it</a></li>
+<li class="chapter" data-level="2.7.3" data-path="gettingstarted.html"><a href="gettingstarted.html#there-must-be-a-function-to-do-x-but-i-dont-know-which-one"><i class="fa fa-check"></i><b>2.7.3</b> There must be a function to do X but I don’t know which one…</a></li>
+<li class="chapter" data-level="2.7.4" data-path="gettingstarted.html"><a href="gettingstarted.html#i-am-stuck-i-get-an-error-message-that-i-dont-understand"><i class="fa fa-check"></i><b>2.7.4</b> I am stuck… I get an error message that I don’t understand</a></li>
+<li class="chapter" data-level="2.7.5" data-path="gettingstarted.html"><a href="gettingstarted.html#how-to-ask-for-help"><i class="fa fa-check"></i><b>2.7.5</b> How to ask for help</a></li>
+<li class="chapter" data-level="2.7.6" data-path="gettingstarted.html"><a href="gettingstarted.html#where-to-ask-for-help"><i class="fa fa-check"></i><b>2.7.6</b> Where to ask for help?</a></li>
+<li class="chapter" data-level="2.7.7" data-path="gettingstarted.html"><a href="gettingstarted.html#resources-on-getting-help"><i class="fa fa-check"></i><b>2.7.7</b> Resources on getting help</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Working with tabular data in R</a><ul>
+<<<<<<< HEAD
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#loading-tabular-data"><i class="fa fa-check"></i><b>3.1</b> Loading tabular data</a></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#inspecting-data.frame-objects"><i class="fa fa-check"></i><b>3.2</b> Inspecting <code>data.frame</code> Objects</a></li>
+<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#indexing-and-subsetting-data-frames"><i class="fa fa-check"></i><b>3.3</b> Indexing and subsetting data frames</a></li>
+<li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#conditional-subsetting-1"><i class="fa fa-check"></i><b>3.4</b> Conditional subsetting</a></li>
+<li class="chapter" data-level="3.5" data-path="data.html"><a href="data.html#adding-and-removing-rows-and-columns"><i class="fa fa-check"></i><b>3.5</b> Adding and removing rows and columns</a></li>
+<li class="chapter" data-level="3.6" data-path="data.html"><a href="data.html#categorical-data-factors"><i class="fa fa-check"></i><b>3.6</b> Categorical data: factors</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="data.html"><a href="data.html#converting-factors"><i class="fa fa-check"></i><b>3.6.1</b> Converting factors</a></li>
+<li class="chapter" data-level="3.6.2" data-path="data.html"><a href="data.html#renaming-factors"><i class="fa fa-check"></i><b>3.6.2</b> Renaming factors</a></li>
+<li class="chapter" data-level="3.6.3" data-path="data.html"><a href="data.html#using-stringsasfactorstrue"><i class="fa fa-check"></i><b>3.6.3</b> Using <code>stringsAsFactors=TRUE</code></a></li>
+=======
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#challenge"><i class="fa fa-check"></i><b>3.1</b> Challenge</a></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#based-on-the-output-of-strtrafficstops-can-you-answer-the-following-questions"><i class="fa fa-check"></i><b>3.2</b> Based on the output of <code>str(trafficstops)</code>, can you answer the following questions?</a></li>
+<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#what-is-the-class-of-the-object-trafficstops"><i class="fa fa-check"></i><b>3.3</b> * What is the class of the object <code>trafficstops</code>?</a></li>
+<li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#how-many-rows-and-how-many-columns-are-in-this-object"><i class="fa fa-check"></i><b>3.4</b> * How many rows and how many columns are in this object?</a></li>
+<li class="chapter" data-level="3.5" data-path="data.html"><a href="data.html#how-many-counties-have-been-recorded-in-this-dataset"><i class="fa fa-check"></i><b>3.5</b> * How many counties have been recorded in this dataset?</a></li>
+<li class="chapter" data-level="3.6" data-path="data.html"><a href="data.html#answers"><i class="fa fa-check"></i><b>3.6</b> Answers</a></li>
+<li class="chapter" data-level="3.7" data-path="data.html"><a href="data.html#class-data-frame"><i class="fa fa-check"></i><b>3.7</b> * class: data frame</a></li>
+<li class="chapter" data-level="3.8" data-path="data.html"><a href="data.html#how-many-rows-211211-how-many-columns-11"><i class="fa fa-check"></i><b>3.8</b> * how many rows: 211211, how many columns: 11</a></li>
+<li class="chapter" data-level="3.9" data-path="data.html"><a href="data.html#how-many-counties-82"><i class="fa fa-check"></i><b>3.9</b> * how many counties: 82</a></li>
+<li class="chapter" data-level="3.10" data-path="data.html"><a href="data.html#indexing-and-subsetting-data-frames"><i class="fa fa-check"></i><b>3.10</b> Indexing and subsetting data frames</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="data.html"><a href="data.html#challenges"><i class="fa fa-check"></i><b>3.10.1</b> Challenges:</a></li>
+<li class="chapter" data-level="3.10.2" data-path="data.html"><a href="data.html#create-a-data.frame-trafficstops_200-containing-only-the"><i class="fa fa-check"></i><b>3.10.2</b> 1. Create a <code>data.frame</code> (<code>trafficstops_200</code>) containing only the</a></li>
+<li class="chapter" data-level="3.10.3" data-path="data.html"><a href="data.html#observations-from-row-200-of-the-trafficstops-dataset."><i class="fa fa-check"></i><b>3.10.3</b> observations from row 200 of the <code>trafficstops</code> dataset.</a></li>
+<li class="chapter" data-level="3.10.4" data-path="data.html"><a href="data.html#notice-how-nrow-gave-you-the-number-of-rows-in-a-data.frame"><i class="fa fa-check"></i><b>3.10.4</b> 2. Notice how <code>nrow()</code> gave you the number of rows in a <code>data.frame</code>?</a></li>
+<li class="chapter" data-level="3.10.5" data-path="data.html"><a href="data.html#use-that-number-to-pull-out-just-that-last-row-in-the-data-frame"><i class="fa fa-check"></i><b>3.10.5</b> * Use that number to pull out just that last row in the data frame</a></li>
+<li class="chapter" data-level="3.10.6" data-path="data.html"><a href="data.html#compare-that-with-what-you-see-as-the-last-row-using-tail-to-make"><i class="fa fa-check"></i><b>3.10.6</b> * Compare that with what you see as the last row using <code>tail()</code> to make</a></li>
+<li class="chapter" data-level="3.10.7" data-path="data.html"><a href="data.html#sure-its-meeting-expectations."><i class="fa fa-check"></i><b>3.10.7</b> sure it’s meeting expectations.</a></li>
+<li class="chapter" data-level="3.10.8" data-path="data.html"><a href="data.html#pull-out-that-last-row-using-nrow-instead-of-the-row-number"><i class="fa fa-check"></i><b>3.10.8</b> * Pull out that last row using <code>nrow()</code> instead of the row number</a></li>
+<li class="chapter" data-level="3.10.9" data-path="data.html"><a href="data.html#create-a-new-data-frame-object-trafficstops_last-from-that-last-row"><i class="fa fa-check"></i><b>3.10.9</b> * Create a new data frame object (<code>trafficstops_last</code>) from that last row</a></li>
+<li class="chapter" data-level="3.10.10" data-path="data.html"><a href="data.html#use-nrow-to-extract-the-row-that-is-in-the-middle-of-the"><i class="fa fa-check"></i><b>3.10.10</b> 3. Use <code>nrow()</code> to extract the row that is in the middle of the</a></li>
+<li class="chapter" data-level="3.10.11" data-path="data.html"><a href="data.html#data-frame.-store-the-content-of-this-row-in-an-object-named"><i class="fa fa-check"></i><b>3.10.11</b> data frame. Store the content of this row in an object named</a></li>
+<li class="chapter" data-level="3.10.12" data-path="data.html"><a href="data.html#trafficstops_middle."><i class="fa fa-check"></i><b>3.10.12</b> <code>trafficstops_middle</code>.</a></li>
+<li class="chapter" data-level="3.10.13" data-path="data.html"><a href="data.html#combine-nrow-with-the---notation-above-to-reproduce-the-behavior-of"><i class="fa fa-check"></i><b>3.10.13</b> 4. Combine <code>nrow()</code> with the <code>-</code> notation above to reproduce the behavior of</a></li>
+<li class="chapter" data-level="3.10.14" data-path="data.html"><a href="data.html#headtrafficstops-keeping-just-the-first-through-6th-rows-of-the-trafficstops"><i class="fa fa-check"></i><b>3.10.14</b> <code>head(trafficstops)</code> keeping just the first through 6th rows of the trafficstops</a></li>
+<li class="chapter" data-level="3.10.15" data-path="data.html"><a href="data.html#dataset."><i class="fa fa-check"></i><b>3.10.15</b> dataset.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="data.html"><a href="data.html#answers-1"><i class="fa fa-check"></i><b>3.11</b> Answers</a></li>
+<li class="chapter" data-level="3.12" data-path="data.html"><a href="data.html#categorical-data-factors"><i class="fa fa-check"></i><b>3.12</b> Categorical data: factors</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="data.html"><a href="data.html#converting-factors"><i class="fa fa-check"></i><b>3.12.1</b> Converting factors</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="data.html"><a href="data.html#challenge-1"><i class="fa fa-check"></i><b>3.13</b> Challenge:</a></li>
+<li class="chapter" data-level="3.14" data-path="data.html"><a href="data.html#can-you-predict-the-class-for-each-of-the-columns-in-the-following"><i class="fa fa-check"></i><b>3.14</b> Can you predict the class for each of the columns in the following</a></li>
+<li class="chapter" data-level="3.15" data-path="data.html"><a href="data.html#example"><i class="fa fa-check"></i><b>3.15</b> example?</a></li>
+<li class="chapter" data-level="3.16" data-path="data.html"><a href="data.html#check-your-guesses-using-strcountry_climate"><i class="fa fa-check"></i><b>3.16</b> Check your guesses using <code>str(country_climate)</code>:</a></li>
+<li class="chapter" data-level="3.17" data-path="data.html"><a href="data.html#are-they-what-you-expected-why-why-not"><i class="fa fa-check"></i><b>3.17</b> * Are they what you expected? Why? why not?</a></li>
+<li class="chapter" data-level="3.18" data-path="data.html"><a href="data.html#what-would-have-been-different-if-we-had-added-stringsasfactors-false"><i class="fa fa-check"></i><b>3.18</b> * What would have been different if we had added <code>stringsAsFactors = FALSE</code></a></li>
+<li class="chapter" data-level="3.19" data-path="data.html"><a href="data.html#to-this-call"><i class="fa fa-check"></i><b>3.19</b> to this call?</a></li>
+<li class="chapter" data-level="3.20" data-path="data.html"><a href="data.html#what-would-you-need-to-change-to-ensure-that-each-column-had-the"><i class="fa fa-check"></i><b>3.20</b> * What would you need to change to ensure that each column had the</a></li>
+<li class="chapter" data-level="3.21" data-path="data.html"><a href="data.html#accurate-data-type"><i class="fa fa-check"></i><b>3.21</b> accurate data type?</a></li>
+<li class="chapter" data-level="3.22" data-path="data.html"><a href="data.html#answers-2"><i class="fa fa-check"></i><b>3.22</b> Answers</a></li>
+<li class="chapter" data-level="3.23" data-path="data.html"><a href="data.html#missing-quotations-around-the-names-of-the-animals"><i class="fa fa-check"></i><b>3.23</b> * missing quotations around the names of the animals</a></li>
+<li class="chapter" data-level="3.24" data-path="data.html"><a href="data.html#missing-one-entry-in-the-feel-column-probably-for-one-of-the-furry-animals"><i class="fa fa-check"></i><b>3.24</b> * missing one entry in the “feel” column (probably for one of the furry animals)</a></li>
+<li class="chapter" data-level="3.25" data-path="data.html"><a href="data.html#missing-one-comma-in-the-weight-column"><i class="fa fa-check"></i><b>3.25</b> * missing one comma in the weight column</a></li>
+<li class="chapter" data-level="3.26" data-path="data.html"><a href="data.html#answers-3"><i class="fa fa-check"></i><b>3.26</b> Answers</a></li>
+<li class="chapter" data-level="3.27" data-path="data.html"><a href="data.html#country-climate-temperature-and-northern_hemisphere-are"><i class="fa fa-check"></i><b>3.27</b> * <code>country</code>, <code>climate</code>, <code>temperature</code>, and <code>northern_hemisphere</code> are</a></li>
+<li class="chapter" data-level="3.28" data-path="data.html"><a href="data.html#factors-has_kangaroo-is-numeric."><i class="fa fa-check"></i><b>3.28</b> factors; <code>has_kangaroo</code> is numeric.</a></li>
+<li class="chapter" data-level="3.29" data-path="data.html"><a href="data.html#using-stringsasfactorsfalse-would-have-made-them-character-instead-of"><i class="fa fa-check"></i><b>3.29</b> * using <code>stringsAsFactors=FALSE</code> would have made them character instead of</a></li>
+<li class="chapter" data-level="3.30" data-path="data.html"><a href="data.html#factors"><i class="fa fa-check"></i><b>3.30</b> factors</a></li>
+<li class="chapter" data-level="3.31" data-path="data.html"><a href="data.html#removing-the-quotes-in-temperature-northern_hemisphere-and-replacing-1"><i class="fa fa-check"></i><b>3.31</b> * removing the quotes in temperature, northern_hemisphere, and replacing 1</a></li>
+<li class="chapter" data-level="3.32" data-path="data.html"><a href="data.html#by-true-in-the-has_kangaroo-column-would-probably-what-was-originally"><i class="fa fa-check"></i><b>3.32</b> by TRUE in the <code>has_kangaroo</code> column would probably what was originally</a></li>
+<li class="chapter" data-level="3.33" data-path="data.html"><a href="data.html#intended."><i class="fa fa-check"></i><b>3.33</b> intended.</a><ul>
+<li class="chapter" data-level="3.33.1" data-path="data.html"><a href="data.html#dates"><i class="fa fa-check"></i><b>3.33.1</b> Dates</a></li>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+</ul></li>
+<li class="chapter" data-level="3.34" data-path="data.html"><a href="data.html#challenge-2"><i class="fa fa-check"></i><b>3.34</b> Challenge</a></li>
+<li class="chapter" data-level="3.35" data-path="data.html"><a href="data.html#are-there-more-stops-in-certain-months-of-the-year-or-certain-days-of-the-month"><i class="fa fa-check"></i><b>3.35</b> * Are there more stops in certain months of the year or certain days of the month?</a></li>
+<li class="chapter" data-level="3.36" data-path="data.html"><a href="data.html#answers-4"><i class="fa fa-check"></i><b>3.36</b> Answers</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Introduction to R</h1>
+<p class="author"><em>Claudia A Engel</em></p>
+<<<<<<< HEAD
+<p class="date"><em>Last updated: January 25, 2021</em></p>
+=======
+<p class="date"><em>Last updated: September 20, 2020</em></p>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+</div>
+<div id="prerequisites" class="section level1 unnumbered">
+<h1>Prerequisites</h1>
+<ul>
+<li>Geared specifically towards users who are <strong>new</strong> to R.<br />
+</li>
+<li>Have <a href="https://cran.r-project.org/">R</a> and <a href="https://www.rstudio.com/">RStudio</a> installed (see setup instructions below).</li>
+</ul>
+<div id="setup-instructions" class="section level2 unnumbered">
+<h2>Setup Instructions</h2>
+<p><a href="https://cran.r-project.org/"><strong>R</strong></a> and <a href="https://www.rstudio.com/"><strong>RStudio</strong></a> are separate downloads and installations. R is the
+underlying statistical computing environment, but using R alone is no
+fun. RStudio is a graphical integrated development environment (IDE) that makes
+using R much easier and more interactive. You need to install R before you
+install RStudio.</p>
+<div id="macos" class="section level3 unnumbered">
+<h3>macOS</h3>
+<div id="if-you-already-have-r-and-rstudio-installed" class="section level4 unnumbered">
+<h4>If you already have R and RStudio installed</h4>
+<ul>
+<li>Open RStudio, and click on “Help” &gt; “Check for updates”. If a new version is
+available, quit RStudio, and download the latest version for RStudio.</li>
+<li>To check the version of R you are using, start RStudio and the first thing
+that appears on the terminal indicates the version of R you are running. Alternatively, you can type <code>sessionInfo()</code>, which will also display which version of R you are running. Go on
+the <a href="https://cran.r-project.org/bin/macosx/">CRAN website</a> and check
+whether a more recent version is available. If so, please download and install
+it.</li>
+</ul>
+</div>
+<div id="if-you-dont-have-r-and-rstudio-installed" class="section level4 unnumbered">
+<h4>If you don’t have R and RStudio installed</h4>
+<ul>
+<li>Download R from
+the <a href="http://cran.r-project.org/bin/macosx">CRAN website</a>.</li>
+<li>Select the <code>.pkg</code> file for the latest R version</li>
+<li>Double click on the downloaded file to install R</li>
+<li>Go to the <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio download page</a></li>
+<li>Under <em>Installers</em> select <strong>RStudio x.yy.zzz - Mac OS X 10.6+ (64-bit)</strong>
+(where x, y, and z represent version numbers)</li>
+<li>Double click the file to install RStudio</li>
+<li>Once it’s installed, open RStudio to make sure it works and you don’t get any
+error messages.</li>
+</ul>
+</div>
+</div>
+<div id="windows" class="section level3 unnumbered">
+<h3>Windows</h3>
+<div id="if-you-already-have-r-and-rstudio-installed-1" class="section level4 unnumbered">
+<h4>If you already have R and RStudio installed</h4>
+<ul>
+<li>Open RStudio, and click on “Help” &gt; “Check for updates”. If a new version is
+available, quit RStudio, and download the latest version for RStudio.</li>
+<li>To check which version of R you are using, start RStudio and the first thing
+that appears in the console indicates the version of R you are
+running. Alternatively, you can type <code>sessionInfo()</code>, which will also display
+which version of R you are running. Go on
+the <a href="https://cran.r-project.org/bin/windows/base/">CRAN website</a> and check
+whether a more recent version is available. If so, please download and install
+it. You can <a href="https://cran.r-project.org/bin/windows/base/rw-FAQ.html#How-do-I-UNinstall-R_003f">check here</a> for
+more information on how to remove old versions from your system if you wish to do so.</li>
+</ul>
+</div>
+<div id="if-you-dont-have-r-and-rstudio-installed-1" class="section level4 unnumbered">
+<h4>If you don’t have R and RStudio installed</h4>
+<ul>
+<li>Download R from
+the <a href="http://cran.r-project.org/bin/windows/base/release.htm">CRAN website</a>.</li>
+<li>Run the <code>.exe</code> file that was just downloaded</li>
+<li>Go to the <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio download page</a></li>
+<li>Under <em>Installers</em> select <strong>RStudio x.yy.zzz - Windows
+XP/Vista/7/8</strong> (where x, y, and z represent version numbers)</li>
+<li>Double click the file to install it</li>
+<li>Once it’s installed, open RStudio to make sure it works and you don’t get any
+error messages.</li>
+</ul>
+</div>
+</div>
+<div id="linux" class="section level3 unnumbered">
+<h3>Linux</h3>
+<ul>
+<li>Follow the instructions for your distribution
+from <a href="https://cloud.r-project.org/bin/linux">CRAN</a>, they provide information
+to get the most recent version of R for common distributions. For most
+distributions, you could use your package manager (e.g., for Debian/Ubuntu run
+<code>sudo apt-get install r-base</code>, and for Fedora <code>sudo yum install R</code>), but we
+don’t recommend this approach as the versions provided by this are
+<<<<<<< HEAD
+usually out of date. In any case, make sure you have at least R 3.3.1.</li>
+=======
+usually out of date. In any case, make sure you have at least R 4.0.0.</li>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<li>Go to the
+<a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio download page</a></li>
+<li>Under <em>Installers</em> select the version that matches your distribution, and
+install it with your preferred method (e.g., with Debian/Ubuntu <code>sudo dpkg -i rstudio-x.yy.zzz-amd64.deb</code> at the terminal).</li>
+<li>Once it’s installed, open RStudio to make sure it works and you don’t get any
+error messages.</li>
+</ul>
+</div>
+</div>
+<div id="acknowledgements" class="section level2 unnumbered">
+<h2>Acknowledgements</h2>
+<p>Part of the materials for this tutorial are adapted from <a href="http://datacarpentry.org" class="uri">http://datacarpentry.org</a> and <a href="http://softwarecarpentry.org" class="uri">http://softwarecarpentry.org</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="backgroud.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/cengel/R-intro/edit/master/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R-intro.pdf", "R-intro.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Working with tabular data in R | Introduction to R</title>
+  <meta name="description" content="Workshop materials for Intro to R" />
+<<<<<<< HEAD
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+=======
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+
+  <meta property="og:title" content="Chapter 3 Working with tabular data in R | Introduction to R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Workshop materials for Intro to R" />
+  <meta name="github-repo" content="cengel/R-intro" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Working with tabular data in R | Introduction to R" />
+  
+  <meta name="twitter:description" content="Workshop materials for Intro to R" />
+  
+
+<meta name="author" content="Claudia A Engel" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="gettingstarted.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+<<<<<<< HEAD
+  { content: attr(title);
+=======
+  { content: attr(data-line-number);
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#setup-instructions"><i class="fa fa-check"></i>Setup Instructions</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#macos"><i class="fa fa-check"></i>macOS</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#windows"><i class="fa fa-check"></i>Windows</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#linux"><i class="fa fa-check"></i>Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="backgroud.html"><a href="backgroud.html"><i class="fa fa-check"></i><b>1</b> R and Rstudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="backgroud.html"><a href="backgroud.html#what-is-r-what-is-rstudio"><i class="fa fa-check"></i><b>1.1</b> What is R? What is RStudio?</a></li>
+<li class="chapter" data-level="1.2" data-path="backgroud.html"><a href="backgroud.html#why-learn-r"><i class="fa fa-check"></i><b>1.2</b> Why learn R?</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="backgroud.html"><a href="backgroud.html#r-does-not-involve-lots-of-pointing-and-clicking-and-thats-a-good-thing"><i class="fa fa-check"></i><b>1.2.1</b> R does not involve lots of pointing and clicking, and that’s a good thing</a></li>
+<li class="chapter" data-level="1.2.2" data-path="backgroud.html"><a href="backgroud.html#r-code-is-great-for-reproducibility"><i class="fa fa-check"></i><b>1.2.2</b> R code is great for reproducibility</a></li>
+<li class="chapter" data-level="1.2.3" data-path="backgroud.html"><a href="backgroud.html#r-is-interdisciplinary-and-extensible"><i class="fa fa-check"></i><b>1.2.3</b> R is interdisciplinary and extensible</a></li>
+<li class="chapter" data-level="1.2.4" data-path="backgroud.html"><a href="backgroud.html#r-works-on-data-of-all-shapes-and-sizes"><i class="fa fa-check"></i><b>1.2.4</b> R works on data of all shapes and sizes</a></li>
+<li class="chapter" data-level="1.2.5" data-path="backgroud.html"><a href="backgroud.html#r-produces-high-quality-graphics"><i class="fa fa-check"></i><b>1.2.5</b> R produces high-quality graphics</a></li>
+<li class="chapter" data-level="1.2.6" data-path="backgroud.html"><a href="backgroud.html#r-has-a-large-community"><i class="fa fa-check"></i><b>1.2.6</b> R has a large community</a></li>
+<li class="chapter" data-level="1.2.7" data-path="backgroud.html"><a href="backgroud.html#not-only-is-r-free-but-it-is-also-open-source-and-cross-platform"><i class="fa fa-check"></i><b>1.2.7</b> Not only is R free, but it is also open-source and cross-platform</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="backgroud.html"><a href="backgroud.html#knowing-your-way-around-rstudio"><i class="fa fa-check"></i><b>1.3</b> Knowing your way around RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="backgroud.html"><a href="backgroud.html#how-to-start-an-r-project"><i class="fa fa-check"></i><b>1.4</b> How to start an R project</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="backgroud.html"><a href="backgroud.html#organizing-your-working-directory"><i class="fa fa-check"></i><b>1.4.1</b> Organizing your working directory</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="backgroud.html"><a href="backgroud.html#interacting-with-r"><i class="fa fa-check"></i><b>1.5</b> Interacting with R</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="backgroud.html"><a href="backgroud.html#rstudio-console-and-command-prompt"><i class="fa fa-check"></i><b>1.5.1</b> RStudio Console and Command Prompt</a></li>
+<li class="chapter" data-level="1.5.2" data-path="backgroud.html"><a href="backgroud.html#rstudio-script-editor"><i class="fa fa-check"></i><b>1.5.2</b> RStudio Script Editor</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>2</b> Getting Started with R</a><ul>
+<li class="chapter" data-level="2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-objects-in-r"><i class="fa fa-check"></i><b>2.1</b> Creating objects in R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="gettingstarted.html"><a href="gettingstarted.html#comments"><i class="fa fa-check"></i><b>2.1.1</b> Comments</a></li>
+<li class="chapter" data-level="2.1.2" data-path="gettingstarted.html"><a href="gettingstarted.html#functions-and-their-arguments"><i class="fa fa-check"></i><b>2.1.2</b> Functions and their arguments</a></li>
+<li class="chapter" data-level="2.1.3" data-path="gettingstarted.html"><a href="gettingstarted.html#objects-vs.-variables"><i class="fa fa-check"></i><b>2.1.3</b> Objects vs. variables</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#vectors-and-data-types"><i class="fa fa-check"></i><b>2.2</b> Vectors and data types</a></li>
+<li class="chapter" data-level="2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#subsetting-vectors"><i class="fa fa-check"></i><b>2.3</b> Subsetting vectors</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#conditional-subsetting"><i class="fa fa-check"></i><b>2.3.1</b> Conditional subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#missing-data"><i class="fa fa-check"></i><b>2.4</b> Missing data</a></li>
+<li class="chapter" data-level="2.5" data-path="gettingstarted.html"><a href="gettingstarted.html#common-r-data-structures"><i class="fa fa-check"></i><b>2.5</b> Common R Data Structures</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="gettingstarted.html"><a href="gettingstarted.html#matrix"><i class="fa fa-check"></i><b>2.5.1</b> Matrix</a></li>
+<li class="chapter" data-level="2.5.2" data-path="gettingstarted.html"><a href="gettingstarted.html#list"><i class="fa fa-check"></i><b>2.5.2</b> List</a></li>
+<li class="chapter" data-level="2.5.3" data-path="gettingstarted.html"><a href="gettingstarted.html#data-frame"><i class="fa fa-check"></i><b>2.5.3</b> Data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="gettingstarted.html"><a href="gettingstarted.html#extending-r-base-functionality"><i class="fa fa-check"></i><b>2.6</b> Extending R base functionality</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="gettingstarted.html"><a href="gettingstarted.html#installing-additional-packages"><i class="fa fa-check"></i><b>2.6.1</b> Installing additional packages</a></li>
+<li class="chapter" data-level="2.6.2" data-path="gettingstarted.html"><a href="gettingstarted.html#make-use-of-the-installed-packages"><i class="fa fa-check"></i><b>2.6.2</b> Make use of the installed packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="gettingstarted.html"><a href="gettingstarted.html#seeking-help"><i class="fa fa-check"></i><b>2.7</b> Seeking help</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="gettingstarted.html"><a href="gettingstarted.html#use-the-built-in-rstudio-help-interface"><i class="fa fa-check"></i><b>2.7.1</b> Use the built-in RStudio help interface</a></li>
+<li class="chapter" data-level="2.7.2" data-path="gettingstarted.html"><a href="gettingstarted.html#i-know-the-name-of-the-function-but-im-not-sure-how-to-use-it"><i class="fa fa-check"></i><b>2.7.2</b> I know the name of the function, but I’m not sure how to use it</a></li>
+<li class="chapter" data-level="2.7.3" data-path="gettingstarted.html"><a href="gettingstarted.html#there-must-be-a-function-to-do-x-but-i-dont-know-which-one"><i class="fa fa-check"></i><b>2.7.3</b> There must be a function to do X but I don’t know which one…</a></li>
+<li class="chapter" data-level="2.7.4" data-path="gettingstarted.html"><a href="gettingstarted.html#i-am-stuck-i-get-an-error-message-that-i-dont-understand"><i class="fa fa-check"></i><b>2.7.4</b> I am stuck… I get an error message that I don’t understand</a></li>
+<li class="chapter" data-level="2.7.5" data-path="gettingstarted.html"><a href="gettingstarted.html#how-to-ask-for-help"><i class="fa fa-check"></i><b>2.7.5</b> How to ask for help</a></li>
+<li class="chapter" data-level="2.7.6" data-path="gettingstarted.html"><a href="gettingstarted.html#where-to-ask-for-help"><i class="fa fa-check"></i><b>2.7.6</b> Where to ask for help?</a></li>
+<li class="chapter" data-level="2.7.7" data-path="gettingstarted.html"><a href="gettingstarted.html#resources-on-getting-help"><i class="fa fa-check"></i><b>2.7.7</b> Resources on getting help</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Working with tabular data in R</a><ul>
+<<<<<<< HEAD
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#loading-tabular-data"><i class="fa fa-check"></i><b>3.1</b> Loading tabular data</a></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#inspecting-data.frame-objects"><i class="fa fa-check"></i><b>3.2</b> Inspecting <code>data.frame</code> Objects</a></li>
+<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#indexing-and-subsetting-data-frames"><i class="fa fa-check"></i><b>3.3</b> Indexing and subsetting data frames</a></li>
+<li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#conditional-subsetting-1"><i class="fa fa-check"></i><b>3.4</b> Conditional subsetting</a></li>
+<li class="chapter" data-level="3.5" data-path="data.html"><a href="data.html#adding-and-removing-rows-and-columns"><i class="fa fa-check"></i><b>3.5</b> Adding and removing rows and columns</a></li>
+<li class="chapter" data-level="3.6" data-path="data.html"><a href="data.html#categorical-data-factors"><i class="fa fa-check"></i><b>3.6</b> Categorical data: factors</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="data.html"><a href="data.html#converting-factors"><i class="fa fa-check"></i><b>3.6.1</b> Converting factors</a></li>
+<li class="chapter" data-level="3.6.2" data-path="data.html"><a href="data.html#renaming-factors"><i class="fa fa-check"></i><b>3.6.2</b> Renaming factors</a></li>
+<li class="chapter" data-level="3.6.3" data-path="data.html"><a href="data.html#using-stringsasfactorstrue"><i class="fa fa-check"></i><b>3.6.3</b> Using <code>stringsAsFactors=TRUE</code></a></li>
+=======
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#inspecting-data.frame-objects"><i class="fa fa-check"></i><b>3.1</b> Inspecting <code>data.frame</code> Objects</a></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#indexing-and-subsetting-data-frames"><i class="fa fa-check"></i><b>3.2</b> Indexing and subsetting data frames</a></li>
+<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#categorical-data-factors"><i class="fa fa-check"></i><b>3.3</b> Categorical data: factors</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="data.html"><a href="data.html#converting-factors"><i class="fa fa-check"></i><b>3.3.1</b> Converting factors</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data.html"><a href="data.html#renaming-factors"><i class="fa fa-check"></i><b>3.3.2</b> Renaming factors</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data.html"><a href="data.html#using-stringsasfactors"><i class="fa fa-check"></i><b>3.3.3</b> Using <code>stringsAsFactors</code></a></li>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#dates"><i class="fa fa-check"></i><b>3.4</b> Dates</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Working with tabular data in R</h1>
+<blockquote>
+<p>Learning Objectives</p>
+<ul>
+<li>Load external data from a .csv file into a data frame in R with <code>read.csv()</code></li>
+<li>Find basic properties of a data frames including size, class or type of the columns, names of rows and columns by using <code>str()</code>, <code>nrow()</code>, <code>ncol()</code>, <code>dim()</code>, <code>length()</code> , <code>colnames()</code>, <code>rownames()</code></li>
+<li>Use <code>head()</code> and <code>tail()</code> to inspect rows of a data frame.</li>
+<li>Generate summary statistics for a data frame</li>
+<li>Use indexing to select rows and columns</li>
+<li>Use logical conditions to select rows and columns</li>
+<li>Add columns and rows to a data frame</li>
+<li>Manipulate categorical data with <code>factors</code>, <code>levels()</code> and <code>as.character()</code></li>
+<li>Change how character strings are handled in a data frame.</li>
+<li>Format dates in R and calculate time differences</li>
+<li>Use <code>df$new_col &lt;- new_col</code> to add a new column to a data frame.</li>
+<li>Use <code>cbind()</code> to add a new column to a data frame.</li>
+<li>Use <code>rbind()</code> to add a new row to a data frame.</li>
+<li>Use <code>na.omit()</code> to remove rows from a data frame with <code>NA</code> values.</li>
+</ul>
+</blockquote>
+<hr />
+<p>## Loading tabular data</p>
+<p>One the most common ways of getting data into R is to read in a table. And – you guessed it – we read it into a data frame! We will take a simple CSV file as example. <a href="https://support.bigcommerce.com/articles/Public/What-is-a-CSV-file-and-how-do-I-save-my-spreadsheet-as-one">What is a CSV file?</a></p>
+<p>You may know about <a href="https://openpolicing.stanford.edu">the Stanford Open Policing Project</a> and we will be working with a sample dataset from their repository (<a href="https://openpolicing.stanford.edu/data/" class="uri">https://openpolicing.stanford.edu/data/</a>). The sample I extracted contains information about traffic stops for black and white drivers in the state of Mississippi during January 2013 to mid-July of 2016.</p>
+<p>We are going to use the R function <code>download.file()</code> to download the CSV file
+that contains the traffic stop data, and we will use <code>read.csv()</code> to
+load into memory the content of the CSV file as an object of class <code>data.frame</code>.</p>
+<p>To download the data into your local <code>data/</code> subdirectory, run the following:</p>
+<<<<<<< HEAD
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="kw">download.file</span>(<span class="st">&quot;http://bit.ly/MS_trafficstops_bw&quot;</span>, <span class="st">&quot;data/MS_trafficstops_bw.csv&quot;</span>)</a></code></pre></div>
+<p>You are now ready to load the data:</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_trafficstops_bw.csv&quot;</span>)</a></code></pre></div>
+=======
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="kw">download.file</span>(<span class="st">&quot;http://bit.ly/MS_trafficstops_bw&quot;</span>, <span class="st">&quot;data/MS_trafficstops_bw.csv&quot;</span>)</a></code></pre></div>
+<p>You are now ready to load the data:</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_trafficstops_bw.csv&quot;</span>)</a></code></pre></div>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<p>This statement doesn’t produce any output because, as you might recall,
+assignments don’t display anything. If we want to check that our data has been
+loaded, we can print the variable’s value: <code>trafficstops</code>.</p>
+<p>Wow… that was a lot of output. At least it means the data loaded
+properly. Let’s check the top (the first 6 lines) of this data frame using the
+function <code>head()</code>:</p>
+<<<<<<< HEAD
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="kw">head</span>(trafficstops)</a></code></pre></div>
+<pre><code>#&gt;              id state  stop_date       county_name county_fips
+#&gt; 1 MS-2013-00001    MS 2013-01-01      Jones County       28067
+#&gt; 2 MS-2013-00002    MS 2013-01-01 Lauderdale County       28075
+#&gt; 3 MS-2013-00003    MS 2013-01-01       Pike County       28113
+#&gt; 4 MS-2013-00004    MS 2013-01-01    Hancock County       28045
+#&gt; 5 MS-2013-00005    MS 2013-01-01     Holmes County       28051
+#&gt; 6 MS-2013-00006    MS 2013-01-01    Jackson County       28059
+#&gt;            police_department driver_gender driver_birthdate driver_race
+#&gt; 1 Mississippi Highway Patrol             M       1950-06-14       Black
+#&gt; 2 Mississippi Highway Patrol             M       1967-04-06       Black
+#&gt; 3 Mississippi Highway Patrol             M       1974-04-15       Black
+#&gt; 4 Mississippi Highway Patrol             M       1981-03-23       White
+#&gt; 5 Mississippi Highway Patrol             M       1992-08-03       White
+#&gt; 6 Mississippi Highway Patrol             F       1960-05-02       White
+#&gt;                                                 violation_raw officer_id
+#&gt; 1                     Seat belt not used properly as required       J042
+#&gt; 2                                            Careless driving       B026
+#&gt; 3 Speeding - Regulated or posted speed limit and actual speed       M009
+#&gt; 4 Speeding - Regulated or posted speed limit and actual speed       K035
+#&gt; 5 Speeding - Regulated or posted speed limit and actual speed       D028
+#&gt; 6 Speeding - Regulated or posted speed limit and actual speed       K023</code></pre>
+</div>
+=======
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"><span class="kw">head</span>(trafficstops)</a></code></pre></div>
+<pre><code>#&gt;              id state  stop_date
+#&gt; 1 MS-2013-00001    MS 2013-01-01
+#&gt; 2 MS-2013-00002    MS 2013-01-01
+#&gt; 3 MS-2013-00003    MS 2013-01-01
+#&gt; 4 MS-2013-00004    MS 2013-01-01
+#&gt; 5 MS-2013-00005    MS 2013-01-01
+#&gt; 6 MS-2013-00006    MS 2013-01-01
+#&gt;         county_name county_fips
+#&gt; 1      Jones County       28067
+#&gt; 2 Lauderdale County       28075
+#&gt; 3       Pike County       28113
+#&gt; 4    Hancock County       28045
+#&gt; 5     Holmes County       28051
+#&gt; 6    Jackson County       28059
+#&gt;            police_department
+#&gt; 1 Mississippi Highway Patrol
+#&gt; 2 Mississippi Highway Patrol
+#&gt; 3 Mississippi Highway Patrol
+#&gt; 4 Mississippi Highway Patrol
+#&gt; 5 Mississippi Highway Patrol
+#&gt; 6 Mississippi Highway Patrol
+#&gt;   driver_gender driver_birthdate
+#&gt; 1             M       1950-06-14
+#&gt; 2             M       1967-04-06
+#&gt; 3             M       1974-04-15
+#&gt; 4             M       1981-03-23
+#&gt; 5             M       1992-08-03
+#&gt; 6             F       1960-05-02
+#&gt;   driver_race
+#&gt; 1       Black
+#&gt; 2       Black
+#&gt; 3       Black
+#&gt; 4       White
+#&gt; 5       White
+#&gt; 6       White
+#&gt;                                                 violation_raw
+#&gt; 1                     Seat belt not used properly as required
+#&gt; 2                                            Careless driving
+#&gt; 3 Speeding - Regulated or posted speed limit and actual speed
+#&gt; 4 Speeding - Regulated or posted speed limit and actual speed
+#&gt; 5 Speeding - Regulated or posted speed limit and actual speed
+#&gt; 6 Speeding - Regulated or posted speed limit and actual speed
+#&gt;   officer_id
+#&gt; 1       J042
+#&gt; 2       B026
+#&gt; 3       M009
+#&gt; 4       K035
+#&gt; 5       D028
+#&gt; 6       K023</code></pre>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<div id="inspecting-data.frame-objects" class="section level2">
+<h2><span class="header-section-number">3.1</span> Inspecting <code>data.frame</code> Objects</h2>
+<p>As you may recall, a data frame in R is a special case of a list, and a representation of data where the columns are vectors that all have the same length. Because the columns are vectors, they all contain the same type of data (e.g., characters, integers, factors, etc.).</p>
+<p>We can see this when inspecting the <b>str</b>ucture of a data frame
+with the function <code>str()</code>:</p>
+<<<<<<< HEAD
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="kw">str</span>(trafficstops)</a></code></pre></div>
+<pre><code>#&gt; &#39;data.frame&#39;:    211211 obs. of  11 variables:
+=======
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="kw">str</span>(trafficstops)</a></code></pre></div>
+<pre><code>#&gt; &#39;data.frame&#39;:	211211 obs. of  11 variables:
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+#&gt;  $ id               : chr  &quot;MS-2013-00001&quot; &quot;MS-2013-00002&quot; &quot;MS-2013-00003&quot; &quot;MS-2013-00004&quot; ...
+#&gt;  $ state            : chr  &quot;MS&quot; &quot;MS&quot; &quot;MS&quot; &quot;MS&quot; ...
+#&gt;  $ stop_date        : chr  &quot;2013-01-01&quot; &quot;2013-01-01&quot; &quot;2013-01-01&quot; &quot;2013-01-01&quot; ...
+#&gt;  $ county_name      : chr  &quot;Jones County&quot; &quot;Lauderdale County&quot; &quot;Pike County&quot; &quot;Hancock County&quot; ...
+#&gt;  $ county_fips      : int  28067 28075 28113 28045 28051 28059 28059 28043 28051 28051 ...
+#&gt;  $ police_department: chr  &quot;Mississippi Highway Patrol&quot; &quot;Mississippi Highway Patrol&quot; &quot;Mississippi Highway Patrol&quot; &quot;Mississippi Highway Patrol&quot; ...
+#&gt;  $ driver_gender    : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
+#&gt;  $ driver_birthdate : chr  &quot;1950-06-14&quot; &quot;1967-04-06&quot; &quot;1974-04-15&quot; &quot;1981-03-23&quot; ...
+#&gt;  $ driver_race      : chr  &quot;Black&quot; &quot;Black&quot; &quot;Black&quot; &quot;White&quot; ...
+#&gt;  $ violation_raw    : chr  &quot;Seat belt not used properly as required&quot; &quot;Careless driving&quot; &quot;Speeding - Regulated or posted speed limit and actual speed&quot; &quot;Speeding - Regulated or posted speed limit and actual speed&quot; ...
+#&gt;  $ officer_id       : chr  &quot;J042&quot; &quot;B026&quot; &quot;M009&quot; &quot;K035&quot; ...</code></pre>
+<p>We already saw how the functions <code>head()</code> and <code>str()</code> can be useful to check the
+content and the structure of a data frame. Here is a non-exhaustive list of
+functions to get a sense of the content/structure of the data. Let’s try them out!</p>
+<ul>
+<li>Size:
+<ul>
+<li><code>dim(trafficstops)</code> - returns a vector with the number of rows in the first element,
+and the number of columns as the second element (the <strong>dim</strong>ensions of
+the object)</li>
+<li><code>nrow(trafficstops)</code> - returns the number of rows</li>
+<li><code>ncol(trafficstops)</code> - returns the number of columns</li>
+<li><code>length(trafficstops)</code> - returns number of columns</li>
+</ul></li>
+<li>Content:
+<ul>
+<li><code>head(trafficstops)</code> - shows the first 6 rows</li>
+<li><code>tail(trafficstops)</code> - shows the last 6 rows</li>
+</ul></li>
+<li>Names:
+<ul>
+<li><code>names(trafficstops)</code> - returns the column names (synonym of <code>colnames()</code> for <code>data.frame</code>
+objects)</li>
+<li><code>rownames(trafficstops)</code> - returns the row names</li>
+</ul></li>
+<li>Summary:
+<ul>
+<li><code>str(trafficstops)</code> - structure of the object and information about the class, length and
+content of each column</li>
+<li><code>summary(trafficstops)</code> - summary statistics for each column</li>
+</ul></li>
+</ul>
+<p>Note: most of these functions are “generic”, they can be used on other types of
+objects besides <code>data.frame</code>.</p>
+<blockquote>
+<h3>
+Challenge
+</h3>
+<p>Based on the output of <code>str(trafficstops)</code>, can you answer the following questions?</p>
+<ul>
+<li>What is the class of the object <code>trafficstops</code>?</li>
+<li>How many rows and how many columns are in this object?</li>
+<li>How many counties have been recorded in this dataset?</li>
+</ul>
+</blockquote>
+<!---
+
+--->
+</div>
+<div id="indexing-and-subsetting-data-frames" class="section level2">
+<<<<<<< HEAD
+<h2><span class="header-section-number">3.3</span> Indexing and subsetting data frames</h2>
+=======
+<h2><span class="header-section-number">3.2</span> Indexing and subsetting data frames</h2>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<p>Our trafficstops data frame has rows and columns (it has 2 dimensions), if we want to
+extract some specific data from it, we need to specify the “coordinates” we
+want from it. Row numbers come first, followed by column numbers. However, note
+that different ways of specifying these coordinates lead to results with
+different classes.</p>
+<<<<<<< HEAD
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1">trafficstops[<span class="dv">1</span>, <span class="dv">1</span>]   <span class="co"># first element in the first column of the data frame (as a vector)</span></a>
+<a class="sourceLine" id="cb104-2" title="2">trafficstops[<span class="dv">1</span>, <span class="dv">6</span>]   <span class="co"># first element in the 6th column (as a vector)</span></a>
+<a class="sourceLine" id="cb104-3" title="3">trafficstops[, <span class="dv">1</span>]    <span class="co"># first column in the data frame (as a vector)</span></a>
+<a class="sourceLine" id="cb104-4" title="4">trafficstops[<span class="dv">1</span>]      <span class="co"># first column in the data frame (as a data.frame)</span></a>
+<a class="sourceLine" id="cb104-5" title="5">trafficstops[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">7</span>] <span class="co"># first three elements in the 7th column (as a vector)</span></a>
+<a class="sourceLine" id="cb104-6" title="6">trafficstops[<span class="dv">3</span>, ]    <span class="co"># the 3rd row (as a data.frame)</span></a>
+<a class="sourceLine" id="cb104-7" title="7">trafficstops[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, ]  <span class="co"># the 1st to 6th rows, equivalent to head(trafficstops)</span></a>
+<a class="sourceLine" id="cb104-8" title="8">trafficstops[, <span class="dv">-1</span>]           <span class="co"># the whole data frame, excluding the first column</span></a>
+<a class="sourceLine" id="cb104-9" title="9">trafficstops[<span class="op">-</span><span class="kw">c</span>(<span class="dv">7</span><span class="op">:</span><span class="dv">211211</span>),]  <span class="co"># equivalent to head(trafficstops)</span></a></code></pre></div>
+<p>As well as using numeric values to subset a <code>data.frame</code> (or <code>matrix</code>), columns
+can be called by name, using one of the four following notations:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1">trafficstops[<span class="st">&quot;violation_raw&quot;</span>]       <span class="co"># Result is a data.frame</span></a>
+<a class="sourceLine" id="cb105-2" title="2">trafficstops[, <span class="st">&quot;violation_raw&quot;</span>]     <span class="co"># Result is a vector</span></a>
+<a class="sourceLine" id="cb105-3" title="3">trafficstops[[<span class="st">&quot;violation_raw&quot;</span>]]     <span class="co"># Result is a vector</span></a>
+<a class="sourceLine" id="cb105-4" title="4">trafficstops<span class="op">$</span>violation_raw          <span class="co"># Result is a vector</span></a></code></pre></div>
+=======
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">trafficstops[<span class="dv">1</span>, <span class="dv">1</span>]   <span class="co"># first element in the first column of the data frame (as a vector)</span></a>
+<a class="sourceLine" id="cb104-2" data-line-number="2">trafficstops[<span class="dv">1</span>, <span class="dv">6</span>]   <span class="co"># first element in the 6th column (as a vector)</span></a>
+<a class="sourceLine" id="cb104-3" data-line-number="3">trafficstops[, <span class="dv">1</span>]    <span class="co"># first column in the data frame (as a vector)</span></a>
+<a class="sourceLine" id="cb104-4" data-line-number="4">trafficstops[<span class="dv">1</span>]      <span class="co"># first column in the data frame (as a data.frame)</span></a>
+<a class="sourceLine" id="cb104-5" data-line-number="5">trafficstops[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">7</span>] <span class="co"># first three elements in the 7th column (as a vector)</span></a>
+<a class="sourceLine" id="cb104-6" data-line-number="6">trafficstops[<span class="dv">3</span>, ]    <span class="co"># the 3rd row (as a data.frame)</span></a>
+<a class="sourceLine" id="cb104-7" data-line-number="7">trafficstops[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, ]  <span class="co"># the 1st to 6th rows, equivalent to head(trafficstops)</span></a>
+<a class="sourceLine" id="cb104-8" data-line-number="8">trafficstops[, <span class="dv">-1</span>]           <span class="co"># the whole data frame, excluding the first column</span></a>
+<a class="sourceLine" id="cb104-9" data-line-number="9">trafficstops[<span class="op">-</span><span class="kw">c</span>(<span class="dv">7</span><span class="op">:</span><span class="dv">211211</span>),]  <span class="co"># equivalent to head(trafficstops)</span></a></code></pre></div>
+<p>As well as using numeric values to subset a <code>data.frame</code> (or <code>matrix</code>), columns
+can be called by name, using one of the four following notations:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1">trafficstops[<span class="st">&quot;violation_raw&quot;</span>]       <span class="co"># Result is a data.frame</span></a>
+<a class="sourceLine" id="cb105-2" data-line-number="2">trafficstops[, <span class="st">&quot;violation_raw&quot;</span>]     <span class="co"># Result is a vector</span></a>
+<a class="sourceLine" id="cb105-3" data-line-number="3">trafficstops[[<span class="st">&quot;violation_raw&quot;</span>]]     <span class="co"># Result is a vector</span></a>
+<a class="sourceLine" id="cb105-4" data-line-number="4">trafficstops<span class="op">$</span>violation_raw          <span class="co"># Result is a vector</span></a></code></pre></div>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<p>For our purposes, the last three notations are equivalent. RStudio knows about
+the columns in your data frame, so you can take advantage of the autocompletion
+feature to get the full and correct column name.</p>
+<blockquote>
+<h3>
+Challenge
+</h3>
+<ol style="list-style-type: decimal">
+<li><p>Create a <code>data.frame</code> (<code>trafficstops_200</code>) containing only the observations from
+row 200 of the <code>trafficstops</code> dataset.</p></li>
+<li><p>Notice how <code>nrow()</code> gave you the number of rows in a <code>data.frame</code>?</p>
+<ul>
+<li>Use that number to pull out just that last row in the data frame.</li>
+<li>Compare that with what you see as the last row using <code>tail()</code> to make
+sure it’s meeting expectations.</li>
+<li>Pull out that last row using <code>nrow()</code> instead of the row number.</li>
+<li>Create a new data frame object (<code>trafficstops_last</code>) from that last row.</li>
+</ul></li>
+<li><p>Use <code>nrow()</code> to extract the row that is in the middle of the data
+frame. Store the content of this row in an object named <code>trafficstops_middle</code>.</p></li>
+<li><p>Combine <code>nrow()</code> with the <code>-</code> notation above to reproduce the behavior of
+<code>head(trafficstops)</code> keeping just the first through 6th rows of the trafficstops
+dataset.</p></li>
+</ol>
+</blockquote>
+<!---
+  
+  ```r
+  ## Answers
+  trafficstops_200 <- trafficstops[200, ]
+  trafficstops_last <- trafficstops[nrow(trafficstops), ]
+  trafficstops_middle <- trafficstops[nrow(trafficstops)/2, ]
+  trafficstops_head <- trafficstops[-c(7:nrow(trafficstops)),]
+  ```
+--->
+<p>## Conditional subsetting</p>
+<p>Often times we need to extract a subset of a data frame based on certain conditions. For example, if we wanted to look at traffic stops in Webster County only we could say:</p>
+<<<<<<< HEAD
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="co"># the condition:</span></a>
+<a class="sourceLine" id="cb106-2" title="2"><span class="co"># returns a logical vector of the length of the column</span></a>
+<a class="sourceLine" id="cb106-3" title="3">trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span> </a>
+<a class="sourceLine" id="cb106-4" title="4"></a>
+<a class="sourceLine" id="cb106-5" title="5"><span class="co"># use this vector to extract rows and all columns</span></a>
+<a class="sourceLine" id="cb106-6" title="6"><span class="co"># note the comma: we want *all* columns</span></a>
+<a class="sourceLine" id="cb106-7" title="7">trafficstops[trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>, ] </a>
+<a class="sourceLine" id="cb106-8" title="8"></a>
+<a class="sourceLine" id="cb106-9" title="9"><span class="co"># assign extract to a new data frame</span></a>
+<a class="sourceLine" id="cb106-10" title="10">Webster_trafficstops &lt;-<span class="st"> </span>trafficstops[trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>, ]</a></code></pre></div>
+<p>This is also a possibility (but slower):</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1">Webster_trafficstops &lt;-<span class="st"> </span><span class="kw">subset</span>(trafficstops, county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>)</a>
+<a class="sourceLine" id="cb107-2" title="2"><span class="kw">nrow</span>(Webster_trafficstops) <span class="co"># 393 stops in Webster County!</span></a></code></pre></div>
+<pre><code>#&gt; [1] 156</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="co"># and if we wanted to see the breakdown by race:</span></a>
+<a class="sourceLine" id="cb109-2" title="2"><span class="kw">table</span>(Webster_trafficstops<span class="op">$</span>driver_race)</a></code></pre></div>
+=======
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="co"># the condition:</span></a>
+<a class="sourceLine" id="cb106-2" data-line-number="2"><span class="co"># returns a logical vector of the length of the column</span></a>
+<a class="sourceLine" id="cb106-3" data-line-number="3">trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span> </a>
+<a class="sourceLine" id="cb106-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb106-5" data-line-number="5"><span class="co"># use this vector to extract rows and all columns</span></a>
+<a class="sourceLine" id="cb106-6" data-line-number="6"><span class="co"># note the comma: we want *all* columns</span></a>
+<a class="sourceLine" id="cb106-7" data-line-number="7">trafficstops[trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>, ] </a>
+<a class="sourceLine" id="cb106-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb106-9" data-line-number="9"><span class="co"># assign extract to a new data frame</span></a>
+<a class="sourceLine" id="cb106-10" data-line-number="10">Webster_trafficstops &lt;-<span class="st"> </span>trafficstops[trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>, ]</a></code></pre></div>
+<p>This is also a possibility (but slower):</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1">Webster_trafficstops &lt;-<span class="st"> </span><span class="kw">subset</span>(trafficstops, county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>)</a>
+<a class="sourceLine" id="cb107-2" data-line-number="2"><span class="kw">nrow</span>(Webster_trafficstops) <span class="co"># 393 stops in Webster County!</span></a></code></pre></div>
+<pre><code>#&gt; [1] 156</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="co"># and if we wanted to see the breakdown by race:</span></a>
+<a class="sourceLine" id="cb109-2" data-line-number="2"><span class="kw">table</span>(Webster_trafficstops<span class="op">$</span>driver_race)</a></code></pre></div>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<pre><code>#&gt; 
+#&gt; Black White 
+#&gt;    59    97</code></pre>
+<p>These commands are from the R base package. In the R Data Wrangling workshop we will discuss a different way of subsetting using functions from the <code>tidyverse</code> package.</p>
+<blockquote>
+<h3>
+Challenge
+</h3>
+<ul>
+<li>Use subsetting to extract trafficstops in Hancock, Harrison, and Jackson Counties into a separate data frame <code>coastal_counties</code>.</li>
+<li>Using <code>coastal_counties</code>, count the number of Black and White drivers in the three counties.</li>
+<li>Bonus: How does the ratio of Black to White stops in the three coastal counties compare to the same ratio for stops in the entire state of Mississippi?</li>
+</ul>
+</blockquote>
+<!---
+  
+  ```r
+  ## Answers
+  coastal_counties <- trafficstops[trafficstops$county_name %in% c("Hancock County", "Harrison County", "Jackson County"), ]
+  # or
+  coastal_counties <- subset(trafficstops, county_name %in% c("Hancock County", "Harrison County", "Jackson County"))
+  
+  # counts (the sum over the logical vector) 
+  sum(coastal_counties$driver_race == "Black")
+  sum(coastal_counties$driver_race == "White")
+  
+  # ratios
+  sum(coastal_counties$driver_race == "Black")/sum(coastal_counties$driver_race == "White")
+  
+  sum(trafficstops$driver_race == "Black")/sum(trafficstops$driver_race == "White")
+  ```
+--->
+<p>## Adding and removing rows and columns</p>
+<p>To add a new column to the data frame we can use the <code>cbind()</code> function.</p>
+<<<<<<< HEAD
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1">new_col &lt;-<span class="st"> </span><span class="kw">row.names</span>(trafficstops)</a>
+<a class="sourceLine" id="cb111-2" title="2">trafficstops_withnewcol &lt;-<span class="st"> </span><span class="kw">cbind</span>(trafficstops, new_col)</a>
+<a class="sourceLine" id="cb111-3" title="3"><span class="kw">head</span>(trafficstops_withnewcol)</a></code></pre></div>
+<pre><code>#&gt;              id state  stop_date       county_name county_fips
+#&gt; 1 MS-2013-00001    MS 2013-01-01      Jones County       28067
+#&gt; 2 MS-2013-00002    MS 2013-01-01 Lauderdale County       28075
+#&gt; 3 MS-2013-00003    MS 2013-01-01       Pike County       28113
+#&gt; 4 MS-2013-00004    MS 2013-01-01    Hancock County       28045
+#&gt; 5 MS-2013-00005    MS 2013-01-01     Holmes County       28051
+#&gt; 6 MS-2013-00006    MS 2013-01-01    Jackson County       28059
+#&gt;            police_department driver_gender driver_birthdate driver_race
+#&gt; 1 Mississippi Highway Patrol             M       1950-06-14       Black
+#&gt; 2 Mississippi Highway Patrol             M       1967-04-06       Black
+#&gt; 3 Mississippi Highway Patrol             M       1974-04-15       Black
+#&gt; 4 Mississippi Highway Patrol             M       1981-03-23       White
+#&gt; 5 Mississippi Highway Patrol             M       1992-08-03       White
+#&gt; 6 Mississippi Highway Patrol             F       1960-05-02       White
+#&gt;                                                 violation_raw officer_id
+#&gt; 1                     Seat belt not used properly as required       J042
+#&gt; 2                                            Careless driving       B026
+#&gt; 3 Speeding - Regulated or posted speed limit and actual speed       M009
+#&gt; 4 Speeding - Regulated or posted speed limit and actual speed       K035
+#&gt; 5 Speeding - Regulated or posted speed limit and actual speed       D028
+#&gt; 6 Speeding - Regulated or posted speed limit and actual speed       K023
+#&gt;   new_col
+#&gt; 1       1
+#&gt; 2       2
+#&gt; 3       3
+#&gt; 4       4
+#&gt; 5       5
+#&gt; 6       6</code></pre>
+<p>Alternatively, we can also add a new column adding the new column name after the <code>$</code> sign then assigning the value, like below. Note that this will change the original data frame, which you may not always want to do.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1">trafficstops<span class="op">$</span>row_numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(trafficstops))</a>
+<a class="sourceLine" id="cb113-2" title="2">trafficstops<span class="op">$</span>all_false &lt;-<span class="st"> </span><span class="ot">FALSE</span>  <span class="co"># what do you think will happen here?</span></a></code></pre></div>
+<p>There is an equivalent function, <code>rbind()</code> to add a new row to a data frame. I use this far less frequently than the column equivalent. The one thing to keep in mind is that the row to be added to the data frame needs to match the order and type of columns in the data frame. Remember that R’s way to store multiple different data types in one object is a <code>list</code>. So if we wanted to add a new row to <code>trafficstops</code> we would say:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1">new_row &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id=</span><span class="st">&quot;MS-2017-12345&quot;</span>, <span class="dt">state=</span><span class="st">&quot;MS&quot;</span>, <span class="dt">stop_date=</span><span class="st">&quot;2017-08-24&quot;</span>,</a>
+<a class="sourceLine" id="cb114-2" title="2">                <span class="dt">county_name=</span><span class="st">&quot;Tallahatchie County&quot;</span>, <span class="dt">county_fips=</span><span class="dv">12345</span>,</a>
+<a class="sourceLine" id="cb114-3" title="3">                <span class="dt">police_department=</span><span class="st">&quot;MSHP&quot;</span>, <span class="dt">driver_gender=</span><span class="st">&quot;F&quot;</span>, <span class="dt">driver_birthdate=</span><span class="st">&quot;1999-06-14&quot;</span>,</a>
+<a class="sourceLine" id="cb114-4" title="4">                <span class="dt">driver_race=</span><span class="st">&quot;Hispanic&quot;</span>, <span class="dt">violation_raw=</span><span class="st">&quot;Speeding&quot;</span>, <span class="dt">officer_id=</span><span class="st">&quot;ABCD&quot;</span>)</a>
+<a class="sourceLine" id="cb114-5" title="5"></a>
+<a class="sourceLine" id="cb114-6" title="6">trafficstops_withnewrow &lt;-<span class="st"> </span><span class="kw">rbind</span>(trafficstops, new_row)</a>
+<a class="sourceLine" id="cb114-7" title="7"><span class="kw">tail</span>(trafficstops_withnewrow)</a></code></pre></div>
+<pre><code>#&gt;                   id state  stop_date         county_name county_fips
+#&gt; 211207 MS-2016-24293    MS 2016-07-09       George County       28039
+#&gt; 211208 MS-2016-24294    MS 2016-07-10       Copiah County       28029
+#&gt; 211209 MS-2016-24295    MS 2016-07-11      Grenada County       28043
+#&gt; 211210 MS-2016-24296    MS 2016-07-14       Copiah County       28029
+#&gt; 211211 MS-2016-24297    MS 2016-07-14       Copiah County       28029
+#&gt; 211212 MS-2017-12345    MS 2017-08-24 Tallahatchie County       12345
+#&gt;                 police_department driver_gender driver_birthdate driver_race
+#&gt; 211207 Mississippi Highway Patrol             M       1992-07-14       White
+#&gt; 211208 Mississippi Highway Patrol             M       1975-12-23       Black
+#&gt; 211209 Mississippi Highway Patrol             M       1998-02-02       White
+#&gt; 211210 Mississippi Highway Patrol             F       1970-06-14       White
+#&gt; 211211 Mississippi Highway Patrol             M       1948-03-11       White
+#&gt; 211212                       MSHP             F       1999-06-14    Hispanic
+#&gt;                                                      violation_raw officer_id
+#&gt; 211207 Speeding - Regulated or posted speed limit and actual speed       K025
+#&gt; 211208 Speeding - Regulated or posted speed limit and actual speed       C033
+#&gt; 211209                     Seat belt not used properly as required       D014
+#&gt; 211210       Expired or no non-commercial driver license or permit       C015
+#&gt; 211211                     Seat belt not used properly as required       C015
+#&gt; 211212                                                    Speeding       ABCD</code></pre>
+=======
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1">new_col &lt;-<span class="st"> </span><span class="kw">row.names</span>(trafficstops)</a>
+<a class="sourceLine" id="cb111-2" data-line-number="2">trafficstops_withnewcol &lt;-<span class="st"> </span><span class="kw">cbind</span>(trafficstops, new_col)</a>
+<a class="sourceLine" id="cb111-3" data-line-number="3"><span class="kw">head</span>(trafficstops_withnewcol)</a></code></pre></div>
+<pre><code>#&gt;              id state  stop_date
+#&gt; 1 MS-2013-00001    MS 2013-01-01
+#&gt; 2 MS-2013-00002    MS 2013-01-01
+#&gt; 3 MS-2013-00003    MS 2013-01-01
+#&gt; 4 MS-2013-00004    MS 2013-01-01
+#&gt; 5 MS-2013-00005    MS 2013-01-01
+#&gt; 6 MS-2013-00006    MS 2013-01-01
+#&gt;         county_name county_fips
+#&gt; 1      Jones County       28067
+#&gt; 2 Lauderdale County       28075
+#&gt; 3       Pike County       28113
+#&gt; 4    Hancock County       28045
+#&gt; 5     Holmes County       28051
+#&gt; 6    Jackson County       28059
+#&gt;            police_department
+#&gt; 1 Mississippi Highway Patrol
+#&gt; 2 Mississippi Highway Patrol
+#&gt; 3 Mississippi Highway Patrol
+#&gt; 4 Mississippi Highway Patrol
+#&gt; 5 Mississippi Highway Patrol
+#&gt; 6 Mississippi Highway Patrol
+#&gt;   driver_gender driver_birthdate
+#&gt; 1             M       1950-06-14
+#&gt; 2             M       1967-04-06
+#&gt; 3             M       1974-04-15
+#&gt; 4             M       1981-03-23
+#&gt; 5             M       1992-08-03
+#&gt; 6             F       1960-05-02
+#&gt;   driver_race
+#&gt; 1       Black
+#&gt; 2       Black
+#&gt; 3       Black
+#&gt; 4       White
+#&gt; 5       White
+#&gt; 6       White
+#&gt;                                                 violation_raw
+#&gt; 1                     Seat belt not used properly as required
+#&gt; 2                                            Careless driving
+#&gt; 3 Speeding - Regulated or posted speed limit and actual speed
+#&gt; 4 Speeding - Regulated or posted speed limit and actual speed
+#&gt; 5 Speeding - Regulated or posted speed limit and actual speed
+#&gt; 6 Speeding - Regulated or posted speed limit and actual speed
+#&gt;   officer_id new_col
+#&gt; 1       J042       1
+#&gt; 2       B026       2
+#&gt; 3       M009       3
+#&gt; 4       K035       4
+#&gt; 5       D028       5
+#&gt; 6       K023       6</code></pre>
+<p>Alternatively, we can also add a new column adding the new column name after the <code>$</code> sign then assigning the value, like below. Note that this will change the original data frame, which you may not always want to do.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1">trafficstops<span class="op">$</span>row_numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(trafficstops))</a>
+<a class="sourceLine" id="cb113-2" data-line-number="2">trafficstops<span class="op">$</span>all_false &lt;-<span class="st"> </span><span class="ot">FALSE</span>  <span class="co"># what do you think will happen here?</span></a></code></pre></div>
+<p>There is an equivalent function, <code>rbind()</code> to add a new row to a data frame. I use this far less frequently than the column equivalent. The one thing to keep in mind is that the row to be added to the data frame needs to match the order and type of columns in the data frame. Remember that R’s way to store multiple different data types in one object is a <code>list</code>. So if we wanted to add a new row to <code>trafficstops</code> we would say:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">new_row &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id=</span><span class="st">&quot;MS-2017-12345&quot;</span>, <span class="dt">state=</span><span class="st">&quot;MS&quot;</span>, <span class="dt">stop_date=</span><span class="st">&quot;2017-08-24&quot;</span>,</a>
+<a class="sourceLine" id="cb114-2" data-line-number="2">                <span class="dt">county_name=</span><span class="st">&quot;Tallahatchie County&quot;</span>, <span class="dt">county_fips=</span><span class="dv">12345</span>,</a>
+<a class="sourceLine" id="cb114-3" data-line-number="3">                <span class="dt">police_department=</span><span class="st">&quot;MSHP&quot;</span>, <span class="dt">driver_gender=</span><span class="st">&quot;F&quot;</span>, <span class="dt">driver_birthdate=</span><span class="st">&quot;1999-06-14&quot;</span>,</a>
+<a class="sourceLine" id="cb114-4" data-line-number="4">                <span class="dt">driver_race=</span><span class="st">&quot;Hispanic&quot;</span>, <span class="dt">violation_raw=</span><span class="st">&quot;Speeding&quot;</span>, <span class="dt">officer_id=</span><span class="st">&quot;ABCD&quot;</span>)</a>
+<a class="sourceLine" id="cb114-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb114-6" data-line-number="6">trafficstops_withnewrow &lt;-<span class="st"> </span><span class="kw">rbind</span>(trafficstops, new_row)</a>
+<a class="sourceLine" id="cb114-7" data-line-number="7"><span class="kw">tail</span>(trafficstops_withnewrow)</a></code></pre></div>
+<pre><code>#&gt;                   id state  stop_date
+#&gt; 211207 MS-2016-24293    MS 2016-07-09
+#&gt; 211208 MS-2016-24294    MS 2016-07-10
+#&gt; 211209 MS-2016-24295    MS 2016-07-11
+#&gt; 211210 MS-2016-24296    MS 2016-07-14
+#&gt; 211211 MS-2016-24297    MS 2016-07-14
+#&gt; 211212 MS-2017-12345    MS 2017-08-24
+#&gt;                county_name county_fips
+#&gt; 211207       George County       28039
+#&gt; 211208       Copiah County       28029
+#&gt; 211209      Grenada County       28043
+#&gt; 211210       Copiah County       28029
+#&gt; 211211       Copiah County       28029
+#&gt; 211212 Tallahatchie County       12345
+#&gt;                 police_department
+#&gt; 211207 Mississippi Highway Patrol
+#&gt; 211208 Mississippi Highway Patrol
+#&gt; 211209 Mississippi Highway Patrol
+#&gt; 211210 Mississippi Highway Patrol
+#&gt; 211211 Mississippi Highway Patrol
+#&gt; 211212                       MSHP
+#&gt;        driver_gender driver_birthdate
+#&gt; 211207             M       1992-07-14
+#&gt; 211208             M       1975-12-23
+#&gt; 211209             M       1998-02-02
+#&gt; 211210             F       1970-06-14
+#&gt; 211211             M       1948-03-11
+#&gt; 211212             F       1999-06-14
+#&gt;        driver_race
+#&gt; 211207       White
+#&gt; 211208       Black
+#&gt; 211209       White
+#&gt; 211210       White
+#&gt; 211211       White
+#&gt; 211212    Hispanic
+#&gt;                                                      violation_raw
+#&gt; 211207 Speeding - Regulated or posted speed limit and actual speed
+#&gt; 211208 Speeding - Regulated or posted speed limit and actual speed
+#&gt; 211209                     Seat belt not used properly as required
+#&gt; 211210       Expired or no non-commercial driver license or permit
+#&gt; 211211                     Seat belt not used properly as required
+#&gt; 211212                                                    Speeding
+#&gt;        officer_id
+#&gt; 211207       K025
+#&gt; 211208       C033
+#&gt; 211209       D014
+#&gt; 211210       C015
+#&gt; 211211       C015
+#&gt; 211212       ABCD</code></pre>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<p>A convenient function to know about is <code>na.omit()</code>. It will remove all rows from a data frame that have at least one column with <code>NA</code> values.</p>
+<blockquote>
+<h3>
+Challenge
+</h3>
+<ul>
+<li>Given the following data frame:</li>
+</ul>
+<<<<<<< HEAD
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1">dfr &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">col_1 =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>), </a>
+<a class="sourceLine" id="cb116-2" title="2">                  <span class="dt">col_2 =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="st">&quot;b&quot;</span>), </a>
+<a class="sourceLine" id="cb116-3" title="3">                  <span class="dt">col_3 =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">NA</span>, <span class="ot">FALSE</span>))</a></code></pre></div>
+<p>What would you expect the following commands to return?</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1"><span class="kw">nrow</span>(dfr)</a>
+<a class="sourceLine" id="cb117-2" title="2"><span class="kw">nrow</span>(<span class="kw">na.omit</span>(dfr))</a></code></pre></div>
+=======
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">dfr &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">col_1 =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>), </a>
+<a class="sourceLine" id="cb116-2" data-line-number="2">                  <span class="dt">col_2 =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="st">&quot;b&quot;</span>), </a>
+<a class="sourceLine" id="cb116-3" data-line-number="3">                  <span class="dt">col_3 =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">NA</span>, <span class="ot">FALSE</span>))</a></code></pre></div>
+<p>What would you expect the following commands to return?</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1"><span class="kw">nrow</span>(dfr)</a>
+<a class="sourceLine" id="cb117-2" data-line-number="2"><span class="kw">nrow</span>(<span class="kw">na.omit</span>(dfr))</a></code></pre></div>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+</blockquote>
+<!---
+
+```r
+## Answers
+nrow(dfr) # 3
+nrow(na.omit(dfr)) # 1
+```
+--->
+</div>
+<div id="categorical-data-factors" class="section level2">
+<<<<<<< HEAD
+<h2><span class="header-section-number">3.6</span> Categorical data: factors</h2>
+<p>When we did <code>str(trafficstops)</code> we saw that only one of the columns are numeric (<code>county_fips</code>), all the others are of a special class called a <code>factor</code>. Factors are very useful and are actually
+=======
+<h2><span class="header-section-number">3.3</span> Categorical data: factors</h2>
+<p>Factors are very useful and are actually
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+something that make R particularly well suited to working with data, so we’re
+going to spend a little time introducing them.</p>
+<p>Factors are used to represent categorical data. Factors can be ordered or
+unordered, and understanding them is necessary for statistical analysis and for
+plotting.</p>
+<p>Factors are stored as integers, and have labels (text) associated with these
+unique integers. While factors look (and often behave) like character vectors,
+they are actually integers under the hood, and you need to be careful when
+treating them like strings.</p>
+<p>Once created, factors can only contain a pre-defined set of values, known as
+<em>levels</em>. By default, R always sorts <em>levels</em> in alphabetical order. For
+instance, if you have a factor with 2 levels:</p>
+<<<<<<< HEAD
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1">party &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;republican&quot;</span>, <span class="st">&quot;democrat&quot;</span>, <span class="st">&quot;democrat&quot;</span>, <span class="st">&quot;republican&quot;</span>))</a></code></pre></div>
+<p>R will assign <code>1</code> to the level <code>"democrat"</code> and <code>2</code> to the level <code>"republican"</code> (because
+<code>d</code> comes before <code>r</code>, even though the first element in this vector is
+<code>"republican"</code>). You can check this by using the function <code>levels()</code>, and check the
+number of levels using <code>nlevels()</code>:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1"><span class="kw">levels</span>(party)</a>
+<a class="sourceLine" id="cb119-2" title="2"><span class="kw">nlevels</span>(party)</a></code></pre></div>
+=======
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">party &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;republican&quot;</span>, <span class="st">&quot;democrat&quot;</span>, <span class="st">&quot;democrat&quot;</span>, <span class="st">&quot;republican&quot;</span>))</a></code></pre></div>
+<p>R will assign <code>1</code> to the level <code>&quot;democrat&quot;</code> and <code>2</code> to the level <code>&quot;republican&quot;</code> (because
+<code>d</code> comes before <code>r</code>, even though the first element in this vector is
+<code>&quot;republican&quot;</code>). You can check this by using the function <code>levels()</code>, and check the
+number of levels using <code>nlevels()</code>:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1"><span class="kw">levels</span>(party)</a>
+<a class="sourceLine" id="cb119-2" data-line-number="2"><span class="kw">nlevels</span>(party)</a></code></pre></div>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<p>Sometimes, the order of the factors does not matter, other times you might want
+to specify the order because it is meaningful (e.g., “low”, “medium”, “high”),
+it improves your visualization, or it is required by a particular type of
+analysis. Here, one way to reorder our levels in the <code>party</code> vector would be:</p>
+<<<<<<< HEAD
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1">party <span class="co"># current order</span></a></code></pre></div>
+<pre><code>#&gt; [1] republican democrat   democrat   republican
+#&gt; Levels: democrat republican</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1">party &lt;-<span class="st"> </span><span class="kw">factor</span>(party, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;republican&quot;</span>, <span class="st">&quot;democrat&quot;</span>))</a>
+<a class="sourceLine" id="cb122-2" title="2">party <span class="co"># after re-ordering</span></a></code></pre></div>
+<pre><code>#&gt; [1] republican democrat   democrat   republican
+#&gt; Levels: republican democrat</code></pre>
+<p>In R’s memory, these factors are represented by integers (1, 2, 3), but are more
+informative than integers because factors are self describing: <code>"democrat"</code>,
+<code>"republican"</code> is more descriptive than <code>1</code>, <code>2</code>. Which one is “republican”? You wouldn’t
+=======
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1">party <span class="co"># current order</span></a></code></pre></div>
+<pre><code>#&gt; [1] republican democrat   democrat  
+#&gt; [4] republican
+#&gt; Levels: democrat republican</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">party &lt;-<span class="st"> </span><span class="kw">factor</span>(party, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;republican&quot;</span>, <span class="st">&quot;democrat&quot;</span>))</a>
+<a class="sourceLine" id="cb122-2" data-line-number="2">party <span class="co"># after re-ordering</span></a></code></pre></div>
+<pre><code>#&gt; [1] republican democrat   democrat  
+#&gt; [4] republican
+#&gt; Levels: republican democrat</code></pre>
+<p>In R’s memory, these factors are represented by integers (1, 2, 3), but are more
+informative than integers because factors are self describing: <code>&quot;democrat&quot;</code>,
+<code>&quot;republican&quot;</code> is more descriptive than <code>1</code>, <code>2</code>. Which one is “republican”? You wouldn’t
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+be able to tell just from the integer data. Factors, on the other hand, have
+this information built in. It is particularly helpful when there are many levels
+(like the county names in our example dataset).</p>
+<div id="converting-factors" class="section level3">
+<<<<<<< HEAD
+<h3><span class="header-section-number">3.6.1</span> Converting factors</h3>
+<p>If you need to convert a factor to a character vector, you use
+<code>as.character(x)</code>.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="kw">as.character</span>(party)</a></code></pre></div>
+=======
+<h3><span class="header-section-number">3.3.1</span> Converting factors</h3>
+<p>If you need to convert a factor to a character vector, you use
+<code>as.character(x)</code>.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1"><span class="kw">as.character</span>(party)</a>
+<a class="sourceLine" id="cb124-2" data-line-number="2"><span class="kw">as.factor</span>(party)</a></code></pre></div>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<p>Converting factors where the levels appear as numbers (such as concentration
+levels, or years) to a numeric vector is a little trickier. One method is to
+convert factors to characters and then numbers. Another method is to use the
+<code>levels()</code> function. Compare:</p>
+<<<<<<< HEAD
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1">f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1990</span>, <span class="dv">1983</span>, <span class="dv">1977</span>, <span class="dv">1998</span>, <span class="dv">1990</span>))</a>
+<a class="sourceLine" id="cb125-2" title="2"><span class="kw">as.numeric</span>(f)               <span class="co"># wrong! and there is no warning...</span></a>
+<a class="sourceLine" id="cb125-3" title="3"><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(f)) <span class="co"># works...</span></a>
+<a class="sourceLine" id="cb125-4" title="4"><span class="kw">as.numeric</span>(<span class="kw">levels</span>(f))[f]    <span class="co"># The recommended way.</span></a></code></pre></div>
+=======
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1990</span>, <span class="dv">1983</span>, <span class="dv">1977</span>, <span class="dv">1998</span>, <span class="dv">1990</span>))</a>
+<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="kw">as.numeric</span>(f)               <span class="co"># wrong! and there is no warning...</span></a>
+<a class="sourceLine" id="cb125-3" data-line-number="3"><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(f)) <span class="co"># works...</span></a>
+<a class="sourceLine" id="cb125-4" data-line-number="4"><span class="kw">as.numeric</span>(<span class="kw">levels</span>(f))[f]    <span class="co"># The recommended way.</span></a></code></pre></div>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<p>Notice that in the <code>levels()</code> approach, three important steps occur:</p>
+<ul>
+<li>We obtain all the factor levels using <code>levels(f)</code></li>
+<li>We convert these levels to numeric values using <code>as.numeric(levels(f))</code></li>
+<li>We then access these numeric values using the underlying integers of the vector <code>f</code> as indices inside the square brackets</li>
+</ul>
+</div>
+<div id="renaming-factors" class="section level3">
+<<<<<<< HEAD
+<h3><span class="header-section-number">3.6.2</span> Renaming factors</h3>
+<p>When your data is stored as a factor, you can use the <code>plot()</code> function to get a
+quick glance at the number of observations represented by each factor
+level. Let’s look at the number of blacks and whites in the dataset:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="co"># Coerce the column &quot;driver_race&quot; into a factor</span></a>
+<a class="sourceLine" id="cb126-2" title="2">trafficstops<span class="op">$</span>driver_race &lt;-<span class="st"> </span><span class="kw">factor</span>(trafficstops<span class="op">$</span>driver_race)</a>
+<a class="sourceLine" id="cb126-3" title="3"><span class="co"># bar plot of the number of black and white drivers stopped:</span></a>
+<a class="sourceLine" id="cb126-4" title="4"><span class="kw">plot</span>(trafficstops<span class="op">$</span>driver_race)</a></code></pre></div>
+<p><img src="R-intro_files/figure-html/driver-race-barplot-1.png" width="672" /></p>
+<p>There seem to be a number of individuals for which the race information hasn’t been recorded.</p>
+<p>Additionally, for these individuals, there is no label to indicate that the information is missing. Let’s rename this label to something more meaningful. Before doing that, we’re going to pull out the data on race and work with that data, so we’re not modifying the working copy of the data frame:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1">race &lt;-<span class="st"> </span>trafficstops<span class="op">$</span>driver_race</a>
+<a class="sourceLine" id="cb127-2" title="2"><span class="kw">head</span>(race)</a></code></pre></div>
+<pre><code>#&gt; [1] Black Black Black White White White
+#&gt; Levels:  Black White</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1"><span class="kw">levels</span>(race)</a></code></pre></div>
+<pre><code>#&gt; [1] &quot;&quot;      &quot;Black&quot; &quot;White&quot;</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1"><span class="kw">levels</span>(race)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;Missing&quot;</span></a>
+<a class="sourceLine" id="cb131-2" title="2"><span class="kw">levels</span>(race)</a></code></pre></div>
+<pre><code>#&gt; [1] &quot;Missing&quot; &quot;Black&quot;   &quot;White&quot;</code></pre>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1"><span class="kw">head</span>(race)</a></code></pre></div>
+=======
+<h3><span class="header-section-number">3.3.2</span> Renaming factors</h3>
+<p>When your data is stored as a factor, you can use the <code>plot()</code> function to get a
+quick glance at the number of observations represented by each factor
+level. Let’s look at the number of blacks and whites in the dataset:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="co"># bar plot of the number of black and white drivers stopped:</span></a>
+<a class="sourceLine" id="cb126-2" data-line-number="2">trafficstops<span class="op">$</span>driver_race &lt;-<span class="st"> </span><span class="kw">as.factor</span>(trafficstops<span class="op">$</span>driver_race)</a>
+<a class="sourceLine" id="cb126-3" data-line-number="3"><span class="kw">plot</span>(trafficstops<span class="op">$</span>driver_race)</a></code></pre></div>
+<p><img src="R-intro_files/figure-html/driver-race-barplot-1.png" width="672" /></p>
+<p>There seem to be a number of individuals for which the race information hasn’t been recorded.</p>
+<p>Additionally, for these individuals, there is no label to indicate that the information is missing. Let’s rename this label to something more meaningful. Before doing that, we’re going to pull out the data on race and work with that data, so we’re not modifying the working copy of the data frame:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">race &lt;-<span class="st"> </span>trafficstops<span class="op">$</span>driver_race</a>
+<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="kw">head</span>(race)</a></code></pre></div>
+<pre><code>#&gt; [1] Black Black Black White White White
+#&gt; Levels:  Black White</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="kw">levels</span>(race)</a></code></pre></div>
+<pre><code>#&gt; [1] &quot;&quot;      &quot;Black&quot; &quot;White&quot;</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="kw">levels</span>(race)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;Missing&quot;</span></a>
+<a class="sourceLine" id="cb131-2" data-line-number="2"><span class="kw">levels</span>(race)</a></code></pre></div>
+<pre><code>#&gt; [1] &quot;Missing&quot; &quot;Black&quot;   &quot;White&quot;</code></pre>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1"><span class="kw">head</span>(race)</a></code></pre></div>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<pre><code>#&gt; [1] Black Black Black White White White
+#&gt; Levels: Missing Black White</code></pre>
+<blockquote>
+<h3>
+Challenge
+</h3>
+<ul>
+<li>Rename “Black” to “African American”.</li>
+<li>Now that we have renamed the factor level to “Missing”, can you recreate the
+barplot such that “Missing” is last (to the right)?</li>
+</ul>
+</blockquote>
+<!---
+  
+  ```r
+  ## Answers
+  levels(race)[2] <- c("African American") # also works without c function
+  race <- factor(race, levels = c("African American", "White", "Missing"))
+  plot(race)
+  ```
+  
+  <img src="R-intro_files/figure-html/correct-order-1.png" width="672" />
+--->
+</div>
+<<<<<<< HEAD
+<div id="using-stringsasfactorstrue" class="section level3">
+<h3><span class="header-section-number">3.6.3</span> Using <code>stringsAsFactors=TRUE</code></h3>
+<p>By default, when building or importing a data frame with <code>read.csv()</code>, the columns that contain characters (i.e., text) are read as such. Depending on what you intend to do with the data, you may want to keep these
+columns as <code>character</code> or convert to <code>factor</code>. To do so, <code>read.csv()</code> and <code>read.table()</code> have an
+argument called <code>stringsAsFactors</code> which can be set to <code>TRUE</code>.</p>
+<p>Compare the output of <code>str(trafficstops)</code> when setting <code>stringsAsFactors = TRUE</code>
+and <code>stringsAsFactors = FALSE</code> (default):</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="co"># Compare the difference between when the data are being read as</span></a>
+<a class="sourceLine" id="cb135-2" title="2"><span class="co"># `factor`, and when they are being read as `character`.</span></a>
+<a class="sourceLine" id="cb135-3" title="3">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_policing_bw.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb135-4" title="4"><span class="kw">str</span>(trafficstops)</a>
+<a class="sourceLine" id="cb135-5" title="5">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_policing_bw.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb135-6" title="6"><span class="kw">str</span>(trafficstops) <span class="co"># this is now the default.</span></a></code></pre></div>
+=======
+<div id="using-stringsasfactors" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Using <code>stringsAsFactors</code></h3>
+<p>As of R version 4.0.0, the stringsAsfactors argument defaults to FALSE when using <code>read.csv()</code>.</p>
+<p>Depending on what you want to do with the data, you may want to keep these columns as <code>character</code> or set <code>stringsAsFactors = TRUE</code> to coerce strings to factors when importing csv files. Alternatively, the <code>read_csv()</code> function from the dplyr library also does not covert strings to factors (more on this another day).</p>
+<p>Compare the output of <code>str(trafficstops)</code> when setting <code>stringsAsFactors = TRUE</code>
+(default) and <code>stringsAsFactors = FALSE</code>:</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="co"># Compare the difference between when the data are being read as</span></a>
+<a class="sourceLine" id="cb135-2" data-line-number="2"><span class="co"># `factor`, and when they are being read as `character`.</span></a>
+<a class="sourceLine" id="cb135-3" data-line-number="3">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_policing_bw.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb135-4" data-line-number="4"><span class="kw">str</span>(trafficstops)</a>
+<a class="sourceLine" id="cb135-5" data-line-number="5">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_policing_bw.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb135-6" data-line-number="6"><span class="kw">str</span>(trafficstops)</a>
+<a class="sourceLine" id="cb135-7" data-line-number="7"><span class="co"># Convert the column &quot;driver_race&quot; into a factor</span></a>
+<a class="sourceLine" id="cb135-8" data-line-number="8">trafficstops<span class="op">$</span>driver_race &lt;-<span class="st"> </span><span class="kw">factor</span>(trafficstops<span class="op">$</span>driver_race)</a></code></pre></div>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<blockquote>
+<h3>
+Challenge
+</h3>
+<p>Can you predict the class for each of the columns in the following example?
+Check your guesses using <code>str(country_climate)</code>:
+* Are they what you expected? Why? Why not?
+* What would have been different if we had added <code>stringsAsFactors = FALSE</code> to this call?
+* What would you need to change to ensure that each column had the accurate data type?</p>
+<pre><code>```
+country_climate &lt;- data.frame(
+       country=c(&quot;Canada&quot;, &quot;Panama&quot;, &quot;South Africa&quot;, &quot;Australia&quot;),
+       climate=c(&quot;cold&quot;, &quot;hot&quot;, &quot;temperate&quot;, &quot;hot/temperate&quot;),
+       temperature=c(10, 30, 18, &quot;15&quot;),
+       northern_hemisphere=c(TRUE, TRUE, FALSE, &quot;FALSE&quot;),
+       has_kangaroo=c(FALSE, FALSE, FALSE, 1)
+       )
+```</code></pre>
+</blockquote>
+<!--- Answers
+
+
+
+--->
+<p>The automatic conversion of data type is sometimes a blessing, sometimes an
+annoyance. Be aware that it exists, learn the rules, and double check that data
+you import in R are of the correct type within your data frame. If not, use it
+to your advantage to detect mistakes that might have been introduced during data
+entry (a letter in a column that should only contain numbers for instance).</p>
+</div>
+</div>
+<div id="dates" class="section level2">
+<<<<<<< HEAD
+<h2><span class="header-section-number">3.7</span> Dates</h2>
+=======
+<h2><span class="header-section-number">3.4</span> Dates</h2>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<p>One of the most common issues that new (and experienced!) R users have is converting
+date and time information into a variable that is appropriate and usable during
+analyses. If you have control over your data it might be useful to ensure that each component of your date is stored as a separate
+variable, i.e a separate column for day, month, and year. However, often we do not have control and the date is stored in one single column and with varying order and separating characters between its components.</p>
+<p>Using <code>str()</code>, we can see that both dates in our data frame <code>stop_date</code> and <code>driver_birthdate</code> are each stored in one column.</p>
+<<<<<<< HEAD
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1"><span class="kw">str</span>(trafficstops)</a></code></pre></div>
+=======
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="kw">str</span>(trafficstops)</a></code></pre></div>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<p>As an example for how to work with dates let us see if there are seasonal differences in the number of traffic stops.</p>
+<p>We’re going to be using the <code>ymd()</code> function from the package <strong><code>lubridate</code></strong>. This
+function is designed to take a vector representing year, month, and day and convert
+that information to a POSIXct vector. POSIXct is a class of data recognized by R as
+being a date or date and time. The argument that the function requires is relatively
+flexible, but, as a best practice, is a character vector formatted as “YYYY-MM-DD”.</p>
+<p>Start by loading the required package:</p>
+<<<<<<< HEAD
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1">stop_date &lt;-<span class="st"> </span><span class="kw">ymd</span>(trafficstops<span class="op">$</span>stop_date)</a>
+<a class="sourceLine" id="cb139-2" title="2"><span class="kw">str</span>(stop_date) <span class="co"># notice the &#39;date&#39; class</span></a></code></pre></div>
+<p>The <code>ymd</code> function also has nicely taken care of the fact that the original format of the date column is a factor!</p>
+<p>We can now easily extract year, month, and date using the respective functions: <code>year()</code>, <code>month()</code>, and <code>day()</code> like so:</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="kw">plot</span>(<span class="kw">factor</span>(<span class="kw">year</span>(stop_date))) <span class="co">#convert year to factor to plot</span></a></code></pre></div>
+=======
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1">stop_date &lt;-<span class="st"> </span><span class="kw">ymd</span>(trafficstops<span class="op">$</span>stop_date)</a>
+<a class="sourceLine" id="cb139-2" data-line-number="2"><span class="kw">str</span>(stop_date) <span class="co"># notice the &#39;date&#39; class</span></a></code></pre></div>
+<p>The <code>ymd</code> function also has nicely taken care of the fact that the original format of the date column is a factor!</p>
+<p>We can now easily extract year, month, and date using the respective functions: <code>year()</code>, <code>month()</code>, and <code>day()</code> like so:</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="kw">plot</span>(<span class="kw">factor</span>(<span class="kw">year</span>(stop_date))) <span class="co">#convert year to factor to plot</span></a></code></pre></div>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
+<p><img src="R-intro_files/figure-html/yearly-stops-1.png" width="672" /></p>
+<blockquote>
+<h3>
+Challenge
+</h3>
+<ul>
+<li>Are there more stops in certain months of the year or certain days of the month?</li>
+</ul>
+</blockquote>
+<!--- Answers
+
+```r
+## Answers
+plot(factor(month(stop_date)))
+```
+
+<img src="R-intro_files/figure-html/plot-seasonal-stops-1.png" width="672" />
+
+```r
+plot(factor(day(stop_date)))
+```
+
+<img src="R-intro_files/figure-html/plot-seasonal-stops-2.png" width="672" />
+--->
+<blockquote>
+<h3>
+Challenge
+</h3>
+<ul>
+<li>Determine the age of the driver in years (approximate) at the time of the stop:</li>
+<li>Extract <code>driver_birthdate</code> into a vector <code>birth_date</code></li>
+<li>Create a new vector <code>age</code> with the driver’s age at the time of the stop in years</li>
+<li>Coerce <code>age</code> to a factor and use the <code>plot</code> function to check your results. What do you find?</li>
+</ul>
+</blockquote>
+<!--- Answers
+
+```r
+birth_date <- ymd(trafficstops$driver_birthdate)
+age <- stop_date - birth_date
+# or
+age <- year(stop_date) - year(birth_date)
+plot(factor(age)) # negative age
+```
+
+<img src="R-intro_files/figure-html/calculate-age-answer-1.png" width="672" />
+
+```r
+# or
+hist(age)
+```
+
+<img src="R-intro_files/figure-html/calculate-age-answer-2.png" width="672" />
+--->
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="gettingstarted.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/cengel/R-intro/edit/master/03-working-with-data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R-intro.pdf", "R-intro.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
