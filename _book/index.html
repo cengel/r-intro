@@ -6,11 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Introduction to R</title>
   <meta name="description" content="Workshop materials for Intro to R" />
-<<<<<<< HEAD
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
-=======
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
->>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 
   <meta property="og:title" content="Introduction to R" />
   <meta property="og:type" content="book" />
@@ -57,7 +53,6 @@
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
-<<<<<<< HEAD
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
@@ -120,8 +115,6 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
-=======
->>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -198,74 +191,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Working with tabular data in R</a><ul>
-<<<<<<< HEAD
-<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#loading-tabular-data"><i class="fa fa-check"></i><b>3.1</b> Loading tabular data</a></li>
-<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#inspecting-data.frame-objects"><i class="fa fa-check"></i><b>3.2</b> Inspecting <code>data.frame</code> Objects</a></li>
-<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#indexing-and-subsetting-data-frames"><i class="fa fa-check"></i><b>3.3</b> Indexing and subsetting data frames</a></li>
-<li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#conditional-subsetting-1"><i class="fa fa-check"></i><b>3.4</b> Conditional subsetting</a></li>
-<li class="chapter" data-level="3.5" data-path="data.html"><a href="data.html#adding-and-removing-rows-and-columns"><i class="fa fa-check"></i><b>3.5</b> Adding and removing rows and columns</a></li>
-<li class="chapter" data-level="3.6" data-path="data.html"><a href="data.html#categorical-data-factors"><i class="fa fa-check"></i><b>3.6</b> Categorical data: factors</a><ul>
-<li class="chapter" data-level="3.6.1" data-path="data.html"><a href="data.html#converting-factors"><i class="fa fa-check"></i><b>3.6.1</b> Converting factors</a></li>
-<li class="chapter" data-level="3.6.2" data-path="data.html"><a href="data.html#renaming-factors"><i class="fa fa-check"></i><b>3.6.2</b> Renaming factors</a></li>
-<li class="chapter" data-level="3.6.3" data-path="data.html"><a href="data.html#using-stringsasfactorstrue"><i class="fa fa-check"></i><b>3.6.3</b> Using <code>stringsAsFactors=TRUE</code></a></li>
-=======
-<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#challenge"><i class="fa fa-check"></i><b>3.1</b> Challenge</a></li>
-<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#based-on-the-output-of-strtrafficstops-can-you-answer-the-following-questions"><i class="fa fa-check"></i><b>3.2</b> Based on the output of <code>str(trafficstops)</code>, can you answer the following questions?</a></li>
-<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#what-is-the-class-of-the-object-trafficstops"><i class="fa fa-check"></i><b>3.3</b> * What is the class of the object <code>trafficstops</code>?</a></li>
-<li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#how-many-rows-and-how-many-columns-are-in-this-object"><i class="fa fa-check"></i><b>3.4</b> * How many rows and how many columns are in this object?</a></li>
-<li class="chapter" data-level="3.5" data-path="data.html"><a href="data.html#how-many-counties-have-been-recorded-in-this-dataset"><i class="fa fa-check"></i><b>3.5</b> * How many counties have been recorded in this dataset?</a></li>
-<li class="chapter" data-level="3.6" data-path="data.html"><a href="data.html#answers"><i class="fa fa-check"></i><b>3.6</b> Answers</a></li>
-<li class="chapter" data-level="3.7" data-path="data.html"><a href="data.html#class-data-frame"><i class="fa fa-check"></i><b>3.7</b> * class: data frame</a></li>
-<li class="chapter" data-level="3.8" data-path="data.html"><a href="data.html#how-many-rows-211211-how-many-columns-11"><i class="fa fa-check"></i><b>3.8</b> * how many rows: 211211, how many columns: 11</a></li>
-<li class="chapter" data-level="3.9" data-path="data.html"><a href="data.html#how-many-counties-82"><i class="fa fa-check"></i><b>3.9</b> * how many counties: 82</a></li>
-<li class="chapter" data-level="3.10" data-path="data.html"><a href="data.html#indexing-and-subsetting-data-frames"><i class="fa fa-check"></i><b>3.10</b> Indexing and subsetting data frames</a><ul>
-<li class="chapter" data-level="3.10.1" data-path="data.html"><a href="data.html#challenges"><i class="fa fa-check"></i><b>3.10.1</b> Challenges:</a></li>
-<li class="chapter" data-level="3.10.2" data-path="data.html"><a href="data.html#create-a-data.frame-trafficstops_200-containing-only-the"><i class="fa fa-check"></i><b>3.10.2</b> 1. Create a <code>data.frame</code> (<code>trafficstops_200</code>) containing only the</a></li>
-<li class="chapter" data-level="3.10.3" data-path="data.html"><a href="data.html#observations-from-row-200-of-the-trafficstops-dataset."><i class="fa fa-check"></i><b>3.10.3</b> observations from row 200 of the <code>trafficstops</code> dataset.</a></li>
-<li class="chapter" data-level="3.10.4" data-path="data.html"><a href="data.html#notice-how-nrow-gave-you-the-number-of-rows-in-a-data.frame"><i class="fa fa-check"></i><b>3.10.4</b> 2. Notice how <code>nrow()</code> gave you the number of rows in a <code>data.frame</code>?</a></li>
-<li class="chapter" data-level="3.10.5" data-path="data.html"><a href="data.html#use-that-number-to-pull-out-just-that-last-row-in-the-data-frame"><i class="fa fa-check"></i><b>3.10.5</b> * Use that number to pull out just that last row in the data frame</a></li>
-<li class="chapter" data-level="3.10.6" data-path="data.html"><a href="data.html#compare-that-with-what-you-see-as-the-last-row-using-tail-to-make"><i class="fa fa-check"></i><b>3.10.6</b> * Compare that with what you see as the last row using <code>tail()</code> to make</a></li>
-<li class="chapter" data-level="3.10.7" data-path="data.html"><a href="data.html#sure-its-meeting-expectations."><i class="fa fa-check"></i><b>3.10.7</b> sure it’s meeting expectations.</a></li>
-<li class="chapter" data-level="3.10.8" data-path="data.html"><a href="data.html#pull-out-that-last-row-using-nrow-instead-of-the-row-number"><i class="fa fa-check"></i><b>3.10.8</b> * Pull out that last row using <code>nrow()</code> instead of the row number</a></li>
-<li class="chapter" data-level="3.10.9" data-path="data.html"><a href="data.html#create-a-new-data-frame-object-trafficstops_last-from-that-last-row"><i class="fa fa-check"></i><b>3.10.9</b> * Create a new data frame object (<code>trafficstops_last</code>) from that last row</a></li>
-<li class="chapter" data-level="3.10.10" data-path="data.html"><a href="data.html#use-nrow-to-extract-the-row-that-is-in-the-middle-of-the"><i class="fa fa-check"></i><b>3.10.10</b> 3. Use <code>nrow()</code> to extract the row that is in the middle of the</a></li>
-<li class="chapter" data-level="3.10.11" data-path="data.html"><a href="data.html#data-frame.-store-the-content-of-this-row-in-an-object-named"><i class="fa fa-check"></i><b>3.10.11</b> data frame. Store the content of this row in an object named</a></li>
-<li class="chapter" data-level="3.10.12" data-path="data.html"><a href="data.html#trafficstops_middle."><i class="fa fa-check"></i><b>3.10.12</b> <code>trafficstops_middle</code>.</a></li>
-<li class="chapter" data-level="3.10.13" data-path="data.html"><a href="data.html#combine-nrow-with-the---notation-above-to-reproduce-the-behavior-of"><i class="fa fa-check"></i><b>3.10.13</b> 4. Combine <code>nrow()</code> with the <code>-</code> notation above to reproduce the behavior of</a></li>
-<li class="chapter" data-level="3.10.14" data-path="data.html"><a href="data.html#headtrafficstops-keeping-just-the-first-through-6th-rows-of-the-trafficstops"><i class="fa fa-check"></i><b>3.10.14</b> <code>head(trafficstops)</code> keeping just the first through 6th rows of the trafficstops</a></li>
-<li class="chapter" data-level="3.10.15" data-path="data.html"><a href="data.html#dataset."><i class="fa fa-check"></i><b>3.10.15</b> dataset.</a></li>
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#inspecting-data.frame-objects"><i class="fa fa-check"></i><b>3.1</b> Inspecting <code>data.frame</code> Objects</a></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#indexing-and-subsetting-data-frames"><i class="fa fa-check"></i><b>3.2</b> Indexing and subsetting data frames</a></li>
+<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#categorical-data-factors"><i class="fa fa-check"></i><b>3.3</b> Categorical data: factors</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="data.html"><a href="data.html#converting-factors"><i class="fa fa-check"></i><b>3.3.1</b> Converting factors</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data.html"><a href="data.html#renaming-factors"><i class="fa fa-check"></i><b>3.3.2</b> Renaming factors</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data.html"><a href="data.html#using-stringsasfactors"><i class="fa fa-check"></i><b>3.3.3</b> Using <code>stringsAsFactors</code></a></li>
 </ul></li>
-<li class="chapter" data-level="3.11" data-path="data.html"><a href="data.html#answers-1"><i class="fa fa-check"></i><b>3.11</b> Answers</a></li>
-<li class="chapter" data-level="3.12" data-path="data.html"><a href="data.html#categorical-data-factors"><i class="fa fa-check"></i><b>3.12</b> Categorical data: factors</a><ul>
-<li class="chapter" data-level="3.12.1" data-path="data.html"><a href="data.html#converting-factors"><i class="fa fa-check"></i><b>3.12.1</b> Converting factors</a></li>
-</ul></li>
-<li class="chapter" data-level="3.13" data-path="data.html"><a href="data.html#challenge-1"><i class="fa fa-check"></i><b>3.13</b> Challenge:</a></li>
-<li class="chapter" data-level="3.14" data-path="data.html"><a href="data.html#can-you-predict-the-class-for-each-of-the-columns-in-the-following"><i class="fa fa-check"></i><b>3.14</b> Can you predict the class for each of the columns in the following</a></li>
-<li class="chapter" data-level="3.15" data-path="data.html"><a href="data.html#example"><i class="fa fa-check"></i><b>3.15</b> example?</a></li>
-<li class="chapter" data-level="3.16" data-path="data.html"><a href="data.html#check-your-guesses-using-strcountry_climate"><i class="fa fa-check"></i><b>3.16</b> Check your guesses using <code>str(country_climate)</code>:</a></li>
-<li class="chapter" data-level="3.17" data-path="data.html"><a href="data.html#are-they-what-you-expected-why-why-not"><i class="fa fa-check"></i><b>3.17</b> * Are they what you expected? Why? why not?</a></li>
-<li class="chapter" data-level="3.18" data-path="data.html"><a href="data.html#what-would-have-been-different-if-we-had-added-stringsasfactors-false"><i class="fa fa-check"></i><b>3.18</b> * What would have been different if we had added <code>stringsAsFactors = FALSE</code></a></li>
-<li class="chapter" data-level="3.19" data-path="data.html"><a href="data.html#to-this-call"><i class="fa fa-check"></i><b>3.19</b> to this call?</a></li>
-<li class="chapter" data-level="3.20" data-path="data.html"><a href="data.html#what-would-you-need-to-change-to-ensure-that-each-column-had-the"><i class="fa fa-check"></i><b>3.20</b> * What would you need to change to ensure that each column had the</a></li>
-<li class="chapter" data-level="3.21" data-path="data.html"><a href="data.html#accurate-data-type"><i class="fa fa-check"></i><b>3.21</b> accurate data type?</a></li>
-<li class="chapter" data-level="3.22" data-path="data.html"><a href="data.html#answers-2"><i class="fa fa-check"></i><b>3.22</b> Answers</a></li>
-<li class="chapter" data-level="3.23" data-path="data.html"><a href="data.html#missing-quotations-around-the-names-of-the-animals"><i class="fa fa-check"></i><b>3.23</b> * missing quotations around the names of the animals</a></li>
-<li class="chapter" data-level="3.24" data-path="data.html"><a href="data.html#missing-one-entry-in-the-feel-column-probably-for-one-of-the-furry-animals"><i class="fa fa-check"></i><b>3.24</b> * missing one entry in the “feel” column (probably for one of the furry animals)</a></li>
-<li class="chapter" data-level="3.25" data-path="data.html"><a href="data.html#missing-one-comma-in-the-weight-column"><i class="fa fa-check"></i><b>3.25</b> * missing one comma in the weight column</a></li>
-<li class="chapter" data-level="3.26" data-path="data.html"><a href="data.html#answers-3"><i class="fa fa-check"></i><b>3.26</b> Answers</a></li>
-<li class="chapter" data-level="3.27" data-path="data.html"><a href="data.html#country-climate-temperature-and-northern_hemisphere-are"><i class="fa fa-check"></i><b>3.27</b> * <code>country</code>, <code>climate</code>, <code>temperature</code>, and <code>northern_hemisphere</code> are</a></li>
-<li class="chapter" data-level="3.28" data-path="data.html"><a href="data.html#factors-has_kangaroo-is-numeric."><i class="fa fa-check"></i><b>3.28</b> factors; <code>has_kangaroo</code> is numeric.</a></li>
-<li class="chapter" data-level="3.29" data-path="data.html"><a href="data.html#using-stringsasfactorsfalse-would-have-made-them-character-instead-of"><i class="fa fa-check"></i><b>3.29</b> * using <code>stringsAsFactors=FALSE</code> would have made them character instead of</a></li>
-<li class="chapter" data-level="3.30" data-path="data.html"><a href="data.html#factors"><i class="fa fa-check"></i><b>3.30</b> factors</a></li>
-<li class="chapter" data-level="3.31" data-path="data.html"><a href="data.html#removing-the-quotes-in-temperature-northern_hemisphere-and-replacing-1"><i class="fa fa-check"></i><b>3.31</b> * removing the quotes in temperature, northern_hemisphere, and replacing 1</a></li>
-<li class="chapter" data-level="3.32" data-path="data.html"><a href="data.html#by-true-in-the-has_kangaroo-column-would-probably-what-was-originally"><i class="fa fa-check"></i><b>3.32</b> by TRUE in the <code>has_kangaroo</code> column would probably what was originally</a></li>
-<li class="chapter" data-level="3.33" data-path="data.html"><a href="data.html#intended."><i class="fa fa-check"></i><b>3.33</b> intended.</a><ul>
-<li class="chapter" data-level="3.33.1" data-path="data.html"><a href="data.html#dates"><i class="fa fa-check"></i><b>3.33.1</b> Dates</a></li>
->>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
-</ul></li>
-<li class="chapter" data-level="3.34" data-path="data.html"><a href="data.html#challenge-2"><i class="fa fa-check"></i><b>3.34</b> Challenge</a></li>
-<li class="chapter" data-level="3.35" data-path="data.html"><a href="data.html#are-there-more-stops-in-certain-months-of-the-year-or-certain-days-of-the-month"><i class="fa fa-check"></i><b>3.35</b> * Are there more stops in certain months of the year or certain days of the month?</a></li>
-<li class="chapter" data-level="3.36" data-path="data.html"><a href="data.html#answers-4"><i class="fa fa-check"></i><b>3.36</b> Answers</a></li>
+<li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#dates"><i class="fa fa-check"></i><b>3.4</b> Dates</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -290,11 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Introduction to R</h1>
 <p class="author"><em>Claudia A Engel</em></p>
-<<<<<<< HEAD
 <p class="date"><em>Last updated: January 25, 2021</em></p>
-=======
-<p class="date"><em>Last updated: September 20, 2020</em></p>
->>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 </div>
 <div id="prerequisites" class="section level1 unnumbered">
 <h1>Prerequisites</h1>
@@ -381,11 +310,7 @@ to get the most recent version of R for common distributions. For most
 distributions, you could use your package manager (e.g., for Debian/Ubuntu run
 <code>sudo apt-get install r-base</code>, and for Fedora <code>sudo yum install R</code>), but we
 don’t recommend this approach as the versions provided by this are
-<<<<<<< HEAD
-usually out of date. In any case, make sure you have at least R 3.3.1.</li>
-=======
 usually out of date. In any case, make sure you have at least R 4.0.0.</li>
->>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <li>Go to the
 <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio download page</a></li>
 <li>Under <em>Installers</em> select the version that matches your distribution, and

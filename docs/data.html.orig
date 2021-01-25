@@ -274,9 +274,9 @@ load into memory the content of the CSV file as an object of class <code>data.fr
 <p>You are now ready to load the data:</p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_trafficstops_bw.csv&quot;</span>)</a></code></pre></div>
 =======
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="kw">download.file</span>(<span class="st">&quot;http://bit.ly/MS_trafficstops_bw&quot;</span>, <span class="st">&quot;data/MS_trafficstops_bw.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">download.file</span>(<span class="st">&quot;http://bit.ly/MS_trafficstops_bw&quot;</span>, <span class="st">&quot;data/MS_trafficstops_bw.csv&quot;</span>)</a></code></pre></div>
 <p>You are now ready to load the data:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_trafficstops_bw.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_trafficstops_bw.csv&quot;</span>)</a></code></pre></div>
 >>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <p>This statement doesn’t produce any output because, as you might recall,
 assignments don’t display anything. If we want to check that our data has been
@@ -286,6 +286,9 @@ properly. Let’s check the top (the first 6 lines) of this data frame using the
 function <code>head()</code>:</p>
 <<<<<<< HEAD
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="kw">head</span>(trafficstops)</a></code></pre></div>
+=======
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">head</span>(trafficstops)</a></code></pre></div>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <pre><code>#&gt;              id state  stop_date       county_name county_fips
 #&gt; 1 MS-2013-00001    MS 2013-01-01      Jones County       28067
 #&gt; 2 MS-2013-00002    MS 2013-01-01 Lauderdale County       28075
@@ -307,59 +310,6 @@ function <code>head()</code>:</p>
 #&gt; 4 Speeding - Regulated or posted speed limit and actual speed       K035
 #&gt; 5 Speeding - Regulated or posted speed limit and actual speed       D028
 #&gt; 6 Speeding - Regulated or posted speed limit and actual speed       K023</code></pre>
-</div>
-=======
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"><span class="kw">head</span>(trafficstops)</a></code></pre></div>
-<pre><code>#&gt;              id state  stop_date
-#&gt; 1 MS-2013-00001    MS 2013-01-01
-#&gt; 2 MS-2013-00002    MS 2013-01-01
-#&gt; 3 MS-2013-00003    MS 2013-01-01
-#&gt; 4 MS-2013-00004    MS 2013-01-01
-#&gt; 5 MS-2013-00005    MS 2013-01-01
-#&gt; 6 MS-2013-00006    MS 2013-01-01
-#&gt;         county_name county_fips
-#&gt; 1      Jones County       28067
-#&gt; 2 Lauderdale County       28075
-#&gt; 3       Pike County       28113
-#&gt; 4    Hancock County       28045
-#&gt; 5     Holmes County       28051
-#&gt; 6    Jackson County       28059
-#&gt;            police_department
-#&gt; 1 Mississippi Highway Patrol
-#&gt; 2 Mississippi Highway Patrol
-#&gt; 3 Mississippi Highway Patrol
-#&gt; 4 Mississippi Highway Patrol
-#&gt; 5 Mississippi Highway Patrol
-#&gt; 6 Mississippi Highway Patrol
-#&gt;   driver_gender driver_birthdate
-#&gt; 1             M       1950-06-14
-#&gt; 2             M       1967-04-06
-#&gt; 3             M       1974-04-15
-#&gt; 4             M       1981-03-23
-#&gt; 5             M       1992-08-03
-#&gt; 6             F       1960-05-02
-#&gt;   driver_race
-#&gt; 1       Black
-#&gt; 2       Black
-#&gt; 3       Black
-#&gt; 4       White
-#&gt; 5       White
-#&gt; 6       White
-#&gt;                                                 violation_raw
-#&gt; 1                     Seat belt not used properly as required
-#&gt; 2                                            Careless driving
-#&gt; 3 Speeding - Regulated or posted speed limit and actual speed
-#&gt; 4 Speeding - Regulated or posted speed limit and actual speed
-#&gt; 5 Speeding - Regulated or posted speed limit and actual speed
-#&gt; 6 Speeding - Regulated or posted speed limit and actual speed
-#&gt;   officer_id
-#&gt; 1       J042
-#&gt; 2       B026
-#&gt; 3       M009
-#&gt; 4       K035
-#&gt; 5       D028
-#&gt; 6       K023</code></pre>
->>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <div id="inspecting-data.frame-objects" class="section level2">
 <h2><span class="header-section-number">3.1</span> Inspecting <code>data.frame</code> Objects</h2>
 <p>As you may recall, a data frame in R is a special case of a list, and a representation of data where the columns are vectors that all have the same length. Because the columns are vectors, they all contain the same type of data (e.g., characters, integers, factors, etc.).</p>
@@ -369,7 +319,7 @@ with the function <code>str()</code>:</p>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="kw">str</span>(trafficstops)</a></code></pre></div>
 <pre><code>#&gt; &#39;data.frame&#39;:    211211 obs. of  11 variables:
 =======
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="kw">str</span>(trafficstops)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">str</span>(trafficstops)</a></code></pre></div>
 <pre><code>#&gt; &#39;data.frame&#39;:	211211 obs. of  11 variables:
 >>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 #&gt;  $ id               : chr  &quot;MS-2013-00001&quot; &quot;MS-2013-00002&quot; &quot;MS-2013-00003&quot; &quot;MS-2013-00004&quot; ...
@@ -459,21 +409,21 @@ can be called by name, using one of the four following notations:</p>
 <a class="sourceLine" id="cb105-3" title="3">trafficstops[[<span class="st">&quot;violation_raw&quot;</span>]]     <span class="co"># Result is a vector</span></a>
 <a class="sourceLine" id="cb105-4" title="4">trafficstops<span class="op">$</span>violation_raw          <span class="co"># Result is a vector</span></a></code></pre></div>
 =======
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">trafficstops[<span class="dv">1</span>, <span class="dv">1</span>]   <span class="co"># first element in the first column of the data frame (as a vector)</span></a>
-<a class="sourceLine" id="cb104-2" data-line-number="2">trafficstops[<span class="dv">1</span>, <span class="dv">6</span>]   <span class="co"># first element in the 6th column (as a vector)</span></a>
-<a class="sourceLine" id="cb104-3" data-line-number="3">trafficstops[, <span class="dv">1</span>]    <span class="co"># first column in the data frame (as a vector)</span></a>
-<a class="sourceLine" id="cb104-4" data-line-number="4">trafficstops[<span class="dv">1</span>]      <span class="co"># first column in the data frame (as a data.frame)</span></a>
-<a class="sourceLine" id="cb104-5" data-line-number="5">trafficstops[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">7</span>] <span class="co"># first three elements in the 7th column (as a vector)</span></a>
-<a class="sourceLine" id="cb104-6" data-line-number="6">trafficstops[<span class="dv">3</span>, ]    <span class="co"># the 3rd row (as a data.frame)</span></a>
-<a class="sourceLine" id="cb104-7" data-line-number="7">trafficstops[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, ]  <span class="co"># the 1st to 6th rows, equivalent to head(trafficstops)</span></a>
-<a class="sourceLine" id="cb104-8" data-line-number="8">trafficstops[, <span class="dv">-1</span>]           <span class="co"># the whole data frame, excluding the first column</span></a>
-<a class="sourceLine" id="cb104-9" data-line-number="9">trafficstops[<span class="op">-</span><span class="kw">c</span>(<span class="dv">7</span><span class="op">:</span><span class="dv">211211</span>),]  <span class="co"># equivalent to head(trafficstops)</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">trafficstops[<span class="dv">1</span>, <span class="dv">1</span>]   <span class="co"># first element in the first column of the data frame (as a vector)</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">trafficstops[<span class="dv">1</span>, <span class="dv">6</span>]   <span class="co"># first element in the 6th column (as a vector)</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">trafficstops[, <span class="dv">1</span>]    <span class="co"># first column in the data frame (as a vector)</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">trafficstops[<span class="dv">1</span>]      <span class="co"># first column in the data frame (as a data.frame)</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">trafficstops[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">7</span>] <span class="co"># first three elements in the 7th column (as a vector)</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">trafficstops[<span class="dv">3</span>, ]    <span class="co"># the 3rd row (as a data.frame)</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">trafficstops[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, ]  <span class="co"># the 1st to 6th rows, equivalent to head(trafficstops)</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">trafficstops[, <span class="dv">-1</span>]           <span class="co"># the whole data frame, excluding the first column</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">trafficstops[<span class="op">-</span><span class="kw">c</span>(<span class="dv">7</span><span class="op">:</span><span class="dv">211211</span>),]  <span class="co"># equivalent to head(trafficstops)</span></a></code></pre></div>
 <p>As well as using numeric values to subset a <code>data.frame</code> (or <code>matrix</code>), columns
 can be called by name, using one of the four following notations:</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1">trafficstops[<span class="st">&quot;violation_raw&quot;</span>]       <span class="co"># Result is a data.frame</span></a>
-<a class="sourceLine" id="cb105-2" data-line-number="2">trafficstops[, <span class="st">&quot;violation_raw&quot;</span>]     <span class="co"># Result is a vector</span></a>
-<a class="sourceLine" id="cb105-3" data-line-number="3">trafficstops[[<span class="st">&quot;violation_raw&quot;</span>]]     <span class="co"># Result is a vector</span></a>
-<a class="sourceLine" id="cb105-4" data-line-number="4">trafficstops<span class="op">$</span>violation_raw          <span class="co"># Result is a vector</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">trafficstops[<span class="st">&quot;violation_raw&quot;</span>]       <span class="co"># Result is a data.frame</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">trafficstops[, <span class="st">&quot;violation_raw&quot;</span>]     <span class="co"># Result is a vector</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">trafficstops[[<span class="st">&quot;violation_raw&quot;</span>]]     <span class="co"># Result is a vector</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">trafficstops<span class="op">$</span>violation_raw          <span class="co"># Result is a vector</span></a></code></pre></div>
 >>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <p>For our purposes, the last three notations are equivalent. RStudio knows about
 the columns in your data frame, so you can take advantage of the autocompletion
@@ -530,22 +480,22 @@ dataset.</p></li>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="co"># and if we wanted to see the breakdown by race:</span></a>
 <a class="sourceLine" id="cb109-2" title="2"><span class="kw">table</span>(Webster_trafficstops<span class="op">$</span>driver_race)</a></code></pre></div>
 =======
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="co"># the condition:</span></a>
-<a class="sourceLine" id="cb106-2" data-line-number="2"><span class="co"># returns a logical vector of the length of the column</span></a>
-<a class="sourceLine" id="cb106-3" data-line-number="3">trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span> </a>
-<a class="sourceLine" id="cb106-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb106-5" data-line-number="5"><span class="co"># use this vector to extract rows and all columns</span></a>
-<a class="sourceLine" id="cb106-6" data-line-number="6"><span class="co"># note the comma: we want *all* columns</span></a>
-<a class="sourceLine" id="cb106-7" data-line-number="7">trafficstops[trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>, ] </a>
-<a class="sourceLine" id="cb106-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb106-9" data-line-number="9"><span class="co"># assign extract to a new data frame</span></a>
-<a class="sourceLine" id="cb106-10" data-line-number="10">Webster_trafficstops &lt;-<span class="st"> </span>trafficstops[trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>, ]</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># the condition:</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co"># returns a logical vector of the length of the column</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span> </a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co"># use this vector to extract rows and all columns</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co"># note the comma: we want *all* columns</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7">trafficstops[trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>, ] </a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co"># assign extract to a new data frame</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10">Webster_trafficstops &lt;-<span class="st"> </span>trafficstops[trafficstops<span class="op">$</span>county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>, ]</a></code></pre></div>
 <p>This is also a possibility (but slower):</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1">Webster_trafficstops &lt;-<span class="st"> </span><span class="kw">subset</span>(trafficstops, county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>)</a>
-<a class="sourceLine" id="cb107-2" data-line-number="2"><span class="kw">nrow</span>(Webster_trafficstops) <span class="co"># 393 stops in Webster County!</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">Webster_trafficstops &lt;-<span class="st"> </span><span class="kw">subset</span>(trafficstops, county_name <span class="op">==</span><span class="st"> &quot;Webster County&quot;</span>)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">nrow</span>(Webster_trafficstops) <span class="co"># 393 stops in Webster County!</span></a></code></pre></div>
 <pre><code>#&gt; [1] 156</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="co"># and if we wanted to see the breakdown by race:</span></a>
-<a class="sourceLine" id="cb109-2" data-line-number="2"><span class="kw">table</span>(Webster_trafficstops<span class="op">$</span>driver_race)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># and if we wanted to see the breakdown by race:</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">table</span>(Webster_trafficstops<span class="op">$</span>driver_race)</a></code></pre></div>
 >>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <pre><code>#&gt; 
 #&gt; Black White 
@@ -585,6 +535,11 @@ Challenge
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1">new_col &lt;-<span class="st"> </span><span class="kw">row.names</span>(trafficstops)</a>
 <a class="sourceLine" id="cb111-2" title="2">trafficstops_withnewcol &lt;-<span class="st"> </span><span class="kw">cbind</span>(trafficstops, new_col)</a>
 <a class="sourceLine" id="cb111-3" title="3"><span class="kw">head</span>(trafficstops_withnewcol)</a></code></pre></div>
+=======
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">new_col &lt;-<span class="st"> </span><span class="kw">row.names</span>(trafficstops)</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">trafficstops_withnewcol &lt;-<span class="st"> </span><span class="kw">cbind</span>(trafficstops, new_col)</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="kw">head</span>(trafficstops_withnewcol)</a></code></pre></div>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <pre><code>#&gt;              id state  stop_date       county_name county_fips
 #&gt; 1 MS-2013-00001    MS 2013-01-01      Jones County       28067
 #&gt; 2 MS-2013-00002    MS 2013-01-01 Lauderdale County       28075
@@ -614,6 +569,7 @@ Challenge
 #&gt; 5       5
 #&gt; 6       6</code></pre>
 <p>Alternatively, we can also add a new column adding the new column name after the <code>$</code> sign then assigning the value, like below. Note that this will change the original data frame, which you may not always want to do.</p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1">trafficstops<span class="op">$</span>row_numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(trafficstops))</a>
 <a class="sourceLine" id="cb113-2" title="2">trafficstops<span class="op">$</span>all_false &lt;-<span class="st"> </span><span class="ot">FALSE</span>  <span class="co"># what do you think will happen here?</span></a></code></pre></div>
 <p>There is an equivalent function, <code>rbind()</code> to add a new row to a data frame. I use this far less frequently than the column equivalent. The one thing to keep in mind is that the row to be added to the data frame needs to match the order and type of columns in the data frame. Remember that R’s way to store multiple different data types in one object is a <code>list</code>. So if we wanted to add a new row to <code>trafficstops</code> we would say:</p>
@@ -624,6 +580,18 @@ Challenge
 <a class="sourceLine" id="cb114-5" title="5"></a>
 <a class="sourceLine" id="cb114-6" title="6">trafficstops_withnewrow &lt;-<span class="st"> </span><span class="kw">rbind</span>(trafficstops, new_row)</a>
 <a class="sourceLine" id="cb114-7" title="7"><span class="kw">tail</span>(trafficstops_withnewrow)</a></code></pre></div>
+=======
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">trafficstops<span class="op">$</span>row_numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(trafficstops))</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">trafficstops<span class="op">$</span>all_false &lt;-<span class="st"> </span><span class="ot">FALSE</span>  <span class="co"># what do you think will happen here?</span></a></code></pre></div>
+<p>There is an equivalent function, <code>rbind()</code> to add a new row to a data frame. I use this far less frequently than the column equivalent. The one thing to keep in mind is that the row to be added to the data frame needs to match the order and type of columns in the data frame. Remember that R’s way to store multiple different data types in one object is a <code>list</code>. So if we wanted to add a new row to <code>trafficstops</code> we would say:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">new_row &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id=</span><span class="st">&quot;MS-2017-12345&quot;</span>, <span class="dt">state=</span><span class="st">&quot;MS&quot;</span>, <span class="dt">stop_date=</span><span class="st">&quot;2017-08-24&quot;</span>,</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">                <span class="dt">county_name=</span><span class="st">&quot;Tallahatchie County&quot;</span>, <span class="dt">county_fips=</span><span class="dv">12345</span>,</a>
+<a class="sourceLine" id="cb17-3" data-line-number="3">                <span class="dt">police_department=</span><span class="st">&quot;MSHP&quot;</span>, <span class="dt">driver_gender=</span><span class="st">&quot;F&quot;</span>, <span class="dt">driver_birthdate=</span><span class="st">&quot;1999-06-14&quot;</span>,</a>
+<a class="sourceLine" id="cb17-4" data-line-number="4">                <span class="dt">driver_race=</span><span class="st">&quot;Hispanic&quot;</span>, <span class="dt">violation_raw=</span><span class="st">&quot;Speeding&quot;</span>, <span class="dt">officer_id=</span><span class="st">&quot;ABCD&quot;</span>)</a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb17-6" data-line-number="6">trafficstops_withnewrow &lt;-<span class="st"> </span><span class="kw">rbind</span>(trafficstops, new_row)</a>
+<a class="sourceLine" id="cb17-7" data-line-number="7"><span class="kw">tail</span>(trafficstops_withnewrow)</a></code></pre></div>
+>>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <pre><code>#&gt;                   id state  stop_date         county_name county_fips
 #&gt; 211207 MS-2016-24293    MS 2016-07-09       George County       28039
 #&gt; 211208 MS-2016-24294    MS 2016-07-10       Copiah County       28029
@@ -645,120 +613,6 @@ Challenge
 #&gt; 211210       Expired or no non-commercial driver license or permit       C015
 #&gt; 211211                     Seat belt not used properly as required       C015
 #&gt; 211212                                                    Speeding       ABCD</code></pre>
-=======
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1">new_col &lt;-<span class="st"> </span><span class="kw">row.names</span>(trafficstops)</a>
-<a class="sourceLine" id="cb111-2" data-line-number="2">trafficstops_withnewcol &lt;-<span class="st"> </span><span class="kw">cbind</span>(trafficstops, new_col)</a>
-<a class="sourceLine" id="cb111-3" data-line-number="3"><span class="kw">head</span>(trafficstops_withnewcol)</a></code></pre></div>
-<pre><code>#&gt;              id state  stop_date
-#&gt; 1 MS-2013-00001    MS 2013-01-01
-#&gt; 2 MS-2013-00002    MS 2013-01-01
-#&gt; 3 MS-2013-00003    MS 2013-01-01
-#&gt; 4 MS-2013-00004    MS 2013-01-01
-#&gt; 5 MS-2013-00005    MS 2013-01-01
-#&gt; 6 MS-2013-00006    MS 2013-01-01
-#&gt;         county_name county_fips
-#&gt; 1      Jones County       28067
-#&gt; 2 Lauderdale County       28075
-#&gt; 3       Pike County       28113
-#&gt; 4    Hancock County       28045
-#&gt; 5     Holmes County       28051
-#&gt; 6    Jackson County       28059
-#&gt;            police_department
-#&gt; 1 Mississippi Highway Patrol
-#&gt; 2 Mississippi Highway Patrol
-#&gt; 3 Mississippi Highway Patrol
-#&gt; 4 Mississippi Highway Patrol
-#&gt; 5 Mississippi Highway Patrol
-#&gt; 6 Mississippi Highway Patrol
-#&gt;   driver_gender driver_birthdate
-#&gt; 1             M       1950-06-14
-#&gt; 2             M       1967-04-06
-#&gt; 3             M       1974-04-15
-#&gt; 4             M       1981-03-23
-#&gt; 5             M       1992-08-03
-#&gt; 6             F       1960-05-02
-#&gt;   driver_race
-#&gt; 1       Black
-#&gt; 2       Black
-#&gt; 3       Black
-#&gt; 4       White
-#&gt; 5       White
-#&gt; 6       White
-#&gt;                                                 violation_raw
-#&gt; 1                     Seat belt not used properly as required
-#&gt; 2                                            Careless driving
-#&gt; 3 Speeding - Regulated or posted speed limit and actual speed
-#&gt; 4 Speeding - Regulated or posted speed limit and actual speed
-#&gt; 5 Speeding - Regulated or posted speed limit and actual speed
-#&gt; 6 Speeding - Regulated or posted speed limit and actual speed
-#&gt;   officer_id new_col
-#&gt; 1       J042       1
-#&gt; 2       B026       2
-#&gt; 3       M009       3
-#&gt; 4       K035       4
-#&gt; 5       D028       5
-#&gt; 6       K023       6</code></pre>
-<p>Alternatively, we can also add a new column adding the new column name after the <code>$</code> sign then assigning the value, like below. Note that this will change the original data frame, which you may not always want to do.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1">trafficstops<span class="op">$</span>row_numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(trafficstops))</a>
-<a class="sourceLine" id="cb113-2" data-line-number="2">trafficstops<span class="op">$</span>all_false &lt;-<span class="st"> </span><span class="ot">FALSE</span>  <span class="co"># what do you think will happen here?</span></a></code></pre></div>
-<p>There is an equivalent function, <code>rbind()</code> to add a new row to a data frame. I use this far less frequently than the column equivalent. The one thing to keep in mind is that the row to be added to the data frame needs to match the order and type of columns in the data frame. Remember that R’s way to store multiple different data types in one object is a <code>list</code>. So if we wanted to add a new row to <code>trafficstops</code> we would say:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">new_row &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id=</span><span class="st">&quot;MS-2017-12345&quot;</span>, <span class="dt">state=</span><span class="st">&quot;MS&quot;</span>, <span class="dt">stop_date=</span><span class="st">&quot;2017-08-24&quot;</span>,</a>
-<a class="sourceLine" id="cb114-2" data-line-number="2">                <span class="dt">county_name=</span><span class="st">&quot;Tallahatchie County&quot;</span>, <span class="dt">county_fips=</span><span class="dv">12345</span>,</a>
-<a class="sourceLine" id="cb114-3" data-line-number="3">                <span class="dt">police_department=</span><span class="st">&quot;MSHP&quot;</span>, <span class="dt">driver_gender=</span><span class="st">&quot;F&quot;</span>, <span class="dt">driver_birthdate=</span><span class="st">&quot;1999-06-14&quot;</span>,</a>
-<a class="sourceLine" id="cb114-4" data-line-number="4">                <span class="dt">driver_race=</span><span class="st">&quot;Hispanic&quot;</span>, <span class="dt">violation_raw=</span><span class="st">&quot;Speeding&quot;</span>, <span class="dt">officer_id=</span><span class="st">&quot;ABCD&quot;</span>)</a>
-<a class="sourceLine" id="cb114-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb114-6" data-line-number="6">trafficstops_withnewrow &lt;-<span class="st"> </span><span class="kw">rbind</span>(trafficstops, new_row)</a>
-<a class="sourceLine" id="cb114-7" data-line-number="7"><span class="kw">tail</span>(trafficstops_withnewrow)</a></code></pre></div>
-<pre><code>#&gt;                   id state  stop_date
-#&gt; 211207 MS-2016-24293    MS 2016-07-09
-#&gt; 211208 MS-2016-24294    MS 2016-07-10
-#&gt; 211209 MS-2016-24295    MS 2016-07-11
-#&gt; 211210 MS-2016-24296    MS 2016-07-14
-#&gt; 211211 MS-2016-24297    MS 2016-07-14
-#&gt; 211212 MS-2017-12345    MS 2017-08-24
-#&gt;                county_name county_fips
-#&gt; 211207       George County       28039
-#&gt; 211208       Copiah County       28029
-#&gt; 211209      Grenada County       28043
-#&gt; 211210       Copiah County       28029
-#&gt; 211211       Copiah County       28029
-#&gt; 211212 Tallahatchie County       12345
-#&gt;                 police_department
-#&gt; 211207 Mississippi Highway Patrol
-#&gt; 211208 Mississippi Highway Patrol
-#&gt; 211209 Mississippi Highway Patrol
-#&gt; 211210 Mississippi Highway Patrol
-#&gt; 211211 Mississippi Highway Patrol
-#&gt; 211212                       MSHP
-#&gt;        driver_gender driver_birthdate
-#&gt; 211207             M       1992-07-14
-#&gt; 211208             M       1975-12-23
-#&gt; 211209             M       1998-02-02
-#&gt; 211210             F       1970-06-14
-#&gt; 211211             M       1948-03-11
-#&gt; 211212             F       1999-06-14
-#&gt;        driver_race
-#&gt; 211207       White
-#&gt; 211208       Black
-#&gt; 211209       White
-#&gt; 211210       White
-#&gt; 211211       White
-#&gt; 211212    Hispanic
-#&gt;                                                      violation_raw
-#&gt; 211207 Speeding - Regulated or posted speed limit and actual speed
-#&gt; 211208 Speeding - Regulated or posted speed limit and actual speed
-#&gt; 211209                     Seat belt not used properly as required
-#&gt; 211210       Expired or no non-commercial driver license or permit
-#&gt; 211211                     Seat belt not used properly as required
-#&gt; 211212                                                    Speeding
-#&gt;        officer_id
-#&gt; 211207       K025
-#&gt; 211208       C033
-#&gt; 211209       D014
-#&gt; 211210       C015
-#&gt; 211211       C015
-#&gt; 211212       ABCD</code></pre>
->>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <p>A convenient function to know about is <code>na.omit()</code>. It will remove all rows from a data frame that have at least one column with <code>NA</code> values.</p>
 <blockquote>
 <h3>
@@ -775,12 +629,12 @@ Challenge
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1"><span class="kw">nrow</span>(dfr)</a>
 <a class="sourceLine" id="cb117-2" title="2"><span class="kw">nrow</span>(<span class="kw">na.omit</span>(dfr))</a></code></pre></div>
 =======
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">dfr &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">col_1 =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>), </a>
-<a class="sourceLine" id="cb116-2" data-line-number="2">                  <span class="dt">col_2 =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="st">&quot;b&quot;</span>), </a>
-<a class="sourceLine" id="cb116-3" data-line-number="3">                  <span class="dt">col_3 =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">NA</span>, <span class="ot">FALSE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">dfr &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">col_1 =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>), </a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">                  <span class="dt">col_2 =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="st">&quot;b&quot;</span>), </a>
+<a class="sourceLine" id="cb19-3" data-line-number="3">                  <span class="dt">col_3 =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">NA</span>, <span class="ot">FALSE</span>))</a></code></pre></div>
 <p>What would you expect the following commands to return?</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1"><span class="kw">nrow</span>(dfr)</a>
-<a class="sourceLine" id="cb117-2" data-line-number="2"><span class="kw">nrow</span>(<span class="kw">na.omit</span>(dfr))</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">nrow</span>(dfr)</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="kw">nrow</span>(<span class="kw">na.omit</span>(dfr))</a></code></pre></div>
 >>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 </blockquote>
 <!---
@@ -821,13 +675,13 @@ number of levels using <code>nlevels()</code>:</p>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1"><span class="kw">levels</span>(party)</a>
 <a class="sourceLine" id="cb119-2" title="2"><span class="kw">nlevels</span>(party)</a></code></pre></div>
 =======
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">party &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;republican&quot;</span>, <span class="st">&quot;democrat&quot;</span>, <span class="st">&quot;democrat&quot;</span>, <span class="st">&quot;republican&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">party &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;republican&quot;</span>, <span class="st">&quot;democrat&quot;</span>, <span class="st">&quot;democrat&quot;</span>, <span class="st">&quot;republican&quot;</span>))</a></code></pre></div>
 <p>R will assign <code>1</code> to the level <code>&quot;democrat&quot;</code> and <code>2</code> to the level <code>&quot;republican&quot;</code> (because
 <code>d</code> comes before <code>r</code>, even though the first element in this vector is
 <code>&quot;republican&quot;</code>). You can check this by using the function <code>levels()</code>, and check the
 number of levels using <code>nlevels()</code>:</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1"><span class="kw">levels</span>(party)</a>
-<a class="sourceLine" id="cb119-2" data-line-number="2"><span class="kw">nlevels</span>(party)</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">levels</span>(party)</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="kw">nlevels</span>(party)</a></code></pre></div>
 >>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <p>Sometimes, the order of the factors does not matter, other times you might want
 to specify the order because it is meaningful (e.g., “low”, “medium”, “high”),
@@ -845,14 +699,12 @@ analysis. Here, one way to reorder our levels in the <code>party</code> vector w
 informative than integers because factors are self describing: <code>"democrat"</code>,
 <code>"republican"</code> is more descriptive than <code>1</code>, <code>2</code>. Which one is “republican”? You wouldn’t
 =======
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1">party <span class="co"># current order</span></a></code></pre></div>
-<pre><code>#&gt; [1] republican democrat   democrat  
-#&gt; [4] republican
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">party <span class="co"># current order</span></a></code></pre></div>
+<pre><code>#&gt; [1] republican democrat   democrat   republican
 #&gt; Levels: democrat republican</code></pre>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">party &lt;-<span class="st"> </span><span class="kw">factor</span>(party, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;republican&quot;</span>, <span class="st">&quot;democrat&quot;</span>))</a>
-<a class="sourceLine" id="cb122-2" data-line-number="2">party <span class="co"># after re-ordering</span></a></code></pre></div>
-<pre><code>#&gt; [1] republican democrat   democrat  
-#&gt; [4] republican
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">party &lt;-<span class="st"> </span><span class="kw">factor</span>(party, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;republican&quot;</span>, <span class="st">&quot;democrat&quot;</span>))</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">party <span class="co"># after re-ordering</span></a></code></pre></div>
+<pre><code>#&gt; [1] republican democrat   democrat   republican
 #&gt; Levels: republican democrat</code></pre>
 <p>In R’s memory, these factors are represented by integers (1, 2, 3), but are more
 informative than integers because factors are self describing: <code>&quot;democrat&quot;</code>,
@@ -871,8 +723,8 @@ this information built in. It is particularly helpful when there are many levels
 <h3><span class="header-section-number">3.3.1</span> Converting factors</h3>
 <p>If you need to convert a factor to a character vector, you use
 <code>as.character(x)</code>.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1"><span class="kw">as.character</span>(party)</a>
-<a class="sourceLine" id="cb124-2" data-line-number="2"><span class="kw">as.factor</span>(party)</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">as.character</span>(party)</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="kw">as.factor</span>(party)</a></code></pre></div>
 >>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <p>Converting factors where the levels appear as numbers (such as concentration
 levels, or years) to a numeric vector is a little trickier. One method is to
@@ -884,10 +736,10 @@ convert factors to characters and then numbers. Another method is to use the
 <a class="sourceLine" id="cb125-3" title="3"><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(f)) <span class="co"># works...</span></a>
 <a class="sourceLine" id="cb125-4" title="4"><span class="kw">as.numeric</span>(<span class="kw">levels</span>(f))[f]    <span class="co"># The recommended way.</span></a></code></pre></div>
 =======
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1990</span>, <span class="dv">1983</span>, <span class="dv">1977</span>, <span class="dv">1998</span>, <span class="dv">1990</span>))</a>
-<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="kw">as.numeric</span>(f)               <span class="co"># wrong! and there is no warning...</span></a>
-<a class="sourceLine" id="cb125-3" data-line-number="3"><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(f)) <span class="co"># works...</span></a>
-<a class="sourceLine" id="cb125-4" data-line-number="4"><span class="kw">as.numeric</span>(<span class="kw">levels</span>(f))[f]    <span class="co"># The recommended way.</span></a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1990</span>, <span class="dv">1983</span>, <span class="dv">1977</span>, <span class="dv">1998</span>, <span class="dv">1990</span>))</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="kw">as.numeric</span>(f)               <span class="co"># wrong! and there is no warning...</span></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(f)) <span class="co"># works...</span></a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="kw">as.numeric</span>(<span class="kw">levels</span>(f))[f]    <span class="co"># The recommended way.</span></a></code></pre></div>
 >>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <p>Notice that in the <code>levels()</code> approach, three important steps occur:</p>
 <ul>
@@ -924,22 +776,22 @@ level. Let’s look at the number of blacks and whites in the dataset:</p>
 <p>When your data is stored as a factor, you can use the <code>plot()</code> function to get a
 quick glance at the number of observations represented by each factor
 level. Let’s look at the number of blacks and whites in the dataset:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="co"># bar plot of the number of black and white drivers stopped:</span></a>
-<a class="sourceLine" id="cb126-2" data-line-number="2">trafficstops<span class="op">$</span>driver_race &lt;-<span class="st"> </span><span class="kw">as.factor</span>(trafficstops<span class="op">$</span>driver_race)</a>
-<a class="sourceLine" id="cb126-3" data-line-number="3"><span class="kw">plot</span>(trafficstops<span class="op">$</span>driver_race)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="co"># bar plot of the number of black and white drivers stopped:</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">trafficstops<span class="op">$</span>driver_race &lt;-<span class="st"> </span><span class="kw">as.factor</span>(trafficstops<span class="op">$</span>driver_race)</a>
+<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="kw">plot</span>(trafficstops<span class="op">$</span>driver_race)</a></code></pre></div>
 <p><img src="R-intro_files/figure-html/driver-race-barplot-1.png" width="672" /></p>
 <p>There seem to be a number of individuals for which the race information hasn’t been recorded.</p>
 <p>Additionally, for these individuals, there is no label to indicate that the information is missing. Let’s rename this label to something more meaningful. Before doing that, we’re going to pull out the data on race and work with that data, so we’re not modifying the working copy of the data frame:</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">race &lt;-<span class="st"> </span>trafficstops<span class="op">$</span>driver_race</a>
-<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="kw">head</span>(race)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">race &lt;-<span class="st"> </span>trafficstops<span class="op">$</span>driver_race</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="kw">head</span>(race)</a></code></pre></div>
 <pre><code>#&gt; [1] Black Black Black White White White
 #&gt; Levels:  Black White</code></pre>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="kw">levels</span>(race)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">levels</span>(race)</a></code></pre></div>
 <pre><code>#&gt; [1] &quot;&quot;      &quot;Black&quot; &quot;White&quot;</code></pre>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="kw">levels</span>(race)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;Missing&quot;</span></a>
-<a class="sourceLine" id="cb131-2" data-line-number="2"><span class="kw">levels</span>(race)</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">levels</span>(race)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;Missing&quot;</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="kw">levels</span>(race)</a></code></pre></div>
 <pre><code>#&gt; [1] &quot;Missing&quot; &quot;Black&quot;   &quot;White&quot;</code></pre>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1"><span class="kw">head</span>(race)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">head</span>(race)</a></code></pre></div>
 >>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <pre><code>#&gt; [1] Black Black Black White White White
 #&gt; Levels: Missing Black White</code></pre>
@@ -986,14 +838,14 @@ and <code>stringsAsFactors = FALSE</code> (default):</p>
 <p>Depending on what you want to do with the data, you may want to keep these columns as <code>character</code> or set <code>stringsAsFactors = TRUE</code> to coerce strings to factors when importing csv files. Alternatively, the <code>read_csv()</code> function from the dplyr library also does not covert strings to factors (more on this another day).</p>
 <p>Compare the output of <code>str(trafficstops)</code> when setting <code>stringsAsFactors = TRUE</code>
 (default) and <code>stringsAsFactors = FALSE</code>:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="co"># Compare the difference between when the data are being read as</span></a>
-<a class="sourceLine" id="cb135-2" data-line-number="2"><span class="co"># `factor`, and when they are being read as `character`.</span></a>
-<a class="sourceLine" id="cb135-3" data-line-number="3">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_policing_bw.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb135-4" data-line-number="4"><span class="kw">str</span>(trafficstops)</a>
-<a class="sourceLine" id="cb135-5" data-line-number="5">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_policing_bw.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb135-6" data-line-number="6"><span class="kw">str</span>(trafficstops)</a>
-<a class="sourceLine" id="cb135-7" data-line-number="7"><span class="co"># Convert the column &quot;driver_race&quot; into a factor</span></a>
-<a class="sourceLine" id="cb135-8" data-line-number="8">trafficstops<span class="op">$</span>driver_race &lt;-<span class="st"> </span><span class="kw">factor</span>(trafficstops<span class="op">$</span>driver_race)</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="co"># Compare the difference between when the data are being read as</span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="co"># `factor`, and when they are being read as `character`.</span></a>
+<a class="sourceLine" id="cb38-3" data-line-number="3">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_policing_bw.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4"><span class="kw">str</span>(trafficstops)</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5">trafficstops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/MS_policing_bw.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6"><span class="kw">str</span>(trafficstops)</a>
+<a class="sourceLine" id="cb38-7" data-line-number="7"><span class="co"># Convert the column &quot;driver_race&quot; into a factor</span></a>
+<a class="sourceLine" id="cb38-8" data-line-number="8">trafficstops<span class="op">$</span>driver_race &lt;-<span class="st"> </span><span class="kw">factor</span>(trafficstops<span class="op">$</span>driver_race)</a></code></pre></div>
 >>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <blockquote>
 <h3>
@@ -1040,7 +892,7 @@ variable, i.e a separate column for day, month, and year. However, often we do n
 <<<<<<< HEAD
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1"><span class="kw">str</span>(trafficstops)</a></code></pre></div>
 =======
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="kw">str</span>(trafficstops)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">str</span>(trafficstops)</a></code></pre></div>
 >>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <p>As an example for how to work with dates let us see if there are seasonal differences in the number of traffic stops.</p>
 <p>We’re going to be using the <code>ymd()</code> function from the package <strong><code>lubridate</code></strong>. This
@@ -1057,12 +909,12 @@ flexible, but, as a best practice, is a character vector formatted as “YYYY-MM
 <p>We can now easily extract year, month, and date using the respective functions: <code>year()</code>, <code>month()</code>, and <code>day()</code> like so:</p>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="kw">plot</span>(<span class="kw">factor</span>(<span class="kw">year</span>(stop_date))) <span class="co">#convert year to factor to plot</span></a></code></pre></div>
 =======
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1">stop_date &lt;-<span class="st"> </span><span class="kw">ymd</span>(trafficstops<span class="op">$</span>stop_date)</a>
-<a class="sourceLine" id="cb139-2" data-line-number="2"><span class="kw">str</span>(stop_date) <span class="co"># notice the &#39;date&#39; class</span></a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">stop_date &lt;-<span class="st"> </span><span class="kw">ymd</span>(trafficstops<span class="op">$</span>stop_date)</a>
+<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="kw">str</span>(stop_date) <span class="co"># notice the &#39;date&#39; class</span></a></code></pre></div>
 <p>The <code>ymd</code> function also has nicely taken care of the fact that the original format of the date column is a factor!</p>
 <p>We can now easily extract year, month, and date using the respective functions: <code>year()</code>, <code>month()</code>, and <code>day()</code> like so:</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="kw">plot</span>(<span class="kw">factor</span>(<span class="kw">year</span>(stop_date))) <span class="co">#convert year to factor to plot</span></a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">plot</span>(<span class="kw">factor</span>(<span class="kw">year</span>(stop_date))) <span class="co">#convert year to factor to plot</span></a></code></pre></div>
 >>>>>>> d35cc0aa4b3cadd85b7e9ba8d67ca76cc4164614
 <p><img src="R-intro_files/figure-html/yearly-stops-1.png" width="672" /></p>
 <blockquote>

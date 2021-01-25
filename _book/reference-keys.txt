@@ -44,13 +44,10 @@ how-to-ask-for-help
 where-to-ask-for-help
 resources-on-getting-help
 data
-loading-tabular-data
 inspecting-data.frame-objects
 indexing-and-subsetting-data-frames
-conditional-subsetting-1
-adding-and-removing-rows-and-columns
 categorical-data-factors
 converting-factors
 renaming-factors
-using-stringsasfactorstrue
+using-stringsasfactors
 dates
