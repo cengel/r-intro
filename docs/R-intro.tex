@@ -1,20 +1,23 @@
 % Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode=true}{hyperref}
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
 ]{book}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
-  \usepackage{unicode-math}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -33,14 +36,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={Introduction to R},
-  pdfauthor={Claudia A Engel},
-  hidelinks,
-}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -52,13 +47,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -66,7 +61,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -75,17 +70,23 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\usepackage{longtable,booktabs}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx,grffile}
+\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -94,25 +95,14 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\setlength{\emergencystretch}{3em} % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-  \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-  \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
 % Set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
 \usepackage{booktabs}
 \usepackage{amsthm}
 \makeatletter
@@ -121,12 +111,23 @@
   \thm@postskip=\thm@preskip
 }
 \makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Introduction to R},
+  pdfauthor={Claudia A Engel},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \title{Introduction to R}
 \author{Claudia A Engel}
-\date{Last updated: January 25, 2021}
+\date{Last updated: October 14, 2023}
 
 \begin{document}
 \maketitle
@@ -144,18 +145,17 @@
 \item
   Geared specifically towards users who are \textbf{new} to R.\\
 \item
-  Have \href{https://cran.r-project.org/}{R} and \href{https://www.rstudio.com/}{RStudio} installed (see setup instructions below).
+  Have \href{https://cran.r-project.org/}{R} and \href{https://posit.co/download/rstudio-desktop/}{RStudio} installed (see setup instructions below).
 \end{itemize}
 
 \hypertarget{setup-instructions}{%
 \section*{Setup Instructions}\label{setup-instructions}}
 \addcontentsline{toc}{section}{Setup Instructions}
 
-\href{https://cran.r-project.org/}{\textbf{R}} and \href{https://www.rstudio.com/}{\textbf{RStudio}} are separate downloads and installations. R is the
-underlying statistical computing environment, but using R alone is no
-fun. RStudio is a graphical integrated development environment (IDE) that makes
-using R much easier and more interactive. You need to install R before you
-install RStudio.
+\href{https://cran.r-project.org/}{\textbf{R}} and \href{https://posit.co/download/rstudio-desktop/}{\textbf{RStudio}} are separate downloads and installations. R is the
+underlying statistical computing environment. It can be used on its own, but using R alone is no fun. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You need to install R before you launch RStudio.
+
+Be aware that the most recent version of RStudio requires R version 3.3.0 or later.
 
 \hypertarget{macos}{%
 \subsection*{macOS}\label{macos}}
@@ -188,14 +188,13 @@ install RStudio.
   Download R from
   the \href{http://cran.r-project.org/bin/macosx}{CRAN website}.
 \item
-  Select the \texttt{.pkg} file for the latest R version
+  Select the \texttt{.pkg} file for the latest R version. Make sure you choose the appropriate version for your hardware (Apple silicon or Intel)
 \item
   Double click on the downloaded file to install R
 \item
-  Go to the \href{https://www.rstudio.com/products/rstudio/download/\#download}{RStudio download page}
+  Go to the \href{https://posit.co/download/rstudio-desktop/}{RStudio download page}
 \item
-  Under \emph{Installers} select \textbf{RStudio x.yy.zzz - Mac OS X 10.6+ (64-bit)}
-  (where x, y, and z represent version numbers)
+  Follow the link to download the latest version under ``Install Rstudio''
 \item
   Double click the file to install RStudio
 \item
@@ -239,10 +238,9 @@ install RStudio.
 \item
   Run the \texttt{.exe} file that was just downloaded
 \item
-  Go to the \href{https://www.rstudio.com/products/rstudio/download/\#download}{RStudio download page}
+  Go to the \href{https://posit.co/download/rstudio-desktop/}{RStudio download page}
 \item
-  Under \emph{Installers} select \textbf{RStudio x.yy.zzz - Windows
-  XP/Vista/7/8} (where x, y, and z represent version numbers)
+  Follow the link to download the latest version under ``Install Rstudio''
 \item
   Double click the file to install it
 \item
@@ -265,11 +263,9 @@ install RStudio.
   don't recommend this approach as the versions provided by this are
   usually out of date. In any case, make sure you have at least R 4.0.0.
 \item
-  Go to the
-  \href{https://www.rstudio.com/products/rstudio/download/\#download}{RStudio download page}
+  Go to the \href{https://posit.co/download/rstudio-desktop/}{RStudio download page}
 \item
-  Under \emph{Installers} select the version that matches your distribution, and
-  install it with your preferred method (e.g., with Debian/Ubuntu \texttt{sudo\ dpkg\ -i\ rstudio-x.yy.zzz-amd64.deb} at the terminal).
+  Follow the link to download the latest version under ``Install Rstudio''
 \item
   Once it's installed, open RStudio to make sure it works and you don't get any
   error messages.
@@ -301,6 +297,8 @@ Learning Objectives
   Set a ``working'' directory.
 \item
   Send commands from the Script window to the Console in RStudio.
+\item
+  Install additional packages with RStudio and using R commands.
 \end{itemize}
 \end{quote}
 
@@ -312,8 +310,7 @@ Learning Objectives
 The term ``R'' is used to refer to both the programming language to write scripts and the software (``environment'') that interprets the scripts written in R. It is an alternative to statistical packages like SAS, SPSS, or Stata, which lets you perform a wide variety of data analysis, statistics, and visualization.
 
 RStudio is currently a very popular way to not only write your R scripts but
-also to interact with the R software. To function correctly, RStudio needs R and
-therefore both need to be installed on your computer.
+also to interact with the R software. To function correctly, RStudio needs R and therefore both need to be installed on your computer.
 
 \hypertarget{why-learn-r}{%
 \section{Why learn R?}\label{why-learn-r}}
@@ -348,10 +345,10 @@ statistical tests in your manuscript are updated automatically.
 An increasing number of journals and funding agencies expect analyses to be
 reproducible, so knowing R will give you an edge with these requirements.
 
-\hypertarget{r-is-interdisciplinary-and-extensible}{%
-\subsection{R is interdisciplinary and extensible}\label{r-is-interdisciplinary-and-extensible}}
+\hypertarget{r-is-multidisciplinary-extensible-and-popular}{%
+\subsection{R is multidisciplinary, extensible, and popular}\label{r-is-multidisciplinary-extensible-and-popular}}
 
-With 10,000+ packages that can be installed to extend its capabilities, R
+With \href{https://cran.r-project.org/web/packages}{close to 20,000 packages on CRAN} (The Comprehensive R Archive Network) that can be installed to extend its capabilities, R
 provides a framework that allows you to combine statistical approaches from many
 scientific disciplines to best suit the analytical framework you need to analyze your
 data. For instance, R has packages for image analysis, mapping, time series, text mining, and a lot more.
@@ -375,8 +372,8 @@ computer or on the web.
 The plotting functionalities in R are endless, and allow you to adjust any
 aspect of your graph to convey most effectively the message from your data.
 
-\hypertarget{r-has-a-large-community}{%
-\subsection{R has a large community}\label{r-has-a-large-community}}
+\hypertarget{r-has-a-large-user-community}{%
+\subsection{R has a large user community}\label{r-has-a-large-user-community}}
 
 Thousands of people use R daily. Many of them are willing to help you through
 mailing lists and websites such as \href{https://stackoverflow.com/questions/tagged/r}{Stack Overflow}.
@@ -463,38 +460,43 @@ workshop.
 \item
   On the main menu go to \texttt{Files} \textgreater{} \texttt{New\ File} \textgreater{} \texttt{R\ Script} (or use the shortcut \texttt{Shift} + \texttt{Cmd} + \texttt{N}) to open a new file
 \item
-  Save the empty script as \texttt{r-intro-script.R} in your working directory.
+  Save the empty script as \texttt{r-intro-script.R} in your \texttt{r-intro} directory.
 \end{itemize}
 
-Your working directory should now look like in Figure \ref{fig:working-dir}.
+Your \texttt{r-intro} directory should now look like in Figure \ref{fig:working-dir}.
 
 \begin{figure}
 \includegraphics[width=0.6\linewidth]{img/Rproject-setup} \caption{What it should look like at the beginning of this lesson}\label{fig:working-dir}
 \end{figure}
 
-If you ever need to set a different working directory you can use the RStudio interface like seen in Figure \ref{fig:set-working-dir}.
+\hypertarget{the-working-directory}{%
+\subsection{The working directory}\label{the-working-directory}}
+
+The working directory is an important concept to understand. It is the place where R will look for and save files. Whenever you start R/RStudio it must have a working directory and will automatically determine which it is. The determination is based on how exactly you start R/RStudio (open a project, open without loading a file, open with a file, etc.). It is important you know what your working directory is. When you write code for your project, your scripts \textbf{must refer to external files always in relation to your working directory} otherwise you will get error messages.
+
+To check which working directory R thinks it is in:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+To change to a different working directory in R go to the Console and type:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"Path/To/Desired/Workingdirectory"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+You can also use the RStudio interface to set a different working directory, like seen in Figure \ref{fig:set-working-dir}.
 
 \begin{figure}
 \includegraphics[width=0.6\linewidth]{img/setWD} \caption{How to set a working directory with the RStudio interface}\label{fig:set-working-dir}
 \end{figure}
 
 Alternatively, you can use the shortcut \texttt{Ctrl} + \texttt{Shift} + \texttt{H} to set a working directory in RStudio.
-
-To set a working directory in R go to the Console and type:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{setwd}\NormalTok{(}\StringTok{"Path/To/Your/Workingdirectory"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-If you need to check which working directory R thinks it is in:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{getwd}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
 
 \hypertarget{organizing-your-working-directory}{%
 \subsection{Organizing your working directory}\label{organizing-your-working-directory}}
@@ -588,8 +590,8 @@ Perhaps one of the most important aspects of making your code comprehensible for
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# this is a comment on its on line}
-\KeywordTok{getwd}\NormalTok{() }\CommentTok{# comments can also go here}
+\CommentTok{\# this is a comment on its on line}
+\FunctionTok{getwd}\NormalTok{() }\CommentTok{\# comments can also go here}
 \end{Highlighting}
 \end{Shaded}
 
@@ -657,13 +659,13 @@ assignment operator \texttt{\textless{}-}, and the value we want to give it:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_kg <-}\StringTok{ }\DecValTok{55}
+\NormalTok{ x }\OtherTok{\textless{}{-}} \DecValTok{3}
 \end{Highlighting}
 \end{Shaded}
 
 \texttt{\textless{}-} is the assignment operator. It assigns values on the right to objects on
-the left. So, after executing \texttt{weight\_kg\ \textless{}-\ 55}, the value of \texttt{weight\_kg} is \texttt{55}. The arrow can
-be read as \texttt{55} \textbf{goes into} \texttt{weight\_kg}. You can also use \texttt{=}
+the left. So, after executing \texttt{x\ \textless{}-\ 3}, the value of \texttt{x} is \texttt{3}. The arrow can
+be read as \texttt{3} \textbf{goes into} \texttt{x}. You can also use \texttt{=}
 for assignments, but not in every context. Because of
 the
 \href{http://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html}{slight} \href{https://web.archive.org/web/20130610005305/https://stat.ethz.ch/pipermail/r-help/2009-March/191462.html}{differences} in
@@ -715,18 +717,18 @@ When assigning a value to an object, R does not print anything. You can force R 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_kg <-}\StringTok{ }\DecValTok{55}    \CommentTok{# doesn't print anything}
-\NormalTok{(weight_kg <-}\StringTok{ }\DecValTok{55}\NormalTok{)  }\CommentTok{# but putting parenthesis around the call prints the value of `weight_kg`}
-\NormalTok{weight_kg          }\CommentTok{# and so does typing the name of the object}
+\NormalTok{area\_hectares }\OtherTok{\textless{}{-}} \FloatTok{1.0}    \CommentTok{\# doesn\textquotesingle{}t print anything}
+\NormalTok{(area\_hectares }\OtherTok{\textless{}{-}} \FloatTok{1.0}\NormalTok{)  }\CommentTok{\# putting parenthesis around the call prints the value of \textasciigrave{}area\_hectares\textasciigrave{}}
+\NormalTok{area\_hectares          }\CommentTok{\# and so does typing the name of the object}
 \end{Highlighting}
 \end{Shaded}
 
-Now that R has \texttt{weight\_kg} in memory, we can do arithmetic with it. For
-instance, we may want to convert this weight into pounds (weight in pounds is 2.2 times the weight in kg):
+Now that R has \texttt{area\_hectares} in memory, we can do arithmetic with it. For
+instance, we may want to convert this weight into pounds (area in acres is 2.47 times the area in hectares):
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FloatTok{2.2} \OperatorTok{*}\StringTok{ }\NormalTok{weight_kg}
+\NormalTok{area\_hectares  }\SpecialCharTok{*} \FloatTok{2.47}
 \end{Highlighting}
 \end{Shaded}
 
@@ -734,33 +736,33 @@ We can also change a variable's value by assigning it a new one:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_kg <-}\StringTok{ }\DecValTok{100}
-\FloatTok{2.2} \OperatorTok{*}\StringTok{ }\NormalTok{weight_kg}
+\NormalTok{area\_hectares }\OtherTok{\textless{}{-}} \FloatTok{2.5}
+\NormalTok{area\_hectares }\SpecialCharTok{*} \FloatTok{2.47}
 \end{Highlighting}
 \end{Shaded}
 
 This means that assigning a value to one variable does not change the values of
 other variables. For example, let's store the weight in pounds in a new
-variable, \texttt{weight\_lb}:
+variable, \texttt{area\_acres}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_lb <-}\StringTok{ }\FloatTok{2.2} \OperatorTok{*}\StringTok{ }\NormalTok{weight_kg}
+\NormalTok{area\_acres }\OtherTok{\textless{}{-}}\NormalTok{ area\_hectares }\SpecialCharTok{*} \FloatTok{2.47}
 \end{Highlighting}
 \end{Shaded}
 
-and then change \texttt{weight\_kg} to 50.
+and then change \texttt{area\_hectares} to 50.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_kg <-}\StringTok{ }\DecValTok{50}
+\NormalTok{area\_hectares }\OtherTok{\textless{}{-}} \DecValTok{50}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{quote}
 Challenge
 
-What do you think is the current content of the object \texttt{weight\_lb}? 110 or 220?
+What do you think is the current content of the object \texttt{area\_acres}? 123.5 or 6.175?
 \end{quote}
 
 \hypertarget{comments}{%
@@ -779,45 +781,39 @@ C.
 \begin{quote}
 Challenge
 
-What are the values after each statement in the following?
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{mass <-}\StringTok{ }\FloatTok{47.5}            \CommentTok{# mass?}
-\NormalTok{age  <-}\StringTok{ }\DecValTok{122}             \CommentTok{# age?}
-\NormalTok{mass <-}\StringTok{ }\NormalTok{mass }\OperatorTok{*}\StringTok{ }\FloatTok{2.0}      \CommentTok{# mass?}
-\NormalTok{age  <-}\StringTok{ }\NormalTok{age }\OperatorTok{-}\StringTok{ }\DecValTok{20}        \CommentTok{# age?}
-\NormalTok{mass_index <-}\StringTok{ }\NormalTok{mass}\OperatorTok{/}\NormalTok{age  }\CommentTok{# mass_index?}
-\end{Highlighting}
-\end{Shaded}
+Create two variables \texttt{r\_length} and \texttt{r\_width} and assign them values. It should be noted that, because length is a built-in R function, R Studio might add parenthesis ``()'' after you type length. If you leave the parentheses you will get unexpected results. This is why you might see abbreviations of common words in R code, for example \texttt{r\_len}. Calculate the area based on the current values of \texttt{r\_length} and \texttt{r\_width} and assign the result to a new, third variable \texttt{r\_area}. Demonstrate that changing the values of either \texttt{r\_length} and \texttt{r\_width} does not affect the value of \texttt{r\_area}. Make ample use of comments in your code.
 \end{quote}
 
 \hypertarget{functions-and-their-arguments}{%
 \subsection{Functions and their arguments}\label{functions-and-their-arguments}}
 
-Functions are ``canned scripts'' that automate more complicated sets of commands
-including operations assignments, etc.
-
-They all have in common that they are executed by typing their name followed by round brackets, in which we provide one or more parameters (or arguments) for the function to do something, separated by commas.
+Functions are ``canned scripts'' that automate a series of commands one often might want to apply frequently.
 
 Many functions are predefined, or can be
 made available by importing R \emph{packages} (more on that later). A function
 usually gets one or more inputs called \emph{arguments}. Functions often (but not
-always) return a \emph{value}. A typical example would be the function \texttt{sqrt()}. The
-input (the argument) must be a number, and the return value (in fact, the
-output) is the square root of that number. Executing a function (`running it')
-is called \emph{calling} the function. An example of a function call is:
+always) return a \emph{value}.
+
+An example would be the function \texttt{sqrt()}, which calculates the square root. The
+input (=the \emph{argument}) must be a number, and the return value (in fact, the
+output) is the square root of that number. Executing a function (`running it') is called \emph{calling} the function. An example of a function call is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{a <-}\StringTok{ }\DecValTok{64}
-\NormalTok{b <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(a)}
+\FunctionTok{sqrt}\NormalTok{(}\DecValTok{64}\NormalTok{)}
+
+\CommentTok{\# or provide the input to the function as a variable:}
+\NormalTok{a }\OtherTok{\textless{}{-}} \DecValTok{64}
+\FunctionTok{sqrt}\NormalTok{(a)}
+
+\CommentTok{\# we can also assign the output to a new variable:}
+\NormalTok{b }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(a)}
+\NormalTok{b}
 \end{Highlighting}
 \end{Shaded}
 
-Here, we assign the value \texttt{64} to he variable \texttt{a}, which is then given to the \texttt{sqrt()} function. The \texttt{sqrt()} function
-calculates the square root, and returns the value which is then assigned to
-variable \texttt{b}. This function is very simple, because it takes just one argument.
+Here, we provide the number \texttt{64} as input to the \texttt{sqrt()} function, which
+calculates the square root of the input value, and returns the result. We can also assign the value \texttt{64} to a variable \texttt{a}, which is then given to the \texttt{sqrt()} function,we can also assign the output of the function to a variable, in this case a new variable \texttt{b}.
 
 The return `value' of a function need not be numerical (like that of \texttt{sqrt()}),
 and it also does not need to be a single item: it can be a set of things, or
@@ -836,7 +832,7 @@ Let's try a function that can take multiple arguments: \texttt{round()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{round}\NormalTok{(}\FloatTok{3.14159}\NormalTok{)}
+\FunctionTok{round}\NormalTok{(}\FloatTok{3.14159}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -852,7 +848,7 @@ help for this function using \texttt{?round}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{args}\NormalTok{(round)}
+\FunctionTok{args}\NormalTok{(round)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -872,7 +868,7 @@ type \texttt{digits=2} or however many we want.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{round}\NormalTok{(}\FloatTok{3.14159}\NormalTok{, }\DataTypeTok{digits =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{round}\NormalTok{(}\FloatTok{3.14159}\NormalTok{, }\AttributeTok{digits =} \DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -885,7 +881,7 @@ don't have to name them:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{round}\NormalTok{(}\FloatTok{3.14159}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\FunctionTok{round}\NormalTok{(}\FloatTok{3.14159}\NormalTok{, }\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -897,7 +893,7 @@ And if you do name the arguments, you can switch their order:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{round}\NormalTok{(}\DataTypeTok{digits =} \DecValTok{2}\NormalTok{, }\DataTypeTok{x =} \FloatTok{3.14159}\NormalTok{)}
+\FunctionTok{round}\NormalTok{(}\AttributeTok{digits =} \DecValTok{2}\NormalTok{, }\AttributeTok{x =} \FloatTok{3.14159}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -940,12 +936,12 @@ A vector is the most common and basic data type in R, and is pretty much
 the workhorse of R. A vector is composed by a series of values, which can be
 either numbers or characters. We can assign a series of values to a vector using
 the \texttt{c()} function. For example we can create a vector of weights and assign
-it to a new object \texttt{weight\_g}:
+it to a new object \texttt{area\_hectares}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_g <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{21}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{39}\NormalTok{, }\DecValTok{54}\NormalTok{, }\DecValTok{55}\NormalTok{)}
-\NormalTok{weight_g}
+\NormalTok{area\_hectares }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{21}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{39}\NormalTok{, }\DecValTok{54}\NormalTok{, }\DecValTok{55}\NormalTok{)}
+\NormalTok{area\_hectares}
 \end{Highlighting}
 \end{Shaded}
 
@@ -958,7 +954,7 @@ vector. \texttt{length()} tells you how many elements are in a particular vector
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{length}\NormalTok{(weight_g)}
+\FunctionTok{length}\NormalTok{(area\_hectares)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -971,7 +967,7 @@ The function \texttt{class()} indicates the class (the type of element) of an ob
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{class}\NormalTok{(weight_g)}
+\FunctionTok{class}\NormalTok{(area\_hectares)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -985,7 +981,7 @@ objects:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{str}\NormalTok{(weight_g)}
+\FunctionTok{str}\NormalTok{(area\_hectares)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -997,9 +993,9 @@ You can use the \texttt{c()} function to add other elements to your vector:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_g <-}\StringTok{ }\KeywordTok{c}\NormalTok{(weight_g, }\DecValTok{90}\NormalTok{) }\CommentTok{# add to the end of the vector}
-\NormalTok{weight_g <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{30}\NormalTok{, weight_g) }\CommentTok{# add to the beginning of the vector}
-\NormalTok{weight_g}
+\NormalTok{area\_hectares }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(area\_hectares, }\DecValTok{90}\NormalTok{) }\CommentTok{\# add to the end of the vector}
+\NormalTok{area\_hectares }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{30}\NormalTok{, area\_hectares) }\CommentTok{\# add to the beginning of the vector}
+\NormalTok{area\_hectares}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1007,10 +1003,9 @@ You can use the \texttt{c()} function to add other elements to your vector:
 #> [1] 30 21 34 39 54 55 90
 \end{verbatim}
 
-In the first line, we take the original vector \texttt{weight\_g},
+In the first line, we take the original vector \texttt{area\_hectares},
 add the value \texttt{90} to the end of it, and save the result back into
-\texttt{weight\_g}. Then we add the value \texttt{30} to the beginning, again saving the result
-back into \texttt{weight\_g}.
+\texttt{area\_hectares}. Then we add the value \texttt{30} to the beginning, again saving the result back into \texttt{area\_hectares}.
 
 We can do this over and over again to grow a vector, or assemble a dataset.
 As we program, this may be useful to add results that we are collecting or
@@ -1020,8 +1015,8 @@ A vector can also contain characters:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{animals <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"mouse"}\NormalTok{, }\StringTok{"rat"}\NormalTok{, }\StringTok{"dog"}\NormalTok{, }\StringTok{"frog"}\NormalTok{)}
-\KeywordTok{class}\NormalTok{(animals)}
+\NormalTok{animals }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"mouse"}\NormalTok{, }\StringTok{"rat"}\NormalTok{, }\StringTok{"dog"}\NormalTok{, }\StringTok{"octopus"}\NormalTok{)}
+\FunctionTok{class}\NormalTok{(animals)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1033,8 +1028,8 @@ Lastly, we will introduce a vector with logical values (the boolean data type).
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{has_tail <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{)}
-\NormalTok{has_tail }
+\NormalTok{has\_tail }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{has\_tail }
 \end{Highlighting}
 \end{Shaded}
 
@@ -1052,24 +1047,30 @@ uses: \texttt{"character"}, \texttt{"numeric"} and \texttt{"logical"}. These are
   \texttt{"raw"} that we won't discuss further
 \end{itemize}
 
+You can check the type of your vector using the \texttt{typeof()} function and inputting your vector as the argument.
+
 \begin{quote}
 Challenge
 
 \begin{itemize}
+\tightlist
 \item
   We've seen that atomic vectors can be of type character,
   numeric, integer, and logical. But what happens if we try to mix these types in
   a single vector?
+\end{itemize}
+
+\begin{itemize}
 \item
   What will happen in each of these examples? (hint: use \texttt{class()}
   to check the data type of your objects):
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{num_char <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\StringTok{'a'}\NormalTok{)}
-\NormalTok{num_logical <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\OtherTok{TRUE}\NormalTok{)}
-\NormalTok{char_logical <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'a'}\NormalTok{, }\StringTok{'b'}\NormalTok{, }\StringTok{'c'}\NormalTok{, }\OtherTok{TRUE}\NormalTok{)}
-\NormalTok{tricky <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\StringTok{'4'}\NormalTok{)}
+\NormalTok{num\_char }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{)}
+\NormalTok{num\_logical }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{char\_logical }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}c\textquotesingle{}}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{tricky }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\StringTok{\textquotesingle{}4\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \item
@@ -1088,7 +1089,7 @@ Challenge
 \hypertarget{subsetting-vectors}{%
 \section{Subsetting vectors}\label{subsetting-vectors}}
 
-If we want to extract one or several values from a vector, we must provide one
+Subsetting (sometimes referred to as extracting or indexing) involves accessing out one or more values based on their numeric placement or ``index'' within a vector. If we want to extract one or several values from a vector, we must provide one
 or several indices in square brackets. For instance:
 
 \begin{Shaded}
@@ -1103,7 +1104,7 @@ or several indices in square brackets. For instance:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{animals[}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)]}
+\NormalTok{animals[}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1111,39 +1112,38 @@ or several indices in square brackets. For instance:
 #> [1] "dog" "rat"
 \end{verbatim}
 
-\texttt{:} is a special function that creates numeric vectors of integers in increasing
-or decreasing order, test \texttt{1:10} and \texttt{10:1} for instance. We can use this to select a sequence, like this:
+We can use the colon \texttt{:} to select a sequence of indices. \texttt{:} is a special function that creates numeric vectors of integers in increasing or decreasing order, for instance \texttt{1:10} or \texttt{10:1} for instance. We can take advantage of it like this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{animals[}\DecValTok{2}\OperatorTok{:}\DecValTok{4}\NormalTok{]}
+\NormalTok{animals[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] "rat"  "dog"  "frog"
+#> [1] "rat"     "dog"     "octopus"
 \end{verbatim}
 
 You can exclude elements of a vector using the ``\texttt{-}'' sign:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{animals[}\OperatorTok{-}\DecValTok{2}\NormalTok{]}
+\NormalTok{animals[}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] "mouse" "dog"   "frog"
+#> [1] "mouse"   "dog"     "octopus"
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{animals[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)]}
+\NormalTok{animals[}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{)]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] "frog"
+#> [1] "octopus"
 \end{verbatim}
 
 We can also repeat the indices to create an object with more elements than the
@@ -1151,16 +1151,16 @@ original one:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{more_animals <-}\StringTok{ }\NormalTok{animals[}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{)]}
-\NormalTok{more_animals}
+\NormalTok{more\_animals }\OtherTok{\textless{}{-}}\NormalTok{ animals[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{)]}
+\NormalTok{more\_animals}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] "mouse" "rat"   "dog"   "rat"   "mouse" "frog"
+#> [1] "mouse"   "rat"     "dog"     "rat"     "mouse"   "octopus"
 \end{verbatim}
 
-R indices start at 1. Programming languages like Fortran, MATLAB, Julia, and R start
+R indices start at 1. Programming languages like MATLAB, Julia, and R start
 counting at 1, because that's what human beings typically do. Languages in the C
 family (including C++, Java, Perl, and Python) count from 0 because that's
 simpler for computers to do.
@@ -1173,7 +1173,7 @@ select the element with the same index, while \texttt{FALSE} will not.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{has_tail}
+\NormalTok{has\_tail }\CommentTok{\# this is a logical vector}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1183,7 +1183,7 @@ select the element with the same index, while \texttt{FALSE} will not.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{animals[has_tail]}
+\NormalTok{animals[has\_tail] }\CommentTok{\# we use it here in the [ ] to subset}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1191,49 +1191,48 @@ select the element with the same index, while \texttt{FALSE} will not.
 #> [1] "mouse" "rat"   "dog"
 \end{verbatim}
 
-Typically, these logical vectors are not typed out by hand, but are the output of
-other functions or logical tests.
+Typically, however, these logical vectors are not typed out by hand like we just did, but they are created as output of functions or of logical tests.
 
 A typical example is to search for certain strings in a vector. One could use the
-``or'' operator \texttt{\textbar{}} to test for equality to multiple values, but this can quickly
-become tedious. The function \texttt{\%in\%} allows you to test if any of the elements of
-a search vector are found:
+``or'' operator \texttt{\textbar{}} to test for equality to multiple values like so:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{animals[animals }\OperatorTok{==}\StringTok{ "frog"} \OperatorTok{|}\StringTok{ }\NormalTok{animals }\OperatorTok{==}\StringTok{ "rat"}\NormalTok{] }\CommentTok{# returns both rat and frog}
+\NormalTok{animals[animals }\SpecialCharTok{==} \StringTok{"frog"} \SpecialCharTok{|}\NormalTok{ animals }\SpecialCharTok{==} \StringTok{"rat"}\NormalTok{] }
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] "rat"  "frog"
+#> [1] "rat"
 \end{verbatim}
+
+But this can quickly become tedious. The function \texttt{\%in\%} allows you to test if any of the elements of a search vector are found:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{animals }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"rat"}\NormalTok{, }\StringTok{"cat"}\NormalTok{, }\StringTok{"dog"}\NormalTok{, }\StringTok{"duck"}\NormalTok{, }\StringTok{"goat"}\NormalTok{)}
+\NormalTok{animals }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"frog"}\NormalTok{, }\StringTok{"rat"}\NormalTok{, }\StringTok{"cat"}\NormalTok{) }\CommentTok{\# this creates the logical vector}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] FALSE  TRUE  TRUE FALSE
+#> [1] FALSE  TRUE FALSE FALSE
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{animals[animals }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"rat"}\NormalTok{, }\StringTok{"cat"}\NormalTok{, }\StringTok{"dog"}\NormalTok{, }\StringTok{"duck"}\NormalTok{, }\StringTok{"goat"}\NormalTok{)]}
+\NormalTok{animals[animals }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"frog"}\NormalTok{, }\StringTok{"rat"}\NormalTok{, }\StringTok{"cat"}\NormalTok{)] }\CommentTok{\# we use it here in the [ ] to subset}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] "rat" "dog"
+#> [1] "rat"
 \end{verbatim}
 
-Equivalently, if you wanted to select only the weights above 50:
+Equivalently, if you wanted to select only the areas above 50:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_g }\OperatorTok{>}\StringTok{ }\DecValTok{50}    \CommentTok{# will return logicals with TRUE for the indices that meet the condition}
+\NormalTok{area\_hectares }\SpecialCharTok{\textgreater{}} \DecValTok{50}    \CommentTok{\# will return logicals with TRUE for the indices that meet the condition}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1243,8 +1242,8 @@ Equivalently, if you wanted to select only the weights above 50:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{## so we can use this to select only the values above 50}
-\NormalTok{weight_g[weight_g }\OperatorTok{>}\StringTok{ }\DecValTok{50}\NormalTok{]}
+\DocumentationTok{\#\# so we can use this to select only the values above 50}
+\NormalTok{area\_hectares[area\_hectares }\SpecialCharTok{\textgreater{}} \DecValTok{50}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1257,7 +1256,7 @@ You can combine multiple tests using \texttt{\&} (both conditions are true, AND)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_g[weight_g }\OperatorTok{<}\StringTok{ }\DecValTok{30} \OperatorTok{|}\StringTok{ }\NormalTok{weight_g }\OperatorTok{>}\StringTok{ }\DecValTok{50}\NormalTok{]}
+\NormalTok{area\_hectares[area\_hectares }\SpecialCharTok{\textless{}} \DecValTok{30} \SpecialCharTok{|}\NormalTok{ area\_hectares }\SpecialCharTok{\textgreater{}} \DecValTok{50}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1267,7 +1266,7 @@ You can combine multiple tests using \texttt{\&} (both conditions are true, AND)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{weight_g[weight_g }\OperatorTok{>=}\StringTok{ }\DecValTok{30} \OperatorTok{&}\StringTok{ }\NormalTok{weight_g }\OperatorTok{<=}\StringTok{ }\DecValTok{90}\NormalTok{]}
+\NormalTok{area\_hectares[area\_hectares }\SpecialCharTok{\textgreater{}=} \DecValTok{30} \SpecialCharTok{\&}\NormalTok{ area\_hectares }\SpecialCharTok{\textless{}=} \DecValTok{90}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1306,8 +1305,8 @@ the missing values.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{heights <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\OtherTok{NA}\NormalTok{, }\DecValTok{6}\NormalTok{)}
-\KeywordTok{max}\NormalTok{(heights)}
+\NormalTok{age }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{6}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\FunctionTok{max}\NormalTok{(age)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1317,7 +1316,7 @@ the missing values.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{sum}\NormalTok{(heights)}
+\FunctionTok{sum}\NormalTok{(age)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1327,7 +1326,7 @@ the missing values.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{max}\NormalTok{(heights, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\FunctionTok{max}\NormalTok{(age, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1337,12 +1336,12 @@ the missing values.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{sum}\NormalTok{(heights, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\FunctionTok{sum}\NormalTok{(age, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] 16
+#> [1] 19
 \end{verbatim}
 
 If your data include missing values, you may want to become familiar with the
@@ -1351,39 +1350,62 @@ examples.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Extract elements which are not missing values.}
-\NormalTok{heights[}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(heights)]}
+\CommentTok{\# Extract elements which are not missing values.}
+\DocumentationTok{\#\# The ! character is also called the NOT operator}
+\NormalTok{age[}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(age)]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] 2 4 4 6
+#> [1] 2 4 4 6 3
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Returns the object with incomplete cases removed. The returned object is atomic.}
-\KeywordTok{na.omit}\NormalTok{(heights)}
+\CommentTok{\# Returns the object with incomplete cases removed. The returned object is atomic.}
+\FunctionTok{na.omit}\NormalTok{(age)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] 2 4 4 6
+#> [1] 2 4 4 6 3
 #> attr(,"na.action")
-#> [1] 4
+#> [1] 4 6
 #> attr(,"class")
 #> [1] "omit"
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Extract elements which are complete cases.}
-\NormalTok{heights[}\KeywordTok{complete.cases}\NormalTok{(heights)]}
+\DocumentationTok{\#\# Count the number of missing values.}
+\DocumentationTok{\#\# The output of is.na() is a logical vector (TRUE/FALSE equivalent to 1/0) so the sum() function here is effectively counting}
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(age))}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] 2 4 4 6
+#> [1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract elements which are complete cases.}
+\FunctionTok{complete.cases}\NormalTok{(age) }\CommentTok{\# this is a logical vector}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1]  TRUE  TRUE  TRUE FALSE  TRUE FALSE  TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{age[}\FunctionTok{complete.cases}\NormalTok{(age)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1] 2 4 4 6 3
 \end{verbatim}
 
 \begin{quote}
@@ -1397,11 +1419,13 @@ Challenge
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{lengths <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{24}\NormalTok{,}\OtherTok{NA}\NormalTok{,}\DecValTok{18}\NormalTok{,}\OtherTok{NA}\NormalTok{,}\DecValTok{20}\NormalTok{)}
+\NormalTok{population }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{24}\NormalTok{,}\ConstantTok{NA}\NormalTok{,}\DecValTok{18}\NormalTok{,}\ConstantTok{NA}\NormalTok{,}\DecValTok{20}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \item
-  Use the function \texttt{median()} to calculate the median of the \texttt{lengths} vector.
+  Use the function \texttt{sum()} to calculate the total of the \texttt{population}.
+\item
+  How may of the populations are of size 20 and over?
 \end{enumerate}
 \end{quote}
 
@@ -1419,7 +1443,7 @@ If we arrange data elements of a vector in a two-dimensional rectangular layout 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{y <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{20}\NormalTok{, }\DataTypeTok{nrow=}\DecValTok{5}\NormalTok{,}\DataTypeTok{ncol=}\DecValTok{4}\NormalTok{) }\CommentTok{# generates 5 x 4 numeric matrix}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{20}\NormalTok{, }\AttributeTok{nrow=}\DecValTok{5}\NormalTok{,}\AttributeTok{ncol=}\DecValTok{4}\NormalTok{) }\CommentTok{\# generates 5 x 4 numeric matrix}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1427,9 +1451,9 @@ Subset a matrix with {[}row \texttt{,} column{]}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{y[,}\DecValTok{4}\NormalTok{]       }\CommentTok{# 4th column of matrix}
-\NormalTok{y[}\DecValTok{3}\NormalTok{,]       }\CommentTok{# 3rd row of matrix}
-\NormalTok{y[}\DecValTok{2}\OperatorTok{:}\DecValTok{4}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{]  }\CommentTok{# rows 2,3,4 of columns 1,2,3}
+\NormalTok{y[,}\DecValTok{4}\NormalTok{]       }\CommentTok{\# 4th column of matrix}
+\NormalTok{y[}\DecValTok{3}\NormalTok{,]       }\CommentTok{\# 3rd row of matrix}
+\NormalTok{y[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{]  }\CommentTok{\# rows 2,3,4 of columns 1,2,3}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1440,9 +1464,9 @@ Lists can have elements of any type. Here is how we construct lists. You may hav
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{myl <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{id=}\StringTok{"ID_1"}\NormalTok{, }\DataTypeTok{a_vector=}\NormalTok{animals, }\DataTypeTok{a_matrix=}\NormalTok{y, }\DataTypeTok{age=}\FloatTok{5.3}\NormalTok{) }\CommentTok{# example of a list with 4 components}
-\NormalTok{myl[[}\DecValTok{2}\NormalTok{]] }\CommentTok{# 2nd component of the list}
-\NormalTok{myl[[}\StringTok{"id"}\NormalTok{]] }\CommentTok{# component named id in list}
+\NormalTok{myl }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{id=}\StringTok{"ID\_1"}\NormalTok{, }\AttributeTok{a\_vector=}\NormalTok{animals, }\AttributeTok{a\_matrix=}\NormalTok{y, }\AttributeTok{age=}\FloatTok{5.3}\NormalTok{) }\CommentTok{\# example of a list with 4 components}
+\NormalTok{myl[[}\DecValTok{2}\NormalTok{]] }\CommentTok{\# 2nd component of the list}
+\NormalTok{myl[[}\StringTok{"id"}\NormalTok{]] }\CommentTok{\# component named id in list}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1457,11 +1481,11 @@ Here is how you could construct a data frame.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mydf <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{ID=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{),}
-                   \DataTypeTok{Color=}\KeywordTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"white"}\NormalTok{, }\StringTok{"red"}\NormalTok{, }\OtherTok{NA}\NormalTok{),}
-                   \DataTypeTok{Passed=}\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{,}\OtherTok{TRUE}\NormalTok{,}\OtherTok{TRUE}\NormalTok{,}\OtherTok{FALSE}\NormalTok{),}
-                   \DataTypeTok{Weight=}\KeywordTok{c}\NormalTok{(}\DecValTok{99}\NormalTok{, }\DecValTok{54}\NormalTok{, }\DecValTok{85}\NormalTok{, }\DecValTok{70}\NormalTok{),}
-                   \DataTypeTok{Height=}\KeywordTok{c}\NormalTok{(}\FloatTok{1.78}\NormalTok{, }\FloatTok{1.67}\NormalTok{, }\FloatTok{1.82}\NormalTok{, }\FloatTok{1.59}\NormalTok{))}
+\NormalTok{mydf }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{ID=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{),}
+                   \AttributeTok{Color=}\FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"white"}\NormalTok{, }\StringTok{"red"}\NormalTok{, }\ConstantTok{NA}\NormalTok{),}
+                   \AttributeTok{Passed=}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{),}
+                   \AttributeTok{Weight=}\FunctionTok{c}\NormalTok{(}\DecValTok{99}\NormalTok{, }\DecValTok{54}\NormalTok{, }\DecValTok{85}\NormalTok{, }\DecValTok{70}\NormalTok{),}
+                   \AttributeTok{Height=}\FunctionTok{c}\NormalTok{(}\FloatTok{1.78}\NormalTok{, }\FloatTok{1.67}\NormalTok{, }\FloatTok{1.82}\NormalTok{, }\FloatTok{1.59}\NormalTok{))}
 
 \NormalTok{mydf}
 \end{Highlighting}
@@ -1500,7 +1524,7 @@ Challenge
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{animal_data <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{animal=}\KeywordTok{c}\NormalTok{(}\StringTok{"dog"}\NormalTok{, }\StringTok{"cat"}\NormalTok{, }\StringTok{"sea cucumber"}\NormalTok{, }\StringTok{"sea urchin),}
+\NormalTok{animal\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{animal=}\FunctionTok{c}\NormalTok{(}\StringTok{"dog"}\NormalTok{, }\StringTok{"cat"}\NormalTok{, }\StringTok{"sea cucumber"}\NormalTok{, }\StringTok{"sea urchin),}
 \StringTok{                          feel=c("}\NormalTok{furry}\StringTok{", "}\NormalTok{squishy}\StringTok{", "}\NormalTok{spiny}\StringTok{"),}
 \StringTok{                          weight=c(45, 8 1.1, 0.8))}
 \end{Highlighting}
@@ -1539,10 +1563,12 @@ To install additional packages there are two main options:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# to install a package called "lubridate", for example: (more on this later)}
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"lubridate"}\NormalTok{, }\DataTypeTok{dependencies =} \OtherTok{TRUE}\NormalTok{)}
+\CommentTok{\# to install a package called "tidyverse", for example: (more on this later)}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{, }\AttributeTok{dependencies =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+(We will talk about the \texttt{tidyverse} package collection shortly.)
 
 \hypertarget{make-use-of-the-installed-packages}{%
 \subsection{Make use of the installed packages}\label{make-use-of-the-installed-packages}}
@@ -1551,7 +1577,7 @@ In order to actually use commands from the installed packages you also will need
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(lubridate)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1559,7 +1585,7 @@ or
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{require}\NormalTok{(lubridate)}
+\FunctionTok{require}\NormalTok{(tidyverse)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1605,7 +1631,7 @@ If you just need to remind yourself of the names of the arguments, you can use:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{args}\NormalTok{(lm)}
+\FunctionTok{args}\NormalTok{(lm)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1682,7 +1708,7 @@ same object as the one in memory:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{dput}\NormalTok{(}\KeywordTok{head}\NormalTok{(iris)) }\CommentTok{# iris is an example data frame that comes with R and head() is a function that returns the first part of the data frame}
+\FunctionTok{dput}\NormalTok{(}\FunctionTok{head}\NormalTok{(iris)) }\CommentTok{\# iris is an example data frame that comes with R and head() is a function that returns the first part of the data frame}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1691,7 +1717,7 @@ same object as the one in memory:
 #>     Sepal.Width = c(3.5, 3, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 
 #>     1.4, 1.3, 1.5, 1.4, 1.7), Petal.Width = c(0.2, 0.2, 0.2, 
 #>     0.2, 0.2, 0.4), Species = structure(c(1L, 1L, 1L, 1L, 1L, 
-#>     1L), .Label = c("setosa", "versicolor", "virginica"), class = "factor")), row.names = c(NA, 
+#>     1L), levels = c("setosa", "versicolor", "virginica"), class = "factor")), row.names = c(NA, 
 #> 6L), class = "data.frame")
 \end{verbatim}
 
@@ -1702,7 +1728,7 @@ not related to a data frame, you can save any R object to a file:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{saveRDS}\NormalTok{(iris, }\DataTypeTok{file=}\StringTok{"/tmp/iris.rds"}\NormalTok{)}
+\FunctionTok{saveRDS}\NormalTok{(iris, }\AttributeTok{file=}\StringTok{"/tmp/iris.rds"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1713,7 +1739,7 @@ file is in a \texttt{Downloads} folder in the user's home directory):
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{some_data <-}\StringTok{ }\KeywordTok{readRDS}\NormalTok{(}\DataTypeTok{file=}\StringTok{"~/Downloads/iris.rds"}\NormalTok{)}
+\NormalTok{some\_data }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\AttributeTok{file=}\StringTok{"\textasciitilde{}/Downloads/iris.rds"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1724,30 +1750,33 @@ to understand your problem.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{sessionInfo}\NormalTok{()}
+\FunctionTok{sessionInfo}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> R version 4.0.3 (2020-10-10)
-#> Platform: x86_64-apple-darwin17.0 (64-bit)
-#> Running under: macOS Catalina 10.15.6
+#> R version 4.3.0 (2023-04-21)
+#> Platform: aarch64-apple-darwin20 (64-bit)
+#> Running under: macOS Ventura 13.5.1
 #> 
 #> Matrix products: default
-#> BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
-#> LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+#> BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
+#> LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
 #> 
 #> locale:
 #> [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#> 
+#> time zone: America/Los_Angeles
+#> tzcode source: internal
 #> 
 #> attached base packages:
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> loaded via a namespace (and not attached):
-#>  [1] compiler_4.0.3  magrittr_2.0.1  bookdown_0.21   htmltools_0.5.0
-#>  [5] tools_4.0.3     rstudioapi_0.11 yaml_2.2.1      stringi_1.4.6  
-#>  [9] rmarkdown_2.5   knitr_1.29      stringr_1.4.0   digest_0.6.27  
-#> [13] xfun_0.16       rlang_0.4.9     evaluate_0.14
+#>  [1] compiler_4.3.0  fastmap_1.1.1   bookdown_0.35   cli_3.6.1      
+#>  [5] htmltools_0.5.5 tools_4.3.0     rstudioapi_0.14 yaml_2.3.7     
+#>  [9] rmarkdown_2.22  knitr_1.44      digest_0.6.31   xfun_0.40      
+#> [13] rlang_1.1.1     evaluate_0.22
 \end{verbatim}
 
 \hypertarget{where-to-ask-for-help}{%
@@ -1816,7 +1845,7 @@ Learning Objectives
 \begin{itemize}
 \tightlist
 \item
-  Load external data from a .csv file into a data frame in R with \texttt{read.csv()}
+  Load external data from a .csv file into a data frame in R with \texttt{read\_csv()}
 \item
   Find basic properties of a data frames including size, class or type of the columns, names of rows and columns by using \texttt{str()}, \texttt{nrow()}, \texttt{ncol()}, \texttt{dim()}, \texttt{length()} , \texttt{colnames()}, \texttt{rownames()}
 \item
@@ -1848,13 +1877,24 @@ Learning Objectives
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\#\# Loading tabular data
+Data frames are the de facto data structure for tabular data in R, and what we use for data processing, statistics, and plotting.
 
-One the most common ways of getting data into R is to read in a table. And -- you guessed it -- we read it into a data frame! We will take a simple CSV file as example. \href{https://support.bigcommerce.com/articles/Public/What-is-a-CSV-file-and-how-do-I-save-my-spreadsheet-as-one}{What is a CSV file?}
+A data frame is the representation of data in the format of a table where the columns are vectors that all have the same length. Data frames are analogous to the more familiar spreadsheet in programs such as Excel, with one key difference. Because columns are vectors, each column must contain a single type of data (e.g., characters, integers, factors). For example, here is a figure depicting a data frame comprising a numeric, a character, and a logical vector.
+
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{img/data-frame} \caption{Structure of a data frame}\label{fig:data-frame}
+\end{figure}
+
+As we have seen above, data frames can be created by hand, but most commonly they are generated by the functions like \texttt{read.csv()}, \texttt{read\_csv()} or \texttt{read\_table()} and others. These functions essentiallly import the tables or spreadsheets from your hard drive (or the web). We will now demonstrate how to import tabular data using \texttt{read\_csv()}.
+
+\hypertarget{importing-tabular-data}{%
+\section{Importing tabular data}\label{importing-tabular-data}}
+
+We will take a CSV file as example. \href{https://support.bigcommerce.com/articles/Public/What-is-a-CSV-file-and-how-do-I-save-my-spreadsheet-as-one}{What is a CSV file?}
 
 You may know about \href{https://openpolicing.stanford.edu}{the Stanford Open Policing Project} and we will be working with a sample dataset from their repository (\url{https://openpolicing.stanford.edu/data/}). The sample I extracted contains information about traffic stops for black and white drivers in the state of Mississippi during January 2013 to mid-July of 2016.
 
-We are going to use the R function \texttt{download.file()} to download the CSV file
+First, we are going to use the R function \texttt{download.file()} to download the CSV file
 that contains the traffic stop data, and we will use \texttt{read.csv()} to
 load into memory the content of the CSV file as an object of class \texttt{data.frame}.
 
@@ -1862,106 +1902,160 @@ To download the data into your local \texttt{data/} subdirectory, run the follow
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{download.file}\NormalTok{(}\StringTok{"http://bit.ly/MS_trafficstops_bw"}\NormalTok{, }\StringTok{"data/MS_trafficstops_bw.csv"}\NormalTok{)}
+\FunctionTok{download.file}\NormalTok{(}\StringTok{"http://bit.ly/MS\_trafficstops\_bw"}\NormalTok{, }\StringTok{"data/MS\_trafficstops\_bw.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-You are now ready to load the data:
+You are going to load the data in R's memory using the function \texttt{read\_csv()} from the \texttt{readr} package, which is part of the \texttt{tidyverse}; learn more about the tidyverse collection of packages (here){[}\url{https://www.tidyverse.org/}{]}. \texttt{readr} gets installed as part as the \texttt{tidyverse} installation. When you load the \texttt{tidyverse} (\texttt{library(tidyverse)}), the core packages (the packages used in most data analyses) get loaded, including \texttt{readr.}
+
+So lets make sure you have the \texttt{tidyverse} packages installed and loaded.
+
+If you haven't done so already run the installation of \texttt{tidyverse} like this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{trafficstops <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/MS_trafficstops_bw.csv"}\NormalTok{)}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{ , }\AttributeTok{dependencies =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\# this is only necessary once}
 \end{Highlighting}
 \end{Shaded}
 
-This statement doesn't produce any output because, as you might recall,
-assignments don't display anything. If we want to check that our data has been
-loaded, we can print the variable's value: \texttt{trafficstops}.
-
-Wow\ldots{} that was a lot of output. At least it means the data loaded
-properly. Let's check the top (the first 6 lines) of this data frame using the
-function \texttt{head()}:
+Then load \texttt{tidyverse} into memory like this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(trafficstops)}
+\FunctionTok{library}\NormalTok{(tidyverse) }\CommentTok{\# do this whenever you need to access functions from the tidyverse packages }
+\end{Highlighting}
+\end{Shaded}
+
+You may have noticed that when you loaded the tidyverse package that you received the following message:
+
+\texttt{──\ Conflicts\ ───────────────────────────────────────\ tidyverse\_conflicts()\ ──}
+\texttt{✖\ dplyr::filter()\ masks\ stats::filter()}
+\texttt{✖\ dplyr::lag()\ \ \ \ masks\ stats::lag()}
+\texttt{ℹ\ Use\ the\ conflicted\ package\ to\ force\ all\ conflicts\ to\ become\ errors}
+
+This presents a good opportunity to talk about conflicts. Certain packages we load can end up introducing function names that are already in use by pre-loaded R packages. For instance, when we load the \texttt{tidyverse} package below, we will introduce two conflicting functions: \texttt{filter()} and \texttt{lag()}. This happens because \texttt{filter} and \texttt{lag} are already functions used by the \texttt{stats} package (already pre-loaded in R). What will happen now is that if we, for example, call the \texttt{filter()} function, R will use the \texttt{dplyr::filter()} version and not the \texttt{stats::filter()} one. This happens because, if conflicted, \textbf{by default R uses the function from the most recently loaded package}. Conflicted functions may cause you some trouble in the future, so it is important that we are aware of them so that we can properly handle them, if we want.
+
+To do so, we can use the following functions from the conflicted package:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{conflicted::conflict\_scout()}: Shows us any conflicted functions.
+\item
+  \texttt{conflict\_prefer("function",\ "package\_prefered")}: Allows us to choose the default function we want from now on.
+\end{itemize}
+
+It is also important to know that we can, at any time, just call the function directly from the package we want, such as \texttt{stats::filter()}.
+
+Ok. With that out of the way you are now ready to load the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stops }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"data/MS\_trafficstops\_bw.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#>              id state  stop_date       county_name county_fips
-#> 1 MS-2013-00001    MS 2013-01-01      Jones County       28067
-#> 2 MS-2013-00002    MS 2013-01-01 Lauderdale County       28075
-#> 3 MS-2013-00003    MS 2013-01-01       Pike County       28113
-#> 4 MS-2013-00004    MS 2013-01-01    Hancock County       28045
-#> 5 MS-2013-00005    MS 2013-01-01     Holmes County       28051
-#> 6 MS-2013-00006    MS 2013-01-01    Jackson County       28059
-#>            police_department driver_gender driver_birthdate driver_race
-#> 1 Mississippi Highway Patrol             M       1950-06-14       Black
-#> 2 Mississippi Highway Patrol             M       1967-04-06       Black
-#> 3 Mississippi Highway Patrol             M       1974-04-15       Black
-#> 4 Mississippi Highway Patrol             M       1981-03-23       White
-#> 5 Mississippi Highway Patrol             M       1992-08-03       White
-#> 6 Mississippi Highway Patrol             F       1960-05-02       White
-#>                                                 violation_raw officer_id
-#> 1                     Seat belt not used properly as required       J042
-#> 2                                            Careless driving       B026
-#> 3 Speeding - Regulated or posted speed limit and actual speed       M009
-#> 4 Speeding - Regulated or posted speed limit and actual speed       K035
-#> 5 Speeding - Regulated or posted speed limit and actual speed       D028
-#> 6 Speeding - Regulated or posted speed limit and actual speed       K023
+#> Rows: 211211 Columns: 11
+#> -- Column specification --------------------------------------------------------
+#> Delimiter: ","
+#> chr  (8): id, state, county_name, police_department, driver_gender, driver_r...
+#> dbl  (1): county_fips
+#> date (2): stop_date, driver_birthdate
+#> 
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
-\hypertarget{inspecting-data.frame-objects}{%
-\section{\texorpdfstring{Inspecting \texttt{data.frame} Objects}{Inspecting data.frame Objects}}\label{inspecting-data.frame-objects}}
+If you were to type in the code above, it is likely that the \texttt{read.csv()} (note the dot!) function would appear in the automatically populated list of functions. This function is different from the \texttt{read\_csv()} (note the underscore!) function, as it is included in the ``base'' packages that come pre-installed with R. Overall, \texttt{read.csv()} behaves similar to \texttt{read\_csv()}, with a few notable differences. First, \texttt{read.csv()} coerces column names with spaces and/or special characters to different names (e.g.~interview date becomes interview.date). Second, \texttt{read.csv()} stores data as a \textbf{data.frame}, where \texttt{read\_csv()} stores data as a \textbf{tibble}. We prefer tibbles because they have nice printing properties among other desirable qualities. Read more about tibbles \href{https://tibble.tidyverse.org/}{here.}
+
+The second statement in the code above creates a data frame but doesn't output any data because, as you might recall, assignments (\texttt{\textless{}-}) don't display anything. (Note, however, that \texttt{read\_csv} may show informational text about the data frame that is created.)
+
+So let's check out the data! We can type the name of the object \texttt{stops}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stops}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> # A tibble: 211,211 x 11
+#>    id            state stop_date  county_name      county_fips police_department
+#>    <chr>         <chr> <date>     <chr>                  <dbl> <chr>            
+#>  1 MS-2013-00001 MS    2013-01-01 Jones County           28067 Mississippi High~
+#>  2 MS-2013-00002 MS    2013-01-01 Lauderdale Coun~       28075 Mississippi High~
+#>  3 MS-2013-00003 MS    2013-01-01 Pike County            28113 Mississippi High~
+#>  4 MS-2013-00004 MS    2013-01-01 Hancock County         28045 Mississippi High~
+#>  5 MS-2013-00005 MS    2013-01-01 Holmes County          28051 Mississippi High~
+#>  6 MS-2013-00006 MS    2013-01-01 Jackson County         28059 Mississippi High~
+#>  7 MS-2013-00007 MS    2013-01-01 Jackson County         28059 Mississippi High~
+#>  8 MS-2013-00008 MS    2013-01-01 Grenada County         28043 Mississippi High~
+#>  9 MS-2013-00009 MS    2013-01-01 Holmes County          28051 Mississippi High~
+#> 10 MS-2013-00010 MS    2013-01-01 Holmes County          28051 Mississippi High~
+#> # i 211,201 more rows
+#> # i 5 more variables: driver_gender <chr>, driver_birthdate <date>,
+#> #   driver_race <chr>, violation_raw <chr>, officer_id <chr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Try also:}
+\CommentTok{\# head(stops)}
+\CommentTok{\# view(stops)}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{read\_csv()} assumes that fields are delimited by commas. For other delimiters (like semicolon or tab) check out the help: \texttt{?read\_csv}
+
+Note that \texttt{read\_csv()} loads the data as a so called ``tibble''. A tibble is an extended form of R data frames (as an object of multiple classes \texttt{tbl\_df}, \texttt{tbl}, and \texttt{data.frame}). This may sound confusing, but it is really not anything you typically with when working the data. In fact, it makes it a little more convenient.
 
 As you may recall, a data frame in R is a special case of a list, and a representation of data where the columns are vectors that all have the same length. Because the columns are vectors, they all contain the same type of data (e.g., characters, integers, factors, etc.).
 
-We can see this when inspecting the structure of a data frame
-with the function \texttt{str()}:
+In this tibble you can see the type of data included in each column listed in an abbreviated fashion right below the column names. For instance, the \texttt{state} column is is of type character \texttt{\textless{}chr\textgreater{}}, the \texttt{stop\_date} is in \texttt{\textless{}date\textgreater{}} format and \texttt{county\_fips} are floating point numbers (abbreviated \texttt{\textless{}dbl\textgreater{}} for the word `double').
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{str}\NormalTok{(trafficstops)}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{inspecting-data-frames}{%
+\section{Inspecting data frames}\label{inspecting-data-frames}}
 
-\begin{verbatim}
-#> 'data.frame':  211211 obs. of  11 variables:
-#>  $ id               : chr  "MS-2013-00001" "MS-2013-00002" "MS-2013-00003" "MS-2013-00004" ...
-#>  $ state            : chr  "MS" "MS" "MS" "MS" ...
-#>  $ stop_date        : chr  "2013-01-01" "2013-01-01" "2013-01-01" "2013-01-01" ...
-#>  $ county_name      : chr  "Jones County" "Lauderdale County" "Pike County" "Hancock County" ...
-#>  $ county_fips      : int  28067 28075 28113 28045 28051 28059 28059 28043 28051 28051 ...
-#>  $ police_department: chr  "Mississippi Highway Patrol" "Mississippi Highway Patrol" "Mississippi Highway Patrol" "Mississippi Highway Patrol" ...
-#>  $ driver_gender    : chr  "M" "M" "M" "M" ...
-#>  $ driver_birthdate : chr  "1950-06-14" "1967-04-06" "1974-04-15" "1981-03-23" ...
-#>  $ driver_race      : chr  "Black" "Black" "Black" "White" ...
-#>  $ violation_raw    : chr  "Seat belt not used properly as required" "Careless driving" "Speeding - Regulated or posted speed limit and actual speed" "Speeding - Regulated or posted speed limit and actual speed" ...
-#>  $ officer_id       : chr  "J042" "B026" "M009" "K035" ...
-\end{verbatim}
+When calling a \texttt{tbl\_df}object (like \texttt{stops} here), there is already a lot of information about our data frame being displayed such as the number of rows, the number of columns, the names of the columns, and as we just saw the class of data stored in each column. However, there are additional functions to extract this information from data frames. Here is a non-exhaustive list of some of these functions. Let's try them out!
 
 We already saw how the functions \texttt{head()} and \texttt{str()} can be useful to check the
 content and the structure of a data frame. Here is a non-exhaustive list of
 functions to get a sense of the content/structure of the data. Let's try them out!
 
+(Note: most of these functions are ``generic'', they can be used on other types of
+objects besides data frames or tibbles.)
+
 \begin{itemize}
 \tightlist
+\item
+  Summary:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{str(stops)} - structure of the object and information about the class, length and
+    content of each column
+  \item
+    \texttt{summary(stops)} - summary statistics for each column
+  \item
+    \texttt{glimpse(stops)} - returns the number of columns and rows of the tibble, the names and class of each column, and previews as many values will fit on the screen. Unlike the other inspecting functions listed above, \texttt{glimpse()} is not a `base R' function so you need to have the \texttt{dplyr} or \texttt{tibble} packages loaded to be able to execute it.
+  \end{itemize}
 \item
   Size:
 
   \begin{itemize}
   \tightlist
   \item
-    \texttt{dim(trafficstops)} - returns a vector with the number of rows in the first element,
+    \texttt{dim(stops)} - returns a vector with the number of rows in the first element,
     and the number of columns as the second element (the \textbf{dim}ensions of
     the object)
   \item
-    \texttt{nrow(trafficstops)} - returns the number of rows
+    \texttt{nrow(stops)} - returns the number of rows
   \item
-    \texttt{ncol(trafficstops)} - returns the number of columns
+    \texttt{ncol(stops)} - returns the number of columns
   \item
-    \texttt{length(trafficstops)} - returns number of columns
+    \texttt{length(stops)} - returns number of columns
   \end{itemize}
 \item
   Content:
@@ -1969,9 +2063,9 @@ functions to get a sense of the content/structure of the data. Let's try them ou
   \begin{itemize}
   \tightlist
   \item
-    \texttt{head(trafficstops)} - shows the first 6 rows
+    \texttt{head(stops)} - shows the first 6 rows
   \item
-    \texttt{tail(trafficstops)} - shows the last 6 rows
+    \texttt{tail(stops)} - shows the last 6 rows
   \end{itemize}
 \item
   Names:
@@ -1979,36 +2073,22 @@ functions to get a sense of the content/structure of the data. Let's try them ou
   \begin{itemize}
   \tightlist
   \item
-    \texttt{names(trafficstops)} - returns the column names (synonym of \texttt{colnames()} for \texttt{data.frame}
+    \texttt{names(stops)} - returns the column names (synonym of \texttt{colnames()} for \texttt{data.frame}
     objects)
   \item
-    \texttt{rownames(trafficstops)} - returns the row names
-  \end{itemize}
-\item
-  Summary:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \texttt{str(trafficstops)} - structure of the object and information about the class, length and
-    content of each column
-  \item
-    \texttt{summary(trafficstops)} - summary statistics for each column
+    \texttt{rownames(stops)} - returns the row names
   \end{itemize}
 \end{itemize}
-
-Note: most of these functions are ``generic'', they can be used on other types of
-objects besides \texttt{data.frame}.
 
 \begin{quote}
 Challenge
 
-Based on the output of \texttt{str(trafficstops)}, can you answer the following questions?
+Based on the output of \texttt{str(stops)}, can you answer the following questions?
 
 \begin{itemize}
 \tightlist
 \item
-  What is the class of the object \texttt{trafficstops}?
+  What is the class of the object \texttt{stops}?
 \item
   How many rows and how many columns are in this object?
 \item
@@ -2019,41 +2099,58 @@ Based on the output of \texttt{str(trafficstops)}, can you answer the following 
 \hypertarget{indexing-and-subsetting-data-frames}{%
 \section{Indexing and subsetting data frames}\label{indexing-and-subsetting-data-frames}}
 
-Our trafficstops data frame has rows and columns (it has 2 dimensions), if we want to
-extract some specific data from it, we need to specify the ``coordinates'' we
-want from it. Row numbers come first, followed by column numbers. However, note
-that different ways of specifying these coordinates lead to results with
-different classes.
+Our stops data frame has rows and columns (it has 2 dimensions), if we want to
+extract some specific data from it, we need to specify the ``coordinates'' (i.e., indices) we want from it. Row numbers come first, followed by column numbers.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{trafficstops[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{]   }\CommentTok{# first element in the first column of the data frame (as a vector)}
-\NormalTok{trafficstops[}\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{]   }\CommentTok{# first element in the 6th column (as a vector)}
-\NormalTok{trafficstops[, }\DecValTok{1}\NormalTok{]    }\CommentTok{# first column in the data frame (as a vector)}
-\NormalTok{trafficstops[}\DecValTok{1}\NormalTok{]      }\CommentTok{# first column in the data frame (as a data.frame)}
-\NormalTok{trafficstops[}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{7}\NormalTok{] }\CommentTok{# first three elements in the 7th column (as a vector)}
-\NormalTok{trafficstops[}\DecValTok{3}\NormalTok{, ]    }\CommentTok{# the 3rd row (as a data.frame)}
-\NormalTok{trafficstops[}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{, ]  }\CommentTok{# the 1st to 6th rows, equivalent to head(trafficstops)}
-\NormalTok{trafficstops[, }\DecValTok{-1}\NormalTok{]           }\CommentTok{# the whole data frame, excluding the first column}
-\NormalTok{trafficstops[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{7}\OperatorTok{:}\DecValTok{211211}\NormalTok{),]  }\CommentTok{# equivalent to head(trafficstops)}
+\DocumentationTok{\#\# first element in the first column of the tibble}
+\NormalTok{stops[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{]}
+\DocumentationTok{\#\# first element in the 6th column of the tibble }
+\NormalTok{stops[}\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{]}
+\DocumentationTok{\#\# first column of the tibble}
+\NormalTok{stops[}\DecValTok{1}\NormalTok{]}
+\DocumentationTok{\#\# first column of the tibble (as a vector)}
+\NormalTok{stops[[}\DecValTok{1}\NormalTok{]]}
+
+\DocumentationTok{\#\# the 3rd row of the tibble}
+\NormalTok{stops[}\DecValTok{3}\NormalTok{, ]}
+\DocumentationTok{\#\# first three elements in the 7th column of the tibble}
+\NormalTok{stops[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{7}\NormalTok{]}
+\DocumentationTok{\#\# equivalent to head(stops) }
+\NormalTok{stops[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, ]}
+
+\DocumentationTok{\#\# Excludig with \textquotesingle{}{-}\textquotesingle{}}
+\DocumentationTok{\#\# The whole tibble, except the first column}
+\NormalTok{stops[, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]          }
+\DocumentationTok{\#\# equivalent to head(stops)  }
+\NormalTok{stops[}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{7}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(stops)),]}
 \end{Highlighting}
 \end{Shaded}
 
-As well as using numeric values to subset a \texttt{data.frame} (or \texttt{matrix}), columns
-can be called by name, using one of the four following notations:
+Subsetting a \texttt{tibble} with \texttt{{[}} always results in a tibble. However, note that different ways of specifying these coordinates lead to results with different classes. Below are some example for \texttt{data.frame} objects.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{trafficstops[}\StringTok{"violation_raw"}\NormalTok{]       }\CommentTok{# Result is a data.frame}
-\NormalTok{trafficstops[, }\StringTok{"violation_raw"}\NormalTok{]     }\CommentTok{# Result is a vector}
-\NormalTok{trafficstops[[}\StringTok{"violation_raw"}\NormalTok{]]     }\CommentTok{# Result is a vector}
-\NormalTok{trafficstops}\OperatorTok{$}\NormalTok{violation_raw          }\CommentTok{# Result is a vector}
+\NormalTok{stops\_df }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(stops)}
+\NormalTok{stops\_df[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{]   }\CommentTok{\# first element in the first column of the data frame (as a vector)}
+\NormalTok{stops\_df[, }\DecValTok{1}\NormalTok{]    }\CommentTok{\# first column in the data frame (as a vector)}
+\NormalTok{stops\_df[}\DecValTok{1}\NormalTok{]      }\CommentTok{\# first column in the data frame (as a data.frame)}
 \end{Highlighting}
 \end{Shaded}
 
-For our purposes, the last three notations are equivalent. RStudio knows about
-the columns in your data frame, so you can take advantage of the autocompletion
-feature to get the full and correct column name.
+An alternative to subsetting \texttt{tibbles} (and data frames) is to calling their column names directly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stops[}\StringTok{"violation\_raw"}\NormalTok{]       }\CommentTok{\# Result is a tibble}
+\NormalTok{stops[, }\StringTok{"violation\_raw"}\NormalTok{]     }\CommentTok{\# Result is a tibble}
+\NormalTok{stops[[}\StringTok{"violation\_raw"}\NormalTok{]]     }\CommentTok{\# Result is a vector}
+\NormalTok{stops}\SpecialCharTok{$}\NormalTok{violation\_raw          }\CommentTok{\# Result is a vector}
+\end{Highlighting}
+\end{Shaded}
+
+RStudio knows about the columns in your data frame, so you can take advantage of the autocompletion feature to get the full and correct column name.
 
 \begin{quote}
 Challenge
@@ -2061,10 +2158,10 @@ Challenge
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Create a \texttt{data.frame} (\texttt{trafficstops\_200}) containing only the observations from
-  row 200 of the \texttt{trafficstops} dataset.
+  Create a \texttt{tibble} (\texttt{stops\_200}) containing only the observations from
+  row 200 of the \texttt{stops} dataset.
 \item
-  Notice how \texttt{nrow()} gave you the number of rows in a \texttt{data.frame}?
+  Notice how \texttt{nrow()} gave you the number of rows in a \texttt{tibble}?
 
   \begin{itemize}
   \tightlist
@@ -2076,34 +2173,35 @@ Challenge
   \item
     Pull out that last row using \texttt{nrow()} instead of the row number.
   \item
-    Create a new data frame object (\texttt{trafficstops\_last}) from that last row.
+    Create a new data frame object (\texttt{stops\_last}) from that last row.
   \end{itemize}
 \item
   Use \texttt{nrow()} to extract the row that is in the middle of the data
-  frame. Store the content of this row in an object named \texttt{trafficstops\_middle}.
+  frame. Store the content of this row in an object named \texttt{stops\_middle}.
 \item
   Combine \texttt{nrow()} with the \texttt{-} notation above to reproduce the behavior of
-  \texttt{head(trafficstops)} keeping just the first through 6th rows of the trafficstops
+  \texttt{head(stops)} keeping just the first through 6th rows of the stops
   dataset.
 \end{enumerate}
 \end{quote}
 
-\#\# Conditional subsetting
+\hypertarget{conditional-subsetting-1}{%
+\section{Conditional subsetting}\label{conditional-subsetting-1}}
 
-Often times we need to extract a subset of a data frame based on certain conditions. For example, if we wanted to look at traffic stops in Webster County only we could say:
+A very common need when working with tables is the need to extract a subset of a data frame based on certain conditions, depending on the actualcontent of the table. For example, we may want to look only at traffic stops in Webster County. In this case we can use logical conditions, exactly like we did above with vector subsetting. In base R this can be done like this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# the condition:}
-\CommentTok{# returns a logical vector of the length of the column}
-\NormalTok{trafficstops}\OperatorTok{$}\NormalTok{county_name }\OperatorTok{==}\StringTok{ "Webster County"} 
+\CommentTok{\# the condition:}
+\CommentTok{\# returns a logical vector of the length of the column}
+\NormalTok{stops}\SpecialCharTok{$}\NormalTok{county\_name }\SpecialCharTok{==} \StringTok{"Webster County"} 
 
-\CommentTok{# use this vector to extract rows and all columns}
-\CommentTok{# note the comma: we want *all* columns}
-\NormalTok{trafficstops[trafficstops}\OperatorTok{$}\NormalTok{county_name }\OperatorTok{==}\StringTok{ "Webster County"}\NormalTok{, ] }
+\CommentTok{\# use this vector to extract rows and all columns}
+\CommentTok{\# note the comma: we want *all* columns}
+\NormalTok{stops[stops}\SpecialCharTok{$}\NormalTok{county\_name }\SpecialCharTok{==} \StringTok{"Webster County"}\NormalTok{, ] }
 
-\CommentTok{# assign extract to a new data frame}
-\NormalTok{Webster_trafficstops <-}\StringTok{ }\NormalTok{trafficstops[trafficstops}\OperatorTok{$}\NormalTok{county_name }\OperatorTok{==}\StringTok{ "Webster County"}\NormalTok{, ]}
+\CommentTok{\# assign extract to a new data frame}
+\NormalTok{Webster\_stops }\OtherTok{\textless{}{-}}\NormalTok{ stops[stops}\SpecialCharTok{$}\NormalTok{county\_name }\SpecialCharTok{==} \StringTok{"Webster County"}\NormalTok{, ]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2111,8 +2209,8 @@ This is also a possibility (but slower):
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{Webster_trafficstops <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(trafficstops, county_name }\OperatorTok{==}\StringTok{ "Webster County"}\NormalTok{)}
-\KeywordTok{nrow}\NormalTok{(Webster_trafficstops) }\CommentTok{# 393 stops in Webster County!}
+\NormalTok{Webster\_stops }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(stops, county\_name }\SpecialCharTok{==} \StringTok{"Webster County"}\NormalTok{)}
+\FunctionTok{nrow}\NormalTok{(Webster\_stops) }\CommentTok{\# 393 stops in Webster County!}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2122,8 +2220,8 @@ This is also a possibility (but slower):
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# and if we wanted to see the breakdown by race:}
-\KeywordTok{table}\NormalTok{(Webster_trafficstops}\OperatorTok{$}\NormalTok{driver_race)}
+\CommentTok{\# and if we wanted to see the breakdown by race:}
+\FunctionTok{table}\NormalTok{(Webster\_stops}\SpecialCharTok{$}\NormalTok{driver\_race)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2141,105 +2239,86 @@ Challenge
 \begin{itemize}
 \tightlist
 \item
-  Use subsetting to extract trafficstops in Hancock, Harrison, and Jackson Counties into a separate data frame \texttt{coastal\_counties}.
+  Use subsetting to extract stops in Hancock, Harrison, and Jackson Counties into a separate data frame \texttt{coastal\_counties}.
 \item
-  Using \texttt{coastal\_counties}, count the number of Black and White drivers in the three counties.
+  Using \texttt{coastal\_counties}, count the total number of Black and White drivers in the coastal counties.
 \item
-  Bonus: How does the ratio of Black to White stops in the three coastal counties compare to the same ratio for stops in the entire state of Mississippi?
+  Bonus: Count the total number of Black and White drivers in the entire \texttt{stops} dataset. How does the ratio of Black to White stops in the three coastal counties compare to the same ratio for stops in the entire state of Mississippi?
 \end{itemize}
 \end{quote}
 
-\#\# Adding and removing rows and columns
+\hypertarget{adding-and-removing-rows-and-columns}{%
+\section{Adding and removing rows and columns}\label{adding-and-removing-rows-and-columns}}
 
-To add a new column to the data frame we can use the \texttt{cbind()} function.
+To add a new column to the data frame we can use the \texttt{cbind()} function There also is a \texttt{bind\_cols()} function from \texttt{dplyr} package (part of the \texttt{tidyverse}). An important difference with \texttt{bind\_cols()} is that it displays an error message when you try to combine with vector that has fewer or more elements than the number of rows in the table. \texttt{cbind()} on the other hand, silently repeats values or rows, so you might introduce errors and be unaware of it.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{new_col <-}\StringTok{ }\KeywordTok{row.names}\NormalTok{(trafficstops)}
-\NormalTok{trafficstops_withnewcol <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(trafficstops, new_col)}
-\KeywordTok{head}\NormalTok{(trafficstops_withnewcol)}
+\NormalTok{id\_column }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(stops) }\CommentTok{\# create a unique ID number for each row}
+\NormalTok{stops\_with\_id }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(stops, id\_column) }
+\FunctionTok{glimpse}\NormalTok{(stops\_with\_id)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#>              id state  stop_date       county_name county_fips
-#> 1 MS-2013-00001    MS 2013-01-01      Jones County       28067
-#> 2 MS-2013-00002    MS 2013-01-01 Lauderdale County       28075
-#> 3 MS-2013-00003    MS 2013-01-01       Pike County       28113
-#> 4 MS-2013-00004    MS 2013-01-01    Hancock County       28045
-#> 5 MS-2013-00005    MS 2013-01-01     Holmes County       28051
-#> 6 MS-2013-00006    MS 2013-01-01    Jackson County       28059
-#>            police_department driver_gender driver_birthdate driver_race
-#> 1 Mississippi Highway Patrol             M       1950-06-14       Black
-#> 2 Mississippi Highway Patrol             M       1967-04-06       Black
-#> 3 Mississippi Highway Patrol             M       1974-04-15       Black
-#> 4 Mississippi Highway Patrol             M       1981-03-23       White
-#> 5 Mississippi Highway Patrol             M       1992-08-03       White
-#> 6 Mississippi Highway Patrol             F       1960-05-02       White
-#>                                                 violation_raw officer_id
-#> 1                     Seat belt not used properly as required       J042
-#> 2                                            Careless driving       B026
-#> 3 Speeding - Regulated or posted speed limit and actual speed       M009
-#> 4 Speeding - Regulated or posted speed limit and actual speed       K035
-#> 5 Speeding - Regulated or posted speed limit and actual speed       D028
-#> 6 Speeding - Regulated or posted speed limit and actual speed       K023
-#>   new_col
-#> 1       1
-#> 2       2
-#> 3       3
-#> 4       4
-#> 5       5
-#> 6       6
+#> Rows: 211,211
+#> Columns: 12
+#> $ id                <chr> "MS-2013-00001", "MS-2013-00002", "MS-2013-00003", "~
+#> $ state             <chr> "MS", "MS", "MS", "MS", "MS", "MS", "MS", "MS", "MS"~
+#> $ stop_date         <date> 2013-01-01, 2013-01-01, 2013-01-01, 2013-01-01, 201~
+#> $ county_name       <chr> "Jones County", "Lauderdale County", "Pike County", ~
+#> $ county_fips       <dbl> 28067, 28075, 28113, 28045, 28051, 28059, 28059, 280~
+#> $ police_department <chr> "Mississippi Highway Patrol", "Mississippi Highway P~
+#> $ driver_gender     <chr> "M", "M", "M", "M", "M", "F", "F", "F", "M", "M", "M~
+#> $ driver_birthdate  <date> 1950-06-14, 1967-04-06, 1974-04-15, 1981-03-23, 199~
+#> $ driver_race       <chr> "Black", "Black", "Black", "White", "White", "White"~
+#> $ violation_raw     <chr> "Seat belt not used properly as required", "Careless~
+#> $ officer_id        <chr> "J042", "B026", "M009", "K035", "D028", "K023", "K03~
+#> $ id_column         <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1~
 \end{verbatim}
 
-Alternatively, we can also add a new column adding the new column name after the \texttt{\$} sign then assigning the value, like below. Note that this will change the original data frame, which you may not always want to do.
+Alternatively, we can also add a new column adding the new column name after the \texttt{\$} sign then assigning the value, like below. \textbf{Note that this will change the original data frame, which you may not always want to do.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{trafficstops}\OperatorTok{$}\NormalTok{row_numbers <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(trafficstops))}
-\NormalTok{trafficstops}\OperatorTok{$}\NormalTok{all_false <-}\StringTok{ }\OtherTok{FALSE}  \CommentTok{# what do you think will happen here?}
+\NormalTok{stops}\SpecialCharTok{$}\NormalTok{row\_numbers }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(stops))}
+\NormalTok{stops}\SpecialCharTok{$}\NormalTok{all\_false }\OtherTok{\textless{}{-}} \ConstantTok{FALSE}  \CommentTok{\# what do you think will happen here?}
 \end{Highlighting}
 \end{Shaded}
 
-There is an equivalent function, \texttt{rbind()} to add a new row to a data frame. I use this far less frequently than the column equivalent. The one thing to keep in mind is that the row to be added to the data frame needs to match the order and type of columns in the data frame. Remember that R's way to store multiple different data types in one object is a \texttt{list}. So if we wanted to add a new row to \texttt{trafficstops} we would say:
+There is an equivalent function, \texttt{rbind()} to add a new row to a data frame. I use this far less frequently than the column equivalent. The one thing to keep in mind is that the row to be added to the data frame needs to match the order and type of columns in the data frame. Remember that R's way to store multiple different data types in one object is a \texttt{list}. So if we wanted to add a new row to \texttt{stops} we would say:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{new_row <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{id=}\StringTok{"MS-2017-12345"}\NormalTok{, }\DataTypeTok{state=}\StringTok{"MS"}\NormalTok{, }\DataTypeTok{stop_date=}\StringTok{"2017-08-24"}\NormalTok{,}
-                \DataTypeTok{county_name=}\StringTok{"Tallahatchie County"}\NormalTok{, }\DataTypeTok{county_fips=}\DecValTok{12345}\NormalTok{,}
-                \DataTypeTok{police_department=}\StringTok{"MSHP"}\NormalTok{, }\DataTypeTok{driver_gender=}\StringTok{"F"}\NormalTok{, }\DataTypeTok{driver_birthdate=}\StringTok{"1999-06-14"}\NormalTok{,}
-                \DataTypeTok{driver_race=}\StringTok{"Hispanic"}\NormalTok{, }\DataTypeTok{violation_raw=}\StringTok{"Speeding"}\NormalTok{, }\DataTypeTok{officer_id=}\StringTok{"ABCD"}\NormalTok{)}
+\NormalTok{new\_row }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{id=}\StringTok{"MS{-}2017{-}12345"}\NormalTok{, }\AttributeTok{state=}\StringTok{"MS"}\NormalTok{, }\AttributeTok{stop\_date=}\StringTok{"2017{-}08{-}24"}\NormalTok{,}
+                \AttributeTok{county\_name=}\StringTok{"Tallahatchie County"}\NormalTok{, }\AttributeTok{county\_fips=}\DecValTok{12345}\NormalTok{,}
+                \AttributeTok{police\_department=}\StringTok{"MSHP"}\NormalTok{, }\AttributeTok{driver\_gender=}\StringTok{"F"}\NormalTok{, }\AttributeTok{driver\_birthdate=}\StringTok{"1999{-}06{-}14"}\NormalTok{,}
+                \AttributeTok{driver\_race=}\StringTok{"Hispanic"}\NormalTok{, }\AttributeTok{violation\_raw=}\StringTok{"Speeding"}\NormalTok{, }\AttributeTok{officer\_id=}\StringTok{"ABCD"}\NormalTok{)}
 
-\NormalTok{trafficstops_withnewrow <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(trafficstops, new_row)}
-\KeywordTok{tail}\NormalTok{(trafficstops_withnewrow)}
+\NormalTok{stops\_withnewrow }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(stops, new\_row)}
+\FunctionTok{tail}\NormalTok{(stops\_withnewrow)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#>                   id state  stop_date         county_name county_fips
-#> 211207 MS-2016-24293    MS 2016-07-09       George County       28039
-#> 211208 MS-2016-24294    MS 2016-07-10       Copiah County       28029
-#> 211209 MS-2016-24295    MS 2016-07-11      Grenada County       28043
-#> 211210 MS-2016-24296    MS 2016-07-14       Copiah County       28029
-#> 211211 MS-2016-24297    MS 2016-07-14       Copiah County       28029
-#> 211212 MS-2017-12345    MS 2017-08-24 Tallahatchie County       12345
-#>                 police_department driver_gender driver_birthdate driver_race
-#> 211207 Mississippi Highway Patrol             M       1992-07-14       White
-#> 211208 Mississippi Highway Patrol             M       1975-12-23       Black
-#> 211209 Mississippi Highway Patrol             M       1998-02-02       White
-#> 211210 Mississippi Highway Patrol             F       1970-06-14       White
-#> 211211 Mississippi Highway Patrol             M       1948-03-11       White
-#> 211212                       MSHP             F       1999-06-14    Hispanic
-#>                                                      violation_raw officer_id
-#> 211207 Speeding - Regulated or posted speed limit and actual speed       K025
-#> 211208 Speeding - Regulated or posted speed limit and actual speed       C033
-#> 211209                     Seat belt not used properly as required       D014
-#> 211210       Expired or no non-commercial driver license or permit       C015
-#> 211211                     Seat belt not used properly as required       C015
-#> 211212                                                    Speeding       ABCD
+#> # A tibble: 6 x 11
+#>   id    state stop_date  county_name county_fips police_department driver_gender
+#>   <chr> <chr> <date>     <chr>             <dbl> <chr>             <chr>        
+#> 1 MS-2~ MS    2016-07-09 George Cou~       28039 Mississippi High~ M            
+#> 2 MS-2~ MS    2016-07-10 Copiah Cou~       28029 Mississippi High~ M            
+#> 3 MS-2~ MS    2016-07-11 Grenada Co~       28043 Mississippi High~ M            
+#> 4 MS-2~ MS    2016-07-14 Copiah Cou~       28029 Mississippi High~ F            
+#> 5 MS-2~ MS    2016-07-14 Copiah Cou~       28029 Mississippi High~ M            
+#> 6 MS-2~ MS    2017-08-24 Tallahatch~       12345 MSHP              F            
+#> # i 4 more variables: driver_birthdate <date>, driver_race <chr>,
+#> #   violation_raw <chr>, officer_id <chr>
 \end{verbatim}
 
-A convenient function to know about is \texttt{na.omit()}. It will remove all rows from a data frame that have at least one column with \texttt{NA} values.
+Equivalently there is a \texttt{bind\_rows} function available in \texttt{tidyverse}. One of the main reasons for using \texttt{bind\_rows} over \texttt{rbind} is to combine two data frames having different number of columns. \texttt{rbind} throws an error in such a case whereas \texttt{bind\_rows} assigns ``NA'' to those rows of columns missing in one of the data frames where the value is not provided by the data frames. \href{https://stackoverflow.com/a/59482527}{Here is a systematic review of differences between the two.}
+
+There is also \texttt{add\_row} fro the \texttt{tibble} package which allows you to specify where to insert the row. You can find out more with \texttt{?add\_row}.
+
+A convenient function to know about is \texttt{na.omit()}. It will remove all rows from a data frame that have at least one column with \texttt{NA} values. The function \texttt{drop\_na()} from \texttt{tidyverse} works similarly and lets you name specific columns with NA.
 
 \begin{quote}
 Challenge
@@ -2252,9 +2331,9 @@ Challenge
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{dfr <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{col_1 =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{), }
-                  \DataTypeTok{col_2 =} \KeywordTok{c}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\OtherTok{NA}\NormalTok{, }\StringTok{"b"}\NormalTok{), }
-                  \DataTypeTok{col_3 =} \KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{NA}\NormalTok{, }\OtherTok{FALSE}\NormalTok{))}
+\NormalTok{dfr }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{col\_1 =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{), }
+                  \AttributeTok{col\_2 =} \FunctionTok{c}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\StringTok{"b"}\NormalTok{), }
+                  \AttributeTok{col\_3 =} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2262,14 +2341,14 @@ What would you expect the following commands to return?
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{nrow}\NormalTok{(dfr)}
-\KeywordTok{nrow}\NormalTok{(}\KeywordTok{na.omit}\NormalTok{(dfr))}
+\FunctionTok{nrow}\NormalTok{(dfr)}
+\FunctionTok{nrow}\NormalTok{(}\FunctionTok{na.omit}\NormalTok{(dfr))}
 \end{Highlighting}
 \end{Shaded}
 \end{quote}
 
 \hypertarget{categorical-data-factors}{%
-\section{Categorical data: factors}\label{categorical-data-factors}}
+\section{Categorical data: Factors}\label{categorical-data-factors}}
 
 Factors are very useful and are actually
 something that make R particularly well suited to working with data, so we're
@@ -2286,60 +2365,56 @@ treating them like strings.
 
 Once created, factors can only contain a pre-defined set of values, known as
 \emph{levels}. By default, R always sorts \emph{levels} in alphabetical order. For
-instance, if you have a factor with 2 levels:
+instance, if you have a factor with 3 levels:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{party <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"republican"}\NormalTok{, }\StringTok{"democrat"}\NormalTok{, }\StringTok{"democrat"}\NormalTok{, }\StringTok{"republican"}\NormalTok{))}
+\NormalTok{priority }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"low"}\NormalTok{, }\StringTok{"high"}\NormalTok{, }\StringTok{"medium"}\NormalTok{, }\StringTok{"low"}\NormalTok{, }\StringTok{"high"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
-R will assign \texttt{1} to the level \texttt{"democrat"} and \texttt{2} to the level \texttt{"republican"} (because
-\texttt{d} comes before \texttt{r}, even though the first element in this vector is
-\texttt{"republican"}). You can check this by using the function \texttt{levels()}, and check the
-number of levels using \texttt{nlevels()}:
+R will assign \texttt{1} to the level \texttt{"high"} and \texttt{2} to the level \texttt{"low"} and \texttt{3} to the level \texttt{low} (because it orders alphabetically, not according to position in the vector). You can check this by using the function \texttt{levels()}, and check the number of levels using \texttt{nlevels()}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{levels}\NormalTok{(party)}
-\KeywordTok{nlevels}\NormalTok{(party)}
+\FunctionTok{levels}\NormalTok{(priority)}
+\FunctionTok{nlevels}\NormalTok{(priority)}
 \end{Highlighting}
 \end{Shaded}
 
 Sometimes, the order of the factors does not matter, other times you might want
 to specify the order because it is meaningful (e.g., ``low'', ``medium'', ``high''),
 it improves your visualization, or it is required by a particular type of
-analysis. Here, one way to reorder our levels in the \texttt{party} vector would be:
+analysis. Here, one way to reorder our levels in the \texttt{priority} vector would be:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{party }\CommentTok{# current order}
+\NormalTok{priority }\CommentTok{\# current order}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] republican democrat   democrat   republican
-#> Levels: democrat republican
+#> [1] low    high   medium low    high  
+#> Levels: high low medium
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{party <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(party, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"republican"}\NormalTok{, }\StringTok{"democrat"}\NormalTok{))}
-\NormalTok{party }\CommentTok{# after re-ordering}
+\NormalTok{priority }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(priority, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"high"}\NormalTok{, }\StringTok{"medium"}\NormalTok{, }\StringTok{"low"}\NormalTok{))}
+\NormalTok{priority }\CommentTok{\# after re{-}ordering}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] republican democrat   democrat   republican
-#> Levels: republican democrat
+#> [1] low    high   medium low    high  
+#> Levels: high medium low
 \end{verbatim}
 
 In R's memory, these factors are represented by integers (1, 2, 3), but are more
-informative than integers because factors are self describing: \texttt{"democrat"},
-\texttt{"republican"} is more descriptive than \texttt{1}, \texttt{2}. Which one is ``republican''? You wouldn't
+informative than integers because factors are self describing: \texttt{"high"},
+\texttt{"medium"} and \texttt{"low"} is more descriptive than \texttt{1}, \texttt{2}, \texttt{3}. Which one is ``low''? You wouldn't
 be able to tell just from the integer data. Factors, on the other hand, have
-this information built in. It is particularly helpful when there are many levels
-(like the county names in our example dataset).
+this information built in.
 
 \hypertarget{converting-factors}{%
 \subsection{Converting factors}\label{converting-factors}}
@@ -2349,22 +2424,19 @@ If you need to convert a factor to a character vector, you use
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{as.character}\NormalTok{(party)}
-\KeywordTok{as.factor}\NormalTok{(party)}
+\FunctionTok{as.character}\NormalTok{(priority)}
 \end{Highlighting}
 \end{Shaded}
 
-Converting factors where the levels appear as numbers (such as concentration
-levels, or years) to a numeric vector is a little trickier. One method is to
-convert factors to characters and then numbers. Another method is to use the
-\texttt{levels()} function. Compare:
+It is a little is a little trickier to convert factors where the levels appear as numbers, such or years, for example, to numbers.One method is to
+convert factors to characters and then numbers. Another method is to use the \texttt{levels()} function. Compare:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{f <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1990}\NormalTok{, }\DecValTok{1983}\NormalTok{, }\DecValTok{1977}\NormalTok{, }\DecValTok{1998}\NormalTok{, }\DecValTok{1990}\NormalTok{))}
-\KeywordTok{as.numeric}\NormalTok{(f)               }\CommentTok{# wrong! and there is no warning...}
-\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{as.character}\NormalTok{(f)) }\CommentTok{# works...}
-\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{levels}\NormalTok{(f))[f]    }\CommentTok{# The recommended way.}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1990}\NormalTok{, }\DecValTok{1983}\NormalTok{, }\DecValTok{1977}\NormalTok{, }\DecValTok{1998}\NormalTok{, }\DecValTok{1990}\NormalTok{))}
+\FunctionTok{as.numeric}\NormalTok{(y)               }\CommentTok{\# wrong! and there is no warning...}
+\FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(y)) }\CommentTok{\# works...}
+\FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{levels}\NormalTok{(y))[y]    }\CommentTok{\# The recommended way.}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2373,79 +2445,58 @@ Notice that in the \texttt{levels()} approach, three important steps occur:
 \begin{itemize}
 \tightlist
 \item
-  We obtain all the factor levels using \texttt{levels(f)}
+  We obtain all the factor levels using \texttt{levels(y)}
 \item
-  We convert these levels to numeric values using \texttt{as.numeric(levels(f))}
+  We convert these levels to numeric values using \texttt{as.numeric(levels(y))}
 \item
-  We then access these numeric values using the underlying integers of the vector \texttt{f} as indices inside the square brackets
+  We then access these numeric values using the underlying integers of the vector \texttt{y} as indices inside the square brackets
 \end{itemize}
 
 \hypertarget{renaming-factors}{%
 \subsection{Renaming factors}\label{renaming-factors}}
 
-When your data is stored as a factor, you can use the \texttt{plot()} function to get a
-quick glance at the number of observations represented by each factor
-level. Let's look at the number of blacks and whites in the dataset:
+When your data is stored as a factor, you can use the \texttt{plot()} function to get a quick glance at the number of observations represented by each factor
+level. Let's look at the number of black and white drivers in the \texttt{stops} dataset:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Coerce the column "driver_race" into a factor}
-\NormalTok{trafficstops}\OperatorTok{$}\NormalTok{driver_race <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(trafficstops}\OperatorTok{$}\NormalTok{driver_race)}
-\CommentTok{# bar plot of the number of black and white drivers stopped:}
-\NormalTok{trafficstops}\OperatorTok{$}\NormalTok{driver_race <-}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(trafficstops}\OperatorTok{$}\NormalTok{driver_race)}
-\KeywordTok{plot}\NormalTok{(trafficstops}\OperatorTok{$}\NormalTok{driver_race)}
+\CommentTok{\# We create a new variable with the column "driver\_race" as a factor}
+\NormalTok{race }\OtherTok{\textless{}{-}}\NormalTok{ stops}\SpecialCharTok{$}\NormalTok{driver\_race}
+\NormalTok{race }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(race)}
+\FunctionTok{plot}\NormalTok{(race)}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{R-intro_files/figure-latex/driver-race-barplot-1.pdf}
 
-There seem to be a number of individuals for which the race information hasn't been recorded.
-
-Additionally, for these individuals, there is no label to indicate that the information is missing. Let's rename this label to something more meaningful. Before doing that, we're going to pull out the data on race and work with that data, so we're not modifying the working copy of the data frame:
+This looks good, however, \texttt{plot} silently ignores NAs and we would like to know if there are any:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{race <-}\StringTok{ }\NormalTok{trafficstops}\OperatorTok{$}\NormalTok{driver_race}
-\KeywordTok{head}\NormalTok{(race)}
+\CommentTok{\# We create a new variable with the column "driver\_race" as a factor}
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(race))}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-#> [1] Black Black Black White White White
-#> Levels:  Black White
-\end{verbatim}
+There seem to be a number of individuals for which the race information hasn't been recorded. Additionally, for these individuals, there is no label to indicate that the information is missing. Let's rename this label to something more meaningful:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{levels}\NormalTok{(race)}
+\DocumentationTok{\#\# Let\textquotesingle{}s recreate the vector from the data frame column "memb\_assoc"}
+\NormalTok{race }\OtherTok{\textless{}{-}}\NormalTok{ stops}\SpecialCharTok{$}\NormalTok{driver\_race}
+
+\DocumentationTok{\#\# replace the missing data with "unknown"}
+\NormalTok{race[}\FunctionTok{is.na}\NormalTok{(race)] }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}Missing\textquotesingle{}}
+
+\DocumentationTok{\#\# convert it into a factor}
+\NormalTok{race }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(race)}
+
+\DocumentationTok{\#\# let\textquotesingle{}s see what it looks like}
+\FunctionTok{plot}\NormalTok{(race)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-#> [1] ""      "Black" "White"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{levels}\NormalTok{(race)[}\DecValTok{1}\NormalTok{] <-}\StringTok{ "Missing"}
-\KeywordTok{levels}\NormalTok{(race)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-#> [1] "Missing" "Black"   "White"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(race)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-#> [1] Black Black Black White White White
-#> Levels: Missing Black White
-\end{verbatim}
+\includegraphics{R-intro_files/figure-latex/unnamed-chunk-94-1.pdf}
 
 \begin{quote}
 Challenge
@@ -2462,54 +2513,8 @@ Challenge
 
 ---\textgreater{}
 
-\hypertarget{using-stringsasfactors}{%
-\subsection{\texorpdfstring{Using \texttt{stringsAsFactors}}{Using stringsAsFactors}}\label{using-stringsasfactors}}
-
-By default, when building or importing a data frame with \texttt{read.csv()}, the columns that contain characters (i.e., text) are read as such. (This was introduced in R Version 4.) Depending on what you intend to do with the data, you may want to keep these
-columns as \texttt{character} or convert to \texttt{factor}. To do so, \texttt{read.csv()} and \texttt{read.table()} have an
-argument called \texttt{stringsAsFactors} which can be set to \texttt{TRUE}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Compare the difference between when the data are being read as}
-\CommentTok{# `factor`, and when they are being read as `character`.}
-\NormalTok{trafficstops <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/MS_policing_bw.csv"}\NormalTok{, }\DataTypeTok{stringsAsFactors =} \OtherTok{TRUE}\NormalTok{)}
-\KeywordTok{str}\NormalTok{(trafficstops)}
-\NormalTok{trafficstops <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/MS_policing_bw.csv"}\NormalTok{, }\DataTypeTok{stringsAsFactors =} \OtherTok{FALSE}\NormalTok{) }\CommentTok{# this is now the default.}
-\KeywordTok{str}\NormalTok{(trafficstops) }
-\end{Highlighting}
-\end{Shaded}
-
-\begin{quote}
-Challenge
-
-Can you predict the class for each of the columns in the following example?
-Check your guesses using \texttt{str(country\_climate)}:
-* Are they what you expected? Why? Why not?
-* What would have been different if we had added \texttt{stringsAsFactors\ =\ FALSE} to this call?
-* What would you need to change to ensure that each column had the accurate data type?
-
-\begin{verbatim}
-```
-country_climate <- data.frame(
-       country=c("Canada", "Panama", "South Africa", "Australia"),
-       climate=c("cold", "hot", "temperate", "hot/temperate"),
-       temperature=c(10, 30, 18, "15"),
-       northern_hemisphere=c(TRUE, TRUE, FALSE, "FALSE"),
-       has_kangaroo=c(FALSE, FALSE, FALSE, 1)
-       )
-```
-\end{verbatim}
-\end{quote}
-
-The automatic conversion of data type is sometimes a blessing, sometimes an
-annoyance. Be aware that it exists, learn the rules, and double check that data
-you import in R are of the correct type within your data frame. If not, use it
-to your advantage to detect mistakes that might have been introduced during data
-entry (a letter in a column that should only contain numbers for instance).
-
-\hypertarget{dates}{%
-\section{Dates}\label{dates}}
+\hypertarget{date-formats}{%
+\section{Date Formats}\label{date-formats}}
 
 One of the most common issues that new (and experienced!) R users have is converting
 date and time information into a variable that is appropriate and usable during
@@ -2520,7 +2525,7 @@ Using \texttt{str()}, we can see that both dates in our data frame \texttt{stop\
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{str}\NormalTok{(trafficstops)}
+\FunctionTok{str}\NormalTok{(stops)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2536,24 +2541,27 @@ Start by loading the required package:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(lubridate)}
+\FunctionTok{library}\NormalTok{(lubridate)}
 \end{Highlighting}
 \end{Shaded}
 
+\texttt{read\_csv()} has already recognized the Date format of the column when we read the table in earlier.
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{stop_date <-}\StringTok{ }\KeywordTok{ymd}\NormalTok{(trafficstops}\OperatorTok{$}\NormalTok{stop_date)}
-\KeywordTok{str}\NormalTok{(stop_date) }\CommentTok{# notice the 'date' class}
+\NormalTok{stop\_date }\OtherTok{\textless{}{-}}\NormalTok{ stops}\SpecialCharTok{$}\NormalTok{stop\_date}
+\FunctionTok{str}\NormalTok{(stop\_date) }\CommentTok{\# notice the \textquotesingle{}Date\textquotesingle{} class}
 \end{Highlighting}
 \end{Shaded}
 
-The \texttt{ymd} function also has nicely taken care of the fact that the original format of the date column is a factor!
-
-We can now easily extract year, month, and date using the respective functions: \texttt{year()}, \texttt{month()}, and \texttt{day()} like so:
+We can now take advantage of different functions to extract year, month, and day: \texttt{year()}, \texttt{month()}, and \texttt{day()} like so:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{factor}\NormalTok{(}\KeywordTok{year}\NormalTok{(stop_date))) }\CommentTok{#convert year to factor to plot}
+\NormalTok{stop\_year }\OtherTok{\textless{}{-}} \FunctionTok{year}\NormalTok{(stop\_date) }\CommentTok{\# extract the year}
+
+\CommentTok{\# convert year to factor to plot}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{factor}\NormalTok{(stop\_year)) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -2571,7 +2579,7 @@ Challenge
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{factor}\NormalTok{(}\KeywordTok{day}\NormalTok{(stop_date)))}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{factor}\NormalTok{(}\FunctionTok{day}\NormalTok{(stop\_date)))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2596,8 +2604,8 @@ Challenge
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# or}
-\KeywordTok{hist}\NormalTok{(age)}
+\CommentTok{\# or}
+\FunctionTok{hist}\NormalTok{(age)}
 \end{Highlighting}
 \end{Shaded}
 

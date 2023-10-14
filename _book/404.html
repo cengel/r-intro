@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Introduction to R</title>
+  <title>Page not found | Introduction to R</title>
   <meta name="description" content="Workshop materials for Intro to R" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Introduction to R" />
+  <meta property="og:title" content="Page not found | Introduction to R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Workshop materials for Intro to R" />
   <meta name="github-repo" content="cengel/R-intro" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction to R" />
+  <meta name="twitter:title" content="Page not found | Introduction to R" />
   
   <meta name="twitter:description" content="Workshop materials for Intro to R" />
   
@@ -30,7 +30,7 @@
   
   
 
-<link rel="next" href="backgroud.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -244,105 +244,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Introduction to R</h1>
-<p class="author"><em>Claudia A Engel</em></p>
-<p class="date"><em>Last updated: October 14, 2023</em></p>
-</div>
-<div id="prerequisites" class="section level1 unnumbered hasAnchor">
-<h1>Prerequisites<a href="index.html#prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<ul>
-<li>Geared specifically towards users who are <strong>new</strong> to R.<br />
-</li>
-<li>Have <a href="https://cran.r-project.org/">R</a> and <a href="https://posit.co/download/rstudio-desktop/">RStudio</a> installed (see setup instructions below).</li>
-</ul>
-<div id="setup-instructions" class="section level2 unnumbered hasAnchor">
-<h2>Setup Instructions<a href="index.html#setup-instructions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><a href="https://cran.r-project.org/"><strong>R</strong></a> and <a href="https://posit.co/download/rstudio-desktop/"><strong>RStudio</strong></a> are separate downloads and installations. R is the
-underlying statistical computing environment. It can be used on its own, but using R alone is no fun. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You need to install R before you launch RStudio.</p>
-<p>Be aware that the most recent version of RStudio requires R version 3.3.0 or later.</p>
-<div id="macos" class="section level3 unnumbered hasAnchor">
-<h3>macOS<a href="index.html#macos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="if-you-already-have-r-and-rstudio-installed" class="section level4 unnumbered hasAnchor">
-<h4>If you already have R and RStudio installed<a href="index.html#if-you-already-have-r-and-rstudio-installed" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<ul>
-<li>Open RStudio, and click on “Help” &gt; “Check for updates”. If a new version is
-available, quit RStudio, and download the latest version for RStudio.</li>
-<li>To check the version of R you are using, start RStudio and the first thing
-that appears on the terminal indicates the version of R you are running. Alternatively, you can type <code>sessionInfo()</code>, which will also display which version of R you are running. Go on
-the <a href="https://cran.r-project.org/bin/macosx/">CRAN website</a> and check
-whether a more recent version is available. If so, please download and install
-it.</li>
-</ul>
-</div>
-<div id="if-you-dont-have-r-and-rstudio-installed" class="section level4 unnumbered hasAnchor">
-<h4>If you don’t have R and RStudio installed<a href="index.html#if-you-dont-have-r-and-rstudio-installed" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<ul>
-<li>Download R from
-the <a href="http://cran.r-project.org/bin/macosx">CRAN website</a>.</li>
-<li>Select the <code>.pkg</code> file for the latest R version. Make sure you choose the appropriate version for your hardware (Apple silicon or Intel)</li>
-<li>Double click on the downloaded file to install R</li>
-<li>Go to the <a href="https://posit.co/download/rstudio-desktop/">RStudio download page</a></li>
-<li>Follow the link to download the latest version under “Install Rstudio”</li>
-<li>Double click the file to install RStudio</li>
-<li>Once it’s installed, open RStudio to make sure it works and you don’t get any
-error messages.</li>
-</ul>
-</div>
-</div>
-<div id="windows" class="section level3 unnumbered hasAnchor">
-<h3>Windows<a href="index.html#windows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="if-you-already-have-r-and-rstudio-installed-1" class="section level4 unnumbered hasAnchor">
-<h4>If you already have R and RStudio installed<a href="index.html#if-you-already-have-r-and-rstudio-installed-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<ul>
-<li>Open RStudio, and click on “Help” &gt; “Check for updates”. If a new version is
-available, quit RStudio, and download the latest version for RStudio.</li>
-<li>To check which version of R you are using, start RStudio and the first thing
-that appears in the console indicates the version of R you are
-running. Alternatively, you can type <code>sessionInfo()</code>, which will also display
-which version of R you are running. Go on
-the <a href="https://cran.r-project.org/bin/windows/base/">CRAN website</a> and check
-whether a more recent version is available. If so, please download and install
-it. You can <a href="https://cran.r-project.org/bin/windows/base/rw-FAQ.html#How-do-I-UNinstall-R_003f">check here</a> for
-more information on how to remove old versions from your system if you wish to do so.</li>
-</ul>
-</div>
-<div id="if-you-dont-have-r-and-rstudio-installed-1" class="section level4 unnumbered hasAnchor">
-<h4>If you don’t have R and RStudio installed<a href="index.html#if-you-dont-have-r-and-rstudio-installed-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<ul>
-<li>Download R from
-the <a href="http://cran.r-project.org/bin/windows/base/release.htm">CRAN website</a>.</li>
-<li>Run the <code>.exe</code> file that was just downloaded</li>
-<li>Go to the <a href="https://posit.co/download/rstudio-desktop/">RStudio download page</a></li>
-<li>Follow the link to download the latest version under “Install Rstudio”</li>
-<li>Double click the file to install it</li>
-<li>Once it’s installed, open RStudio to make sure it works and you don’t get any
-error messages.</li>
-</ul>
-</div>
-</div>
-<div id="linux" class="section level3 unnumbered hasAnchor">
-<h3>Linux<a href="index.html#linux" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Follow the instructions for your distribution
-from <a href="https://cloud.r-project.org/bin/linux">CRAN</a>, they provide information
-to get the most recent version of R for common distributions. For most
-distributions, you could use your package manager (e.g., for Debian/Ubuntu run
-<code>sudo apt-get install r-base</code>, and for Fedora <code>sudo yum install R</code>), but we
-don’t recommend this approach as the versions provided by this are
-usually out of date. In any case, make sure you have at least R 4.0.0.</li>
-<li>Go to the <a href="https://posit.co/download/rstudio-desktop/">RStudio download page</a></li>
-<li>Follow the link to download the latest version under “Install Rstudio”</li>
-<li>Once it’s installed, open RStudio to make sure it works and you don’t get any
-error messages.</li>
-</ul>
-</div>
-</div>
-<div id="acknowledgements" class="section level2 unnumbered hasAnchor">
-<h2>Acknowledgements<a href="index.html#acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Part of the materials for this tutorial are adapted from <a href="http://datacarpentry.org" class="uri">http://datacarpentry.org</a> and <a href="http://softwarecarpentry.org" class="uri">http://softwarecarpentry.org</a>.</p>
-
-</div>
+<div id="page-not-found" class="section level1">
+<h1>Page not found</h1>
+<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
+<p>You may want to try searching to find the page's new location, or use
+the table of contents to find the page you are looking for.</p>
 </div>
             </section>
 
@@ -350,7 +256,7 @@ error messages.</li>
         </div>
       </div>
 
-<a href="backgroud.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -381,7 +287,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cengel/R-intro/edit/master/index.Rmd",
+"link": "https://github.com/cengel/R-intro/edit/master/%s",
 "text": "Edit"
 },
 "history": {

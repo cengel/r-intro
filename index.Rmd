@@ -16,17 +16,16 @@ description: "Workshop materials for Intro to R"
 # Prerequisites {-}
 
 - Geared specifically towards users who are __new__ to R.  
-- Have [R](https://cran.r-project.org/) and [RStudio](https://www.rstudio.com/) installed (see setup instructions below).
-
+- Have [R](https://cran.r-project.org/) and [RStudio](https://posit.co/download/rstudio-desktop/) installed (see setup instructions below).
 
 
 ## Setup Instructions {-}
 
-[**R**](https://cran.r-project.org/) and [**RStudio**](https://www.rstudio.com/) are separate downloads and installations. R is the
-underlying statistical computing environment, but using R alone is no
-fun. RStudio is a graphical integrated development environment (IDE) that makes
-using R much easier and more interactive. You need to install R before you
-install RStudio. 
+[**R**](https://cran.r-project.org/) and [**RStudio**](https://posit.co/download/rstudio-desktop/) are separate downloads and installations. R is the
+underlying statistical computing environment. It can be used on its own, but using R alone is no fun. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You need to install R before you launch RStudio. 
+
+Be aware that the most recent version of RStudio requires R version 3.3.0 or later.
+
 
 ### macOS {-}
 
@@ -44,11 +43,10 @@ install RStudio.
 
 * Download R from
   the [CRAN website](http://cran.r-project.org/bin/macosx).
-* Select the `.pkg` file for the latest R version
+* Select the `.pkg` file for the latest R version. Make sure you choose the appropriate version for your hardware (Apple silicon or Intel) 
 * Double click on the downloaded file to install R
-* Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download)
-* Under *Installers* select **RStudio x.yy.zzz - Mac OS X 10.6+ (64-bit)**
-  (where x, y, and z represent version numbers)
+* Go to the [RStudio download page](https://posit.co/download/rstudio-desktop/)
+* Follow the link to download the latest version under "Install Rstudio" 
 * Double click the file to install RStudio
 * Once it's installed, open RStudio to make sure it works and you don't get any
   error messages.
@@ -73,9 +71,8 @@ install RStudio.
 * Download R from
   the [CRAN website](http://cran.r-project.org/bin/windows/base/release.htm).
 * Run the `.exe` file that was just downloaded
-* Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download)
-* Under *Installers* select **RStudio x.yy.zzz - Windows
-  XP/Vista/7/8** (where x, y, and z represent version numbers)
+* Go to the [RStudio download page](https://posit.co/download/rstudio-desktop/)
+* Follow the link to download the latest version under "Install Rstudio" 
 * Double click the file to install it
 * Once it's installed, open RStudio to make sure it works and you don't get any
   error messages.
@@ -89,11 +86,8 @@ install RStudio.
   `sudo apt-get install r-base`, and for Fedora `sudo yum install R`), but we
   don't recommend this approach as the versions provided by this are
   usually out of date. In any case, make sure you have at least R 4.0.0.
-* Go to the
-  [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download)
-* Under *Installers* select the version that matches your distribution, and
-  install it with your preferred method (e.g., with Debian/Ubuntu `sudo dpkg -i
-  rstudio-x.yy.zzz-amd64.deb` at the terminal).
+* Go to the [RStudio download page](https://posit.co/download/rstudio-desktop/)
+* Follow the link to download the latest version under "Install Rstudio" 
 * Once it's installed, open RStudio to make sure it works and you don't get any
   error messages.
 
