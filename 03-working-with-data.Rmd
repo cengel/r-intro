@@ -121,7 +121,7 @@ stops
 
 `read_csv()` assumes that fields are delimited by commas. For other delimiters (like semicolon or tab) check out the help: `?read_csv`
 
-Note that `read_csv()` loads the data as a so called "tibble". A tibble is an extended form of R data frames (as an object of multiple classes `tbl_df`, `tbl`, and `data.frame`). This may sound confusing, but it is really not anything you typically with when working the data. In fact, it makes it a little more convenient. 
+Note that `read_csv()` loads the data as a so called "tibble". A tibble is an extended form of R data frames (as an object of multiple classes `tbl_df`, `tbl`, and `data.frame`). This may sound confusing, but it is really not anything you typically need to deal with when working the data. In fact, it makes it a little more convenient. 
 
 As you may recall, a data frame in R is a special case of a list, and a representation of data where the columns are vectors that all have the same length. Because the columns are vectors, they all contain the same type of data (e.g., characters, integers, factors, etc.).
 
@@ -470,13 +470,13 @@ Once created, factors can only contain a pre-defined set of values, known as
 *levels*. By default, R always sorts *levels* in alphabetical order. For
 instance, if you have a factor with 3 levels:
   
-```{r, purl=TRUE}
+```{r, purl=TRUE, results=TRUE}
 priority <- factor(c("low", "high", "medium", "low", "high"))
 ```
 
 R will assign `1` to the level `"high"` and `2` to the level `"low"` and `3` to the level `low` (because it orders alphabetically, not according to position in the vector). You can check this by using the function `levels()`, and check the number of levels using `nlevels()`:
   
-```{r, purl=FALSE}
+```{r, purl=FALSE, results=TRUE}
 levels(priority)
 nlevels(priority)
 ```
@@ -503,14 +503,14 @@ this information built in.
 If you need to convert a factor to a character vector, you use
 `as.character(x)`.
 
-```{r, purl=FALSE}
+```{r, results=TRUE, purl=FALSE}
 as.character(priority)
 ```
 
 It is a little is a little trickier to convert factors where the levels appear as numbers, such or years, for example, to numbers.One method is to
 convert factors to characters and then numbers.  Another method is to use the `levels()` function. Compare:
   
-```{r, purl=TRUE}
+```{r, results=TRUE, purl=TRUE}
 y <- factor(c(1990, 1983, 1977, 1998, 1990))
 as.numeric(y)               # wrong! and there is no warning...
 as.numeric(as.character(y)) # works...
@@ -538,7 +538,7 @@ plot(race)
 
 This looks good, however, `plot` silently ignores NAs and we would like to know if there are any:
 
-```{r driver-race-nas, purl=TRUE}
+```{r driver-race-nas, results=TRUE, purl=TRUE}
 # We create a new variable with the column "driver_race" as a factor
 sum(is.na(race))
 ```
@@ -547,7 +547,7 @@ There seem to be a number of individuals for which the race information hasn't b
 
 ```{r}
 
-## Let's recreate the vector from the data frame column "memb_assoc"
+## Let's recreate the vector from the data frame column driver_race
 race <- stops$driver_race
 
 ## replace the missing data with "unknown"
@@ -601,17 +601,13 @@ variable, i.e a separate column for day, month, and year. However, often we do n
 
 Using `str()`, we can see that both dates in our data frame `stop_date` and `driver_birthdate` are each stored in one column.
 
-```{r, eval=FALSE, purl=FALSE}
+```{r, results=TRUE, purl=FALSE}
 str(stops)
 ```
 
 As an example for how to work with dates let us see if there are seasonal differences in the number of traffic stops.
 
-We're going to be using the `ymd()` function from the package **`lubridate`**. This
-function is designed to take a vector representing year, month, and day and convert
-that information to a POSIXct vector. POSIXct is a class of data recognized by R as
-being a date or date and time. The argument that the function requires is relatively
-flexible, but, as a best practice, is a character vector formatted as "YYYY-MM-DD".
+
 
 Start by loading the required package:
 
@@ -622,40 +618,32 @@ library(lubridate)
 
 `read_csv()` has already recognized the Date format of the column when we read the table in earlier.
 
-```{r, purl=FALSE}
+```{r, purl=FALSE, results=TRUE}
 stop_date <- stops$stop_date
 str(stop_date) # notice the 'Date' class
 ```
 
-We can now take advantage of different functions to extract year, month, and day: `year()`, `month()`, and `day()` like so:
+We can now take advantage of different functions to extract year, month, and day of the month, and weekday: `year()`, `month()`, `day()`, `wday()` like so:
 
 ```{r yearly-stops, purl=FALSE}
-stop_year <- year(stop_date) # extract the year
+stop_month <- month(stop_date) # extract the month
 
 # convert year to factor to plot
-plot(factor(stop_year)) 
+plot(factor(stop_month)) 
 ```
+
+
+
+
+If your dates are not in Date format, you can use the `ymd()` function from the package **`lubridate`**. This
+function is designed to take a vector representing year, month, and day and convert
+that information to a POSIXct vector. POSIXct is a class of data recognized by R as
+being a date or date and time. The argument that the function requires is relatively
+flexible, but, as a best practice, is a character vector formatted as "YYYY-MM-DD".
 
 > <h3>Challenge</h3>
 >
-> * Are there more stops in certain months of the year or certain days of the month?
-
-```{r seasonal-stops, results='show', echo=FALSE, purl=TRUE}
-## Challenge
-##
-## * Are there more stops in certain months of the year or certain days of the month?
-```
-
-
-<!--- Answers
-```{r plot-seasonal-stops, purl=FALSE}
-## Answers
-plot(factor(month(stop_date)))
-plot(factor(day(stop_date)))
-```
---->
-
-> <h3>Challenge</h3>
+> * Are there more stops in certain days of the week?
 >
 > * Determine the age of the driver in years (approximate) at the time of the stop:
 > * Extract `driver_birthdate` into a vector `birth_date` 
@@ -672,15 +660,19 @@ plot(factor(day(stop_date)))
 ```
 
 
-<!--- Answers
-```{r calculate-age-answer, purl=FALSE}
-birth_date <- ymd(stops$driver_birthdate)
-age <- stop_date - birth_date
-# or
-age <- year(stop_date) - year(birth_date)
-plot(factor(age)) # negative age
-# or
-hist(age)
+```{r date-challenge, purl=FALSE, eval= FALSE, echo=FALSE}
+### Answers
+# 
+# plot(factor(wday(stop_date)))
+# 
+# 
+# birth_date <- ymd(stops$driver_birthdate)
+# age <- stop_date - birth_date
+# # or
+# age <- year(stop_date) - year(birth_date)
+# plot(factor(age)) # negative age
+# # or
+# hist(age)
 ```
---->
+
   

@@ -75,8 +75,8 @@ When assigning a value to an object, R does not print anything. You can force R 
 
 ```{r, purl=FALSE}
 area_hectares <- 1.0    # doesn't print anything
-(area_hectares <- 1.0)  # putting parenthesis around the call prints the value of `area_hectares`
-area_hectares          # and so does typing the name of the object
+area_hectares           # typing the name of the object prints the value of `area_hectares`
+(area_hectares <- 1.0)  # and so does putting parenthesis around the call 
 ```
 
 Now that R has `area_hectares` in memory, we can do arithmetic with it. For
@@ -86,7 +86,7 @@ instance, we may want to convert this weight into pounds (area in acres is 2.47 
 area_hectares  * 2.47
 ```
 
-We can also change a variable's value by assigning it a new one:
+We can also change a variable's value by assigning it a new value:
 
 ```{r, purl=FALSE}
 area_hectares <- 2.5
@@ -94,7 +94,7 @@ area_hectares * 2.47
 ```
 
 This means that assigning a value to one variable does not change the values of
-other variables.  For example, let's store the weight in pounds in a new
+other variables.  For example, let's store the area in acres in a new
 variable, `area_acres`:
 
 ```{r, purl=FALSE}
@@ -126,7 +126,11 @@ to select the whole line), then press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> +
 
 > <h3>Challenge</h3>
 >
-> Create two variables `r_length` and `r_width` and assign them values. It should be noted that, because length is a built-in R function, R Studio might add parenthesis "()" after you type length. If you leave the parentheses you will get unexpected results. This is why you might see abbreviations of common words in R code, for example `r_len`. Calculate the area based on the current values of `r_length` and `r_width` and assign the result to a new, third variable `r_area`. Demonstrate that changing the values of either `r_length` and `r_width` does not affect the value of `r_area`. Make ample use of comments in your code.
+> Create two variables `r_length` and `r_width` and assign them values. 
+> 
+> Calculate the area based on the current values of `r_length` and `r_width` and assign the result to a new, third variable `r_area`. 
+>
+> Demonstrate that changing the values of either `r_length` and `r_width` does not affect the value of `r_area`. Make ample use of comments in your code.
 
 ```{r, echo=FALSE, purl=TRUE}
 ## ANSWER
@@ -144,7 +148,7 @@ to select the whole line), then press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> +
 
 ### Functions and their arguments
 
-Functions are "canned scripts" that automate a series of commands one often might want to apply frequently. 
+Functions are "canned scripts" that automate a series of commands one might want to apply frequently. 
 
 Many functions are predefined, or can be
 made available by importing R *packages* (more on that later). A function
@@ -445,6 +449,10 @@ But this can quickly become tedious. The function `%in%` allows you to test if a
 ```{r, results='show', purl=FALSE}
 animals %in% c("frog", "rat", "cat") # this creates the logical vector
 animals[animals %in% c("frog", "rat", "cat")] # we use it here in the [ ] to subset
+
+# The same, but here is how I would typically do it:
+animals_to_find <- c("frog", "rat", "cat") # create a vector with the values you are looking for
+animals[animals %in% animals_to_find] # apply it in the condition here
 ```
 
 
@@ -461,7 +469,7 @@ You can combine multiple tests using `&` (both conditions are true, AND) or `|`
 
 ```{r, results='show', purl=FALSE}
 area_hectares[area_hectares < 30 | area_hectares > 50]
-area_hectares[area_hectares >= 30 & area_hectares <= 90]
+area_hectares[area_hectares > 40 & area_hectares < 90]
 ```
 
 Here, `<` stands for "less than", `>` for "greater than", `>=` for "greater than
@@ -543,7 +551,7 @@ age[complete.cases(age)]
 >
 > 2. Use the function `sum()` to calculate the total of the `population`.
 >
-> 3. How may of the populations are of size 20 and over?
+> 3. How many of the populations are of size 20 and over?
 
 ```{r,echo=FALSE, purl=TRUE}
 ## Challenge

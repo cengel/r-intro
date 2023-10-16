@@ -127,7 +127,7 @@
 
 \title{Introduction to R}
 \author{Claudia A Engel}
-\date{Last updated: October 14, 2023}
+\date{Last updated: October 16, 2023}
 
 \begin{document}
 \maketitle
@@ -718,8 +718,8 @@ When assigning a value to an object, R does not print anything. You can force R 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{area\_hectares }\OtherTok{\textless{}{-}} \FloatTok{1.0}    \CommentTok{\# doesn\textquotesingle{}t print anything}
-\NormalTok{(area\_hectares }\OtherTok{\textless{}{-}} \FloatTok{1.0}\NormalTok{)  }\CommentTok{\# putting parenthesis around the call prints the value of \textasciigrave{}area\_hectares\textasciigrave{}}
-\NormalTok{area\_hectares          }\CommentTok{\# and so does typing the name of the object}
+\NormalTok{area\_hectares           }\CommentTok{\# typing the name of the object prints the value of \textasciigrave{}area\_hectares\textasciigrave{}}
+\NormalTok{(area\_hectares }\OtherTok{\textless{}{-}} \FloatTok{1.0}\NormalTok{)  }\CommentTok{\# and so does putting parenthesis around the call }
 \end{Highlighting}
 \end{Shaded}
 
@@ -732,7 +732,7 @@ instance, we may want to convert this weight into pounds (area in acres is 2.47 
 \end{Highlighting}
 \end{Shaded}
 
-We can also change a variable's value by assigning it a new one:
+We can also change a variable's value by assigning it a new value:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -742,7 +742,7 @@ We can also change a variable's value by assigning it a new one:
 \end{Shaded}
 
 This means that assigning a value to one variable does not change the values of
-other variables. For example, let's store the weight in pounds in a new
+other variables. For example, let's store the area in acres in a new
 variable, \texttt{area\_acres}:
 
 \begin{Shaded}
@@ -781,13 +781,17 @@ C.
 \begin{quote}
 Challenge
 
-Create two variables \texttt{r\_length} and \texttt{r\_width} and assign them values. It should be noted that, because length is a built-in R function, R Studio might add parenthesis ``()'' after you type length. If you leave the parentheses you will get unexpected results. This is why you might see abbreviations of common words in R code, for example \texttt{r\_len}. Calculate the area based on the current values of \texttt{r\_length} and \texttt{r\_width} and assign the result to a new, third variable \texttt{r\_area}. Demonstrate that changing the values of either \texttt{r\_length} and \texttt{r\_width} does not affect the value of \texttt{r\_area}. Make ample use of comments in your code.
+Create two variables \texttt{r\_length} and \texttt{r\_width} and assign them values.
+
+Calculate the area based on the current values of \texttt{r\_length} and \texttt{r\_width} and assign the result to a new, third variable \texttt{r\_area}.
+
+Demonstrate that changing the values of either \texttt{r\_length} and \texttt{r\_width} does not affect the value of \texttt{r\_area}. Make ample use of comments in your code.
 \end{quote}
 
 \hypertarget{functions-and-their-arguments}{%
 \subsection{Functions and their arguments}\label{functions-and-their-arguments}}
 
-Functions are ``canned scripts'' that automate a series of commands one often might want to apply frequently.
+Functions are ``canned scripts'' that automate a series of commands one might want to apply frequently.
 
 Many functions are predefined, or can be
 made available by importing R \emph{packages} (more on that later). A function
@@ -1228,6 +1232,18 @@ But this can quickly become tedious. The function \texttt{\%in\%} allows you to 
 #> [1] "rat"
 \end{verbatim}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# The same, but here is how I would typically do it:}
+\NormalTok{animals\_to\_find }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"frog"}\NormalTok{, }\StringTok{"rat"}\NormalTok{, }\StringTok{"cat"}\NormalTok{) }\CommentTok{\# create a vector with the values you are looking for}
+\NormalTok{animals[animals }\SpecialCharTok{\%in\%}\NormalTok{ animals\_to\_find] }\CommentTok{\# apply it in the condition here}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1] "rat"
+\end{verbatim}
+
 Equivalently, if you wanted to select only the areas above 50:
 
 \begin{Shaded}
@@ -1266,12 +1282,12 @@ You can combine multiple tests using \texttt{\&} (both conditions are true, AND)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{area\_hectares[area\_hectares }\SpecialCharTok{\textgreater{}=} \DecValTok{30} \SpecialCharTok{\&}\NormalTok{ area\_hectares }\SpecialCharTok{\textless{}=} \DecValTok{90}\NormalTok{]}
+\NormalTok{area\_hectares[area\_hectares }\SpecialCharTok{\textgreater{}} \DecValTok{40} \SpecialCharTok{\&}\NormalTok{ area\_hectares }\SpecialCharTok{\textless{}} \DecValTok{90}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-#> [1] 30 34 39 54 55 90
+#> [1] 54 55
 \end{verbatim}
 
 Here, \texttt{\textless{}} stands for ``less than'', \texttt{\textgreater{}} for ``greater than'', \texttt{\textgreater{}=} for ``greater than
@@ -1425,7 +1441,7 @@ Challenge
 \item
   Use the function \texttt{sum()} to calculate the total of the \texttt{population}.
 \item
-  How may of the populations are of size 20 and over?
+  How many of the populations are of size 20 and over?
 \end{enumerate}
 \end{quote}
 
@@ -2008,7 +2024,7 @@ So let's check out the data! We can type the name of the object \texttt{stops}:
 
 \texttt{read\_csv()} assumes that fields are delimited by commas. For other delimiters (like semicolon or tab) check out the help: \texttt{?read\_csv}
 
-Note that \texttt{read\_csv()} loads the data as a so called ``tibble''. A tibble is an extended form of R data frames (as an object of multiple classes \texttt{tbl\_df}, \texttt{tbl}, and \texttt{data.frame}). This may sound confusing, but it is really not anything you typically with when working the data. In fact, it makes it a little more convenient.
+Note that \texttt{read\_csv()} loads the data as a so called ``tibble''. A tibble is an extended form of R data frames (as an object of multiple classes \texttt{tbl\_df}, \texttt{tbl}, and \texttt{data.frame}). This may sound confusing, but it is really not anything you typically need to deal with when working the data. In fact, it makes it a little more convenient.
 
 As you may recall, a data frame in R is a special case of a list, and a representation of data where the columns are vectors that all have the same length. Because the columns are vectors, they all contain the same type of data (e.g., characters, integers, factors, etc.).
 
@@ -2378,9 +2394,22 @@ R will assign \texttt{1} to the level \texttt{"high"} and \texttt{2} to the leve
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{levels}\NormalTok{(priority)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1] "high"   "low"    "medium"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{nlevels}\NormalTok{(priority)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+#> [1] 3
+\end{verbatim}
 
 Sometimes, the order of the factors does not matter, other times you might want
 to specify the order because it is meaningful (e.g., ``low'', ``medium'', ``high''),
@@ -2428,6 +2457,10 @@ If you need to convert a factor to a character vector, you use
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+#> [1] "low"    "high"   "medium" "low"    "high"
+\end{verbatim}
+
 It is a little is a little trickier to convert factors where the levels appear as numbers, such or years, for example, to numbers.One method is to
 convert factors to characters and then numbers. Another method is to use the \texttt{levels()} function. Compare:
 
@@ -2435,10 +2468,32 @@ convert factors to characters and then numbers. Another method is to use the \te
 \begin{Highlighting}[]
 \NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1990}\NormalTok{, }\DecValTok{1983}\NormalTok{, }\DecValTok{1977}\NormalTok{, }\DecValTok{1998}\NormalTok{, }\DecValTok{1990}\NormalTok{))}
 \FunctionTok{as.numeric}\NormalTok{(y)               }\CommentTok{\# wrong! and there is no warning...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1] 3 2 1 4 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(y)) }\CommentTok{\# works...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1] 1990 1983 1977 1998 1990
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{levels}\NormalTok{(y))[y]    }\CommentTok{\# The recommended way.}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+#> [1] 1990 1983 1977 1998 1990
+\end{verbatim}
 
 Notice that in the \texttt{levels()} approach, three important steps occur:
 
@@ -2478,11 +2533,15 @@ This looks good, however, \texttt{plot} silently ignores NAs and we would like t
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+#> [1] 28
+\end{verbatim}
+
 There seem to be a number of individuals for which the race information hasn't been recorded. Additionally, for these individuals, there is no label to indicate that the information is missing. Let's rename this label to something more meaningful:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DocumentationTok{\#\# Let\textquotesingle{}s recreate the vector from the data frame column "memb\_assoc"}
+\DocumentationTok{\#\# Let\textquotesingle{}s recreate the vector from the data frame column driver\_race}
 \NormalTok{race }\OtherTok{\textless{}{-}}\NormalTok{ stops}\SpecialCharTok{$}\NormalTok{driver\_race}
 
 \DocumentationTok{\#\# replace the missing data with "unknown"}
@@ -2529,13 +2588,37 @@ Using \texttt{str()}, we can see that both dates in our data frame \texttt{stop\
 \end{Highlighting}
 \end{Shaded}
 
-As an example for how to work with dates let us see if there are seasonal differences in the number of traffic stops.
+\begin{verbatim}
+#> spc_tbl_ [211,211 x 11] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+#>  $ id               : chr [1:211211] "MS-2013-00001" "MS-2013-00002" "MS-2013-00003" "MS-2013-00004" ...
+#>  $ state            : chr [1:211211] "MS" "MS" "MS" "MS" ...
+#>  $ stop_date        : Date[1:211211], format: "2013-01-01" "2013-01-01" ...
+#>  $ county_name      : chr [1:211211] "Jones County" "Lauderdale County" "Pike County" "Hancock County" ...
+#>  $ county_fips      : num [1:211211] 28067 28075 28113 28045 28051 ...
+#>  $ police_department: chr [1:211211] "Mississippi Highway Patrol" "Mississippi Highway Patrol" "Mississippi Highway Patrol" "Mississippi Highway Patrol" ...
+#>  $ driver_gender    : chr [1:211211] "M" "M" "M" "M" ...
+#>  $ driver_birthdate : Date[1:211211], format: "1950-06-14" "1967-04-06" ...
+#>  $ driver_race      : chr [1:211211] "Black" "Black" "Black" "White" ...
+#>  $ violation_raw    : chr [1:211211] "Seat belt not used properly as required" "Careless driving" "Speeding - Regulated or posted speed limit and actual speed" "Speeding - Regulated or posted speed limit and actual speed" ...
+#>  $ officer_id       : chr [1:211211] "J042" "B026" "M009" "K035" ...
+#>  - attr(*, "spec")=
+#>   .. cols(
+#>   ..   id = col_character(),
+#>   ..   state = col_character(),
+#>   ..   stop_date = col_date(format = ""),
+#>   ..   county_name = col_character(),
+#>   ..   county_fips = col_double(),
+#>   ..   police_department = col_character(),
+#>   ..   driver_gender = col_character(),
+#>   ..   driver_birthdate = col_date(format = ""),
+#>   ..   driver_race = col_character(),
+#>   ..   violation_raw = col_character(),
+#>   ..   officer_id = col_character()
+#>   .. )
+#>  - attr(*, "problems")=<externalptr>
+\end{verbatim}
 
-We're going to be using the \texttt{ymd()} function from the package \textbf{\texttt{lubridate}}. This
-function is designed to take a vector representing year, month, and day and convert
-that information to a POSIXct vector. POSIXct is a class of data recognized by R as
-being a date or date and time. The argument that the function requires is relatively
-flexible, but, as a best practice, is a character vector formatted as ``YYYY-MM-DD''.
+As an example for how to work with dates let us see if there are seasonal differences in the number of traffic stops.
 
 Start by loading the required package:
 
@@ -2554,43 +2637,35 @@ Start by loading the required package:
 \end{Highlighting}
 \end{Shaded}
 
-We can now take advantage of different functions to extract year, month, and day: \texttt{year()}, \texttt{month()}, and \texttt{day()} like so:
+\begin{verbatim}
+#>  Date[1:211211], format: "2013-01-01" "2013-01-01" "2013-01-01" "2013-01-01" "2013-01-01" ...
+\end{verbatim}
+
+We can now take advantage of different functions to extract year, month, and day of the month, and weekday: \texttt{year()}, \texttt{month()}, \texttt{day()}, \texttt{wday()} like so:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{stop\_year }\OtherTok{\textless{}{-}} \FunctionTok{year}\NormalTok{(stop\_date) }\CommentTok{\# extract the year}
+\NormalTok{stop\_month }\OtherTok{\textless{}{-}} \FunctionTok{month}\NormalTok{(stop\_date) }\CommentTok{\# extract the month}
 
 \CommentTok{\# convert year to factor to plot}
-\FunctionTok{plot}\NormalTok{(}\FunctionTok{factor}\NormalTok{(stop\_year)) }
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{factor}\NormalTok{(stop\_month)) }
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{R-intro_files/figure-latex/yearly-stops-1.pdf}
 
+If your dates are not in Date format, you can use the \texttt{ymd()} function from the package \textbf{\texttt{lubridate}}. This
+function is designed to take a vector representing year, month, and day and convert
+that information to a POSIXct vector. POSIXct is a class of data recognized by R as
+being a date or date and time. The argument that the function requires is relatively
+flexible, but, as a best practice, is a character vector formatted as ``YYYY-MM-DD''.
+
 \begin{quote}
 Challenge
 
 \begin{itemize}
-\tightlist
 \item
-  Are there more stops in certain months of the year or certain days of the month?
-\end{itemize}
-\end{quote}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(}\FunctionTok{factor}\NormalTok{(}\FunctionTok{day}\NormalTok{(stop\_date)))}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{R-intro_files/figure-latex/plot-seasonal-stops-2.pdf}
----\textgreater{}
-
-\begin{quote}
-Challenge
-
-\begin{itemize}
-\tightlist
+  Are there more stops in certain days of the week?
 \item
   Determine the age of the driver in years (approximate) at the time of the stop:
 \item
@@ -2601,16 +2676,6 @@ Challenge
   Coerce \texttt{age} to a factor and use the \texttt{plot} function to check your results. What do you find?
 \end{itemize}
 \end{quote}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# or}
-\FunctionTok{hist}\NormalTok{(age)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{R-intro_files/figure-latex/calculate-age-answer-2.pdf}
----\textgreater{}
 
   \bibliography{book.bib,packages.bib}
 
